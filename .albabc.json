@@ -1,0 +1,22 @@
+{
+  "build_commands": {
+    "1": {
+      "name": "Build!",
+      "shell_cmd": "nim c -d:release -r ./compileOutput.nim",
+      "cwd": ".",
+      "autoopen": true
+    },
+    "2": {
+      "name": "Build Debug!",
+      "shell_cmd": "nim c -r compileOutput",
+      "cwd": ".",
+      "autoopen": true
+    },
+    "3": {
+      "name": "Sphinx-build",
+      "shell_cmd": "sphinx-build -b html -j auto . _build",
+      "cwd": ".",
+      "autoopen": true
+    }
+  }
+}
