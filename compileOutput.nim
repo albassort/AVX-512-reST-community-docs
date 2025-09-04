@@ -290,7 +290,7 @@ proc addIntrinsic(intrinsic : Intrinsic, stream : var StringStream, border = '^'
         stream.writeLine(&".. admonition:: See Also [{apply.matchName}]\n")
 
         for reference in apply.references.get():
-          stream.writeline(getIndent(2) & &"`{reference.text}<{reference.url}>`")
+          stream.writeline(getIndent(2) & &"`{reference.text}<{reference.url}>`_")
         stream.writeLine("")
           
 
