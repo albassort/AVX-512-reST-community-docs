@@ -186,10 +186,17 @@ xxx indicates the size of the "EType" (the input type). `epi32` would indicate t
 
 ps, ph, pd
 ^^^^^^^^^^
-These are float types
-PS = Precision Single (32 bit)
+
+These are float types.
+
+
 PH = Precision Half (16 bit)
+
+PS = Precision Single (32 bit)
+
 PD = Precision Double (64 bit)
+
+Consider the following example:
 
 .. code-block:: C
 
@@ -207,12 +214,12 @@ ss, sh, sd
 These are float types used in scalar Intrinsic
 
 SS = Precision Single (32 bit)
+
 SH = Precision Half (16 bit)
+
 SD = Precision Double (64 bit)
 
-
-
-Consider the following example
+Consider the following example:
 
 .. code-block:: C
 

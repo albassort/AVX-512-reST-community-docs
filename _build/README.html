@@ -904,10 +904,11 @@ FP64 a</p>
 </section>
 <section id="ps-ph-pd">
 <h4>ps, ph, pd<a class="headerlink" href="#ps-ph-pd" title="Link to this heading">#</a></h4>
-<p>These are float types
-PS = Precision Single (32 bit)
-PH = Precision Half (16 bit)
-PD = Precision Double (64 bit)</p>
+<p>These are float types.</p>
+<p>PH = Precision Half (16 bit)</p>
+<p>PS = Precision Single (32 bit)</p>
+<p>PD = Precision Double (64 bit)</p>
+<p>Consider the following example:</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="nf">_mm_roundscale_ph</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">imm8</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -919,10 +920,10 @@ PD = Precision Double (64 bit)</p>
 <section id="ss-sh-sd">
 <h4>ss, sh, sd<a class="headerlink" href="#ss-sh-sd" title="Link to this heading">#</a></h4>
 <p>These are float types used in scalar Intrinsic</p>
-<p>SS = Precision Single (32 bit)
-SH = Precision Half (16 bit)
-SD = Precision Double (64 bit)</p>
-<p>Consider the following example</p>
+<p>SS = Precision Single (32 bit)</p>
+<p>SH = Precision Half (16 bit)</p>
+<p>SD = Precision Double (64 bit)</p>
+<p>Consider the following example:</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="nf">_mm_roundscale_sh</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">imm8</span><span class="p">);</span>
 </pre></div>
 </div>
