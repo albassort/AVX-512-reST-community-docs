@@ -3,33 +3,37 @@ AVX 512 Community Docs
 
 What is this
 ------------
-In my efforts to study AVX-512 I found quite the issue. The only readily available documentation is that provided by Intel, as well as, the headers provided by your favorite compiler. However, they have two mutually exclusive benefits
+AVX-512 Documentation is scattered and, prior to now, not in a Text-focused, easily searchable way. This repository is aimed at filling this space, by giving an efficient, easily usable, documentation source. The primarily dilemma is as follows:
 
-- Headers
+- Headers:
 
-  - Not all in one place, the instructions are fractured across many files.
-  - No comments, at least not in any compiler I checked. Not in GCC or Clang. Thus its hard to know what it is unless you are well versed in AVX-512 naming schemes and have a strong understanding of each instructions use case.
+  - Not all in one place, the Intrinsics definitions are fractured across many files.
+  - Unlike source code headers, their purpose is not to provide documentation, thus no documentation or comments are usually contained within. They presume you have a separate documentation source.
 
-- Intel's site 
+- Intel's site:
 
   - Non-accessible. Its an HTML only site.
   - Not easily searchable.
 
-So I decided to copy the benefits of both, and make this. As, I prefer text based documentation.
+- This site:
+
+  - Documentation is centralized, and searchable in a single file or with a central index. A mnemonics `searchable` format is even provided, to replace Intel's filters. `Tech`-`Category`-`Width`
+  - Documentation is provided by Intel, and patched by community notes. In the future, perhaps we could combine Intel and AMD's docs.
+  - Easier reading, much more straightforward, on both the HTML site and in the single rst file.
 
 Data
 ----
-The primary data, outside of Community Note sections, come from Intel.
+The primary data, outside of Community Note sections, come from Intel. However, documents here have the capacity to patch and add `Community Notes` should this be needed.
 
 Patching
 ~~~~~~~~
-There is a patching system. Here is the json format 
+There is a patching system. Here is the JSON format 
 
 .. code-block:: json
 
     ".*fixup.*": {
       "matchName": "Fix up Notes",
-      "note": "The phrase 'Fix Up' in this context means to apply your desire method of error detection and correction or flagging. For example, make a number NAN if it fulfils a certain criteria",
+      "note": "The phrase 'Fix Up' in this context means to apply your desired method of error detection, correction, and, flagging. For example, make a number NAN if it fulfils a certain criteria",
       "references": [
         {
           "text": "A stackoverflow explanation of Fix Up",
@@ -48,7 +52,7 @@ Distribution
 ------------
 The Data here comes in two flavors. 
 
-1. The avx-512.rst file, which is a giant, 8mb file, meant primarily for distribution by copying it directly, and reading it as you program. This is my personal preferred method. This can be found `here <https://raw.githubusercontent.com/albassort/AVX-512-reST-community-docs/refs/heads/main/avx-512.rst>`_.
+1. The "avx-512.rst" file, which is a giant, 8 MB file, meant primarily for distribution by copying it directly, and reading it as you program. This is my personal preferred method. This can be found `here <https://raw.githubusercontent.com/albassort/AVX-512-reST-community-docs/refs/heads/main/avx-512.rst>`_.
 2. Sphinx rendered .rst files, hosted in this git. `You can access it here <https://albassort.github.io/AVX-512-reST-community-docs/>`_. This file is appended the index.rst.
 
 Community Additions 
@@ -68,11 +72,11 @@ Sometimes Intrinsics will reference "a DST", but, unlike most "dst" you find in 
 
   This Intrinsic performs four rounds of SM4 encryption. The Intrinsic operates on independent 128-bit lanes. The calculated results are stored in dst
 
-We can assume the "dst' in the above description is actually the "__m128i" that it returns.
+We can assume the 'dst' in the above description is actually the "__m128i" that it returns.
 
 -Fix- preface
 ~~~~~~~~~~~~~
-Instructions use about 830 separate mnemonics, and not call can be covered. Statistically, these are the most common, as well as, the least straightforward. 
+Instructions use about 830 separate mnemonics, and not all can be covered. Statistically, these are the most common, as well as, the least straightforward. 
 
 Knowing this can make reading and parsing AVX-512 code easier.
 
@@ -100,7 +104,37 @@ Midfixes
 
 Masks
 ^^^^^
-Masks is, as the name implies a mask. Where the given mask is on, the respective channel positions are not operated upon. For example, not not adding two integers.
+Masks, as the name implies, is a mask which alters the outcome of a given Intrinsic operation. Generally, masks will enable the ignoring of the lane at the position in which it is true. This usually causes the data on the respective lane to be copied directly into the output, and not operated upon.
+
+Consider the following example:
+
+_mm512_mask_sin_pd
+""""""""""""""""""
+:Tech: SVML
+:Category: Trigonometry
+:Header: immintrin.h
+:Searchable: SVML-Trigonometry-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_sin_pd(__m512d src, __mmask8 k,
+                               __m512d a)
+
+.. admonition:: Intel Description
+
+    Compute the sine of packed double-precision (64-bit) floating-point elements in "a" expressed in radians, and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+Where the mask is a whitelist, where it is off `a` is copied to the output, and the sin is not calculated. Where it is on, the sin is calculated and a is ignored.
 
 Maskz
 ^^^^^
@@ -108,7 +142,7 @@ See above, except, if needed, the input is not copied to the output, and is kept
 
 StoreU
 ^^^^^^
-The writing counterpart to `Loadu`. Retrieves the results an instruction, and writes into continuous address space. E.g, write the result to a pre-allocated buffer or array. Generally faster than scatter.
+The writing counterpart to `Loadu`. Retrieves the results from an Intrinsic, and writes into continuous address space. E.g, write the result to a pre-allocated buffer or array. Generally faster than scatter.
 
 Scatter
 ^^^^^^^
@@ -122,33 +156,33 @@ Applies the given operation left -> right
 Gather
 ^^^^^^
 
-The reading counterpart to `Scatter`. These instructions take in values from many pointers. Generally slower than loadu
+The reading counterpart to `Scatter`. These Intrinsic take in values from many pointers. Generally slower than loadu
 
 Loadu
 ^^^^^
-The reading counterpart to `Loadu`. These instructions take in values from continuous address space, like arrays. Generally faster than Gather
+The reading counterpart to `Loadu`. These Intrinsic take in values from continuous address space, like arrays. Generally faster than Gather
 
 
 Insert
 ^^^^^^
 
-Inserts a given value into the given instruction, replacing the value at the given position
+Inserts a given value into the given Intrinsic, replacing the value at the given position
 
 Extract
 ^^^^^^^
 
-Removes an integer into the given instruction, writing the given value at the given position to a given address.
+Removes an integer into the given Intrinsic, writing the given value at the given position to a given address.
 
 Suffixes
 ~~~~~~~~
 
 epi
 ^^^
-"Extened Packed Integer". Integer operations.
+"Extended Packed Integer". Integer operations.
 
 epixxx
 ^^^^^^
-xxx indicates the size of the "EType", the Input type. `epi32` would indicate that the instruction operates upon 32 bit integers, in whatever lane size it uses.
+xxx indicates the size of the "EType" (the input type). `epi32` would indicate that the Intrinsic operates upon 32 bit integers, in whatever lane size it uses.
 
 ps, ph, pd
 ^^^^^^^^^^
@@ -170,7 +204,7 @@ PD = Precision Double (64 bit)
 
 ss, sh, sd
 ^^^^^^^^^^
-These are float types used in scalar instructions
+These are float types used in scalar Intrinsic
 
 SS = Precision Single (32 bit)
 SH = Precision Half (16 bit)
@@ -192,7 +226,7 @@ Consider the following example
 Scalars
 -------
 
-Scalars are functions which operate on only operate on one side of the lane. For example, the above function `_mm_roundscale_sh`, only operates on `b`, conversely, `a` is simply read into the `dst`. That is to say, this is a `storeu` And `_mm_roundscale_ph` in one. 
+Scalars are Intrinsic which operate on only operate on one side of the lane. For example, the above Intrinsic `_mm_roundscale_sh`, only operates on `b`, conversely, `a` is simply read into the `dst`. That is to say, this is a `storeu` and `_mm_roundscale_ph` in one. 
 
 Modules 
 -------
@@ -206,8 +240,10 @@ TECH - CATEGORY - WIDTH
 As an example:
 AVX-512-Store-XMM
 
-So, of the AVX-512 extension, in the store category, YMM wide instructions.
+So, of the AVX-512 extension, in the store category, YMM wide Intrinsic.
 
 Instructions 
 ~~~~~~~~~~~~
-This section is cut off as the README, but is filled in on the stie!
+If you're reading this in the README, the documentation cuts off. However, on the GITHUB page, there are two following sections with searchable categories.
+
+
