@@ -211,11 +211,11 @@ Consider the following example:
 
 ss, sh, sd
 ^^^^^^^^^^
-These are float types used in scalar Intrinsic
-
-SS = Precision Single (32 bit)
+These are float types used in scalar Intrinsics
 
 SH = Precision Half (16 bit)
+
+SS = Precision Single (32 bit)
 
 SD = Precision Double (64 bit)
 
