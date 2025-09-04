@@ -48,7 +48,7 @@ Distribution
 ------------
 The Data here comes in two flavors. 
 
-1. The avx-512.rst file, which is a giant, 8mb file, meant primarily for distribution by copying it directly, and reading it as you program. This is my personal preferred method. This can be found `here<https://raw.githubusercontent.com/albassort/AVX-512-reST-community-docs/refs/heads/main/avx-512.rst>`_.
+1. The avx-512.rst file, which is a giant, 8mb file, meant primarily for distribution by copying it directly, and reading it as you program. This is my personal preferred method. This can be found `here <https://raw.githubusercontent.com/albassort/AVX-512-reST-community-docs/refs/heads/main/avx-512.rst>`_.
 2. Sphinx rendered .rst files, hosted in this git. `You can access it here <https://albassort.github.io/AVX-512-reST-community-docs/>`_. This file is appended the index.rst.
 
 Community Additions 
