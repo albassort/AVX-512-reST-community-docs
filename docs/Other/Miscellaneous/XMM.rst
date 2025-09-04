@@ -1,0 +1,20 @@
+Other-Miscellaneous-XMM
+=======================
+
+_mm_cldemote
+------------
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Searchable: Other-Miscellaneous-XMM
+:Register: XMM 128 bit
+:Return Type: void
+
+.. code-block:: C
+
+    void _mm_cldemote(void const * p);
+
+.. admonition:: Intel Description
+
+    Hint to hardware that the cache line that contains "p" should be demoted from the cache closest to the processor core to a level more distant from the processor core.
+

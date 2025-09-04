@@ -1,0 +1,107 @@
+_mm_clflushopt
+^^^^^^^^^^^^^^
+:Tech: Other
+:Category: General Support
+:Header: immintrin.h
+:Register: XMM 128 bit
+:Return Type: void
+
+.. code-block:: C
+
+    void _mm_clflushopt(void const * p);
+
+.. admonition:: Intel Description
+
+    Invalidate and flush the cache line that contains "p" from all levels of the cache hierarchy.
+
+_mm_clwb
+^^^^^^^^
+:Tech: Other
+:Category: General Support
+:Header: immintrin.h
+:Register: XMM 128 bit
+:Return Type: void
+
+.. code-block:: C
+
+    void _mm_clwb(void const * p);
+
+.. admonition:: Intel Description
+
+    Write back to memory the cache line that contains "p" from any level of the cache hierarchy in the cache coherence domain.
+
+_mm_monitor
+^^^^^^^^^^^
+:Tech: Other
+:Category: General Support
+:Header: pmmintrin.h
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    void const* p, 
+    unsigned extensions, 
+    unsigned hints
+:Param ETypes:
+     p, 
+    UI32 extensions, 
+    UI32 hints
+
+.. code-block:: C
+
+    void _mm_monitor(void const* p, unsigned extensions,
+                     unsigned hints)
+
+.. admonition:: Intel Description
+
+    Arm address monitoring hardware using the address specified in "p". A store to an address within the specified address range triggers the monitoring hardware. Specify optional extensions in "extensions", and optional hints in "hints".
+
+_mm_mwait
+^^^^^^^^^
+:Tech: Other
+:Category: General Support
+:Header: pmmintrin.h
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    unsigned extensions, 
+    unsigned hints
+:Param ETypes:
+    UI32 extensions, 
+    UI32 hints
+
+.. code-block:: C
+
+    void _mm_mwait(unsigned extensions, unsigned hints);
+
+.. admonition:: Intel Description
+
+    Hint to the processor that it can enter an implementation-dependent-optimized state while waiting for an event or store operation to the address range specified by MONITOR.
+
+_mm_prefetch
+^^^^^^^^^^^^
+:Tech: Other
+:Category: General Support
+:Header: immintrin.h
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    char const* p, 
+    int i
+:Param ETypes:
+    UI8 p, 
+    IMM i
+
+.. code-block:: C
+
+    void _mm_prefetch(char const* p, int i);
+
+.. admonition:: Intel Description
+
+    Fetch the line of data from memory that contains address "p" to a location in the cache hierarchy specified by the locality hint "i", which can be one of:<ul>
+        <li>_MM_HINT_ET0  // 7, move data using the ET0 hint. The PREFETCHW instruction will be generated.</li>
+        <li>_MM_HINT_T0   // 3, move data using the T0 hint. The PREFETCHT0 instruction will be generated.</li>
+        <li>_MM_HINT_T1   // 2, move data using the T1 hint. The PREFETCHT1 instruction will be generated.</li>
+        <li>_MM_HINT_T2   // 1, move data using the T2 hint. The PREFETCHT2 instruction will be generated.</li>
+        <li>_MM_HINT_NTA  // 0, move data using the non-temporal access (NTA) hint. The PREFETCHNTA instruction will be generated.</li>
+    
+

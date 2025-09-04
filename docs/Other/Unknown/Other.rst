@@ -1,0 +1,47 @@
+Other-Unknown-Other
+===================
+
+_enqcmd
+-------
+:Tech: Other
+:Category: Unknown
+:Header: immintrin.h
+:Searchable: Other-Unknown-Other
+:Return Type: int
+:Param Types:
+    void* __dst, 
+    const void* __src
+:Param ETypes:
+     __dst, 
+     __src
+
+.. code-block:: C
+
+    int _enqcmd(void* __dst, const void* __src);
+
+.. admonition:: Intel Description
+
+    Reads 64-byte command pointed by "__src", formats 64-byte enqueue store data, and performs 64-byte enqueue store to memory pointed by "__dst". This intrinsics may only be used in User mode.
+
+_enqcmds
+--------
+:Tech: Other
+:Category: Unknown
+:Header: immintrin.h
+:Searchable: Other-Unknown-Other
+:Return Type: int
+:Param Types:
+    void* __dst, 
+    const void* __src
+:Param ETypes:
+     __dst, 
+     __src
+
+.. code-block:: C
+
+    int _enqcmds(void* __dst, const void* __src);
+
+.. admonition:: Intel Description
+
+    Reads 64-byte command pointed by "__src", formats 64-byte enqueue store data, and performs 64-byte enqueue store to memory pointed by "__dst" This intrinsic may only be used in Privileged mode.
+

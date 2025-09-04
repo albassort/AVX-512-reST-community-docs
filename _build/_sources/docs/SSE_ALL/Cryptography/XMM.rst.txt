@@ -1,0 +1,140 @@
+_mm_crc32_u8
+^^^^^^^^^^^^
+:Tech: SSE_ALL
+:Category: Cryptography
+:Header: nmmintrin.h
+:Register: XMM 128 bit
+:Return Type: unsigned int
+:Param Types:
+    unsigned int crc, 
+    unsigned char v
+:Param ETypes:
+    UI32 crc, 
+    UI8 v
+
+.. code-block:: C
+
+    unsigned int _mm_crc32_u8(unsigned int crc, unsigned char v);
+
+.. admonition:: Intel Description
+
+    Starting with the initial value in "crc", accumulates a CRC32 value for unsigned 8-bit integer "v", and stores the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        tmp1[7:0] := v[0:7] // bit reflection
+        tmp2[31:0] := crc[0:31] // bit reflection
+        tmp3[39:0] := tmp1[7:0] << 32 
+        tmp4[39:0] := tmp2[31:0] << 8
+        tmp5[39:0] := tmp3[39:0] XOR tmp4[39:0]
+        tmp6[31:0] := MOD2(tmp5[39:0], 0x11EDC6F41) // remainder from polynomial division modulus 2
+        dst[31:0] := tmp6[0:31] // bit reflection
+        	
+
+_mm_crc32_u16
+^^^^^^^^^^^^^
+:Tech: SSE_ALL
+:Category: Cryptography
+:Header: nmmintrin.h
+:Register: XMM 128 bit
+:Return Type: unsigned int
+:Param Types:
+    unsigned int crc, 
+    unsigned short v
+:Param ETypes:
+    UI32 crc, 
+    UI16 v
+
+.. code-block:: C
+
+    unsigned int _mm_crc32_u16(unsigned int crc, unsigned short v);
+
+.. admonition:: Intel Description
+
+    Starting with the initial value in "crc", accumulates a CRC32 value for unsigned 16-bit integer "v", and stores the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        tmp1[15:0] := v[0:15] // bit reflection
+        tmp2[31:0] := crc[0:31] // bit reflection
+        tmp3[47:0] := tmp1[15:0] << 32
+        tmp4[47:0] := tmp2[31:0] << 16
+        tmp5[47:0] := tmp3[47:0] XOR tmp4[47:0]
+        tmp6[31:0] := MOD2(tmp5[47:0], 0x11EDC6F41) // remainder from polynomial division modulus 2
+        dst[31:0] := tmp6[0:31] // bit reflection
+        	
+
+_mm_crc32_u32
+^^^^^^^^^^^^^
+:Tech: SSE_ALL
+:Category: Cryptography
+:Header: nmmintrin.h
+:Register: XMM 128 bit
+:Return Type: unsigned int
+:Param Types:
+    unsigned int crc, 
+    unsigned int v
+:Param ETypes:
+    UI32 crc, 
+    UI32 v
+
+.. code-block:: C
+
+    unsigned int _mm_crc32_u32(unsigned int crc, unsigned int v);
+
+.. admonition:: Intel Description
+
+    Starting with the initial value in "crc", accumulates a CRC32 value for unsigned 32-bit integer "v", and stores the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        tmp1[31:0] := v[0:31] // bit reflection
+        tmp2[31:0] := crc[0:31] // bit reflection
+        tmp3[63:0] := tmp1[31:0] << 32
+        tmp4[63:0] := tmp2[31:0] << 32
+        tmp5[63:0] := tmp3[63:0] XOR tmp4[63:0]
+        tmp6[31:0] := MOD2(tmp5[63:0], 0x11EDC6F41) // remainder from polynomial division modulus 2
+        dst[31:0] := tmp6[0:31] // bit reflection
+        	
+
+_mm_crc32_u64
+^^^^^^^^^^^^^
+:Tech: SSE_ALL
+:Category: Cryptography
+:Header: nmmintrin.h
+:Register: XMM 128 bit
+:Return Type: unsigned __int64
+:Param Types:
+    unsigned __int64 crc, 
+    unsigned __int64 v
+:Param ETypes:
+    UI64 crc, 
+    UI64 v
+
+.. code-block:: C
+
+    unsigned __int64 _mm_crc32_u64(unsigned __int64 crc, unsigned __int64 v);
+
+.. admonition:: Intel Description
+
+    Starting with the initial value in "crc", accumulates a CRC32 value for unsigned 64-bit integer "v", and stores the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        tmp1[63:0] := v[0:63] // bit reflection
+        tmp2[31:0] := crc[0:31] // bit reflection
+        tmp3[95:0] := tmp1[31:0] << 32
+        tmp4[95:0] := tmp2[63:0] << 64
+        tmp5[95:0] := tmp3[95:0] XOR tmp4[95:0]
+        tmp6[31:0] := MOD2(tmp5[95:0], 0x11EDC6F41) // remainder from polynomial division modulus 2
+        dst[31:0] := tmp6[0:31] // bit reflection
+        	
+

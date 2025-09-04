@@ -1,0 +1,973 @@
+SSE_ALL-Store-XMM
+=================
+
+_mm_stream_pi
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: immintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m64 a
+:Param ETypes:
+    FP32 mem_addr, 
+    UI64 a
+
+.. code-block:: C
+
+    void _mm_stream_pi(void* mem_addr, __m64 a);
+
+.. admonition:: Intel Description
+
+    Store 64-bits of integer data from "a" into memory using a non-temporal memory hint.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+63:mem_addr] := a[63:0]
+        	
+
+_mm_maskmove_si64
+-----------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: immintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    __m64 a, 
+    __m64 mask, 
+    char* mem_addr
+:Param ETypes:
+    UI8 a, 
+    UI8 mask, 
+    UI8 mem_addr
+
+.. code-block:: C
+
+    void _mm_maskmove_si64(__m64 a, __m64 mask, char* mem_addr);
+
+.. admonition:: Intel Description
+
+    Conditionally store 8-bit integer elements from "a" into memory using "mask" (elements are not stored when the highest bit is not set in the corresponding element) and a non-temporal memory hint.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*8
+        	IF mask[i+7]
+        		MEM[mem_addr+i+7:mem_addr+i] := a[i+7:i]
+        	FI
+        ENDFOR
+        	
+
+_mm_stream_ps
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: immintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m128 a
+:Param ETypes:
+    FP32 mem_addr, 
+    FP32 a
+
+.. code-block:: C
+
+    void _mm_stream_ps(void* mem_addr, __m128 a);
+
+.. admonition:: Intel Description
+
+    Store 128-bits (composed of 4 packed single-precision (32-bit) floating-point elements) from "a" into memory using a non-temporal memory hint.
+    	"mem_addr" must be aligned on a 16-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+127:mem_addr] := a[127:0]
+        	
+
+_mm_storeh_pi
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: immintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    __m64* mem_addr, 
+    __m128 a
+:Param ETypes:
+    FP32 mem_addr, 
+    FP32 a
+
+.. code-block:: C
+
+    void _mm_storeh_pi(__m64* mem_addr, __m128 a);
+
+.. admonition:: Intel Description
+
+    Store the upper 2 single-precision (32-bit) floating-point elements from "a" into memory.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+31:mem_addr] := a[95:64]
+        MEM[mem_addr+63:mem_addr+32] := a[127:96]
+        	
+
+_mm_storel_pi
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: immintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    __m64* mem_addr, 
+    __m128 a
+:Param ETypes:
+    FP32 mem_addr, 
+    FP32 a
+
+.. code-block:: C
+
+    void _mm_storel_pi(__m64* mem_addr, __m128 a);
+
+.. admonition:: Intel Description
+
+    Store the lower 2 single-precision (32-bit) floating-point elements from "a" into memory.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+31:mem_addr] := a[31:0]
+        MEM[mem_addr+63:mem_addr+32] := a[63:32]
+        	
+
+_mm_store_ss
+------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: immintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    float* mem_addr, 
+    __m128 a
+:Param ETypes:
+    FP32 mem_addr, 
+    FP32 a
+
+.. code-block:: C
+
+    void _mm_store_ss(float* mem_addr, __m128 a);
+
+.. admonition:: Intel Description
+
+    Store the lower single-precision (32-bit) floating-point element from "a" into memory. "mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+31:mem_addr] := a[31:0]
+        	
+
+_mm_store1_ps
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: immintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    float* mem_addr, 
+    __m128 a
+:Param ETypes:
+    FP32 mem_addr, 
+    FP32 a
+
+.. code-block:: C
+
+    void _mm_store1_ps(float* mem_addr, __m128 a);
+
+.. admonition:: Intel Description
+
+    Store the lower single-precision (32-bit) floating-point element from "a" into 4 contiguous elements in memory. "mem_addr" must be aligned on a 16-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+31:mem_addr] := a[31:0]
+        MEM[mem_addr+63:mem_addr+32] := a[31:0]
+        MEM[mem_addr+95:mem_addr+64] := a[31:0]
+        MEM[mem_addr+127:mem_addr+96] := a[31:0]
+        	
+
+_mm_store_ps1
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: immintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    float* mem_addr, 
+    __m128 a
+:Param ETypes:
+    FP32 mem_addr, 
+    FP32 a
+
+.. code-block:: C
+
+    void _mm_store_ps1(float* mem_addr, __m128 a);
+
+.. admonition:: Intel Description
+
+    Store the lower single-precision (32-bit) floating-point element from "a" into 4 contiguous elements in memory. "mem_addr" must be aligned on a 16-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+31:mem_addr] := a[31:0]
+        MEM[mem_addr+63:mem_addr+32] := a[31:0]
+        MEM[mem_addr+95:mem_addr+64] := a[31:0]
+        MEM[mem_addr+127:mem_addr+96] := a[31:0]
+        	
+
+_mm_store_ps
+------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: immintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    float* mem_addr, 
+    __m128 a
+:Param ETypes:
+    FP32 mem_addr, 
+    FP32 a
+
+.. code-block:: C
+
+    void _mm_store_ps(float* mem_addr, __m128 a);
+
+.. admonition:: Intel Description
+
+    Store 128-bits (composed of 4 packed single-precision (32-bit) floating-point elements) from "a" into memory.
+    	"mem_addr" must be aligned on a 16-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+127:mem_addr] := a[127:0]
+        	
+
+_mm_storeu_ps
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: immintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    float* mem_addr, 
+    __m128 a
+:Param ETypes:
+    FP32 mem_addr, 
+    FP32 a
+
+.. code-block:: C
+
+    void _mm_storeu_ps(float* mem_addr, __m128 a);
+
+.. admonition:: Intel Description
+
+    Store 128-bits (composed of 4 packed single-precision (32-bit) floating-point elements) from "a" into memory.
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+127:mem_addr] := a[127:0]
+        	
+
+_mm_storer_ps
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: immintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    float* mem_addr, 
+    __m128 a
+:Param ETypes:
+    FP32 mem_addr, 
+    FP32 a
+
+.. code-block:: C
+
+    void _mm_storer_ps(float* mem_addr, __m128 a);
+
+.. admonition:: Intel Description
+
+    Store 4 single-precision (32-bit) floating-point elements from "a" into memory in reverse order.
+    	"mem_addr" must be aligned on a 16-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+31:mem_addr] := a[127:96]
+        MEM[mem_addr+63:mem_addr+32] := a[95:64]
+        MEM[mem_addr+95:mem_addr+64] := a[63:32]
+        MEM[mem_addr+127:mem_addr+96] := a[31:0]
+        	
+
+_mm_storeu_si16
+---------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: immintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m128i a
+:Param ETypes:
+    UI16 mem_addr, 
+    UI16 a
+
+.. code-block:: C
+
+    void _mm_storeu_si16(void* mem_addr, __m128i a);
+
+.. admonition:: Intel Description
+
+    Store 16-bit integer from the first element of "a" into memory. "mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+15:mem_addr] := a[15:0]
+        	
+
+_mm_storeu_si64
+---------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: immintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m128i a
+:Param ETypes:
+    UI64 mem_addr, 
+    UI64 a
+
+.. code-block:: C
+
+    void _mm_storeu_si64(void* mem_addr, __m128i a);
+
+.. admonition:: Intel Description
+
+    Store 64-bit integer from the first element of "a" into memory. "mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+63:mem_addr] := a[63:0]
+        	
+
+_mm_storeu_si32
+---------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m128i a
+:Param ETypes:
+    UI32 mem_addr, 
+    UI32 a
+
+.. code-block:: C
+
+    void _mm_storeu_si32(void* mem_addr, __m128i a);
+
+.. admonition:: Intel Description
+
+    Store 32-bit integer from the first element of "a" into memory. "mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+31:mem_addr] := a[31:0]
+        	
+
+_mm_maskmoveu_si128
+-------------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    __m128i a, 
+    __m128i mask, 
+    char* mem_addr
+:Param ETypes:
+    UI8 a, 
+    UI8 mask, 
+    UI8 mem_addr
+
+.. code-block:: C
+
+    void _mm_maskmoveu_si128(__m128i a, __m128i mask,
+                             char* mem_addr)
+
+.. admonition:: Intel Description
+
+    Conditionally store 8-bit integer elements from "a" into memory using "mask" (elements are not stored when the highest bit is not set in the corresponding element) and a non-temporal memory hint. "mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*8
+        	IF mask[i+7]
+        		MEM[mem_addr+i+7:mem_addr+i] := a[i+7:i]
+        	FI
+        ENDFOR
+        	
+
+_mm_store_si128
+---------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    __m128i* mem_addr, 
+    __m128i a
+:Param ETypes:
+    M128 mem_addr, 
+    M128 a
+
+.. code-block:: C
+
+    void _mm_store_si128(__m128i* mem_addr, __m128i a);
+
+.. admonition:: Intel Description
+
+    Store 128-bits of integer data from "a" into memory. 
+    	"mem_addr" must be aligned on a 16-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+127:mem_addr] := a[127:0]
+        	
+
+_mm_storeu_si128
+----------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    __m128i* mem_addr, 
+    __m128i a
+:Param ETypes:
+    M128 mem_addr, 
+    M128 a
+
+.. code-block:: C
+
+    void _mm_storeu_si128(__m128i* mem_addr, __m128i a);
+
+.. admonition:: Intel Description
+
+    Store 128-bits of integer data from "a" into memory.
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+127:mem_addr] := a[127:0]
+        	
+
+_mm_storel_epi64
+----------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    __m128i* mem_addr, 
+    __m128i a
+:Param ETypes:
+    UI64 mem_addr, 
+    UI64 a
+
+.. code-block:: C
+
+    void _mm_storel_epi64(__m128i* mem_addr, __m128i a);
+
+.. admonition:: Intel Description
+
+    Store 64-bit integer from the first element of "a" into memory.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+63:mem_addr] := a[63:0]
+        	
+
+_mm_stream_si128
+----------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m128i a
+:Param ETypes:
+    M128 mem_addr, 
+    M128 a
+
+.. code-block:: C
+
+    void _mm_stream_si128(void* mem_addr, __m128i a);
+
+.. admonition:: Intel Description
+
+    Store 128-bits of integer data from "a" into memory using a non-temporal memory hint. 
+    	"mem_addr" must be aligned on a 16-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+127:mem_addr] := a[127:0]
+        	
+
+_mm_stream_si32
+---------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    int a
+:Param ETypes:
+    UI32 mem_addr, 
+    UI32 a
+
+.. code-block:: C
+
+    void _mm_stream_si32(void* mem_addr, int a);
+
+.. admonition:: Intel Description
+
+    Store 32-bit integer "a" into memory using a non-temporal hint to minimize cache pollution. If the cache line containing address "mem_addr" is already in the cache, the cache will be updated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+31:mem_addr] := a[31:0]
+        	
+
+_mm_stream_si64
+---------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __int64 a
+:Param ETypes:
+    UI64 mem_addr, 
+    UI64 a
+
+.. code-block:: C
+
+    void _mm_stream_si64(void* mem_addr, __int64 a);
+
+.. admonition:: Intel Description
+
+    Store 64-bit integer "a" into memory using a non-temporal hint to minimize cache pollution. If the cache line containing address "mem_addr" is already in the cache, the cache will be updated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+63:mem_addr] := a[63:0]
+        	
+
+_mm_stream_pd
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m128d a
+:Param ETypes:
+    FP64 mem_addr, 
+    FP64 a
+
+.. code-block:: C
+
+    void _mm_stream_pd(void* mem_addr, __m128d a);
+
+.. admonition:: Intel Description
+
+    Store 128-bits (composed of 2 packed double-precision (64-bit) floating-point elements) from "a" into memory using a non-temporal memory hint.
+    	"mem_addr" must be aligned on a 16-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+127:mem_addr] := a[127:0]
+        	
+
+_mm_store_sd
+------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    double* mem_addr, 
+    __m128d a
+:Param ETypes:
+    FP64 mem_addr, 
+    FP64 a
+
+.. code-block:: C
+
+    void _mm_store_sd(double* mem_addr, __m128d a);
+
+.. admonition:: Intel Description
+
+    Store the lower double-precision (64-bit) floating-point element from "a" into memory. "mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+63:mem_addr] := a[63:0]
+        	
+
+_mm_store1_pd
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    double* mem_addr, 
+    __m128d a
+:Param ETypes:
+    FP64 mem_addr, 
+    FP64 a
+
+.. code-block:: C
+
+    void _mm_store1_pd(double* mem_addr, __m128d a);
+
+.. admonition:: Intel Description
+
+    Store the lower double-precision (64-bit) floating-point element from "a" into 2 contiguous elements in memory. "mem_addr" must be aligned on a 16-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+63:mem_addr] := a[63:0]
+        MEM[mem_addr+127:mem_addr+64] := a[63:0]
+        	
+
+_mm_store_pd1
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    double* mem_addr, 
+    __m128d a
+:Param ETypes:
+    FP64 mem_addr, 
+    FP64 a
+
+.. code-block:: C
+
+    void _mm_store_pd1(double* mem_addr, __m128d a);
+
+.. admonition:: Intel Description
+
+    Store the lower double-precision (64-bit) floating-point element from "a" into 2 contiguous elements in memory. "mem_addr" must be aligned on a 16-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+63:mem_addr] := a[63:0]
+        MEM[mem_addr+127:mem_addr+64] := a[63:0]
+        	
+
+_mm_store_pd
+------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    double* mem_addr, 
+    __m128d a
+:Param ETypes:
+    FP64 mem_addr, 
+    FP64 a
+
+.. code-block:: C
+
+    void _mm_store_pd(double* mem_addr, __m128d a);
+
+.. admonition:: Intel Description
+
+    Store 128-bits (composed of 2 packed double-precision (64-bit) floating-point elements) from "a" into memory.
+    	"mem_addr" must be aligned on a 16-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+127:mem_addr] := a[127:0]
+        	
+
+_mm_storeu_pd
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    double* mem_addr, 
+    __m128d a
+:Param ETypes:
+    FP64 mem_addr, 
+    FP64 a
+
+.. code-block:: C
+
+    void _mm_storeu_pd(double* mem_addr, __m128d a);
+
+.. admonition:: Intel Description
+
+    Store 128-bits (composed of 2 packed double-precision (64-bit) floating-point elements) from "a" into memory.
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+127:mem_addr] := a[127:0]
+        	
+
+_mm_storer_pd
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    double* mem_addr, 
+    __m128d a
+:Param ETypes:
+    FP64 mem_addr, 
+    FP64 a
+
+.. code-block:: C
+
+    void _mm_storer_pd(double* mem_addr, __m128d a);
+
+.. admonition:: Intel Description
+
+    Store 2 double-precision (64-bit) floating-point elements from "a" into memory in reverse order.
+    	"mem_addr" must be aligned on a 16-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+63:mem_addr] := a[127:64]
+        MEM[mem_addr+127:mem_addr+64] := a[63:0]
+        	
+
+_mm_storeh_pd
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    double* mem_addr, 
+    __m128d a
+:Param ETypes:
+    FP64 mem_addr, 
+    FP64 a
+
+.. code-block:: C
+
+    void _mm_storeh_pd(double* mem_addr, __m128d a);
+
+.. admonition:: Intel Description
+
+    Store the upper double-precision (64-bit) floating-point element from "a" into memory.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+63:mem_addr] := a[127:64]
+        	
+
+_mm_storel_pd
+-------------
+:Tech: SSE_ALL
+:Category: Store
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Store-XMM
+:Register: XMM 128 bit
+:Return Type: void
+:Param Types:
+    double* mem_addr, 
+    __m128d a
+:Param ETypes:
+    FP64 mem_addr, 
+    FP64 a
+
+.. code-block:: C
+
+    void _mm_storel_pd(double* mem_addr, __m128d a);
+
+.. admonition:: Intel Description
+
+    Store the lower double-precision (64-bit) floating-point element from "a" into memory.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+63:mem_addr] := a[63:0]
+        	
+

@@ -1,0 +1,507 @@
+Other-Arithmetic-YMM
+====================
+
+_mm256_maskz_gf2p8mul_epi8
+--------------------------
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: Other-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __mmask32 k, 
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    MASK k, 
+    UI8 a, 
+    UI8 b
+
+.. code-block:: C
+
+    __m256i _mm256_maskz_gf2p8mul_epi8(__mmask32 k, __m256i a,
+                                       __m256i b)
+
+.. admonition:: Intel Description
+
+    Multiply the packed 8-bit integers in "a" and "b" in the finite field GF(2^8), and store the results in "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set). The field GF(2^8) is represented in polynomial representation with the reduction polynomial x^8 + x^4 + x^3 + x + 1.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE gf2p8mul_byte(src1byte, src2byte) {
+        	tword := 0
+        	FOR i := 0 to 7
+        		IF src2byte.bit[i]
+        			tword := tword XOR (src1byte << i)
+        		FI
+        	ENDFOR
+        	FOR i := 14 downto 8
+        		p := 0x11B << (i-8)
+        		IF tword.bit[i]
+        			tword := tword XOR p
+        		FI
+        	ENDFOR
+        	RETURN tword.byte[0]
+        }
+        FOR j := 0 TO 31
+        	IF k[j]
+        		dst.byte[j] := gf2p8mul_byte(a.byte[j], b.byte[j])
+        	ELSE
+        		dst.byte[j] := 0
+        	FI
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_mask_gf2p8mul_epi8
+-------------------------
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: Other-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i src, 
+    __mmask32 k, 
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI8 src, 
+    MASK k, 
+    UI8 a, 
+    UI8 b
+
+.. code-block:: C
+
+    __m256i _mm256_mask_gf2p8mul_epi8(__m256i src, __mmask32 k,
+                                      __m256i a, __m256i b)
+
+.. admonition:: Intel Description
+
+    Multiply the packed 8-bit integers in "a" and "b" in the finite field GF(2^8), and store the results in "dst" using writemask "k" (elements are copied from "src"" when the corresponding mask bit is not set). The field GF(2^8) is represented in polynomial representation with the reduction polynomial x^8 + x^4 + x^3 + x + 1.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE gf2p8mul_byte(src1byte, src2byte) {
+        	tword := 0
+        	FOR i := 0 to 7
+        		IF src2byte.bit[i]
+        			tword := tword XOR (src1byte << i)
+        		FI
+        	ENDFOR
+        	FOR i := 14 downto 8
+        		p := 0x11B << (i-8)
+        		IF tword.bit[i]
+        			tword := tword XOR p
+        		FI
+        	ENDFOR
+        	RETURN tword.byte[0]
+        }
+        FOR j := 0 TO 31
+        	IF k[j]
+        		dst.byte[j] := gf2p8mul_byte(a.byte[j], b.byte[j])
+        	ELSE
+        		dst.byte[j] := src.byte[j]
+        	FI
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_gf2p8mul_epi8
+--------------------
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: Other-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI8 a, 
+    UI8 b
+
+.. code-block:: C
+
+    __m256i _mm256_gf2p8mul_epi8(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Multiply the packed 8-bit integers in "a" and "b" in the finite field GF(2^8), and store the results in "dst". The field GF(2^8) is represented in polynomial representation with the reduction polynomial x^8 + x^4 + x^3 + x + 1.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE gf2p8mul_byte(src1byte, src2byte) {
+        	tword := 0
+        	FOR i := 0 to 7
+        		IF src2byte.bit[i]
+        			tword := tword XOR (src1byte << i)
+        		FI
+        	ENDFOR
+        	FOR i := 14 downto 8
+        		p := 0x11B << (i-8)
+        		IF tword.bit[i]
+        			tword := tword XOR p
+        		FI
+        	ENDFOR
+        	RETURN tword.byte[0]
+        }
+        FOR j := 0 TO 31
+        	dst.byte[j] := gf2p8mul_byte(a.byte[j], b.byte[j])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_maskz_gf2p8affine_epi64_epi8
+-----------------------------------
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: Other-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __mmask32 k, 
+    __m256i x, 
+    __m256i A, 
+    int b
+:Param ETypes:
+    MASK k, 
+    UI64 x, 
+    UI64 A, 
+    IMM b
+
+.. code-block:: C
+
+    __m256i _mm256_maskz_gf2p8affine_epi64_epi8(__mmask32 k,
+                                                __m256i x,
+                                                __m256i A,
+                                                int b)
+
+.. admonition:: Intel Description
+
+    Compute an affine transformation in the Galois Field 2^8. An affine transformation is defined by "A" * "x" + "b", where "A" represents an 8 by 8 bit matrix, "x" represents an 8-bit vector, and "b" is a constant immediate byte. Store the packed 8-bit results in "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE parity(x) {
+        	t := 0
+        	FOR i := 0 to 7
+        		t := t XOR x.bit[i]
+        	ENDFOR
+        	RETURN t
+        }
+        DEFINE affine_byte(tsrc2qw, src1byte, imm8) {
+        	FOR i := 0 to 7
+        		retbyte.bit[i] := parity(tsrc2qw.byte[7-i] AND src1byte) XOR imm8.bit[i]
+        	ENDFOR
+        	RETURN retbyte
+        }
+        FOR j := 0 TO 3
+        	FOR i := 0 to 7
+        		IF k[j*8+i]
+        			dst.qword[j].byte[i] := affine_byte(A.qword[j], x.qword[j].byte[i], b)
+        		ELSE
+        			dst.qword[j].byte[i] := 0
+        		FI
+        	ENDFOR
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_mask_gf2p8affine_epi64_epi8
+----------------------------------
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: Other-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i src, 
+    __mmask32 k, 
+    __m256i x, 
+    __m256i A, 
+    int b
+:Param ETypes:
+    UI64 src, 
+    MASK k, 
+    UI64 x, 
+    UI64 A, 
+    IMM b
+
+.. code-block:: C
+
+    __m256i _mm256_mask_gf2p8affine_epi64_epi8(
+        __m256i src, __mmask32 k, __m256i x, __m256i A, int b)
+
+.. admonition:: Intel Description
+
+    Compute an affine transformation in the Galois Field 2^8. An affine transformation is defined by "A" * "x" + "b", where "A" represents an 8 by 8 bit matrix, "x" represents an 8-bit vector, and "b" is a constant immediate byte. Store the packed 8-bit results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE parity(x) {
+        	t := 0
+        	FOR i := 0 to 7
+        		t := t XOR x.bit[i]
+        	ENDFOR
+        	RETURN t
+        }
+        DEFINE affine_byte(tsrc2qw, src1byte, imm8) {
+        	FOR i := 0 to 7
+        		retbyte.bit[i] := parity(tsrc2qw.byte[7-i] AND src1byte) XOR imm8.bit[i]
+        	ENDFOR
+        	RETURN retbyte
+        }
+        FOR j := 0 TO 3
+        	FOR i := 0 to 7
+        		IF k[j*8+i]
+        			dst.qword[j].byte[i] := affine_byte(A.qword[j], x.qword[j].byte[i], b)
+        		ELSE
+        			dst.qword[j].byte[i] := src.qword[j].byte[i]
+        		FI
+        	ENDFOR
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_gf2p8affine_epi64_epi8
+-----------------------------
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: Other-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i x, 
+    __m256i A, 
+    int b
+:Param ETypes:
+    UI64 x, 
+    UI64 A, 
+    IMM b
+
+.. code-block:: C
+
+    __m256i _mm256_gf2p8affine_epi64_epi8(__m256i x, __m256i A,
+                                          int b)
+
+.. admonition:: Intel Description
+
+    Compute an affine transformation in the Galois Field 2^8. An affine transformation is defined by "A" * "x" + "b", where "A" represents an 8 by 8 bit matrix, "x" represents an 8-bit vector, and "b" is a constant immediate byte. Store the packed 8-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE parity(x) {
+        	t := 0
+        	FOR i := 0 to 7
+        		t := t XOR x.bit[i]
+        	ENDFOR
+        	RETURN t
+        }
+        DEFINE affine_byte(tsrc2qw, src1byte, imm8) {
+        	FOR i := 0 to 7
+        		retbyte.bit[i] := parity(tsrc2qw.byte[7-i] AND src1byte) XOR imm8.bit[i]
+        	ENDFOR
+        	RETURN retbyte
+        }
+        FOR j := 0 TO 3
+        	FOR i := 0 to 7
+        		dst.qword[j].byte[i] := affine_byte(A.qword[j], x.qword[j].byte[i], b)
+        	ENDFOR
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_maskz_gf2p8affineinv_epi64_epi8
+--------------------------------------
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: Other-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __mmask32 k, 
+    __m256i x, 
+    __m256i A, 
+    int b
+:Param ETypes:
+    MASK k, 
+    UI64 x, 
+    UI64 A, 
+    IMM b
+
+.. code-block:: C
+
+    __m256i _mm256_maskz_gf2p8affineinv_epi64_epi8(__mmask32 k,
+                                                   __m256i x,
+                                                   __m256i A,
+                                                   int b)
+
+.. admonition:: Intel Description
+
+    Compute an inverse affine transformation in the Galois Field 2^8. An affine transformation is defined by "A" * "x" + "b", where "A" represents an 8 by 8 bit matrix, "x" represents an 8-bit vector, and "b" is a constant immediate byte. The inverse of the 8-bit values in "x" is defined with respect to the reduction polynomial x^8 + x^4 + x^3 + x + 1. Store the packed 8-bit results in "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        DEFINE parity(x) {
+        	t := 0
+        	FOR i := 0 to 7
+        		t := t XOR x.bit[i]
+        	ENDFOR
+        	RETURN t
+        }
+        DEFINE affine_inverse_byte(tsrc2qw, src1byte, imm8) {
+        	FOR i := 0 to 7
+        		retbyte.bit[i] := parity(tsrc2qw.byte[7-i] AND inverse(src1byte)) XOR imm8.bit[i]
+        	ENDFOR
+        	RETURN retbyte
+        }
+        FOR j := 0 TO 3
+        	FOR i := 0 to 7
+        		IF k[j*8+i]
+        			dst.qword[j].byte[i] := affine_inverse_byte(A.qword[j], x.qword[j].byte[i], b)
+        		ELSE
+        			dst.qword[j].byte[i] := 0
+        		FI
+        	ENDFOR
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_mask_gf2p8affineinv_epi64_epi8
+-------------------------------------
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: Other-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i src, 
+    __mmask32 k, 
+    __m256i x, 
+    __m256i A, 
+    int b
+:Param ETypes:
+    UI64 src, 
+    MASK k, 
+    UI64 x, 
+    UI64 A, 
+    IMM b
+
+.. code-block:: C
+
+    __m256i _mm256_mask_gf2p8affineinv_epi64_epi8(
+        __m256i src, __mmask32 k, __m256i x, __m256i A, int b)
+
+.. admonition:: Intel Description
+
+    Compute an inverse affine transformation in the Galois Field 2^8. An affine transformation is defined by "A" * "x" + "b", where "A" represents an 8 by 8 bit matrix, "x" represents an 8-bit vector, and "b" is a constant immediate byte. The inverse of the 8-bit values in "x" is defined with respect to the reduction polynomial x^8 + x^4 + x^3 + x + 1. Store the packed 8-bit results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        DEFINE parity(x) {
+        	t := 0
+        	FOR i := 0 to 7
+        		t := t XOR x.bit[i]
+        	ENDFOR
+        	RETURN t
+        }
+        DEFINE affine_inverse_byte(tsrc2qw, src1byte, imm8) {
+        	FOR i := 0 to 7
+        		retbyte.bit[i] := parity(tsrc2qw.byte[7-i] AND inverse(src1byte)) XOR imm8.bit[i]
+        	ENDFOR
+        	RETURN retbyte
+        }
+        FOR j := 0 TO 3
+        	FOR i := 0 to 7
+        		IF k[j*8+i]
+        			dst.qword[j].byte[i] := affine_inverse_byte(A.qword[j], x.qword[j].byte[i], b)
+        		ELSE
+        			dst.qword[j].byte[i] := src.qword[j].byte[i]
+        		FI
+        	ENDFOR
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_gf2p8affineinv_epi64_epi8
+--------------------------------
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: Other-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i x, 
+    __m256i A, 
+    int b
+:Param ETypes:
+    UI64 x, 
+    UI64 A, 
+    IMM b
+
+.. code-block:: C
+
+    __m256i _mm256_gf2p8affineinv_epi64_epi8(__m256i x,
+                                             __m256i A, int b)
+
+.. admonition:: Intel Description
+
+    Compute an inverse affine transformation in the Galois Field 2^8. An affine transformation is defined by "A" * "x" + "b", where "A" represents an 8 by 8 bit matrix, "x" represents an 8-bit vector, and "b" is a constant immediate byte. The inverse of the 8-bit values in "x" is defined with respect to the reduction polynomial x^8 + x^4 + x^3 + x + 1. Store the packed 8-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        DEFINE parity(x) {
+        	t := 0
+        	FOR i := 0 to 7
+        		t := t XOR x.bit[i]
+        	ENDFOR
+        	RETURN t
+        }
+        DEFINE affine_inverse_byte(tsrc2qw, src1byte, imm8) {
+        	FOR i := 0 to 7
+        		retbyte.bit[i] := parity(tsrc2qw.byte[7-i] AND inverse(src1byte)) XOR imm8.bit[i]
+        	ENDFOR
+        	RETURN retbyte
+        }
+        FOR j := 0 TO 3
+        	FOR i := 0 to 7
+        		dst.qword[j].byte[i] := affine_inverse_byte(A.qword[j], x.qword[j].byte[i], b)
+        	ENDFOR
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+

@@ -1,0 +1,712 @@
+Other-OS-Targeted-Other
+=======================
+
+_fxrstor
+--------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+
+.. code-block:: C
+
+    void _fxrstor(void * mem_addr);
+
+.. admonition:: Intel Description
+
+    Reload the x87 FPU, MMX technology, XMM, and MXCSR registers from the 512-byte memory image at "mem_addr". This data should have been written to memory previously using the FXSAVE instruction, and in the same format as required by the operating mode. "mem_addr" must be aligned on a 16-byte boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        state_x87_fpu_mmx_sse := fxrstor(MEM[mem_addr+512*8:mem_addr])
+        	
+
+_fxrstor64
+----------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+
+.. code-block:: C
+
+    void _fxrstor64(void * mem_addr);
+
+.. admonition:: Intel Description
+
+    Reload the x87 FPU, MMX technology, XMM, and MXCSR registers from the 512-byte memory image at "mem_addr". This data should have been written to memory previously using the FXSAVE64 instruction, and in the same format as required by the operating mode. "mem_addr" must be aligned on a 16-byte boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        state_x87_fpu_mmx_sse := fxrstor64(MEM[mem_addr+512*8:mem_addr])
+        	
+
+_fxsave
+-------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+
+.. code-block:: C
+
+    void _fxsave(void * mem_addr);
+
+.. admonition:: Intel Description
+
+    Save the current state of the x87 FPU, MMX technology, XMM, and MXCSR registers to a 512-byte memory location at "mem_addr". The layout of the 512-byte region depends on the operating mode. Bytes [511:464] are available for software use and will not be overwritten by the processor.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        MEM[mem_addr+512*8:mem_addr] := fxsave(state_x87_fpu_mmx_sse)
+        	
+
+_fxsave64
+---------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+
+.. code-block:: C
+
+    void _fxsave64(void * mem_addr);
+
+.. admonition:: Intel Description
+
+    Save the current state of the x87 FPU, MMX technology, XMM, and MXCSR registers to a 512-byte memory location at "mem_addr". The layout of the 512-byte region depends on the operating mode. Bytes [511:464] are available for software use and will not be overwritten by the processor.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        MEM[mem_addr+512*8:mem_addr] := fxsave64(state_x87_fpu_mmx_sse)
+        	
+
+_invpcid
+--------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+:Param Types:
+    unsigned int type, 
+    void* descriptor
+:Param ETypes:
+    UI32 type, 
+     descriptor
+
+.. code-block:: C
+
+    void _invpcid(unsigned int type, void* descriptor);
+
+.. admonition:: Intel Description
+
+    Invalidate mappings in the Translation Lookaside Buffers (TLBs) and paging-structure caches for the processor context identifier (PCID) specified by "descriptor" based on the invalidation type specified in "type". 
+    	The PCID "descriptor" is specified as a 16-byte memory operand (with no alignment restrictions) where bits [11:0] specify the PCID, and bits [127:64] specify the linear address; bits [63:12] are reserved.
+    	The types supported are:
+    		0) Individual-address invalidation: If "type" is 0, the logical processor invalidates mappings for a single linear address and tagged with the PCID specified in "descriptor", except global translations. The instruction may also invalidate global translations, mappings for other linear addresses, or mappings tagged with other PCIDs.
+    		1) Single-context invalidation: If "type" is 1, the logical processor invalidates all mappings tagged with the PCID specified in "descriptor" except global translations. In some cases, it may invalidate mappings for other PCIDs as well.
+    		2) All-context invalidation: If "type" is 2, the logical processor invalidates all mappings tagged with any PCID.
+    		3) All-context invalidation, retaining global translations: If "type" is 3, the logical processor invalidates all mappings tagged with any PCID except global translations, ignoring "descriptor". The instruction may also invalidate global translations as well.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        CASE type[1:0] OF
+        0: // individual-address invalidation retaining global translations
+        	OP_PCID := MEM[descriptor+11:descriptor]
+        	ADDR := MEM[descriptor+127:descriptor+64]
+        	BREAK
+        1: // single PCID invalidation retaining globals
+        	OP_PCID := MEM[descriptor+11:descriptor]
+        	// invalidate all mappings tagged with OP_PCID except global translations
+        	BREAK
+        2: // all PCID invalidation
+        	// invalidate all mappings tagged with any PCID
+        	BREAK
+        3: // all PCID invalidation retaining global translations
+        	// invalidate all mappings tagged with any PCID except global translations
+        	BREAK
+        ESAC
+        	
+
+_xsavec
+-------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+:Param Types:
+    void * mem_addr, 
+    unsigned __int64 save_mask
+:Param ETypes:
+     mem_addr, 
+    UI64 save_mask
+
+.. code-block:: C
+
+    void _xsavec(void * mem_addr, unsigned __int64 save_mask);
+
+.. admonition:: Intel Description
+
+    Perform a full or partial save of the enabled processor states to memory at "mem_addr"; xsavec differs from xsave in that it uses compaction and that it may use init optimization. State is saved based on bits [62:0] in "save_mask" and "XCR0". "mem_addr" must be aligned on a 64-byte boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+        FOR i := 0 to 62
+        	IF mask[i]
+        		CASE (i) OF
+        		0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+        		1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+        		DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+        		ESAC
+        		mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        	FI
+        	i := i + 1
+        ENDFOR
+        	
+
+_xsavec64
+---------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+:Param Types:
+    void * mem_addr, 
+    unsigned __int64 save_mask
+:Param ETypes:
+     mem_addr, 
+    UI64 save_mask
+
+.. code-block:: C
+
+    void _xsavec64(void * mem_addr, unsigned __int64 save_mask);
+
+.. admonition:: Intel Description
+
+    Perform a full or partial save of the enabled processor states to memory at "mem_addr"; xsavec differs from xsave in that it uses compaction and that it may use init optimization. State is saved based on bits [62:0] in "save_mask" and "XCR0". "mem_addr" must be aligned on a 64-byte boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+        FOR i := 0 to 62
+        	IF mask[i]
+        		CASE (i) OF
+        		0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+        		1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+        		DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+        		ESAC
+        		mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        	FI
+        	i := i + 1
+        ENDFOR
+        	
+
+_xsaveopt
+---------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+:Param Types:
+    void * mem_addr, 
+    unsigned __int64 save_mask
+:Param ETypes:
+     mem_addr, 
+    UI64 save_mask
+
+.. code-block:: C
+
+    void _xsaveopt(void * mem_addr, unsigned __int64 save_mask);
+
+.. admonition:: Intel Description
+
+    Perform a full or partial save of the enabled processor states to memory at "mem_addr". State is saved based on bits [62:0] in "save_mask" and "XCR0". "mem_addr" must be aligned on a 64-byte boundary. The hardware may optimize the manner in which data is saved. The performance of this instruction will be equal to or better than using the XSAVE instruction.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+        FOR i := 0 to 62
+        	IF mask[i]
+        		CASE (i) OF
+        		0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+        		1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+        		2: mem_addr.EXT_SAVE_Area2[YMM] := ProcessorState[YMM]
+        		DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+        		ESAC
+        		mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        	FI
+        	i := i + 1
+        ENDFOR
+        	
+
+_xsaveopt64
+-----------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+:Param Types:
+    void * mem_addr, 
+    unsigned __int64 save_mask
+:Param ETypes:
+     mem_addr, 
+    UI64 save_mask
+
+.. code-block:: C
+
+    void _xsaveopt64(void* mem_addr,
+                     unsigned __int64 save_mask)
+
+.. admonition:: Intel Description
+
+    Perform a full or partial save of the enabled processor states to memory at "mem_addr". State is saved based on bits [62:0] in "save_mask" and "XCR0". "mem_addr" must be aligned on a 64-byte boundary. The hardware may optimize the manner in which data is saved. The performance of this instruction will be equal to or better than using the XSAVE64 instruction.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+        FOR i := 0 to 62
+        	IF mask[i]
+        		CASE (i) OF
+        		0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+        		1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+        		2: mem_addr.EXT_SAVE_Area2[YMM] := ProcessorState[YMM]
+        		DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+        		ESAC
+        		mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        	FI
+        	i := i + 1
+        ENDFOR
+        	
+
+_xsaves
+-------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+:Param Types:
+    void * mem_addr, 
+    unsigned __int64 save_mask
+:Param ETypes:
+     mem_addr, 
+    UI64 save_mask
+
+.. code-block:: C
+
+    void _xsaves(void * mem_addr, unsigned __int64 save_mask);
+
+.. admonition:: Intel Description
+
+    Perform a full or partial save of the enabled processor states to memory at "mem_addr"; xsaves differs from xsave in that it can save state components corresponding to bits set in IA32_XSS MSR and that it may use the modified optimization. State is saved based on bits [62:0] in "save_mask" and "XCR0". "mem_addr" must be aligned on a 64-byte boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+        FOR i := 0 to 62
+        	IF mask[i]
+        		CASE (i) OF
+        		0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+        		1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+        		DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+        		ESAC
+        		mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        	FI
+        	i := i + 1
+        ENDFOR
+        	
+
+_xsaves64
+---------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+:Param Types:
+    void * mem_addr, 
+    unsigned __int64 save_mask
+:Param ETypes:
+     mem_addr, 
+    UI64 save_mask
+
+.. code-block:: C
+
+    void _xsaves64(void * mem_addr, unsigned __int64 save_mask);
+
+.. admonition:: Intel Description
+
+    Perform a full or partial save of the enabled processor states to memory at "mem_addr"; xsaves differs from xsave in that it can save state components corresponding to bits set in IA32_XSS MSR and that it may use the modified optimization. State is saved based on bits [62:0] in "save_mask" and "XCR0". "mem_addr" must be aligned on a 64-byte boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+        FOR i := 0 to 62
+        	IF mask[i]
+        		CASE (i) OF
+        		0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+        		1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+        		DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+        		ESAC
+        		mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        	FI
+        	i := i + 1
+        ENDFOR
+        	
+
+_xrstors
+--------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+:Param Types:
+    const void * mem_addr, 
+    unsigned __int64 rs_mask
+:Param ETypes:
+     mem_addr, 
+    UI64 rs_mask
+
+.. code-block:: C
+
+    void _xrstors(const void* mem_addr,
+                  unsigned __int64 rs_mask)
+
+.. admonition:: Intel Description
+
+    Perform a full or partial restore of the enabled processor states using the state information stored in memory at "mem_addr". xrstors differs from xrstor in that it can restore state components corresponding to bits set in the IA32_XSS MSR; xrstors cannot restore from an xsave area in which the extended region is in the standard form. State is restored based on bits [62:0] in "rs_mask", "XCR0", and "mem_addr.HEADER.XSTATE_BV". "mem_addr" must be aligned on a 64-byte boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        st_mask := mem_addr.HEADER.XSTATE_BV[62:0]
+        FOR i := 0 to 62
+        	IF (rs_mask[i] AND XCR0[i])
+        		IF st_mask[i]
+        			CASE (i) OF
+        			0: ProcessorState[x87_FPU] := mem_addr.FPUSSESave_Area[FPU]
+        			1: ProcessorState[SSE] := mem_addr.FPUSSESaveArea[SSE]
+        			DEFAULT: ProcessorState[i] := mem_addr.Ext_Save_Area[i]
+        			ESAC
+        		ELSE
+        			// ProcessorExtendedState := Processor Supplied Values
+        			CASE (i) OF
+        			1: MXCSR := mem_addr.FPUSSESave_Area[SSE]
+        			ESAC
+        		FI
+        	FI
+        	i := i + 1
+        ENDFOR
+        	
+
+_xrstors64
+----------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+:Param Types:
+    const void * mem_addr, 
+    unsigned __int64 rs_mask
+:Param ETypes:
+     mem_addr, 
+    UI64 rs_mask
+
+.. code-block:: C
+
+    void _xrstors64(const void* mem_addr,
+                    unsigned __int64 rs_mask)
+
+.. admonition:: Intel Description
+
+    Perform a full or partial restore of the enabled processor states using the state information stored in memory at "mem_addr". xrstors differs from xrstor in that it can restore state components corresponding to bits set in the IA32_XSS MSR; xrstors cannot restore from an xsave area in which the extended region is in the standard form. State is restored based on bits [62:0] in "rs_mask", "XCR0", and "mem_addr.HEADER.XSTATE_BV". "mem_addr" must be aligned on a 64-byte boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        st_mask := mem_addr.HEADER.XSTATE_BV[62:0]
+        FOR i := 0 to 62
+        	IF (rs_mask[i] AND XCR0[i])
+        		IF st_mask[i]
+        			CASE (i) OF
+        			0: ProcessorState[x87_FPU] := mem_addr.FPUSSESave_Area[FPU]
+        			1: ProcessorState[SSE] := mem_addr.FPUSSESaveArea[SSE]
+        			DEFAULT: ProcessorState[i] := mem_addr.Ext_Save_Area[i]
+        			ESAC
+        		ELSE
+        			// ProcessorExtendedState := Processor Supplied Values
+        			CASE (i) OF
+        			1: MXCSR := mem_addr.FPUSSESave_Area[SSE]
+        			ESAC
+        		FI
+        	FI
+        	i := i + 1
+        ENDFOR
+        	
+
+_xgetbv
+-------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: unsigned __int64
+:Param Types:
+    unsigned int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    unsigned __int64 _xgetbv(unsigned int a);
+
+.. admonition:: Intel Description
+
+    Copy up to 64-bits from the value of the extended control register (XCR) specified by "a" into "dst". Currently only XFEATURE_ENABLED_MASK XCR is supported.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        dst[63:0] := XCR[a]
+        	
+
+_xrstor
+-------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+:Param Types:
+    void * mem_addr, 
+    unsigned __int64 rs_mask
+:Param ETypes:
+     mem_addr, 
+    UI64 rs_mask
+
+.. code-block:: C
+
+    void _xrstor(void * mem_addr, unsigned __int64 rs_mask);
+
+.. admonition:: Intel Description
+
+    Perform a full or partial restore of the enabled processor states using the state information stored in memory at "mem_addr". State is restored based on bits [62:0] in "rs_mask", "XCR0", and "mem_addr.HEADER.XSTATE_BV". "mem_addr" must be aligned on a 64-byte boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        st_mask := mem_addr.HEADER.XSTATE_BV[62:0]
+        FOR i := 0 to 62
+        	IF (rs_mask[i] AND XCR0[i])
+        		IF st_mask[i]
+        			CASE (i) OF
+        			0: ProcessorState[x87_FPU] := mem_addr.FPUSSESave_Area[FPU]
+        			1: ProcessorState[SSE] := mem_addr.FPUSSESaveArea[SSE]
+        			DEFAULT: ProcessorState[i] := mem_addr.Ext_Save_Area[i]
+        			ESAC
+        		ELSE
+        			// ProcessorExtendedState := Processor Supplied Values
+        			CASE (i) OF
+        			1: MXCSR := mem_addr.FPUSSESave_Area[SSE]
+        			ESAC
+        		FI
+        	FI
+        	i := i + 1
+        ENDFOR
+        	
+
+_xrstor64
+---------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+:Param Types:
+    void * mem_addr, 
+    unsigned __int64 rs_mask
+:Param ETypes:
+     mem_addr, 
+    UI64 rs_mask
+
+.. code-block:: C
+
+    void _xrstor64(void * mem_addr, unsigned __int64 rs_mask);
+
+.. admonition:: Intel Description
+
+    Perform a full or partial restore of the enabled processor states using the state information stored in memory at "mem_addr". State is restored based on bits [62:0] in "rs_mask", "XCR0", and "mem_addr.HEADER.XSTATE_BV". "mem_addr" must be aligned on a 64-byte boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        st_mask := mem_addr.HEADER.XSTATE_BV[62:0]
+        FOR i := 0 to 62
+        	IF (rs_mask[i] AND XCR0[i])
+        		IF st_mask[i]
+        			CASE (i) OF
+        			0: ProcessorState[x87_FPU] := mem_addr.FPUSSESave_Area[FPU]
+        			1: ProcessorState[SSE] := mem_addr.FPUSSESaveArea[SSE]
+        			DEFAULT: ProcessorState[i] := mem_addr.Ext_Save_Area[i]
+        			ESAC
+        		ELSE
+        			// ProcessorExtendedState := Processor Supplied Values
+        			CASE (i) OF
+        			1: MXCSR := mem_addr.FPUSSESave_Area[SSE]
+        			ESAC
+        		FI
+        	FI
+        	i := i + 1
+        ENDFOR
+        	
+
+_xsave
+------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+:Param Types:
+    void * mem_addr, 
+    unsigned __int64 save_mask
+:Param ETypes:
+     mem_addr, 
+    UI64 save_mask
+
+.. code-block:: C
+
+    void _xsave(void * mem_addr, unsigned __int64 save_mask);
+
+.. admonition:: Intel Description
+
+    Perform a full or partial save of the enabled processor states to memory at "mem_addr". State is saved based on bits [62:0] in "save_mask" and "XCR0". "mem_addr" must be aligned on a 64-byte boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+        FOR i := 0 to 62
+        	IF mask[i]
+        		CASE (i) OF
+        		0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+        		1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+        		DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+        		ESAC
+        		mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        	FI
+        	i := i + 1
+        ENDFOR
+        	
+
+_xsave64
+--------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+:Param Types:
+    void * mem_addr, 
+    unsigned __int64 save_mask
+:Param ETypes:
+     mem_addr, 
+    UI64 save_mask
+
+.. code-block:: C
+
+    void _xsave64(void * mem_addr, unsigned __int64 save_mask);
+
+.. admonition:: Intel Description
+
+    Perform a full or partial save of the enabled processor states to memory at "mem_addr". State is saved based on bits [62:0] in "save_mask" and "XCR0". "mem_addr" must be aligned on a 64-byte boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+        FOR i := 0 to 62
+        	IF mask[i]
+        		CASE (i) OF
+        		0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+        		1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+        		DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+        		ESAC
+        		mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        	FI
+        	i := i + 1
+        ENDFOR
+        	
+
+_xsetbv
+-------
+:Tech: Other
+:Category: OS-Targeted
+:Header: immintrin.h
+:Searchable: Other-OS-Targeted-Other
+:Return Type: void
+:Param Types:
+    unsigned int a, 
+    unsigned __int64 val
+:Param ETypes:
+    UI32 a, 
+    UI64 val
+
+.. code-block:: C
+
+    void _xsetbv(unsigned int a, unsigned __int64 val);
+
+.. admonition:: Intel Description
+
+    Copy 64-bits from "val" to the extended control register (XCR) specified by "a". Currently only XFEATURE_ENABLED_MASK XCR is supported.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        XCR[a] := val[63:0]
+        	
+

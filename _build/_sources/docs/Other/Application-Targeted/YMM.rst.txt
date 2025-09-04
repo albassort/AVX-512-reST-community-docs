@@ -1,0 +1,68 @@
+_mm256_clmulepi64_epi128
+^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Application-Targeted
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i b, 
+    __m256i c, 
+    const int Imm8
+:Param ETypes:
+    M128 b, 
+    M128 c, 
+    IMM Imm8
+
+.. code-block:: C
+
+    __m256i _mm256_clmulepi64_epi128(__m256i b, __m256i c,
+                                     const int Imm8)
+
+.. admonition:: Intel Description
+
+    Carry-less multiplication of one quadword of
+    		'b' by one quadword of 'c', stores
+    		the 128-bit result in 'dst'. The immediate 'Imm8' is
+    		used to determine which quadwords of 'b'
+    		and 'c' should be used.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE PCLMUL128(X,Y) {
+        	FOR i := 0 to 63
+        		TMP[i] := X[ 0 ] and Y[ i ]
+        		FOR j := 1 to i
+        			TMP[i] := TMP[i] xor (X[ j ] and Y[ i - j ])
+        		ENDFOR
+        		DEST[ i ] := TMP[ i ]
+        	ENDFOR
+        	FOR i := 64 to 126
+        		TMP[i] := 0
+        		FOR j := i - 63 to 63
+        			TMP[i] := TMP[i] xor (X[ j ] and Y[ i - j ])
+        		ENDFOR
+        		DEST[ i ] := TMP[ i ]
+        	ENDFOR
+        	DEST[127] := 0
+        	RETURN DEST // 128b vector
+        }
+        FOR i := 0 to 1
+        	IF Imm8[0] == 0
+        		TEMP1 := b.m128[i].qword[0]
+        	ELSE
+        		TEMP1 := b.m128[i].qword[1]
+        	FI
+        	IF Imm8[4] == 0
+        		TEMP2 := c.m128[i].qword[0]
+        	ELSE
+        		TEMP2 := c.m128[i].qword[1]
+        	FI
+        	dst.m128[i] := PCLMUL128(TEMP1, TEMP2)
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+

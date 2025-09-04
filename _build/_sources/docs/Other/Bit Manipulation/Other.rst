@@ -1,0 +1,1374 @@
+Other-Bit Manipulation-Other
+============================
+
+_bextr_u32
+----------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned int
+:Param Types:
+    unsigned int a, 
+    unsigned int start, 
+    unsigned int len
+:Param ETypes:
+    UI32 a, 
+    UI32 start, 
+    UI32 len
+
+.. code-block:: C
+
+    unsigned int _bextr_u32(unsigned int a, unsigned int start, unsigned int len);
+
+.. admonition:: Intel Description
+
+    Extract contiguous bits from unsigned 32-bit integer "a", and store the result in "dst". Extract the number of bits specified by "len", starting at the bit specified by "start".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[511:0] := a
+        dst[31:0] := ZeroExtend32(tmp[(start[7:0] + len[7:0] - 1):start[7:0]])
+        	
+
+_bextr2_u32
+-----------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned int
+:Param Types:
+    unsigned int a, 
+    unsigned int control
+:Param ETypes:
+    UI32 a, 
+    UI32 control
+
+.. code-block:: C
+
+    unsigned int _bextr2_u32(unsigned int a, unsigned int control);
+
+.. admonition:: Intel Description
+
+    Extract contiguous bits from unsigned 32-bit integer "a", and store the result in "dst". Extract the number of bits specified by bits 15:8 of "control", starting at the bit specified by bits 0:7 of "control".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        start := control[7:0]
+        len := control[15:8]
+        tmp[511:0] := a
+        dst[31:0] := ZeroExtend32(tmp[(start[7:0] + len[7:0] - 1):start[7:0]])
+        	
+
+_bextr_u64
+----------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned __int64
+:Param Types:
+    unsigned __int64 a, 
+    unsigned int start, 
+    unsigned int len
+:Param ETypes:
+    UI64 a, 
+    UI32 start, 
+    UI32 len
+
+.. code-block:: C
+
+    unsigned __int64 _bextr_u64(unsigned __int64 a, unsigned int start, unsigned int len);
+
+.. admonition:: Intel Description
+
+    Extract contiguous bits from unsigned 64-bit integer "a", and store the result in "dst". Extract the number of bits specified by "len", starting at the bit specified by "start".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[511:0] := a
+        dst[63:0] := ZeroExtend64(tmp[(start[7:0] + len[7:0] - 1):start[7:0]])
+        	
+
+_bextr2_u64
+-----------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned __int64
+:Param Types:
+    unsigned __int64 a, 
+    unsigned __int64 control
+:Param ETypes:
+    UI64 a, 
+    UI64 control
+
+.. code-block:: C
+
+    unsigned __int64 _bextr2_u64(unsigned __int64 a, unsigned __int64 control);
+
+.. admonition:: Intel Description
+
+    Extract contiguous bits from unsigned 64-bit integer "a", and store the result in "dst". Extract the number of bits specified by bits 15:8 of "control", starting at the bit specified by bits 0:7 of "control"..
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        start := control[7:0]
+        len := control[15:8]
+        tmp[511:0] := a
+        dst[63:0] := ZeroExtend64(tmp[(start[7:0] + len[7:0] - 1):start[7:0]])
+        	
+
+_blsi_u32
+---------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned int
+:Param Types:
+    unsigned int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    unsigned int _blsi_u32(unsigned int a);
+
+.. admonition:: Intel Description
+
+    Extract the lowest set bit from unsigned 32-bit integer "a" and set the corresponding bit in "dst". All other bits in "dst" are zeroed, and all bits are zeroed if no bits are set in "a".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst := (-a) AND a
+        	
+
+_blsi_u64
+---------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned __int64
+:Param Types:
+    unsigned __int64 a
+:Param ETypes:
+    UI64 a
+
+.. code-block:: C
+
+    unsigned __int64 _blsi_u64(unsigned __int64 a);
+
+.. admonition:: Intel Description
+
+    Extract the lowest set bit from unsigned 64-bit integer "a" and set the corresponding bit in "dst". All other bits in "dst" are zeroed, and all bits are zeroed if no bits are set in "a".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst := (-a) AND a
+        	
+
+_blsmsk_u32
+-----------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned int
+:Param Types:
+    unsigned int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    unsigned int _blsmsk_u32(unsigned int a);
+
+.. admonition:: Intel Description
+
+    Set all the lower bits of "dst" up to and including the lowest set bit in unsigned 32-bit integer "a".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst := (a - 1) XOR a
+        	
+
+_blsmsk_u64
+-----------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned __int64
+:Param Types:
+    unsigned __int64 a
+:Param ETypes:
+    UI64 a
+
+.. code-block:: C
+
+    unsigned __int64 _blsmsk_u64(unsigned __int64 a);
+
+.. admonition:: Intel Description
+
+    Set all the lower bits of "dst" up to and including the lowest set bit in unsigned 64-bit integer "a".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst := (a - 1) XOR a
+        	
+
+_blsr_u32
+---------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned int
+:Param Types:
+    unsigned int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    unsigned int _blsr_u32(unsigned int a);
+
+.. admonition:: Intel Description
+
+    Copy all bits from unsigned 32-bit integer "a" to "dst", and reset (set to 0) the bit in "dst" that corresponds to the lowest set bit in "a".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst := (a - 1) AND a
+        	
+
+_blsr_u64
+---------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned __int64
+:Param Types:
+    unsigned __int64 a
+:Param ETypes:
+    UI64 a
+
+.. code-block:: C
+
+    unsigned __int64 _blsr_u64(unsigned __int64 a);
+
+.. admonition:: Intel Description
+
+    Copy all bits from unsigned 64-bit integer "a" to "dst", and reset (set to 0) the bit in "dst" that corresponds to the lowest set bit in "a".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst := (a - 1) AND a
+        	
+
+_andn_u32
+---------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned int
+:Param Types:
+    unsigned int a, 
+    unsigned int b
+:Param ETypes:
+    UI32 a, 
+    UI32 b
+
+.. code-block:: C
+
+    unsigned int _andn_u32(unsigned int a, unsigned int b);
+
+.. admonition:: Intel Description
+
+    Compute the bitwise NOT of 32-bit integer "a" and then AND with b, and store the results in dst.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := ((NOT a[31:0]) AND b[31:0])
+        	
+
+_andn_u64
+---------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned __int64
+:Param Types:
+    unsigned __int64 a, 
+    unsigned __int64 b
+:Param ETypes:
+    UI64 a, 
+    UI64 b
+
+.. code-block:: C
+
+    unsigned __int64 _andn_u64(unsigned __int64 a, unsigned __int64 b);
+
+.. admonition:: Intel Description
+
+    Compute the bitwise NOT of 64-bit integer "a" and then AND with b, and store the results in dst.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := ((NOT a[63:0]) AND b[63:0])
+        	
+
+_tzcnt_u16
+----------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned short
+:Param Types:
+    unsigned short a
+:Param ETypes:
+    UI16 a
+
+.. code-block:: C
+
+    unsigned short _tzcnt_u16(unsigned short a);
+
+.. admonition:: Intel Description
+
+    Count the number of trailing zero bits in unsigned 16-bit integer "a", and return that count in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := 0
+        dst := 0
+        DO WHILE ((tmp < 16) AND a[tmp] == 0)
+        	tmp := tmp + 1
+        	dst := dst + 1
+        OD
+        	
+
+_tzcnt_u32
+----------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned int
+:Param Types:
+    unsigned int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    unsigned int _tzcnt_u32(unsigned int a);
+
+.. admonition:: Intel Description
+
+    Count the number of trailing zero bits in unsigned 32-bit integer "a", and return that count in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := 0
+        dst := 0
+        DO WHILE ((tmp < 32) AND a[tmp] == 0)
+        	tmp := tmp + 1
+        	dst := dst + 1
+        OD
+        	
+
+_tzcnt_u64
+----------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned __int64
+:Param Types:
+    unsigned __int64 a
+:Param ETypes:
+    UI64 a
+
+.. code-block:: C
+
+    unsigned __int64 _tzcnt_u64(unsigned __int64 a);
+
+.. admonition:: Intel Description
+
+    Count the number of trailing zero bits in unsigned 64-bit integer "a", and return that count in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := 0
+        dst := 0
+        DO WHILE ((tmp < 64) AND a[tmp] == 0)
+        	tmp := tmp + 1
+        	dst := dst + 1
+        OD
+        	
+
+_bzhi_u32
+---------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned int
+:Param Types:
+    unsigned int a, 
+    unsigned int index
+:Param ETypes:
+    UI32 a, 
+    UI32 index
+
+.. code-block:: C
+
+    unsigned int _bzhi_u32(unsigned int a, unsigned int index);
+
+.. admonition:: Intel Description
+
+    Copy all bits from unsigned 32-bit integer "a" to "dst", and reset (set to 0) the high bits in "dst" starting at "index".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        n := index[7:0]
+        dst := a
+        IF (n < 32)
+        	dst[31:n] := 0
+        FI
+        	
+
+_bzhi_u64
+---------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned __int64
+:Param Types:
+    unsigned __int64 a, 
+    unsigned int index
+:Param ETypes:
+    UI64 a, 
+    UI32 index
+
+.. code-block:: C
+
+    unsigned __int64 _bzhi_u64(unsigned __int64 a, unsigned int index);
+
+.. admonition:: Intel Description
+
+    Copy all bits from unsigned 64-bit integer "a" to "dst", and reset (set to 0) the high bits in "dst" starting at "index".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        n := index[7:0]
+        dst := a
+        IF (n < 64)
+        	dst[63:n] := 0
+        FI
+        	
+
+_pdep_u32
+---------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned int
+:Param Types:
+    unsigned int a, 
+    unsigned int mask
+:Param ETypes:
+    UI32 a, 
+    UI32 mask
+
+.. code-block:: C
+
+    unsigned int _pdep_u32(unsigned int a, unsigned int mask);
+
+.. admonition:: Intel Description
+
+    Deposit contiguous low bits from unsigned 32-bit integer "a" to "dst" at the corresponding bit locations specified by "mask"; all other bits in "dst" are set to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := a
+        dst := 0
+        m := 0
+        k := 0
+        DO WHILE m < 32
+        	IF mask[m] == 1
+        		dst[m] := tmp[k]
+        		k := k + 1
+        	FI
+        	m := m + 1
+        OD
+        	
+
+_pdep_u64
+---------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned __int64
+:Param Types:
+    unsigned __int64 a, 
+    unsigned __int64 mask
+:Param ETypes:
+    UI64 a, 
+    UI64 mask
+
+.. code-block:: C
+
+    unsigned __int64 _pdep_u64(unsigned __int64 a, unsigned __int64 mask);
+
+.. admonition:: Intel Description
+
+    Deposit contiguous low bits from unsigned 64-bit integer "a" to "dst" at the corresponding bit locations specified by "mask"; all other bits in "dst" are set to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := a
+        dst := 0
+        m := 0
+        k := 0
+        DO WHILE m < 64
+        	IF mask[m] == 1
+        		dst[m] := tmp[k]
+        		k := k + 1
+        	FI
+        	m := m + 1
+        OD
+        	
+
+_pext_u32
+---------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned int
+:Param Types:
+    unsigned int a, 
+    unsigned int mask
+:Param ETypes:
+    UI32 a, 
+    UI32 mask
+
+.. code-block:: C
+
+    unsigned int _pext_u32(unsigned int a, unsigned int mask);
+
+.. admonition:: Intel Description
+
+    Extract bits from unsigned 32-bit integer "a" at the corresponding bit locations specified by "mask" to contiguous low bits in "dst"; the remaining upper bits in "dst" are set to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := a
+        dst := 0
+        m := 0
+        k := 0
+        DO WHILE m < 32
+        	IF mask[m] == 1
+        		dst[k] := tmp[m]
+        		k := k + 1
+        	FI
+        	m := m + 1
+        OD
+        	
+
+_pext_u64
+---------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned __int64
+:Param Types:
+    unsigned __int64 a, 
+    unsigned __int64 mask
+:Param ETypes:
+    UI64 a, 
+    UI64 mask
+
+.. code-block:: C
+
+    unsigned __int64 _pext_u64(unsigned __int64 a, unsigned __int64 mask);
+
+.. admonition:: Intel Description
+
+    Extract bits from unsigned 64-bit integer "a" at the corresponding bit locations specified by "mask" to contiguous low bits in "dst"; the remaining upper bits in "dst" are set to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := a
+        dst := 0
+        m := 0
+        k := 0
+        DO WHILE m < 64
+        	IF mask[m] == 1
+        		dst[k] := tmp[m]
+        		k := k + 1
+        	FI
+        	m := m + 1
+        OD
+        	
+
+_lzcnt_u32
+----------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned int
+:Param Types:
+    unsigned int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    unsigned int _lzcnt_u32(unsigned int a);
+
+.. admonition:: Intel Description
+
+    Count the number of leading zero bits in unsigned 32-bit integer "a", and return that count in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := 31
+        dst := 0
+        DO WHILE (tmp >= 0 AND a[tmp] == 0)
+        	tmp := tmp - 1
+        	dst := dst + 1
+        OD
+        	
+
+_lzcnt_u64
+----------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned __int64
+:Param Types:
+    unsigned __int64 a
+:Param ETypes:
+    UI64 a
+
+.. code-block:: C
+
+    unsigned __int64 _lzcnt_u64(unsigned __int64 a);
+
+.. admonition:: Intel Description
+
+    Count the number of leading zero bits in unsigned 64-bit integer "a", and return that count in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := 63
+        dst := 0
+        DO WHILE (tmp >= 0 AND a[tmp] == 0)
+        	tmp := tmp - 1
+        	dst := dst + 1
+        OD
+        	
+
+_bit_scan_forward
+-----------------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: int
+:Param Types:
+    int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    int _bit_scan_forward(int a);
+
+.. admonition:: Intel Description
+
+    Set "dst" to the index of the lowest set bit in 32-bit integer "a". If no bits are set in "a" then "dst" is undefined.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := 0
+        IF a == 0
+        	// dst is undefined
+        ELSE
+        	DO WHILE ((tmp < 32) AND a[tmp] == 0)
+        		tmp := tmp + 1
+        	OD
+        FI
+        dst := tmp
+        	
+
+_bit_scan_reverse
+-----------------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: int
+:Param Types:
+    int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    int _bit_scan_reverse(int a);
+
+.. admonition:: Intel Description
+
+    Set "dst" to the index of the highest set bit in 32-bit integer "a". If no bits are set in "a" then "dst" is undefined.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := 31
+        IF a == 0
+        	// dst is undefined
+        ELSE
+        	DO WHILE ((tmp > 0) AND a[tmp] == 0)
+        		tmp := tmp - 1
+        	OD
+        FI
+        dst := tmp
+        	
+
+_BitScanForward
+---------------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned char
+:Param Types:
+    unsigned __int32* index, 
+    unsigned __int32 a
+:Param ETypes:
+    UI32 index, 
+    UI32 a
+
+.. code-block:: C
+
+    unsigned char _BitScanForward(unsigned __int32* index, unsigned __int32 a);
+
+.. admonition:: Intel Description
+
+    Set "index" to the index of the lowest set bit in 32-bit integer "mask". If no bits are set in "a", then "index" is undefined and "dst" is set to 0, otherwise "dst" is set to 1.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := 0
+        IF a == 0
+        	// MEM[index+31:index] is undefined
+        	dst := 0
+        ELSE
+        	DO WHILE ((tmp < 32) AND a[tmp] == 0)
+        		tmp := tmp + 1
+        	OD
+        	MEM[index+31:index] := tmp
+        	dst := (tmp == 31) ? 0 : 1
+        FI
+        	
+
+_BitScanReverse
+---------------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned char
+:Param Types:
+    unsigned __int32* index, 
+    unsigned __int32 a
+:Param ETypes:
+    UI32 index, 
+    UI32 a
+
+.. code-block:: C
+
+    unsigned char _BitScanReverse(unsigned __int32* index, unsigned __int32 a);
+
+.. admonition:: Intel Description
+
+    Set "index" to the index of the highest set bit in 32-bit integer "mask". If no bits are set in "a", then "index" is undefined and "dst" is set to 0, otherwise "dst" is set to 1.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := 31
+        IF a == 0
+        	// MEM[index+31:index] is undefined
+        	dst := 0
+        ELSE
+        	DO WHILE ((tmp > 0) AND a[tmp] == 0)
+        		tmp := tmp - 1
+        	OD
+        	MEM[index+31:index] := tmp
+        	dst := (tmp == 0) ? 0 : 1
+        FI
+        	
+
+_BitScanForward64
+-----------------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned char
+:Param Types:
+    unsigned __int32* index, 
+    unsigned __int64 a
+:Param ETypes:
+    UI32 index, 
+    UI64 a
+
+.. code-block:: C
+
+    unsigned char _BitScanForward64(unsigned __int32* index, unsigned __int64 a);
+
+.. admonition:: Intel Description
+
+    Set "index" to the index of the lowest set bit in 32-bit integer "mask". If no bits are set in "a", then "index" is undefined and "dst" is set to 0, otherwise "dst" is set to 1.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := 0
+        IF a == 0
+        	// MEM[index+31:index] is undefined
+        	dst := 0
+        ELSE
+        	DO WHILE ((tmp < 64) AND a[tmp] == 0)
+        		tmp := tmp + 1
+        	OD
+        	MEM[index+31:index] := tmp
+        	dst := (tmp == 63) ? 0 : 1
+        FI
+        	
+
+_BitScanReverse64
+-----------------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned char
+:Param Types:
+    unsigned __int32* index, 
+    unsigned __int64 a
+:Param ETypes:
+    UI32 index, 
+    UI64 a
+
+.. code-block:: C
+
+    unsigned char _BitScanReverse64(unsigned __int32* index, unsigned __int64 a);
+
+.. admonition:: Intel Description
+
+    Set "index" to the index of the highest set bit in 32-bit integer "mask". If no bits are set in "a", then "index" is undefined and "dst" is set to 0, otherwise "dst" is set to 1.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp := 63
+        IF a == 0
+        	// MEM[index+31:index] is undefined
+        	dst := 0
+        ELSE
+        	DO WHILE ((tmp > 0) AND a[tmp] == 0)
+        		tmp := tmp - 1
+        	OD
+        	MEM[index+31:index] := tmp
+        	dst := (tmp == 0) ? 0 : 1
+        FI
+        	
+
+_bittest
+--------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned char
+:Param Types:
+    __int32* a, 
+    __int32 b
+:Param ETypes:
+    UI32 a, 
+    IMM b
+
+.. code-block:: C
+
+    unsigned char _bittest(__int32* a, __int32 b);
+
+.. admonition:: Intel Description
+
+    Return the bit at index "b" of 32-bit integer "a".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        addr := a + ZeroExtend64(b)
+        dst[0] := MEM[addr]
+        	
+
+_bittestandcomplement
+---------------------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned char
+:Param Types:
+    __int32* a, 
+    __int32 b
+:Param ETypes:
+    UI32 a, 
+    IMM b
+
+.. code-block:: C
+
+    unsigned char _bittestandcomplement(__int32* a, __int32 b);
+
+.. admonition:: Intel Description
+
+    Return the bit at index "b" of 32-bit integer "a", and set that bit to its complement.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        addr := a + ZeroExtend64(b)
+        dst[0] := MEM[addr]
+        MEM[addr] := ~dst[0]
+        	
+
+_bittestandreset
+----------------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned char
+:Param Types:
+    __int32* a, 
+    __int32 b
+:Param ETypes:
+    UI32 a, 
+    IMM b
+
+.. code-block:: C
+
+    unsigned char _bittestandreset(__int32* a, __int32 b);
+
+.. admonition:: Intel Description
+
+    Return the bit at index "b" of 32-bit integer "a", and set that bit to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        addr := a + ZeroExtend64(b)
+        dst[0] := MEM[addr]
+        MEM[addr] := 0
+        	
+
+_bittestandset
+--------------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned char
+:Param Types:
+    __int32* a, 
+    __int32 b
+:Param ETypes:
+    UI32 a, 
+    IMM b
+
+.. code-block:: C
+
+    unsigned char _bittestandset(__int32* a, __int32 b);
+
+.. admonition:: Intel Description
+
+    Return the bit at index "b" of 32-bit integer "a", and set that bit to one.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        addr := a + ZeroExtend64(b)
+        dst[0] := MEM[addr]
+        MEM[addr] := 1
+        	
+
+_bittest64
+----------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned char
+:Param Types:
+    __int64* a, 
+    __int64 b
+:Param ETypes:
+    UI64 a, 
+    IMM b
+
+.. code-block:: C
+
+    unsigned char _bittest64(__int64* a, __int64 b);
+
+.. admonition:: Intel Description
+
+    Return the bit at index "b" of 64-bit integer "a".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        addr := a + b
+        dst[0] := MEM[addr]
+        	
+
+_bittestandcomplement64
+-----------------------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned char
+:Param Types:
+    __int64* a, 
+    __int64 b
+:Param ETypes:
+    UI64 a, 
+    IMM b
+
+.. code-block:: C
+
+    unsigned char _bittestandcomplement64(__int64* a, __int64 b);
+
+.. admonition:: Intel Description
+
+    Return the bit at index "b" of 64-bit integer "a", and set that bit to its complement.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        addr := a + b
+        dst[0] := MEM[addr]
+        MEM[addr] := ~dst[0]
+        	
+
+_bittestandreset64
+------------------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned char
+:Param Types:
+    __int64* a, 
+    __int64 b
+:Param ETypes:
+    UI64 a, 
+    IMM b
+
+.. code-block:: C
+
+    unsigned char _bittestandreset64(__int64* a, __int64 b);
+
+.. admonition:: Intel Description
+
+    Return the bit at index "b" of 64-bit integer "a", and set that bit to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        addr := a + b
+        dst[0] := MEM[addr]
+        MEM[addr] := 0
+        	
+
+_bittestandset64
+----------------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: unsigned char
+:Param Types:
+    __int64* a, 
+    __int64 b
+:Param ETypes:
+    UI64 a, 
+    IMM b
+
+.. code-block:: C
+
+    unsigned char _bittestandset64(__int64* a, __int64 b);
+
+.. admonition:: Intel Description
+
+    Return the bit at index "b" of 64-bit integer "a", and set that bit to one.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        addr := a + b
+        dst[0] := MEM[addr]
+        MEM[addr] := 1
+        	
+
+_bswap
+------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: int
+:Param Types:
+    int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    int _bswap(int a);
+
+.. admonition:: Intel Description
+
+    Reverse the byte order of 32-bit integer "a", and store the result in "dst". This intrinsic is provided for conversion between little and big endian values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[7:0] := a[31:24]
+        dst[15:8] := a[23:16]
+        dst[23:16] := a[15:8]
+        dst[31:24] := a[7:0]
+        	
+
+_bswap64
+--------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: __int64
+:Param Types:
+    __int64 a
+:Param ETypes:
+    UI64 a
+
+.. code-block:: C
+
+    __int64 _bswap64(__int64 a);
+
+.. admonition:: Intel Description
+
+    Reverse the byte order of 64-bit integer "a", and store the result in "dst". This intrinsic is provided for conversion between little and big endian values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[7:0] := a[63:56]
+        dst[15:8] := a[55:48]
+        dst[23:16] := a[47:40]
+        dst[31:24] := a[39:32]
+        dst[39:32] := a[31:24]
+        dst[47:40] := a[23:16]
+        dst[55:48] := a[15:8]
+        dst[63:56] := a[7:0]
+        	
+
+_popcnt32
+---------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: int
+:Param Types:
+    int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    int _popcnt32(int a);
+
+.. admonition:: Intel Description
+
+    Count the number of bits set to 1 in 32-bit integer "a", and return that count in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst := 0
+        FOR i := 0 to 31
+        	IF a[i]
+        		dst := dst + 1
+        	FI
+        ENDFOR
+        	
+
+_popcnt64
+---------
+:Tech: Other
+:Category: Bit Manipulation
+:Header: immintrin.h
+:Searchable: Other-Bit Manipulation-Other
+:Return Type: int
+:Param Types:
+    __int64 a
+:Param ETypes:
+    UI64 a
+
+.. code-block:: C
+
+    int _popcnt64(__int64 a);
+
+.. admonition:: Intel Description
+
+    Count the number of bits set to 1 in 64-bit integer "a", and return that count in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst := 0
+        FOR i := 0 to 63
+        	IF a[i]
+        		dst := dst + 1
+        	FI
+        ENDFOR
+        	
+

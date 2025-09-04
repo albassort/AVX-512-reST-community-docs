@@ -1,0 +1,2986 @@
+_mm512_cbrt_pd
+^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_cbrt_pd(__m512d a);
+
+.. admonition:: Intel Description
+
+    Compute the cube root of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := CubeRoot(a[i+63:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_cbrt_pd
+^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_cbrt_pd(__m512d src, __mmask8 k,
+                                __m512d a)
+
+.. admonition:: Intel Description
+
+    Compute the cube root of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := CubeRoot(a[i+63:i])
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_cbrt_ps
+^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_cbrt_ps(__m512 a);
+
+.. admonition:: Intel Description
+
+    Compute the cube root of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := CubeRoot(a[i+31:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_cbrt_ps
+^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_cbrt_ps(__m512 src, __mmask16 k,
+                               __m512 a)
+
+.. admonition:: Intel Description
+
+    Compute the cube root of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := CubeRoot(a[i+31:i])
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_exp10_pd
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_exp10_pd(__m512d a);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of 10 raised to the power of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := POW(10.0, a[i+63:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_exp10_pd
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_exp10_pd(__m512d src, __mmask8 k,
+                                 __m512d a)
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of 10 raised to the power of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := POW(10.0, a[i+63:i])
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_exp10_ps
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_exp10_ps(__m512 a);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of 10 raised to the power of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := POW(FP32(10.0), a[i+31:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_exp10_ps
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_exp10_ps(__m512 src, __mmask16 k,
+                                __m512 a)
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of 10 raised to the power of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := POW(FP32(10.0), a[i+31:i])
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_exp2_pd
+^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_exp2_pd(__m512d a);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of 2 raised to the power of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := POW(2.0, a[i+63:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_exp2_pd
+^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_exp2_pd(__m512d src, __mmask8 k,
+                                __m512d a)
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of 2 raised to the power of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := POW(2.0, a[i+63:i])
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_exp2_ps
+^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_exp2_ps(__m512 a);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of 2 raised to the power of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := POW(FP32(2.0), a[i+31:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_exp2_ps
+^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_exp2_ps(__m512 src, __mmask16 k,
+                               __m512 a)
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of 2 raised to the power of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := POW(FP32(2.0), a[i+31:i])
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_exp_pd
+^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_exp_pd(__m512d a);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of "e" raised to the power of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := POW(e, a[i+63:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_exp_pd
+^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_exp_pd(__m512d src, __mmask8 k,
+                               __m512d a)
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of "e" raised to the power of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := POW(e, a[i+63:i])
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_exp_ps
+^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_exp_ps(__m512 a);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of "e" raised to the power of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := POW(FP32(e), a[i+31:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_exp_ps
+^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_exp_ps(__m512 src, __mmask16 k,
+                              __m512 a)
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of "e" raised to the power of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := POW(FP32(e), a[i+31:i])
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_expm1_pd
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_expm1_pd(__m512d a);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of "e" raised to the power of packed double-precision (64-bit) floating-point elements in "a", subtract one from each element, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := POW(e, a[i+63:i]) - 1.0
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_expm1_pd
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_expm1_pd(__m512d src, __mmask8 k,
+                                 __m512d a)
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of "e" raised to the power of packed double-precision (64-bit) floating-point elements in "a", subtract one from each element, and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := POW(e, a[i+63:i]) - 1.0
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_expm1_ps
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_expm1_ps(__m512 a);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of "e" raised to the power of packed single-precision (32-bit) floating-point elements in "a", subtract one from each element, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := POW(FP32(e), a[i+31:i]) - 1.0
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_expm1_ps
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_expm1_ps(__m512 src, __mmask16 k,
+                                __m512 a)
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of "e" raised to the power of packed single-precision (32-bit) floating-point elements in "a", subtract one from each element, and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := POW(FP32(e), a[i+31:i]) - 1.0
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_hypot_pd
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a, 
+    __m512d b
+:Param ETypes:
+    FP64 a, 
+    FP64 b
+
+.. code-block:: C
+
+    __m512d _mm512_hypot_pd(__m512d a, __m512d b);
+
+.. admonition:: Intel Description
+
+    Compute the length of the hypotenous of a right triangle, with the lengths of the other two sides of the triangle stored as packed double-precision (64-bit) floating-point elements in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := SQRT(POW(a[i+63:i], 2.0) + POW(b[i+63:i], 2.0))
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_hypot_pd
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a, 
+    __m512d b
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a, 
+    FP64 b
+
+.. code-block:: C
+
+    __m512d _mm512_mask_hypot_pd(__m512d src, __mmask8 k,
+                                 __m512d a, __m512d b)
+
+.. admonition:: Intel Description
+
+    Compute the length of the hypotenous of a right triangle, with the lengths of the other two sides of the triangle stored as packed double-precision (64-bit) floating-point elements in "a" and "b", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := SQRT(POW(a[i+63:i], 2.0) + POW(b[i+63:i], 2.0))
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_hypot_ps
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a, 
+    __m512 b
+:Param ETypes:
+    FP32 a, 
+    FP32 b
+
+.. code-block:: C
+
+    __m512 _mm512_hypot_ps(__m512 a, __m512 b);
+
+.. admonition:: Intel Description
+
+    Compute the length of the hypotenous of a right triangle, with the lengths of the other two sides of the triangle stored as packed single-precision (32-bit) floating-point elements in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := SQRT(POW(a[i+31:i], 2.0) + POW(b[i+31:i], 2.0))
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_hypot_ps
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a, 
+    __m512 b
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a, 
+    FP32 b
+
+.. code-block:: C
+
+    __m512 _mm512_mask_hypot_ps(__m512 src, __mmask16 k,
+                                __m512 a, __m512 b)
+
+.. admonition:: Intel Description
+
+    Compute the length of the hypotenous of a right triangle, with the lengths of the other two sides of the triangle stored as packed single-precision (32-bit) floating-point elements in "a" and "b", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := SQRT(POW(a[i+31:i], 2.0) + POW(b[i+31:i], 2.0))
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_invsqrt_pd
+^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_invsqrt_pd(__m512d a);
+
+.. admonition:: Intel Description
+
+    Compute the inverse square root of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := InvSQRT(a[i+63:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_invsqrt_pd
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_invsqrt_pd(__m512d src, __mmask8 k,
+                                   __m512d a)
+
+.. admonition:: Intel Description
+
+    Compute the inverse square root of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := InvSQRT(a[i+63:i])
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_invsqrt_ps
+^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_invsqrt_ps(__m512 a);
+
+.. admonition:: Intel Description
+
+    Compute the inverse square root of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := InvSQRT(a[i+31:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_invsqrt_ps
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_invsqrt_ps(__m512 src, __mmask16 k,
+                                  __m512 a)
+
+.. admonition:: Intel Description
+
+    Compute the inverse square root of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := InvSQRT(a[i+31:i])
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_log10_pd
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_log10_pd(__m512d a);
+
+.. admonition:: Intel Description
+
+    Compute the base-10 logarithm of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := LOG(a[i+63:i]) / LOG(10.0)
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_log10_pd
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_log10_pd(__m512d src, __mmask8 k,
+                                 __m512d a)
+
+.. admonition:: Intel Description
+
+    Compute the base-10 logarithm of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := LOG(a[i+63:i]) / LOG(10.0)
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_log10_ps
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_log10_ps(__m512 a);
+
+.. admonition:: Intel Description
+
+    Compute the base-10 logarithm of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := LOG(a[i+31:i]) / LOG(10.0)
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_log10_ps
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_log10_ps(__m512 src, __mmask16 k,
+                                __m512 a)
+
+.. admonition:: Intel Description
+
+    Compute the base-10 logarithm of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := LOG(a[i+31:i]) / LOG(10.0)
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_log1p_pd
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_log1p_pd(__m512d a);
+
+.. admonition:: Intel Description
+
+    Compute the natural logarithm of one plus packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := LOG(1.0 + a[i+63:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_log1p_pd
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_log1p_pd(__m512d src, __mmask8 k,
+                                 __m512d a)
+
+.. admonition:: Intel Description
+
+    Compute the natural logarithm of one plus packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := LOG(1.0 + a[i+63:i])
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_log1p_ps
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_log1p_ps(__m512 a);
+
+.. admonition:: Intel Description
+
+    Compute the natural logarithm of one plus packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := LOG(1.0 + a[i+31:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_log1p_ps
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_log1p_ps(__m512 src, __mmask16 k,
+                                __m512 a)
+
+.. admonition:: Intel Description
+
+    Compute the natural logarithm of one plus packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := LOG(1.0 + a[i+31:i])
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_log2_pd
+^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_log2_pd(__m512d a);
+
+.. admonition:: Intel Description
+
+    Compute the base-2 logarithm of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := LOG(a[i+63:i]) / LOG(2.0)
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_log2_pd
+^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_log2_pd(__m512d src, __mmask8 k,
+                                __m512d a)
+
+.. admonition:: Intel Description
+
+    Compute the base-2 logarithm of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := LOG(a[i+63:i]) / LOG(2.0)
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_log_pd
+^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_log_pd(__m512d a);
+
+.. admonition:: Intel Description
+
+    Compute the natural logarithm of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := LOG(a[i+63:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_log_pd
+^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_log_pd(__m512d src, __mmask8 k,
+                               __m512d a)
+
+.. admonition:: Intel Description
+
+    Compute the natural logarithm of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := LOG(a[i+63:i])
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_log_ps
+^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_log_ps(__m512 a);
+
+.. admonition:: Intel Description
+
+    Compute the natural logarithm of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := LOG(a[i+31:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_log_ps
+^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_log_ps(__m512 src, __mmask16 k,
+                              __m512 a)
+
+.. admonition:: Intel Description
+
+    Compute the natural logarithm of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := LOG(a[i+31:i])
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_logb_pd
+^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_logb_pd(__m512d a);
+
+.. admonition:: Intel Description
+
+    Convert the exponent of each packed double-precision (64-bit) floating-point element in "a" to a double-precision floating-point number representing the integer exponent, and store the results in "dst". This intrinsic essentially calculates "floor(log2(x))" for each element.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := ConvertExpFP64(a[i+63:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_logb_pd
+^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_logb_pd(__m512d src, __mmask8 k,
+                                __m512d a)
+
+.. admonition:: Intel Description
+
+    Convert the exponent of each packed double-precision (64-bit) floating-point element in "a" to a double-precision floating-point number representing the integer exponent, and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set). This intrinsic essentially calculates "floor(log2(x))" for each element.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := ConvertExpFP64(a[i+63:i])
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_logb_ps
+^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_logb_ps(__m512 a);
+
+.. admonition:: Intel Description
+
+    Convert the exponent of each packed single-precision (32-bit) floating-point element in "a" to a single-precision floating-point number representing the integer exponent, and store the results in "dst". This intrinsic essentially calculates "floor(log2(x))" for each element.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := ConvertExpFP32(a[i+31:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_logb_ps
+^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_logb_ps(__m512 src, __mmask16 k,
+                               __m512 a)
+
+.. admonition:: Intel Description
+
+    Convert the exponent of each packed single-precision (32-bit) floating-point element in "a" to a single-precision floating-point number representing the integer exponent, and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set). This intrinsic essentially calculates "floor(log2(x))" for each element.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := ConvertExpFP32(a[i+31:i])
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_pow_pd
+^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a, 
+    __m512d b
+:Param ETypes:
+    FP64 a, 
+    FP64 b
+
+.. code-block:: C
+
+    __m512d _mm512_pow_pd(__m512d a, __m512d b);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of packed double-precision (64-bit) floating-point elements in "a" raised by packed elements in "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := POW(a[i+63:i], b[i+63:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_pow_pd
+^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a, 
+    __m512d b
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a, 
+    FP64 b
+
+.. code-block:: C
+
+    __m512d _mm512_mask_pow_pd(__m512d src, __mmask8 k,
+                               __m512d a, __m512d b)
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of packed double-precision (64-bit) floating-point elements in "a" raised by packed elements in "b", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := POW(a[i+63:i], b[i+63:i])
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_pow_ps
+^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a, 
+    __m512 b
+:Param ETypes:
+    FP32 a, 
+    FP32 b
+
+.. code-block:: C
+
+    __m512 _mm512_pow_ps(__m512 a, __m512 b);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of packed single-precision (32-bit) floating-point elements in "a" raised by packed elements in "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := POW(a[i+31:i], b[i+31:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_pow_ps
+^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a, 
+    __m512 b
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a, 
+    FP32 b
+
+.. code-block:: C
+
+    __m512 _mm512_mask_pow_ps(__m512 src, __mmask16 k, __m512 a,
+                              __m512 b)
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of packed single-precision (32-bit) floating-point elements in "a" raised by packed elements in "b", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := POW(a[i+31:i], b[i+31:i])
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_recip_pd
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_recip_pd(__m512d a);
+
+.. admonition:: Intel Description
+
+    Computes the reciprocal of packed double-precision (64-bit) floating-point elements in "a", storing the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := (1.0 / a[i+63:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_recip_pd
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_recip_pd(__m512d src, __mmask8 k,
+                                 __m512d a)
+
+.. admonition:: Intel Description
+
+    Computes the reciprocal of packed double-precision (64-bit) floating-point elements in "a", storing the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := (1.0 / a[i+63:i])
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_recip_ps
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_recip_ps(__m512 a);
+
+.. admonition:: Intel Description
+
+    Computes the reciprocal of packed single-precision (32-bit) floating-point elements in "a", storing the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := (1.0 / a[i+31:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_recip_ps
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_recip_ps(__m512 src, __mmask16 k,
+                                __m512 a)
+
+.. admonition:: Intel Description
+
+    Computes the reciprocal of packed single-precision (32-bit) floating-point elements in "a", storing the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := (1.0 / a[i+31:i])
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_log2_ps
+^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_log2_ps(__m512 a);
+
+.. admonition:: Intel Description
+
+    Compute the base-2 logarithm of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := LOG(a[i+31:i]) / LOG(2.0)
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_log2_ps
+^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_log2_ps(__m512 src, __mmask16 k,
+                               __m512 a)
+
+.. admonition:: Intel Description
+
+    Compute the base-2 logarithm of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := LOG(a[i+31:i]) / LOG(2.0)
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_cbrt_ph
+^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_cbrt_ph(__m512h a);
+
+.. admonition:: Intel Description
+
+    Compute the cube root of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := CubeRoot(a[i+15:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_exp10_ph
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_exp10_ph(__m512h a);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of 10 raised to the power of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := POW(FP16(10.0), a[i+15:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_exp2_ph
+^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_exp2_ph(__m512h a);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of 2 raised to the power of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := POW(FP16(2.0), a[i+15:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_exp_ph
+^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_exp_ph(__m512h a);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of "e" raised to the power of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := POW(FP16(e), a[i+15:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_expm1_ph
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_expm1_ph(__m512h a);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of "e" raised to the power of packed half-precision (16-bit) floating-point elements in "a", subtract one from each element, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := POW(FP16(e), a[i+15:i]) - 1.0
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_hypot_ph
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h a, 
+    __m512h b
+:Param ETypes:
+    FP16 a, 
+    FP16 b
+
+.. code-block:: C
+
+    __m512h _mm512_hypot_ph(__m512h a, __m512h b);
+
+.. admonition:: Intel Description
+
+    Compute the length of the hypotenous of a right triangle, with the lengths of the other two sides of the triangle stored as packed half-precision (16-bit) floating-point elements in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := SQRT(POW(a[i+15:i], 2.0) + POW(b[i+15:i], 2.0))
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_invsqrt_ph
+^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_invsqrt_ph(__m512h a);
+
+.. admonition:: Intel Description
+
+    Compute the inverse square root of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := InvSQRT(a[i+15:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_log10_ph
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_log10_ph(__m512h a);
+
+.. admonition:: Intel Description
+
+    Compute the base-10 logarithm of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := LOG(a[i+15:i]) / LOG(10.0)
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_log1p_ph
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_log1p_ph(__m512h a);
+
+.. admonition:: Intel Description
+
+    Compute the natural logarithm of one plus packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := LOG(1.0 + a[i+15:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_log2_ph
+^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_log2_ph(__m512h a);
+
+.. admonition:: Intel Description
+
+    Compute the base-2 logarithm of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := LOG(a[i+15:i]) / LOG(2.0)
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_log_ph
+^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_log_ph(__m512h a);
+
+.. admonition:: Intel Description
+
+    Compute the natural logarithm of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := LOG(a[i+15:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_logb_ph
+^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_logb_ph(__m512h a);
+
+.. admonition:: Intel Description
+
+    Convert the exponent of each packed half-precision (16-bit) floating-point element in "a" to a half-precision floating-point number representing the integer exponent, and store the results in "dst". This intrinsic essentially calculates "floor(log2(x))" for each element.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := ConvertExpFP16(a[i+15:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_mask_cbrt_ph
+^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h src, 
+    __mmask32 k, 
+    __m512h a
+:Param ETypes:
+    FP16 src, 
+    MASK k, 
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_mask_cbrt_ph(__m512h src, __mmask32 k,
+                                __m512h a)
+
+.. admonition:: Intel Description
+
+    Compute the cube root of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := CubeRoot(a[i+15:i])
+        	ELSE
+        		dst[i+15:i] := src[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_mask_exp10_ph
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h src, 
+    __mmask32 k, 
+    __m512h a
+:Param ETypes:
+    FP16 src, 
+    MASK k, 
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_mask_exp10_ph(__m512h src, __mmask32 k,
+                                 __m512h a)
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of 10 raised to the power of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := POW(FP16(10.0), a[i+15:i])
+        	ELSE
+        		dst[i+15:i] := src[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_mask_exp2_ph
+^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h src, 
+    __mmask32 k, 
+    __m512h a
+:Param ETypes:
+    FP16 src, 
+    MASK k, 
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_mask_exp2_ph(__m512h src, __mmask32 k,
+                                __m512h a)
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of 2 raised to the power of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := POW(FP16(2.0), a[i+15:i])
+        	ELSE
+        		dst[i+15:i] := src[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_mask_exp_ph
+^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h src, 
+    __mmask32 k, 
+    __m512h a
+:Param ETypes:
+    FP16 src, 
+    MASK k, 
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_mask_exp_ph(__m512h src, __mmask32 k,
+                               __m512h a)
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of "e" raised to the power of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := POW(FP16(e), a[i+15:i])
+        	ELSE
+        		dst[i+15:i] := src[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_mask_expm1_ph
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h src, 
+    __mmask32 k, 
+    __m512h a
+:Param ETypes:
+    FP16 src, 
+    MASK k, 
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_mask_expm1_ph(__m512h src, __mmask32 k,
+                                 __m512h a)
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of "e" raised to the power of packed half-precision (16-bit) floating-point elements in "a", subtract one from each element, and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := POW(FP16(e), a[i+15:i]) - 1.0
+        	ELSE
+        		dst[i+15:i] := src[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_mask_invsqrt_ph
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h src, 
+    __mmask32 k, 
+    __m512h a
+:Param ETypes:
+    FP16 src, 
+    MASK k, 
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_mask_invsqrt_ph(__m512h src, __mmask32 k,
+                                   __m512h a)
+
+.. admonition:: Intel Description
+
+    Compute the inverse square root of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := InvSQRT(a[i+15:i])
+        	ELSE
+        		dst[i+15:i] := src[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_mask_log10_ph
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h src, 
+    __mmask32 k, 
+    __m512h a
+:Param ETypes:
+    FP16 src, 
+    MASK k, 
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_mask_log10_ph(__m512h src, __mmask32 k,
+                                 __m512h a)
+
+.. admonition:: Intel Description
+
+    Compute the base-10 logarithm of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := LOG(a[i+15:i]) / LOG(10.0)
+        	ELSE
+        		dst[i+15:i] := src[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_mask_log1p_ph
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h src, 
+    __mmask32 k, 
+    __m512h a
+:Param ETypes:
+    FP16 src, 
+    MASK k, 
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_mask_log1p_ph(__m512h src, __mmask32 k,
+                                 __m512h a)
+
+.. admonition:: Intel Description
+
+    Compute the natural logarithm of one plus packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := LOG(1.0 + a[i+15:i])
+        	ELSE
+        		dst[i+15:i] := src[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_mask_log2_ph
+^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h src, 
+    __mmask32 k, 
+    __m512h a
+:Param ETypes:
+    FP16 src, 
+    MASK k, 
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_mask_log2_ph(__m512h src, __mmask32 k,
+                                __m512h a)
+
+.. admonition:: Intel Description
+
+    Compute the base-2 logarithm of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := LOG(a[i+15:i]) / LOG(2.0)
+        	ELSE
+        		dst[i+15:i] := src[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_mask_log_ph
+^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h src, 
+    __mmask32 k, 
+    __m512h a
+:Param ETypes:
+    FP16 src, 
+    MASK k, 
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_mask_log_ph(__m512h src, __mmask32 k,
+                               __m512h a)
+
+.. admonition:: Intel Description
+
+    Compute the natural logarithm of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := LOG(a[i+15:i])
+        	ELSE
+        		dst[i+15:i] := src[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_mask_logb_ph
+^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h src, 
+    __mmask32 k, 
+    __m512h a
+:Param ETypes:
+    FP16 src, 
+    MASK k, 
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_mask_logb_ph(__m512h src, __mmask32 k,
+                                __m512h a)
+
+.. admonition:: Intel Description
+
+    Convert the exponent of each packed half-precision (16-bit) floating-point element in "a" to a half-precision floating-point number representing the integer exponent, and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set). This intrinsic essentially calculates "floor(log2(x))" for each element.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := ConvertExpFP16(a[i+15:i])
+        	ELSE
+        		dst[i+15:i] := src[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_mask_recip_ph
+^^^^^^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h src, 
+    __mmask32 k, 
+    __m512h a
+:Param ETypes:
+    FP16 src, 
+    MASK k, 
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_mask_recip_ph(__m512h src, __mmask32 k,
+                                 __m512h a)
+
+.. admonition:: Intel Description
+
+    Computes the reciprocal of packed half-precision (16-bit) floating-point elements in "a", storing the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := (1.0 / a[i+15:i])
+        	ELSE
+        		dst[i+15:i] := src[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_pow_ph
+^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h a, 
+    __m512h b
+:Param ETypes:
+    FP16 a, 
+    FP16 b
+
+.. code-block:: C
+
+    __m512h _mm512_pow_ph(__m512h a, __m512h b);
+
+.. admonition:: Intel Description
+
+    Compute the exponential value of packed half-precision (16-bit) floating-point elements in "a" raised by packed elements in "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := POW(a[i+15:i], b[i+15:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        
+
+_mm512_recip_ph
+^^^^^^^^^^^^^^^
+:Tech: SVML
+:Category: Elementary Math Functions
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_recip_ph(__m512h a);
+
+.. admonition:: Intel Description
+
+    Computes the reciprocal of packed half-precision (16-bit) floating-point elements in "a", storing the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := (1.0 / a[i+15:i])
+        ENDFOR
+        dst[MAX:512] := 0
+        
+

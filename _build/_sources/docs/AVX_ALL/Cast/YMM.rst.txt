@@ -1,0 +1,302 @@
+_mm256_castpd_ps
+^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m256d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m256 _mm256_castpd_ps(__m256d a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256d to type __m256.
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm256_castps_pd
+^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m256 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m256d _mm256_castps_pd(__m256 a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256 to type __m256d.
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm256_castps_si256
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m256i _mm256_castps_si256(__m256 a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256 to type __m256i. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm256_castpd_si256
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m256i _mm256_castpd_si256(__m256d a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256d to type __m256i. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm256_castsi256_ps
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m256i a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    __m256 _mm256_castsi256_ps(__m256i a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256i to type __m256. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm256_castsi256_pd
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m256i a
+:Param ETypes:
+    UI64 a
+
+.. code-block:: C
+
+    __m256d _mm256_castsi256_pd(__m256i a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256i to type __m256d. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm256_castps256_ps128
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m128
+:Param Types:
+    __m256 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m128 _mm256_castps256_ps128(__m256 a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256 to type __m128. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm256_castpd256_pd128
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m128d
+:Param Types:
+    __m256d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m128d _mm256_castpd256_pd128(__m256d a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256d to type __m128d. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm256_castsi256_si128
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m128i
+:Param Types:
+    __m256i a
+:Param ETypes:
+    M128 a
+
+.. code-block:: C
+
+    __m128i _mm256_castsi256_si128(__m256i a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256i to type __m128i. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm256_castps128_ps256
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m128 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m256 _mm256_castps128_ps256(__m128 a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m128 to type __m256; the upper 128 bits of the result are undefined. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm256_castpd128_pd256
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m128d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m256d _mm256_castpd128_pd256(__m128d a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m128d to type __m256d; the upper 128 bits of the result are undefined. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm256_castsi128_si256
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m128i a
+:Param ETypes:
+    M256 a
+
+.. code-block:: C
+
+    __m256i _mm256_castsi128_si256(__m128i a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m128i to type __m256i; the upper 128 bits of the result are undefined. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm256_zextps128_ps256
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m128 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m256 _mm256_zextps128_ps256(__m128 a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m128 to type __m256; the upper 128 bits of the result are zeroed. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm256_zextpd128_pd256
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m128d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m256d _mm256_zextpd128_pd256(__m128d a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m128d to type __m256d; the upper 128 bits of the result are zeroed. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm256_zextsi128_si256
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Cast
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m128i a
+:Param ETypes:
+    M256 a
+
+.. code-block:: C
+
+    __m256i _mm256_zextsi128_si256(__m128i a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m128i to type __m256i; the upper 128 bits of the result are zeroed. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+

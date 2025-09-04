@@ -1,0 +1,3152 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>AVX-512-Elementary Math Functions-XMM &#8212; My Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/AVX-512/Elementary Math Functions/XMM';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="AVX-512-Arithmetic-ZMM" href="../Arithmetic/ZMM.html" />
+    <link rel="prev" title="AVX-512-Elementary Math Functions-YMM" href="YMM.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My Docs 1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../MMX/index.html">MMX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Shift/XMM.html">MMX-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Shift/MMX.html">MMX-Shift-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/General%20Support/XMM.html">MMX-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/General%20Support/MMX.html">MMX-General Support-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Logical/XMM.html">MMX-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Logical/MMX.html">MMX-Logical-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Swizzle/XMM.html">MMX-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Swizzle/MMX.html">MMX-Swizzle-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Arithmetic/XMM.html">MMX-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Arithmetic/MMX.html">MMX-Arithmetic-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Compare/XMM.html">MMX-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Compare/MMX.html">MMX-Compare-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Set/XMM.html">MMX-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Convert/XMM.html">MMX-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Convert/MMX.html">MMX-Convert-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Miscellaneous/XMM.html">MMX-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Miscellaneous/MMX.html">MMX-Miscellaneous-MMX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../SSE_ALL/index.html">SSE_ALL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Shift/XMM.html">SSE_ALL-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Cryptography/XMM.html">SSE_ALL-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Move/XMM.html">SSE_ALL-Move-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Cast/XMM.html">SSE_ALL-Cast-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/String%20Compare/XMM.html">SSE_ALL-String Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/General%20Support/XMM.html">SSE_ALL-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/General%20Support/Other.html">SSE_ALL-General Support-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Probability/Statistics/XMM.html">SSE_ALL-Probability/Statistics-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Probability/Statistics/MMX.html">SSE_ALL-Probability/Statistics-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Special%20Math%20Functions/XMM.html">SSE_ALL-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Special%20Math%20Functions/MMX.html">SSE_ALL-Special Math Functions-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Logical/XMM.html">SSE_ALL-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Swizzle/XMM.html">SSE_ALL-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Swizzle/Other.html">SSE_ALL-Swizzle-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Swizzle/MMX.html">SSE_ALL-Swizzle-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Store/XMM.html">SSE_ALL-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Store/MMX.html">SSE_ALL-Store-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Load/XMM.html">SSE_ALL-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Elementary%20Math%20Functions/XMM.html">SSE_ALL-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Arithmetic/XMM.html">SSE_ALL-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Arithmetic/MMX.html">SSE_ALL-Arithmetic-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Compare/XMM.html">SSE_ALL-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Set/XMM.html">SSE_ALL-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Convert/XMM.html">SSE_ALL-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Miscellaneous/XMM.html">SSE_ALL-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Miscellaneous/MMX.html">SSE_ALL-Miscellaneous-MMX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Other/index.html">Other</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cryptography/ZMM.html">Other-Cryptography-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cryptography/YMM.html">Other-Cryptography-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cryptography/XMM.html">Other-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Shift/Other.html">Other-Shift-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Bit%20Manipulation/XMM.html">Other-Bit Manipulation-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Bit%20Manipulation/Other.html">Other-Bit Manipulation-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cast/Other.html">Other-Cast-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/General%20Support/XMM.html">Other-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/General%20Support/Other.html">Other-General Support-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/General%20Support/MMX.html">Other-General Support-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Unknown/Other.html">Other-Unknown-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Random/Other.html">Other-Random-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Store/Other.html">Other-Store-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Load/Other.html">Other-Load-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/ZMM.html">Other-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/YMM.html">Other-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/XMM.html">Other-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/Other.html">Other-Arithmetic-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Convert/Other.html">Other-Convert-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/OS-Targeted/Other.html">Other-OS-Targeted-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Application-Targeted/ZMM.html">Other-Application-Targeted-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Application-Targeted/YMM.html">Other-Application-Targeted-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Application-Targeted/XMM.html">Other-Application-Targeted-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Miscellaneous/XMM.html">Other-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Miscellaneous/Other.html">Other-Miscellaneous-Other</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../SVML/index.html">SVML</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/ZMM.html">SVML-Probability/Statistics-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/YMM.html">SVML-Probability/Statistics-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/XMM.html">SVML-Probability/Statistics-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/ZMM.html">SVML-Special Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/YMM.html">SVML-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/XMM.html">SVML-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/ZMM.html">SVML-Trigonometry-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/YMM.html">SVML-Trigonometry-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/XMM.html">SVML-Trigonometry-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/ZMM.html">SVML-Elementary Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/YMM.html">SVML-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/XMM.html">SVML-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/ZMM.html">SVML-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/YMM.html">SVML-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/XMM.html">SVML-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Miscellaneous/YMM.html">SVML-Miscellaneous-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Miscellaneous/XMM.html">SVML-Miscellaneous-XMM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../AMX/index.html">AMX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../AMX/Application-Targeted/Other.html">AMX-Application-Targeted-Other</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">AVX-512</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Shift/ZMM.html">AVX-512-Shift-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Shift/YMM.html">AVX-512-Shift-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Shift/XMM.html">AVX-512-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Move/ZMM.html">AVX-512-Move-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Move/YMM.html">AVX-512-Move-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Move/XMM.html">AVX-512-Move-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Bit%20Manipulation/ZMM.html">AVX-512-Bit Manipulation-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Bit%20Manipulation/YMM.html">AVX-512-Bit Manipulation-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Bit%20Manipulation/XMM.html">AVX-512-Bit Manipulation-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Cast/ZMM.html">AVX-512-Cast-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Cast/YMM.html">AVX-512-Cast-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Cast/XMM.html">AVX-512-Cast-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General%20Support/ZMM.html">AVX-512-General Support-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General%20Support/YMM.html">AVX-512-General Support-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General%20Support/XMM.html">AVX-512-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Special%20Math%20Functions/ZMM.html">AVX-512-Special Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Special%20Math%20Functions/YMM.html">AVX-512-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Special%20Math%20Functions/XMM.html">AVX-512-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Logical/ZMM.html">AVX-512-Logical-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Logical/YMM.html">AVX-512-Logical-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Logical/XMM.html">AVX-512-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Swizzle/ZMM.html">AVX-512-Swizzle-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Swizzle/YMM.html">AVX-512-Swizzle-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Swizzle/XMM.html">AVX-512-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Store/ZMM.html">AVX-512-Store-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Store/YMM.html">AVX-512-Store-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Store/XMM.html">AVX-512-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Store/Other.html">AVX-512-Store-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Load/ZMM.html">AVX-512-Load-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Load/YMM.html">AVX-512-Load-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Load/XMM.html">AVX-512-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Load/Other.html">AVX-512-Load-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ZMM.html">AVX-512-Elementary Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="YMM.html">AVX-512-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">AVX-512-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Arithmetic/ZMM.html">AVX-512-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Arithmetic/YMM.html">AVX-512-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Arithmetic/XMM.html">AVX-512-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Compare/ZMM.html">AVX-512-Compare-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Compare/YMM.html">AVX-512-Compare-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Compare/XMM.html">AVX-512-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mask/ZMM.html">AVX-512-Mask-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mask/YMM.html">AVX-512-Mask-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mask/XMM.html">AVX-512-Mask-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mask/Other.html">AVX-512-Mask-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Set/ZMM.html">AVX-512-Set-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Set/YMM.html">AVX-512-Set-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Set/XMM.html">AVX-512-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Convert/ZMM.html">AVX-512-Convert-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Convert/YMM.html">AVX-512-Convert-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Convert/XMM.html">AVX-512-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Miscellaneous/ZMM.html">AVX-512-Miscellaneous-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Miscellaneous/YMM.html">AVX-512-Miscellaneous-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Miscellaneous/XMM.html">AVX-512-Miscellaneous-XMM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../AVX_ALL/index.html">AVX_ALL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Shift/YMM.html">AVX_ALL-Shift-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Shift/XMM.html">AVX_ALL-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Cryptography/YMM.html">AVX_ALL-Cryptography-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Cryptography/XMM.html">AVX_ALL-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Move/YMM.html">AVX_ALL-Move-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Cast/YMM.html">AVX_ALL-Cast-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/General%20Support/YMM.html">AVX_ALL-General Support-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Probability/Statistics/YMM.html">AVX_ALL-Probability/Statistics-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Special%20Math%20Functions/YMM.html">AVX_ALL-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Logical/YMM.html">AVX_ALL-Logical-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Logical/XMM.html">AVX_ALL-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Swizzle/YMM.html">AVX_ALL-Swizzle-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Swizzle/XMM.html">AVX_ALL-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Store/YMM.html">AVX_ALL-Store-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Store/XMM.html">AVX_ALL-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Load/YMM.html">AVX_ALL-Load-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Load/XMM.html">AVX_ALL-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Elementary%20Math%20Functions/YMM.html">AVX_ALL-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Arithmetic/YMM.html">AVX_ALL-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Arithmetic/XMM.html">AVX_ALL-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Compare/YMM.html">AVX_ALL-Compare-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Compare/XMM.html">AVX_ALL-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Set/YMM.html">AVX_ALL-Set-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Convert/YMM.html">AVX_ALL-Convert-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Convert/XMM.html">AVX_ALL-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Miscellaneous/YMM.html">AVX_ALL-Miscellaneous-YMM</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/AVX-512/Elementary Math Functions/XMM.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AVX-512-Elementary Math Functions-XMM</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-pd">_mm_mask_sqrt_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-pd">_mm_maskz_sqrt_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-ps">_mm_mask_sqrt_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-ps">_mm_maskz_sqrt_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rcp14-sd">_mm_mask_rcp14_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rcp14-sd">_mm_maskz_rcp14_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rcp14-sd">_mm_rcp14_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rcp14-ss">_mm_mask_rcp14_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rcp14-ss">_mm_maskz_rcp14_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rcp14-ss">_mm_rcp14_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rsqrt14-sd">_mm_mask_rsqrt14_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rsqrt14-sd">_mm_maskz_rsqrt14_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rsqrt14-sd">_mm_rsqrt14_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rsqrt14-ss">_mm_mask_rsqrt14_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rsqrt14-ss">_mm_maskz_rsqrt14_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rsqrt14-ss">_mm_rsqrt14_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-round-sd">_mm_mask_sqrt_round_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-sd">_mm_mask_sqrt_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-round-sd">_mm_maskz_sqrt_round_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-sd">_mm_maskz_sqrt_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-sqrt-round-sd">_mm_sqrt_round_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-round-ss">_mm_mask_sqrt_round_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-ss">_mm_mask_sqrt_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-round-ss">_mm_maskz_sqrt_round_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-ss">_mm_maskz_sqrt_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-sqrt-round-ss">_mm_sqrt_round_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rsqrt-ph">_mm_rsqrt_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rsqrt-ph">_mm_mask_rsqrt_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rsqrt-ph">_mm_maskz_rsqrt_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-sqrt-ph">_mm_sqrt_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-ph">_mm_mask_sqrt_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-ph">_mm_maskz_sqrt_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rcp-ph">_mm_rcp_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rcp-ph">_mm_mask_rcp_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rcp-ph">_mm_maskz_rcp_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rsqrt-sh">_mm_rsqrt_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rsqrt-sh">_mm_mask_rsqrt_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rsqrt-sh">_mm_maskz_rsqrt_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-sqrt-sh">_mm_sqrt_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-sqrt-round-sh">_mm_sqrt_round_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-sh">_mm_mask_sqrt_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-round-sh">_mm_mask_sqrt_round_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-sh">_mm_maskz_sqrt_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-round-sh">_mm_maskz_sqrt_round_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rcp-sh">_mm_rcp_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rcp-sh">_mm_mask_rcp_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rcp-sh">_mm_maskz_rcp_sh</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="avx-512-elementary-math-functions-xmm">
+<h1>AVX-512-Elementary Math Functions-XMM<a class="headerlink" href="#avx-512-elementary-math-functions-xmm" title="Link to this heading">#</a></h1>
+<section id="mm-mask-sqrt-pd">
+<h2>_mm_mask_sqrt_pd<a class="headerlink" href="#mm-mask-sqrt-pd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128d src,
+__mmask8 k,
+__m128d a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 src,
+MASK k,
+FP64 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128d</span><span class="w"> </span><span class="n">_mm_mask_sqrt_pd</span><span class="p">(</span><span class="kr">__m128d</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span>
+<span class="w">                         </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the square root of packed double-precision (64-bit) floating-point elements in “a”, and store the results in “dst” using writemask “k” (elements are copied from “src” when the corresponding mask bit is not set).</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 1
+        i := j*64
+        IF k[j]
+                dst[i+63:i] := SQRT(a[i+63:i])
+        ELSE
+                dst[i+63:i] := src[i+63:i]
+        FI
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-sqrt-pd">
+<h2>_mm_maskz_sqrt_pd<a class="headerlink" href="#mm-maskz-sqrt-pd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128d a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP64 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128d</span><span class="w"> </span><span class="n">_mm_maskz_sqrt_pd</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the square root of packed double-precision (64-bit) floating-point elements in “a”, and store the results in “dst” using zeromask “k” (elements are zeroed out when the corresponding mask bit is not set).</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 1
+        i := j*64
+        IF k[j]
+                dst[i+63:i] := SQRT(a[i+63:i])
+        ELSE
+                dst[i+63:i] := 0
+        FI
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-sqrt-ps">
+<h2>_mm_mask_sqrt_ps<a class="headerlink" href="#mm-mask-sqrt-ps" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128 src,
+__mmask8 k,
+__m128 a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 src,
+MASK k,
+FP32 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm_mask_sqrt_ps</span><span class="p">(</span><span class="kr">__m128</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the square root of packed single-precision (32-bit) floating-point elements in “a”, and store the results in “dst” using writemask “k” (elements are copied from “src” when the corresponding mask bit is not set).</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*32
+        IF k[j]
+                dst[i+31:i] := SQRT(a[i+31:i])
+        ELSE
+                dst[i+31:i] := src[i+31:i]
+        FI
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-sqrt-ps">
+<h2>_mm_maskz_sqrt_ps<a class="headerlink" href="#mm-maskz-sqrt-ps" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128 a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP32 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm_maskz_sqrt_ps</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the square root of packed single-precision (32-bit) floating-point elements in “a”, and store the results in “dst” using zeromask “k” (elements are zeroed out when the corresponding mask bit is not set).</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*32
+        IF k[j]
+                dst[i+31:i] := SQRT(a[i+31:i])
+        ELSE
+                dst[i+31:i] := 0
+        FI
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-rcp14-sd">
+<h2>_mm_mask_rcp14_sd<a class="headerlink" href="#mm-mask-rcp14-sd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128d src,
+__mmask8 k,
+__m128d a,
+__m128d b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 src,
+MASK k,
+FP64 a,
+FP64 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128d</span><span class="w"> </span><span class="n">_mm_mask_rcp14_sd</span><span class="p">(</span><span class="kr">__m128d</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span>
+<span class="w">                          </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal of the lower double-precision (64-bit) floating-point element in “b”, store the result in the lower element of “dst” using writemask “k” (the element is copied from “src” when mask bit 0 is not set), and copy the upper element from “a” to the upper element of “dst”. The maximum relative error for this approximation is less than 2^-14.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[63:0] := (1.0 / b[63:0])
+ELSE
+        dst[63:0] := src[63:0]
+FI
+dst[127:64] := a[127:64]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-rcp14-sd">
+<h2>_mm_maskz_rcp14_sd<a class="headerlink" href="#mm-maskz-rcp14-sd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128d a,
+__m128d b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP64 a,
+FP64 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128d</span><span class="w"> </span><span class="n">_mm_maskz_rcp14_sd</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                           </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal of the lower double-precision (64-bit) floating-point element in “b”, store the result in the lower element of “dst” using zeromask “k” (the element is zeroed out when mask bit 0 is not set), and copy the upper element from “a” to the upper element of “dst”. The maximum relative error for this approximation is less than 2^-14.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[63:0] := (1.0 / b[63:0])
+ELSE
+        dst[63:0] := 0
+FI
+dst[127:64] := a[127:64]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-rcp14-sd">
+<h2>_mm_rcp14_sd<a class="headerlink" href="#mm-rcp14-sd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128d a,
+__m128d b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 a,
+FP64 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128d</span><span class="w"> </span><span class="n">_mm_rcp14_sd</span><span class="p">(</span><span class="kr">__m128d</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal of the lower double-precision (64-bit) floating-point element in “b”, store the result in the lower element of “dst”, and copy the upper element from “a” to the upper element of “dst”. The maximum relative error for this approximation is less than 2^-14.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[63:0] := (1.0 / b[63:0])
+dst[127:64] := a[127:64]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-rcp14-ss">
+<h2>_mm_mask_rcp14_ss<a class="headerlink" href="#mm-mask-rcp14-ss" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128 src,
+__mmask8 k,
+__m128 a,
+__m128 b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 src,
+MASK k,
+FP32 a,
+FP32 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm_mask_rcp14_ss</span><span class="p">(</span><span class="kr">__m128</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                         </span><span class="kr">__m128</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal of the lower single-precision (32-bit) floating-point element in “b”, store the result in the lower element of “dst” using writemask “k” (the element is copied from “src” when mask bit 0 is not set), and copy the upper 3 packed elements from “a” to the upper elements of “dst”. The maximum relative error for this approximation is less than 2^-14.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[31:0] := (1.0 / b[31:0])
+ELSE
+        dst[31:0] := src[31:0]
+FI
+dst[127:32] := a[127:32]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-rcp14-ss">
+<h2>_mm_maskz_rcp14_ss<a class="headerlink" href="#mm-maskz-rcp14-ss" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128 a,
+__m128 b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP32 a,
+FP32 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm_maskz_rcp14_ss</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal of the lower single-precision (32-bit) floating-point element in “b”, store the result in the lower element of “dst” using zeromask “k” (the element is zeroed out when mask bit 0 is not set), and copy the upper 3 packed elements from “a” to the upper elements of “dst”. The maximum relative error for this approximation is less than 2^-14.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[31:0] := (1.0 / b[31:0])
+ELSE
+        dst[31:0] := 0
+FI
+dst[127:32] := a[127:32]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-rcp14-ss">
+<h2>_mm_rcp14_ss<a class="headerlink" href="#mm-rcp14-ss" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128 a,
+__m128 b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 a,
+FP32 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm_rcp14_ss</span><span class="p">(</span><span class="kr">__m128</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal of the lower single-precision (32-bit) floating-point element in “b”, store the result in the lower element of “dst”, and copy the upper 3 packed elements from “a” to the upper elements of “dst”. The maximum relative error for this approximation is less than 2^-14.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[31:0] := (1.0 / b[31:0])
+dst[127:32] := a[127:32]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-rsqrt14-sd">
+<h2>_mm_mask_rsqrt14_sd<a class="headerlink" href="#mm-mask-rsqrt14-sd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128d src,
+__mmask8 k,
+__m128d a,
+__m128d b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 src,
+MASK k,
+FP64 a,
+FP64 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128d</span><span class="w"> </span><span class="n">_mm_mask_rsqrt14_sd</span><span class="p">(</span><span class="kr">__m128d</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span>
+<span class="w">                            </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal square root of the lower double-precision (64-bit) floating-point element in “b”, store the result in the lower element of “dst” using writemask “k” (the element is copied from “src” when mask bit 0 is not set), and copy the upper element from “a” to the upper element of “dst”. The maximum relative error for this approximation is less than 2^-14.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[63:0] := (1.0 / SQRT(b[63:0]))
+ELSE
+        dst[63:0] := src[63:0]
+FI
+dst[127:64] := a[127:64]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-rsqrt14-sd">
+<h2>_mm_maskz_rsqrt14_sd<a class="headerlink" href="#mm-maskz-rsqrt14-sd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128d a,
+__m128d b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP64 a,
+FP64 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128d</span><span class="w"> </span><span class="n">_mm_maskz_rsqrt14_sd</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                             </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal square root of the lower double-precision (64-bit) floating-point element in “b”, store the result in the lower element of “dst” using zeromask “k” (the element is zeroed out when mask bit 0 is not set), and copy the upper element from “a” to the upper element of “dst”. The maximum relative error for this approximation is less than 2^-14.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[63:0] := (1.0 / SQRT(b[63:0]))
+ELSE
+        dst[63:0] := 0
+FI
+dst[127:64] := a[127:64]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-rsqrt14-sd">
+<h2>_mm_rsqrt14_sd<a class="headerlink" href="#mm-rsqrt14-sd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128d a,
+__m128d b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 a,
+FP64 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128d</span><span class="w"> </span><span class="n">_mm_rsqrt14_sd</span><span class="p">(</span><span class="kr">__m128d</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal square root of the lower double-precision (64-bit) floating-point element in “b”, store the result in the lower element of “dst”, and copy the upper element from “a” to the upper element of “dst”. The maximum relative error for this approximation is less than 2^-14.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[63:0] := (1.0 / SQRT(b[63:0]))
+dst[127:64] := a[127:64]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-rsqrt14-ss">
+<h2>_mm_mask_rsqrt14_ss<a class="headerlink" href="#mm-mask-rsqrt14-ss" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128 src,
+__mmask8 k,
+__m128 a,
+__m128 b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 src,
+MASK k,
+FP32 a,
+FP32 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm_mask_rsqrt14_ss</span><span class="p">(</span><span class="kr">__m128</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                           </span><span class="kr">__m128</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal square root of the lower single-precision (32-bit) floating-point element in “b”, store the result in the lower element of “dst” using writemask “k” (the element is copied from “src” when mask bit 0 is not set), and copy the upper 3 packed elements from “a” to the upper elements of “dst”. The maximum relative error for this approximation is less than 2^-14.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[31:0] := (1.0 / SQRT(b[31:0]))
+ELSE
+        dst[31:0] := src[31:0]
+FI
+dst[127:32] := a[127:32]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-rsqrt14-ss">
+<h2>_mm_maskz_rsqrt14_ss<a class="headerlink" href="#mm-maskz-rsqrt14-ss" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128 a,
+__m128 b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP32 a,
+FP32 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm_maskz_rsqrt14_ss</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal square root of the lower single-precision (32-bit) floating-point element in “b”, store the result in the lower element of “dst” using zeromask “k” (the element is zeroed out when mask bit 0 is not set), and copy the upper 3 packed elements from “a” to the upper elements of “dst”. The maximum relative error for this approximation is less than 2^-14.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[31:0] := (1.0 / SQRT(b[31:0]))
+ELSE
+        dst[31:0] := 0
+FI
+dst[127:32] := a[127:32]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-rsqrt14-ss">
+<h2>_mm_rsqrt14_ss<a class="headerlink" href="#mm-rsqrt14-ss" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128 a,
+__m128 b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 a,
+FP32 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm_rsqrt14_ss</span><span class="p">(</span><span class="kr">__m128</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal square root of the lower single-precision (32-bit) floating-point element in “b”, store the result in the lower element of “dst”, and copy the upper 3 packed elements from “a” to the upper elements of “dst”. The maximum relative error for this approximation is less than 2^-14.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[31:0] := (1.0 / SQRT(b[31:0]))
+dst[127:32] := a[127:32]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-sqrt-round-sd">
+<h2>_mm_mask_sqrt_round_sd<a class="headerlink" href="#mm-mask-sqrt-round-sd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128d src,
+__mmask8 k,
+__m128d a,
+__m128d b,
+int rounding</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 src,
+MASK k,
+FP64 a,
+FP64 b,
+IMM rounding</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128d</span><span class="w"> </span><span class="n">_mm_mask_sqrt_round_sd</span><span class="p">(</span><span class="kr">__m128d</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span>
+<span class="w">                               </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">b</span><span class="p">,</span>
+<span class="w">                               </span><span class="kt">int</span><span class="w"> </span><span class="n">rounding</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Compute the square root of the lower double-precision (64-bit) floating-point element in “b”, store the result in the lower element of “dst” using writemask “k” (the element is copied from “src” when mask bit 0 is not set), and copy the upper element from “a” to the upper element of “dst”.</dt><dd><p>[round_note]</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[63:0] := SQRT(b[63:0])
+ELSE
+        dst[63:0] := src[63:0]
+FI
+dst[127:64] := a[127:64]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-sqrt-sd">
+<h2>_mm_mask_sqrt_sd<a class="headerlink" href="#mm-mask-sqrt-sd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128d src,
+__mmask8 k,
+__m128d a,
+__m128d b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 src,
+MASK k,
+FP64 a,
+FP64 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128d</span><span class="w"> </span><span class="n">_mm_mask_sqrt_sd</span><span class="p">(</span><span class="kr">__m128d</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                         </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the square root of the lower double-precision (64-bit) floating-point element in “b”, store the result in the lower element of “dst” using writemask “k” (the element is copied from “src” when mask bit 0 is not set), and copy the upper element from “a” to the upper element of “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[63:0] := SQRT(b[63:0])
+ELSE
+        dst[63:0] := src[63:0]
+FI
+dst[127:64] := a[127:64]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-sqrt-round-sd">
+<h2>_mm_maskz_sqrt_round_sd<a class="headerlink" href="#mm-maskz-sqrt-round-sd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128d a,
+__m128d b,
+int rounding</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP64 a,
+FP64 b,
+IMM rounding</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128d</span><span class="w"> </span><span class="n">_mm_maskz_sqrt_round_sd</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                                </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rounding</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Compute the square root of the lower double-precision (64-bit) floating-point element in “b”, store the result in the lower element of “dst” using zeromask “k” (the element is zeroed out when mask bit 0 is not set), and copy the upper element from “a” to the upper element of “dst”.</dt><dd><p>[round_note]</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[63:0] := SQRT(b[63:0])
+ELSE
+        dst[63:0] := 0
+FI
+dst[127:64] := a[127:64]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-sqrt-sd">
+<h2>_mm_maskz_sqrt_sd<a class="headerlink" href="#mm-maskz-sqrt-sd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128d a,
+__m128d b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP64 a,
+FP64 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128d</span><span class="w"> </span><span class="n">_mm_maskz_sqrt_sd</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the square root of the lower double-precision (64-bit) floating-point element in “b”, store the result in the lower element of “dst” using zeromask “k” (the element is zeroed out when mask bit 0 is not set), and copy the upper element from “a” to the upper element of “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[63:0] := SQRT(b[63:0])
+ELSE
+        dst[63:0] := 0
+FI
+dst[127:64] := a[127:64]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-sqrt-round-sd">
+<h2>_mm_sqrt_round_sd<a class="headerlink" href="#mm-sqrt-round-sd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128d a,
+__m128d b,
+int rounding</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 a,
+FP64 b,
+IMM rounding</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128d</span><span class="w"> </span><span class="n">_mm_sqrt_round_sd</span><span class="p">(</span><span class="kr">__m128d</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128d</span><span class="w"> </span><span class="n">b</span><span class="p">,</span>
+<span class="w">                          </span><span class="kt">int</span><span class="w"> </span><span class="n">rounding</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Compute the square root of the lower double-precision (64-bit) floating-point element in “b”, store the result in the lower element of “dst”, and copy the upper element from “a” to the upper element of “dst”.</dt><dd><p>[round_note]</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[63:0] := SQRT(b[63:0])
+dst[127:64] := a[127:64]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-sqrt-round-ss">
+<h2>_mm_mask_sqrt_round_ss<a class="headerlink" href="#mm-mask-sqrt-round-ss" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128 src,
+__mmask8 k,
+__m128 a,
+__m128 b,
+int rounding</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 src,
+MASK k,
+FP32 a,
+FP32 b,
+IMM rounding</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm_mask_sqrt_round_ss</span><span class="p">(</span><span class="kr">__m128</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span>
+<span class="w">                              </span><span class="kr">__m128</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">b</span><span class="p">,</span>
+<span class="w">                              </span><span class="kt">int</span><span class="w"> </span><span class="n">rounding</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Compute the square root of the lower single-precision (32-bit) floating-point element in “b”, store the result in the lower element of “dst” using writemask “k” (the element is copied from “src” when mask bit 0 is not set), and copy the upper 3 packed elements from “a” to the upper elements of “dst”.</dt><dd><p>[round_note]</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[31:0] := SQRT(b[31:0])
+ELSE
+        dst[31:0] := src[31:0]
+FI
+dst[127:32] := a[127:32]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-sqrt-ss">
+<h2>_mm_mask_sqrt_ss<a class="headerlink" href="#mm-mask-sqrt-ss" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128 src,
+__mmask8 k,
+__m128 a,
+__m128 b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 src,
+MASK k,
+FP32 a,
+FP32 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm_mask_sqrt_ss</span><span class="p">(</span><span class="kr">__m128</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                        </span><span class="kr">__m128</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the square root of the lower single-precision (32-bit) floating-point element in “b”, store the result in the lower element of “dst” using writemask “k” (the element is copied from “src” when mask bit 0 is not set), and copy the upper 3 packed elements from “a” to the upper elements of “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[31:0] := SQRT(b[31:0])
+ELSE
+        dst[31:0] := src[31:0]
+FI
+dst[127:32] := a[127:32]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-sqrt-round-ss">
+<h2>_mm_maskz_sqrt_round_ss<a class="headerlink" href="#mm-maskz-sqrt-round-ss" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128 a,
+__m128 b,
+int rounding</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP32 a,
+FP32 b,
+IMM rounding</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm_maskz_sqrt_round_ss</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                               </span><span class="kr">__m128</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rounding</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Compute the square root of the lower single-precision (32-bit) floating-point element in “b”, store the result in the lower element of “dst” using zeromask “k” (the element is zeroed out when mask bit 0 is not set), and copy the upper 3 packed elements from “a” to the upper elements of “dst”.</dt><dd><p>[round_note]</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[31:0] := SQRT(b[31:0])
+ELSE
+        dst[31:0] := 0
+FI
+dst[127:32] := a[127:32]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-sqrt-ss">
+<h2>_mm_maskz_sqrt_ss<a class="headerlink" href="#mm-maskz-sqrt-ss" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128 a,
+__m128 b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP32 a,
+FP32 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm_maskz_sqrt_ss</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the square root of the lower single-precision (32-bit) floating-point element in “b”, store the result in the lower element of “dst” using zeromask “k” (the element is zeroed out when mask bit 0 is not set), and copy the upper 3 packed elements from “a” to the upper elements of “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst[31:0] := SQRT(b[31:0])
+ELSE
+        dst[31:0] := 0
+FI
+dst[127:32] := a[127:32]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-sqrt-round-ss">
+<h2>_mm_sqrt_round_ss<a class="headerlink" href="#mm-sqrt-round-ss" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128 a,
+__m128 b,
+int rounding</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 a,
+FP32 b,
+IMM rounding</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm_sqrt_round_ss</span><span class="p">(</span><span class="kr">__m128</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rounding</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Compute the square root of the lower single-precision (32-bit) floating-point element in “b”, store the result in the lower element of “dst”, and copy the upper 3 packed elements from “a” to the upper elements of “dst”.</dt><dd><p>[round_note]</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[31:0] := SQRT(b[31:0])
+dst[127:32] := a[127:32]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-rsqrt-ph">
+<h2>_mm_rsqrt_ph<a class="headerlink" href="#mm-rsqrt-ph" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128h a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP16 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="nf">_mm_rsqrt_ph</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal square root of packed half-precision (16-bit) floating-point elements in “a”, and store the results in “dst”. The maximum relative error for this approximation is less than 1.5*2^-12.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR i := 0 to 7
+        dst.fp16[i] := (1.0 / SQRT(a.fp16[i]))
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-rsqrt-ph">
+<h2>_mm_mask_rsqrt_ph<a class="headerlink" href="#mm-mask-rsqrt-ph" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128h src,
+__mmask8 k,
+__m128h a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP16 src,
+MASK k,
+FP16 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="n">_mm_mask_rsqrt_ph</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal square root of packed half-precision (16-bit) floating-point elements in “a”, and store the results in “dst” using writemask “k” (elements are copied from “src” when the corresponding mask bit is not set). The maximum relative error for this approximation is less than 1.5*2^-12.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR i := 0 to 7
+        IF k[i]
+                dst.fp16[i] := (1.0 / SQRT(a.fp16[i]))
+        ELSE
+                dst.fp16[i] := src.fp16[i]
+        FI
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-rsqrt-ph">
+<h2>_mm_maskz_rsqrt_ph<a class="headerlink" href="#mm-maskz-rsqrt-ph" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128h a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP16 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="nf">_mm_maskz_rsqrt_ph</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal square root of packed half-precision (16-bit) floating-point elements in “a”, and store the results in “dst” using zeromask “k” (elements are zeroed out when the corresponding mask bit is not set). The maximum relative error for this approximation is less than 1.5*2^-12.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR i := 0 to 7
+        IF k[i]
+                dst.fp16[i] := (1.0 / SQRT(a.fp16[i]))
+        ELSE
+                dst.fp16[i] := 0
+        FI
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-sqrt-ph">
+<h2>_mm_sqrt_ph<a class="headerlink" href="#mm-sqrt-ph" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128h a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP16 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="nf">_mm_sqrt_ph</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the square root of packed half-precision (16-bit) floating-point elements in “a”, and store the results in “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR i := 0 to 7
+        dst.fp16[i] := SQRT(a.fp16[i])
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-sqrt-ph">
+<h2>_mm_mask_sqrt_ph<a class="headerlink" href="#mm-mask-sqrt-ph" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128h src,
+__mmask8 k,
+__m128h a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP16 src,
+MASK k,
+FP16 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="n">_mm_mask_sqrt_ph</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the square root of packed half-precision (16-bit) floating-point elements in “a”, and store the results in “dst” using writemask “k” (elements are copied from “src” when the corresponding mask bit is not set).</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR i := 0 to 7
+        IF k[i]
+                dst.fp16[i] := SQRT(a.fp16[i])
+        ELSE
+                dst.fp16[i] := src.fp16[i]
+        FI
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-sqrt-ph">
+<h2>_mm_maskz_sqrt_ph<a class="headerlink" href="#mm-maskz-sqrt-ph" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128h a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP16 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="nf">_mm_maskz_sqrt_ph</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the square root of packed half-precision (16-bit) floating-point elements in “a”, and store the results in “dst” using zeromask “k” (elements are zeroed out when the corresponding mask bit is not set).</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR i := 0 to 7
+        IF k[i]
+                dst.fp16[i] := SQRT(a.fp16[i])
+        ELSE
+                dst.fp16[i] := 0
+        FI
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-rcp-ph">
+<h2>_mm_rcp_ph<a class="headerlink" href="#mm-rcp-ph" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128h a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP16 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="nf">_mm_rcp_ph</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal of packed half-precision (16-bit) floating-point elements in “a”, and store the results in “dst”. The maximum relative error for this approximation is less than 1.5*2^-12.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR i := 0 to 7
+        dst.fp16[i] := (1.0 / a.fp16[i])
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-rcp-ph">
+<h2>_mm_mask_rcp_ph<a class="headerlink" href="#mm-mask-rcp-ph" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128h src,
+__mmask8 k,
+__m128h a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP16 src,
+MASK k,
+FP16 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="nf">_mm_mask_rcp_ph</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal of packed half-precision (16-bit) floating-point elements in “a”, and store the results in “dst” using writemask “k” (elements are copied from “src” when the corresponding mask bit is not set). The maximum relative error for this approximation is less than 1.5*2^-12.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR i := 0 to 7
+        IF k[i]
+                dst.fp16[i] := (1.0 / a.fp16[i])
+        ELSE
+                dst.fp16[i] := src.fp16[i]
+        FI
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-rcp-ph">
+<h2>_mm_maskz_rcp_ph<a class="headerlink" href="#mm-maskz-rcp-ph" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128h a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP16 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="nf">_mm_maskz_rcp_ph</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal of packed half-precision (16-bit) floating-point elements in “a”, and store the results in “dst” using zeromask “k” (elements are zeroed out when the corresponding mask bit is not set). The maximum relative error for this approximation is less than 1.5*2^-12.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR i := 0 to 7
+        IF k[i]
+                dst.fp16[i] := (1.0 / a.fp16[i])
+        ELSE
+                dst.fp16[i] := 0
+        FI
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-rsqrt-sh">
+<h2>_mm_rsqrt_sh<a class="headerlink" href="#mm-rsqrt-sh" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128h a,
+__m128h b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP16 a,
+FP16 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="nf">_mm_rsqrt_sh</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal square root of the lower half-precision (16-bit) floating-point element in “b”, store the result in the lower element of “dst”, and copy the upper 7 packed elements from “a” to the upper elements of “dst”. The maximum relative error for this approximation is less than 1.5*2^-12.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst.fp16[0] := (1.0 / SQRT(b.fp16[0]))
+dst[127:16] := a[127:16]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-rsqrt-sh">
+<h2>_mm_mask_rsqrt_sh<a class="headerlink" href="#mm-mask-rsqrt-sh" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128h src,
+__mmask8 k,
+__m128h a,
+__m128h b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP16 src,
+MASK k,
+FP16 a,
+FP16 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="n">_mm_mask_rsqrt_sh</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal square root of the lower half-precision (16-bit) floating-point element in “b”, store the result in the lower element of “dst” using writemask “k” (the element is copied from “src” when mask bit 0 is not set), and copy the upper 7 packed elements from “a” to the upper elements of “dst”. The maximum relative error for this approximation is less than 1.5*2^-12.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst.fp16[0] := (1.0 / SQRT(b.fp16[0]))
+ELSE
+        dst.fp16[0] := src.fp16[0]
+FI
+dst[127:16] := a[127:16]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-rsqrt-sh">
+<h2>_mm_maskz_rsqrt_sh<a class="headerlink" href="#mm-maskz-rsqrt-sh" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128h a,
+__m128h b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP16 a,
+FP16 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="n">_mm_maskz_rsqrt_sh</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">__m128h</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal square root of the lower half-precision (16-bit) floating-point element in “b”, store the result in the lower element of “dst” using zeromask “k” (the element is zeroed out when mask bit 0 is not set), and copy the upper 7 packed elements from “a” to the upper elements of “dst”. The maximum relative error for this approximation is less than 1.5*2^-12.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst.fp16[0] := (1.0 / SQRT(b.fp16[0]))
+ELSE
+        dst.fp16[0] := 0
+FI
+dst[127:16] := a[127:16]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-sqrt-sh">
+<h2>_mm_sqrt_sh<a class="headerlink" href="#mm-sqrt-sh" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128h a,
+__m128h b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP16 a,
+FP16 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="nf">_mm_sqrt_sh</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the square root of the lower half-precision (16-bit) floating-point element in “b”, store the result in the lower element of “dst”, and copy the upper 7 packed elements from “a” to the upper elements of “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst.fp16[0] := SQRT(b.fp16[0])
+dst[127:16] := a[127:16]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-sqrt-round-sh">
+<h2>_mm_sqrt_round_sh<a class="headerlink" href="#mm-sqrt-round-sh" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128h a,
+__m128h b,
+const int rounding</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP16 a,
+FP16 b,
+IMM rounding</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="n">_mm_sqrt_round_sh</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">b</span><span class="p">,</span>
+<span class="w">                          </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rounding</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Compute the square root of the lower half-precision (16-bit) floating-point element in “b”, store the result in the lower element of “dst”, and copy the upper 7 packed elements from “a” to the upper elements of “dst”.</dt><dd><p>[round_note]</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst.fp16[0] := SQRT(b.fp16[0])
+dst[127:16] := a[127:16]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-sqrt-sh">
+<h2>_mm_mask_sqrt_sh<a class="headerlink" href="#mm-mask-sqrt-sh" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128h src,
+__mmask8 k,
+__m128h a,
+__m128h b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP16 src,
+MASK k,
+FP16 a,
+FP16 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="n">_mm_mask_sqrt_sh</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">__m128h</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the square root of the lower half-precision (16-bit) floating-point element in “b”, store the result in the lower element of “dst” using writemask “k” (the element is copied from “src” when mask bit 0 is not set), and copy the upper 7 packed elements from “a” to the upper elements of “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst.fp16[0] := SQRT(b.fp16[0])
+ELSE
+        dst.fp16[0] := src.fp16[0]
+FI
+dst[127:16] := a[127:16]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-sqrt-round-sh">
+<h2>_mm_mask_sqrt_round_sh<a class="headerlink" href="#mm-mask-sqrt-round-sh" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128h src,
+__mmask8 k,
+__m128h a,
+__m128h b,
+const int rounding</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP16 src,
+MASK k,
+FP16 a,
+FP16 b,
+IMM rounding</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="n">_mm_mask_sqrt_round_sh</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span>
+<span class="w">                               </span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">b</span><span class="p">,</span>
+<span class="w">                               </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rounding</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Compute the square root of the lower half-precision (16-bit) floating-point element in “b”, store the result in the lower element of “dst” using writemask “k” (the element is copied from “src” when mask bit 0 is not set), and copy the upper 7 packed elements from “a” to the upper elements of “dst”.</dt><dd><p>[round_note]</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst.fp16[0] := SQRT(b.fp16[0])
+ELSE
+        dst.fp16[0] := src.fp16[0]
+FI
+dst[127:16] := a[127:16]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-sqrt-sh">
+<h2>_mm_maskz_sqrt_sh<a class="headerlink" href="#mm-maskz-sqrt-sh" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128h a,
+__m128h b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP16 a,
+FP16 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="nf">_mm_maskz_sqrt_sh</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the square root of the lower half-precision (16-bit) floating-point element in “b”, store the result in the lower element of “dst” using zeromask “k” (the element is zeroed out when mask bit 0 is not set), and copy the upper 7 packed elements from “a” to the upper elements of “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst.fp16[0] := SQRT(b.fp16[0])
+ELSE
+        dst.fp16[0] := 0
+FI
+dst[127:16] := a[127:16]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-sqrt-round-sh">
+<h2>_mm_maskz_sqrt_round_sh<a class="headerlink" href="#mm-maskz-sqrt-round-sh" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128h a,
+__m128h b,
+const int rounding</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP16 a,
+FP16 b,
+IMM rounding</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="n">_mm_maskz_sqrt_round_sh</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">__m128h</span><span class="w"> </span><span class="n">b</span><span class="p">,</span>
+<span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rounding</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Compute the square root of the lower half-precision (16-bit) floating-point element in “b”, store the result in the lower element of “dst” using zeromask “k” (the element is zeroed out when mask bit 0 is not set), and copy the upper 7 packed elements from “a” to the upper elements of “dst”.</dt><dd><p>[round_note]</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst.fp16[0] := SQRT(b.fp16[0])
+ELSE
+        dst.fp16[0] := 0
+FI
+dst[127:16] := a[127:16]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-rcp-sh">
+<h2>_mm_rcp_sh<a class="headerlink" href="#mm-rcp-sh" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128h a,
+__m128h b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP16 a,
+FP16 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="nf">_mm_rcp_sh</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal of the lower half-precision (16-bit) floating-point element in “a”, store the result in the lower element of “dst”, and copy the upper 7 packed elements from “a” to the upper elements of “dst”. The maximum relative error for this approximation is less than 1.5*2^-12.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst.fp16[0] := (1.0 / b.fp16[0])
+dst[127:16] := a[127:16]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-mask-rcp-sh">
+<h2>_mm_mask_rcp_sh<a class="headerlink" href="#mm-mask-rcp-sh" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128h src,
+__mmask8 k,
+__m128h a,
+__m128h b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP16 src,
+MASK k,
+FP16 a,
+FP16 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="n">_mm_mask_rcp_sh</span><span class="p">(</span><span class="n">__m128h</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">__m128h</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal of the lower half-precision (16-bit) floating-point element in “a”, store the result in the lower element of “dst” using writemask “k” (the element is copied from “src” when mask bit 0 is not set), and copy the upper 7 packed elements from “a” to the upper elements of “dst”. The maximum relative error for this approximation is less than 1.5*2^-12.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst.fp16[0] := (1.0 / b.fp16[0])
+ELSE
+        dst.fp16[0] := src.fp16[0]
+FI
+dst[127:16] := a[127:16]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-maskz-rcp-sh">
+<h2>_mm_maskz_rcp_sh<a class="headerlink" href="#mm-maskz-rcp-sh" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX-512</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elementary Math Functions</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX-512-Elementary Math Functions-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128h</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__mmask8 k,
+__m128h a,
+__m128h b</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>MASK k,
+FP16 a,
+FP16 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m128h</span><span class="w"> </span><span class="nf">_mm_maskz_rcp_sh</span><span class="p">(</span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">__m128h</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the approximate reciprocal of the lower half-precision (16-bit) floating-point element in “a”, store the result in the lower element of “dst” using zeromask “k” (the element is zeroed out when mask bit 0 is not set), and copy the upper 7 packed elements from “a” to the upper elements of “dst”. The maximum relative error for this approximation is less than 1.5*2^-12.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF k[0]
+        dst.fp16[0] := (1.0 / b.fp16[0])
+ELSE
+        dst.fp16[0] := 0
+FI
+dst[127:16] := a[127:16]
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="YMM.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AVX-512-Elementary Math Functions-YMM</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Arithmetic/ZMM.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AVX-512-Arithmetic-ZMM</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-pd">_mm_mask_sqrt_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-pd">_mm_maskz_sqrt_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-ps">_mm_mask_sqrt_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-ps">_mm_maskz_sqrt_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rcp14-sd">_mm_mask_rcp14_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rcp14-sd">_mm_maskz_rcp14_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rcp14-sd">_mm_rcp14_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rcp14-ss">_mm_mask_rcp14_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rcp14-ss">_mm_maskz_rcp14_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rcp14-ss">_mm_rcp14_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rsqrt14-sd">_mm_mask_rsqrt14_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rsqrt14-sd">_mm_maskz_rsqrt14_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rsqrt14-sd">_mm_rsqrt14_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rsqrt14-ss">_mm_mask_rsqrt14_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rsqrt14-ss">_mm_maskz_rsqrt14_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rsqrt14-ss">_mm_rsqrt14_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-round-sd">_mm_mask_sqrt_round_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-sd">_mm_mask_sqrt_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-round-sd">_mm_maskz_sqrt_round_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-sd">_mm_maskz_sqrt_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-sqrt-round-sd">_mm_sqrt_round_sd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-round-ss">_mm_mask_sqrt_round_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-ss">_mm_mask_sqrt_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-round-ss">_mm_maskz_sqrt_round_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-ss">_mm_maskz_sqrt_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-sqrt-round-ss">_mm_sqrt_round_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rsqrt-ph">_mm_rsqrt_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rsqrt-ph">_mm_mask_rsqrt_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rsqrt-ph">_mm_maskz_rsqrt_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-sqrt-ph">_mm_sqrt_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-ph">_mm_mask_sqrt_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-ph">_mm_maskz_sqrt_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rcp-ph">_mm_rcp_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rcp-ph">_mm_mask_rcp_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rcp-ph">_mm_maskz_rcp_ph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rsqrt-sh">_mm_rsqrt_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rsqrt-sh">_mm_mask_rsqrt_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rsqrt-sh">_mm_maskz_rsqrt_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-sqrt-sh">_mm_sqrt_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-sqrt-round-sh">_mm_sqrt_round_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-sh">_mm_mask_sqrt_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-sqrt-round-sh">_mm_mask_sqrt_round_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-sh">_mm_maskz_sqrt_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-sqrt-round-sh">_mm_maskz_sqrt_round_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-rcp-sh">_mm_rcp_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mask-rcp-sh">_mm_mask_rcp_sh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-maskz-rcp-sh">_mm_maskz_rcp_sh</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Your Name
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

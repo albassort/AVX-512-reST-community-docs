@@ -1,0 +1,451 @@
+_mm512_kandn
+^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Mask
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __mmask16
+:Param Types:
+    __mmask16 a, 
+    __mmask16 b
+:Param ETypes:
+    MASK a, 
+    MASK b
+
+.. code-block:: C
+
+    __mmask16 _mm512_kandn(__mmask16 a, __mmask16 b);
+
+.. admonition:: Intel Description
+
+    Compute the bitwise NOT of 16-bit masks "a" and then AND with "b", and store the result in "k".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        k[15:0] := (NOT a[15:0]) AND b[15:0]
+        k[MAX:16] := 0
+        	
+
+_mm512_kand
+^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Mask
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __mmask16
+:Param Types:
+    __mmask16 a, 
+    __mmask16 b
+:Param ETypes:
+    MASK a, 
+    MASK b
+
+.. code-block:: C
+
+    __mmask16 _mm512_kand(__mmask16 a, __mmask16 b);
+
+.. admonition:: Intel Description
+
+    Compute the bitwise AND of 16-bit masks "a" and "b", and store the result in "k".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        k[15:0] := a[15:0] AND b[15:0]
+        k[MAX:16] := 0
+        	
+
+_mm512_kmov
+^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Mask
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __mmask16
+:Param Types:
+    __mmask16 a
+:Param ETypes:
+    MASK a
+
+.. code-block:: C
+
+    __mmask16 _mm512_kmov(__mmask16 a);
+
+.. admonition:: Intel Description
+
+    Copy 16-bit mask "a" to "k".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        k[15:0] := a[15:0]
+        k[MAX:16] := 0
+        	
+
+_mm512_knot
+^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Mask
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __mmask16
+:Param Types:
+    __mmask16 a
+:Param ETypes:
+    MASK a
+
+.. code-block:: C
+
+    __mmask16 _mm512_knot(__mmask16 a);
+
+.. admonition:: Intel Description
+
+    Compute the bitwise NOT of 16-bit mask "a", and store the result in "k".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        k[15:0] := NOT a[15:0]
+        k[MAX:16] := 0
+        	
+
+_mm512_kor
+^^^^^^^^^^
+:Tech: AVX-512
+:Category: Mask
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __mmask16
+:Param Types:
+    __mmask16 a, 
+    __mmask16 b
+:Param ETypes:
+    MASK a, 
+    MASK b
+
+.. code-block:: C
+
+    __mmask16 _mm512_kor(__mmask16 a, __mmask16 b);
+
+.. admonition:: Intel Description
+
+    Compute the bitwise OR of 16-bit masks "a" and "b", and store the result in "k".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        k[15:0] := a[15:0] OR b[15:0]
+        k[MAX:16] := 0
+        	
+
+_mm512_kunpackb
+^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Mask
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __mmask16
+:Param Types:
+    __mmask16 a, 
+    __mmask16 b
+:Param ETypes:
+    MASK a, 
+    MASK b
+
+.. code-block:: C
+
+    __mmask16 _mm512_kunpackb(__mmask16 a, __mmask16 b);
+
+.. admonition:: Intel Description
+
+    Unpack and interleave 8 bits from masks "a" and "b", and store the 16-bit result in "k".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        k[7:0] := b[7:0]
+        k[15:8] := a[7:0]
+        k[MAX:16] := 0
+        	
+
+_mm512_kxnor
+^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Mask
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __mmask16
+:Param Types:
+    __mmask16 a, 
+    __mmask16 b
+:Param ETypes:
+    MASK a, 
+    MASK b
+
+.. code-block:: C
+
+    __mmask16 _mm512_kxnor(__mmask16 a, __mmask16 b);
+
+.. admonition:: Intel Description
+
+    Compute the bitwise XNOR of 16-bit masks "a" and "b", and store the result in "k".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        k[15:0] := NOT (a[15:0] XOR b[15:0])
+        k[MAX:16] := 0
+        	
+
+_mm512_kxor
+^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Mask
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __mmask16
+:Param Types:
+    __mmask16 a, 
+    __mmask16 b
+:Param ETypes:
+    MASK a, 
+    MASK b
+
+.. code-block:: C
+
+    __mmask16 _mm512_kxor(__mmask16 a, __mmask16 b);
+
+.. admonition:: Intel Description
+
+    Compute the bitwise XOR of 16-bit masks "a" and "b", and store the result in "k".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        k[15:0] := a[15:0] XOR b[15:0]
+        k[MAX:16] := 0
+        	
+
+_mm512_kortestz
+^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Mask
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: int
+:Param Types:
+    __mmask16 k1, 
+    __mmask16 k2
+:Param ETypes:
+    MASK k1, 
+    MASK k2
+
+.. code-block:: C
+
+    int _mm512_kortestz(__mmask16 k1, __mmask16 k2);
+
+.. admonition:: Intel Description
+
+    Performs bitwise OR between "k1" and "k2", storing the result in "dst". ZF flag is set if "dst" is 0.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        dst[15:0] := k1[15:0] | k2[15:0]
+        IF dst == 0
+        	SetZF()
+        FI
+        	
+
+_mm512_kortestc
+^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Mask
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: int
+:Param Types:
+    __mmask16 k1, 
+    __mmask16 k2
+:Param ETypes:
+    MASK k1, 
+    MASK k2
+
+.. code-block:: C
+
+    int _mm512_kortestc(__mmask16 k1, __mmask16 k2);
+
+.. admonition:: Intel Description
+
+    Performs bitwise OR between "k1" and "k2", storing the result in "dst". CF flag is set if "dst" consists of all 1's.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        dst[15:0] := k1[15:0] | k2[15:0]
+        IF PopCount(dst[15:0]) == 16
+        	SetCF()
+        FI
+        	
+
+_mm512_mask2int
+^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Mask
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: int
+:Param Types:
+    __mmask16 k1
+:Param ETypes:
+    MASK k1
+
+.. code-block:: C
+
+    int _mm512_mask2int(__mmask16 k1);
+
+.. admonition:: Intel Description
+
+    Converts bit mask "k1" into an integer value, storing the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst := ZeroExtend32(k1)
+        	
+
+_mm512_int2mask
+^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Mask
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __mmask16
+:Param Types:
+    int mask
+:Param ETypes:
+    UI16 mask
+
+.. code-block:: C
+
+    __mmask16 _mm512_int2mask(int mask);
+
+.. admonition:: Intel Description
+
+    Converts integer "mask" into bitmask, storing the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst := mask[15:0]
+        	
+
+_mm512_2intersect_epi32
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Mask
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    __m512i a, 
+    __m512i b, 
+    __mmask16* k1, 
+    __mmask16* k2
+:Param ETypes:
+    UI32 a, 
+    UI32 b, 
+    MASK k1, 
+    MASK k2
+
+.. code-block:: C
+
+    void _mm512_2intersect_epi32(__m512i a, __m512i b,
+                                 __mmask16* k1, __mmask16* k2)
+
+.. admonition:: Intel Description
+
+    Compute intersection of packed 32-bit integer vectors "a" and "b", and store indication of match in the corresponding bit of two mask registers specified by "k1" and "k2". A match in corresponding elements of "a" and "b" is indicated by a set bit in the corresponding bit of the mask registers.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[k1+15:k1] := 0
+        MEM[k2+15:k2] := 0
+        FOR i := 0 TO 15
+        	FOR j := 0 TO 15
+        		match := (a.dword[i] == b.dword[j] ? 1 : 0)
+        		MEM[k1+15:k1].bit[i] |= match
+        		MEM[k2+15:k2].bit[j] |= match
+        	ENDFOR
+        ENDFOR
+        	
+
+_mm512_2intersect_epi64
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Mask
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    __m512i a, 
+    __m512i b, 
+    __mmask8* k1, 
+    __mmask8* k2
+:Param ETypes:
+    UI64 a, 
+    UI64 b, 
+    MASK k1, 
+    MASK k2
+
+.. code-block:: C
+
+    void _mm512_2intersect_epi64(__m512i a, __m512i b,
+                                 __mmask8* k1, __mmask8* k2)
+
+.. admonition:: Intel Description
+
+    Compute intersection of packed 64-bit integer vectors "a" and "b", and store indication of match in the corresponding bit of two mask registers specified by "k1" and "k2". A match in corresponding elements of "a" and "b" is indicated by a set bit in the corresponding bit of the mask registers.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[k1+7:k1] := 0
+        MEM[k2+7:k2] := 0
+        FOR i := 0 TO 7
+        	FOR j := 0 TO 7
+        		match := (a.qword[i] == b.qword[j] ? 1 : 0)
+        		MEM[k1+7:k1].bit[i] |= match
+        		MEM[k2+7:k2].bit[j] |= match
+        	ENDFOR
+        ENDFOR
+        	
+

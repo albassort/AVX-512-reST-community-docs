@@ -97,6 +97,7 @@ ZMM, operates on 512 bit registers
 
 Midfixes
 ~~~~~~~
+
 Masks
 ^^^^^
 Masks is, as the name implies a mask. Where the given mask is on, the respective channel positions are not operated upon. For example, not not adding two integers.
@@ -139,7 +140,7 @@ Extract
 Removes an integer into the given instruction, writing the given value at the given position to a given address.
 
 Suffixes
-~~~~~~
+~~~~~~~
 
 epi
 ^^^
@@ -193,4 +194,17 @@ Scalars
 
 Scalars are functions which operate on only operate on one side of the lane. For example, the above function `_mm_roundscale_sh`, only operates on `b`, conversely, `a` is simply read into the `dst`. That is to say, this is a `storeu` And `_mm_roundscale_ph` in one. 
 
+Modules 
+-------
+Below contains all AVX-512 documentation available from Intel. 
+
+Naming Scheme
+^^^^^^^^^^^^^
+
+TECH - CATEGORY - WIDTH
+
+As an example:
+AVX-512-Store-XMM
+
+So, of the AVX-512 extension, in the store category, YMM wide instructions.
 

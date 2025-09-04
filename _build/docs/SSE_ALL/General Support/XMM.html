@@ -1,0 +1,1051 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SSE_ALL-General Support-XMM &#8212; My Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/SSE_ALL/General Support/XMM';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="SSE_ALL-General Support-Other" href="Other.html" />
+    <link rel="prev" title="SSE_ALL-String Compare-XMM" href="../String%20Compare/XMM.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My Docs 1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../MMX/index.html">MMX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Shift/XMM.html">MMX-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Shift/MMX.html">MMX-Shift-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/General%20Support/XMM.html">MMX-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/General%20Support/MMX.html">MMX-General Support-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Logical/XMM.html">MMX-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Logical/MMX.html">MMX-Logical-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Swizzle/XMM.html">MMX-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Swizzle/MMX.html">MMX-Swizzle-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Arithmetic/XMM.html">MMX-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Arithmetic/MMX.html">MMX-Arithmetic-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Compare/XMM.html">MMX-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Compare/MMX.html">MMX-Compare-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Set/XMM.html">MMX-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Convert/XMM.html">MMX-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Convert/MMX.html">MMX-Convert-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Miscellaneous/XMM.html">MMX-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Miscellaneous/MMX.html">MMX-Miscellaneous-MMX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">SSE_ALL</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Shift/XMM.html">SSE_ALL-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Cryptography/XMM.html">SSE_ALL-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Move/XMM.html">SSE_ALL-Move-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Cast/XMM.html">SSE_ALL-Cast-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../String%20Compare/XMM.html">SSE_ALL-String Compare-XMM</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">SSE_ALL-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Other.html">SSE_ALL-General Support-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Probability/Statistics/XMM.html">SSE_ALL-Probability/Statistics-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Probability/Statistics/MMX.html">SSE_ALL-Probability/Statistics-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Special%20Math%20Functions/XMM.html">SSE_ALL-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Special%20Math%20Functions/MMX.html">SSE_ALL-Special Math Functions-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Logical/XMM.html">SSE_ALL-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Swizzle/XMM.html">SSE_ALL-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Swizzle/Other.html">SSE_ALL-Swizzle-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Swizzle/MMX.html">SSE_ALL-Swizzle-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Store/XMM.html">SSE_ALL-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Store/MMX.html">SSE_ALL-Store-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Load/XMM.html">SSE_ALL-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Elementary%20Math%20Functions/XMM.html">SSE_ALL-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Arithmetic/XMM.html">SSE_ALL-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Arithmetic/MMX.html">SSE_ALL-Arithmetic-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Compare/XMM.html">SSE_ALL-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Set/XMM.html">SSE_ALL-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Convert/XMM.html">SSE_ALL-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Miscellaneous/XMM.html">SSE_ALL-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Miscellaneous/MMX.html">SSE_ALL-Miscellaneous-MMX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Other/index.html">Other</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cryptography/ZMM.html">Other-Cryptography-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cryptography/YMM.html">Other-Cryptography-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cryptography/XMM.html">Other-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Shift/Other.html">Other-Shift-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Bit%20Manipulation/XMM.html">Other-Bit Manipulation-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Bit%20Manipulation/Other.html">Other-Bit Manipulation-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cast/Other.html">Other-Cast-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/General%20Support/XMM.html">Other-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/General%20Support/Other.html">Other-General Support-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/General%20Support/MMX.html">Other-General Support-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Unknown/Other.html">Other-Unknown-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Random/Other.html">Other-Random-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Store/Other.html">Other-Store-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Load/Other.html">Other-Load-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/ZMM.html">Other-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/YMM.html">Other-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/XMM.html">Other-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/Other.html">Other-Arithmetic-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Convert/Other.html">Other-Convert-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/OS-Targeted/Other.html">Other-OS-Targeted-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Application-Targeted/ZMM.html">Other-Application-Targeted-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Application-Targeted/YMM.html">Other-Application-Targeted-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Application-Targeted/XMM.html">Other-Application-Targeted-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Miscellaneous/XMM.html">Other-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Miscellaneous/Other.html">Other-Miscellaneous-Other</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../SVML/index.html">SVML</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/ZMM.html">SVML-Probability/Statistics-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/YMM.html">SVML-Probability/Statistics-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/XMM.html">SVML-Probability/Statistics-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/ZMM.html">SVML-Special Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/YMM.html">SVML-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/XMM.html">SVML-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/ZMM.html">SVML-Trigonometry-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/YMM.html">SVML-Trigonometry-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/XMM.html">SVML-Trigonometry-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/ZMM.html">SVML-Elementary Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/YMM.html">SVML-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/XMM.html">SVML-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/ZMM.html">SVML-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/YMM.html">SVML-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/XMM.html">SVML-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Miscellaneous/YMM.html">SVML-Miscellaneous-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Miscellaneous/XMM.html">SVML-Miscellaneous-XMM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../AMX/index.html">AMX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../AMX/Application-Targeted/Other.html">AMX-Application-Targeted-Other</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../AVX-512/index.html">AVX-512</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Shift/ZMM.html">AVX-512-Shift-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Shift/YMM.html">AVX-512-Shift-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Shift/XMM.html">AVX-512-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Move/ZMM.html">AVX-512-Move-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Move/YMM.html">AVX-512-Move-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Move/XMM.html">AVX-512-Move-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Bit%20Manipulation/ZMM.html">AVX-512-Bit Manipulation-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Bit%20Manipulation/YMM.html">AVX-512-Bit Manipulation-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Bit%20Manipulation/XMM.html">AVX-512-Bit Manipulation-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Cast/ZMM.html">AVX-512-Cast-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Cast/YMM.html">AVX-512-Cast-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Cast/XMM.html">AVX-512-Cast-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/General%20Support/ZMM.html">AVX-512-General Support-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/General%20Support/YMM.html">AVX-512-General Support-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/General%20Support/XMM.html">AVX-512-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Special%20Math%20Functions/ZMM.html">AVX-512-Special Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Special%20Math%20Functions/YMM.html">AVX-512-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Special%20Math%20Functions/XMM.html">AVX-512-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Logical/ZMM.html">AVX-512-Logical-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Logical/YMM.html">AVX-512-Logical-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Logical/XMM.html">AVX-512-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Swizzle/ZMM.html">AVX-512-Swizzle-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Swizzle/YMM.html">AVX-512-Swizzle-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Swizzle/XMM.html">AVX-512-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/ZMM.html">AVX-512-Store-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/YMM.html">AVX-512-Store-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/XMM.html">AVX-512-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/Other.html">AVX-512-Store-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/ZMM.html">AVX-512-Load-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/YMM.html">AVX-512-Load-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/XMM.html">AVX-512-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/Other.html">AVX-512-Load-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Elementary%20Math%20Functions/ZMM.html">AVX-512-Elementary Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Elementary%20Math%20Functions/YMM.html">AVX-512-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Elementary%20Math%20Functions/XMM.html">AVX-512-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Arithmetic/ZMM.html">AVX-512-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Arithmetic/YMM.html">AVX-512-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Arithmetic/XMM.html">AVX-512-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Compare/ZMM.html">AVX-512-Compare-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Compare/YMM.html">AVX-512-Compare-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Compare/XMM.html">AVX-512-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/ZMM.html">AVX-512-Mask-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/YMM.html">AVX-512-Mask-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/XMM.html">AVX-512-Mask-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/Other.html">AVX-512-Mask-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Set/ZMM.html">AVX-512-Set-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Set/YMM.html">AVX-512-Set-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Set/XMM.html">AVX-512-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Convert/ZMM.html">AVX-512-Convert-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Convert/YMM.html">AVX-512-Convert-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Convert/XMM.html">AVX-512-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Miscellaneous/ZMM.html">AVX-512-Miscellaneous-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Miscellaneous/YMM.html">AVX-512-Miscellaneous-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Miscellaneous/XMM.html">AVX-512-Miscellaneous-XMM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../AVX_ALL/index.html">AVX_ALL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Shift/YMM.html">AVX_ALL-Shift-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Shift/XMM.html">AVX_ALL-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Cryptography/YMM.html">AVX_ALL-Cryptography-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Cryptography/XMM.html">AVX_ALL-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Move/YMM.html">AVX_ALL-Move-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Cast/YMM.html">AVX_ALL-Cast-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/General%20Support/YMM.html">AVX_ALL-General Support-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Probability/Statistics/YMM.html">AVX_ALL-Probability/Statistics-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Special%20Math%20Functions/YMM.html">AVX_ALL-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Logical/YMM.html">AVX_ALL-Logical-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Logical/XMM.html">AVX_ALL-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Swizzle/YMM.html">AVX_ALL-Swizzle-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Swizzle/XMM.html">AVX_ALL-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Store/YMM.html">AVX_ALL-Store-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Store/XMM.html">AVX_ALL-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Load/YMM.html">AVX_ALL-Load-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Load/XMM.html">AVX_ALL-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Elementary%20Math%20Functions/YMM.html">AVX_ALL-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Arithmetic/YMM.html">AVX_ALL-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Arithmetic/XMM.html">AVX_ALL-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Compare/YMM.html">AVX_ALL-Compare-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Compare/XMM.html">AVX_ALL-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Set/YMM.html">AVX_ALL-Set-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Convert/YMM.html">AVX_ALL-Convert-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Convert/XMM.html">AVX_ALL-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Miscellaneous/YMM.html">AVX_ALL-Miscellaneous-YMM</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/SSE_ALL/General Support/XMM.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>SSE_ALL-General Support-XMM</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-getcsr">_mm_getcsr</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-setcsr">_mm_setcsr</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-prefetch">_mm_prefetch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-sfence">_mm_sfence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-malloc">_mm_malloc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-free">_mm_free</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-undefined-ps">_mm_undefined_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-undefined-pd">_mm_undefined_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-undefined-si128">_mm_undefined_si128</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-pause">_mm_pause</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-clflush">_mm_clflush</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-lfence">_mm_lfence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mfence">_mm_mfence</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="sse-all-general-support-xmm">
+<h1>SSE_ALL-General Support-XMM<a class="headerlink" href="#sse-all-general-support-xmm" title="Link to this heading">#</a></h1>
+<section id="mm-getcsr">
+<h2>_mm_getcsr<a class="headerlink" href="#mm-getcsr" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SSE_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>General Support</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>SSE_ALL-General Support-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>unsigned int</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">_mm_getcsr</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Get the unsigned 32-bit value of the MXCSR control and status register.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[31:0] := MXCSR
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-setcsr">
+<h2>_mm_setcsr<a class="headerlink" href="#mm-setcsr" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SSE_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>General Support</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>SSE_ALL-General Support-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>void</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>unsigned int a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>UI32 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_mm_setcsr</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Set the MXCSR control and status register with the value in unsigned 32-bit integer “a”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>MXCSR := a[31:0]
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm-prefetch">
+<h2>_mm_prefetch<a class="headerlink" href="#mm-prefetch" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SSE_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>General Support</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>SSE_ALL-General Support-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>void</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>char const* p,
+int i</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>UI8 p,
+IMM i</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_mm_prefetch</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Fetch the line of data from memory that contains address “p” to a location in the cache hierarchy specified by the locality hint “i”, which can be one of:&lt;ul&gt;</dt><dd><p>&lt;li&gt;_MM_HINT_T0   // 3, move data using the T0 hint. The PREFETCHT0 instruction will be generated.&lt;/li&gt;
+&lt;li&gt;_MM_HINT_T1   // 2, move data using the T1 hint. The PREFETCHT1 instruction will be generated.&lt;/li&gt;
+&lt;li&gt;_MM_HINT_T2   // 1, move data using the T2 hint. The PREFETCHT2 instruction will be generated.&lt;/li&gt;
+&lt;li&gt;_MM_HINT_NTA  // 0, move data using the non-temporal access (NTA) hint. The PREFETCHNTA instruction will be generated.&lt;/li&gt;</p>
+</dd>
+</dl>
+</div>
+</section>
+<section id="mm-sfence">
+<h2>_mm_sfence<a class="headerlink" href="#mm-sfence" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SSE_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>General Support</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>SSE_ALL-General Support-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_mm_sfence</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a serializing operation on all store-to-memory instructions that were issued prior to this instruction. Guarantees that every store instruction that precedes, in program order, is globally visible before any store instruction which follows the fence in program order.</p>
+</div>
+</section>
+<section id="mm-malloc">
+<h2>_mm_malloc<a class="headerlink" href="#mm-malloc" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SSE_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>General Support</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>SSE_ALL-General Support-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>void*</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>size_t size,
+size_t align</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>UI64 size,
+UI64 align</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">_mm_malloc</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">align</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Allocate “size” bytes of memory, aligned to the alignment specified in “align”, and return a pointer to the allocated memory. “_mm_free” should be used to free memory that is allocated with “_mm_malloc”.</p>
+</div>
+</section>
+<section id="mm-free">
+<h2>_mm_free<a class="headerlink" href="#mm-free" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SSE_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>General Support</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>SSE_ALL-General Support-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_mm_free</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Free aligned memory that was allocated with “_mm_malloc”.</p>
+</div>
+</section>
+<section id="mm-undefined-ps">
+<h2>_mm_undefined_ps<a class="headerlink" href="#mm-undefined-ps" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SSE_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>General Support</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>SSE_ALL-General Support-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm_undefined_ps</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Return vector of type __m128 with undefined elements.</p>
+</div>
+</section>
+<section id="mm-undefined-pd">
+<h2>_mm_undefined_pd<a class="headerlink" href="#mm-undefined-pd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SSE_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>General Support</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>emmintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>SSE_ALL-General Support-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128d</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128d</span><span class="w"> </span><span class="n">_mm_undefined_pd</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Return vector of type __m128d with undefined elements.</p>
+</div>
+</section>
+<section id="mm-undefined-si128">
+<h2>_mm_undefined_si128<a class="headerlink" href="#mm-undefined-si128" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SSE_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>General Support</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>emmintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>SSE_ALL-General Support-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128i</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128i</span><span class="w"> </span><span class="n">_mm_undefined_si128</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Return vector of type __m128i with undefined elements.</p>
+</div>
+</section>
+<section id="mm-pause">
+<h2>_mm_pause<a class="headerlink" href="#mm-pause" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SSE_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>General Support</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>emmintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>SSE_ALL-General Support-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_mm_pause</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Provide a hint to the processor that the code sequence is a spin-wait loop. This can help improve the performance and power consumption of spin-wait loops.</p>
+</div>
+</section>
+<section id="mm-clflush">
+<h2>_mm_clflush<a class="headerlink" href="#mm-clflush" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SSE_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>General Support</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>emmintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>SSE_ALL-General Support-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_mm_clflush</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Invalidate and flush the cache line that contains “p” from all levels of the cache hierarchy.</p>
+</div>
+</section>
+<section id="mm-lfence">
+<h2>_mm_lfence<a class="headerlink" href="#mm-lfence" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SSE_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>General Support</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>emmintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>SSE_ALL-General Support-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_mm_lfence</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a serializing operation on all load-from-memory instructions that were issued prior to this instruction. Guarantees that every load instruction that precedes, in program order, is globally visible before any load instruction which follows the fence in program order.</p>
+</div>
+</section>
+<section id="mm-mfence">
+<h2>_mm_mfence<a class="headerlink" href="#mm-mfence" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SSE_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>General Support</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>emmintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>SSE_ALL-General Support-XMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>XMM 128 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_mm_mfence</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a serializing operation on all load-from-memory and store-to-memory instructions that were issued prior to this instruction. Guarantees that every memory access that precedes, in program order, the memory fence instruction is globally visible before any memory instruction which follows the fence in program order.</p>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../String%20Compare/XMM.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SSE_ALL-String Compare-XMM</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Other.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SSE_ALL-General Support-Other</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-getcsr">_mm_getcsr</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-setcsr">_mm_setcsr</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-prefetch">_mm_prefetch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-sfence">_mm_sfence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-malloc">_mm_malloc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-free">_mm_free</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-undefined-ps">_mm_undefined_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-undefined-pd">_mm_undefined_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-undefined-si128">_mm_undefined_si128</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-pause">_mm_pause</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-clflush">_mm_clflush</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-lfence">_mm_lfence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm-mfence">_mm_mfence</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Your Name
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

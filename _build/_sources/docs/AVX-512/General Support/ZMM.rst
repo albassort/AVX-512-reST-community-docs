@@ -1,0 +1,88 @@
+AVX-512-General Support-ZMM
+===========================
+
+_mm512_undefined
+----------------
+:Tech: AVX-512
+:Category: General Support
+:Header: immintrin.h
+:Searchable: AVX-512-General Support-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512
+
+.. code-block:: C
+
+    __m512 _mm512_undefined(void );
+
+.. admonition:: Intel Description
+
+    Return vector of type __m512 with undefined elements.
+
+_mm512_undefined_epi32
+----------------------
+:Tech: AVX-512
+:Category: General Support
+:Header: immintrin.h
+:Searchable: AVX-512-General Support-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+
+.. code-block:: C
+
+    
+
+.. admonition:: Intel Description
+
+    Return vector of type __m512i with undefined elements.
+
+_mm512_undefined_pd
+-------------------
+:Tech: AVX-512
+:Category: General Support
+:Header: immintrin.h
+:Searchable: AVX-512-General Support-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512d
+
+.. code-block:: C
+
+    
+
+.. admonition:: Intel Description
+
+    Return vector of type __m512d with undefined elements.
+
+_mm512_undefined_ps
+-------------------
+:Tech: AVX-512
+:Category: General Support
+:Header: immintrin.h
+:Searchable: AVX-512-General Support-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512
+
+.. code-block:: C
+
+    
+
+.. admonition:: Intel Description
+
+    Return vector of type __m512 with undefined elements.
+
+_mm512_undefined_ph
+-------------------
+:Tech: AVX-512
+:Category: General Support
+:Header: immintrin.h
+:Searchable: AVX-512-General Support-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512h
+
+.. code-block:: C
+
+    
+
+.. admonition:: Intel Description
+
+    Return vector of type __m512h with undefined elements.
+

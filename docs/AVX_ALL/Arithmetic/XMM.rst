@@ -1,0 +1,1691 @@
+AVX_ALL-Arithmetic-XMM
+======================
+
+_mm_madd52hi_avx_epu64
+----------------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __X, 
+    __m128i __Y, 
+    __m128i __Z
+:Param ETypes:
+    UI64 __X, 
+    UI64 __Y, 
+    UI64 __Z
+
+.. code-block:: C
+
+    __m128i _mm_madd52hi_avx_epu64(__m128i __X, __m128i __Y,
+                                   __m128i __Z)
+
+.. admonition:: Intel Description
+
+    Multiply packed unsigned 52-bit integers in each 64-bit element of "__Y" and "__Z" to form a 104-bit intermediate result. Add the high 52-bit unsigned integer from the intermediate result with the corresponding unsigned 64-bit integer in "__X", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*64
+        	tmp[127:0] := ZeroExtend64(__Y[i+51:i]) * ZeroExtend64(__Z[i+51:i])
+        	dst[i+63:i] := __X[i+63:i] + ZeroExtend64(tmp[103:52])
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_madd52lo_avx_epu64
+----------------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __X, 
+    __m128i __Y, 
+    __m128i __Z
+:Param ETypes:
+    UI64 __X, 
+    UI64 __Y, 
+    UI64 __Z
+
+.. code-block:: C
+
+    __m128i _mm_madd52lo_avx_epu64(__m128i __X, __m128i __Y,
+                                   __m128i __Z)
+
+.. admonition:: Intel Description
+
+    Multiply packed unsigned 52-bit integers in each 64-bit element of "__Y" and "__Z" to form a 104-bit intermediate result. Add the low 52-bit unsigned integer from the intermediate result with the corresponding unsigned 64-bit integer in "__X", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*64
+        	tmp[127:0] := ZeroExtend64(__Y[i+51:i]) * ZeroExtend64(__Z[i+51:i])
+        	dst[i+63:i] := __X[i+63:i] + ZeroExtend64(tmp[51:0])
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_madd52hi_epu64
+------------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __X, 
+    __m128i __Y, 
+    __m128i __Z
+:Param ETypes:
+    UI64 __X, 
+    UI64 __Y, 
+    UI64 __Z
+
+.. code-block:: C
+
+    __m128i _mm_madd52hi_epu64(__m128i __X, __m128i __Y,
+                               __m128i __Z)
+
+.. admonition:: Intel Description
+
+    Multiply packed unsigned 52-bit integers in each 64-bit element of "__Y" and "__Z" to form a 104-bit intermediate result. Add the high 52-bit unsigned integer from the intermediate result with the corresponding unsigned 64-bit integer in "__X", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*64
+        	tmp[127:0] := ZeroExtend64(__Y[i+51:i]) * ZeroExtend64(__Z[i+51:i])
+        	dst[i+63:i] := __X[i+63:i] + ZeroExtend64(tmp[103:52])
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_madd52lo_epu64
+------------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __X, 
+    __m128i __Y, 
+    __m128i __Z
+:Param ETypes:
+    UI64 __X, 
+    UI64 __Y, 
+    UI64 __Z
+
+.. code-block:: C
+
+    __m128i _mm_madd52lo_epu64(__m128i __X, __m128i __Y,
+                               __m128i __Z)
+
+.. admonition:: Intel Description
+
+    Multiply packed unsigned 52-bit integers in each 64-bit element of "__Y" and "__Z" to form a 104-bit intermediate result. Add the low 52-bit unsigned integer from the intermediate result with the corresponding unsigned 64-bit integer in "__X", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*64
+        	tmp[127:0] := ZeroExtend64(__Y[i+51:i]) * ZeroExtend64(__Z[i+51:i])
+        	dst[i+63:i] := __X[i+63:i] + ZeroExtend64(tmp[51:0])
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_dpbusd_avx_epi32
+--------------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i src, 
+    __m128i a, 
+    __m128i b
+:Param ETypes:
+    SI32 src, 
+    SI16 a, 
+    SI16 b
+
+.. code-block:: C
+
+    __m128i _mm_dpbusd_avx_epi32(__m128i src, __m128i a,
+                                 __m128i b)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 4 adjacent pairs of unsigned 8-bit integers in "a" with corresponding signed 8-bit integers in "b", producing 4 intermediate signed 16-bit results. Sum these 4 results with the corresponding 32-bit integer in "src", and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.word := Signed(ZeroExtend16(a.byte[4*j]) * SignExtend16(b.byte[4*j]))
+        	tmp2.word := Signed(ZeroExtend16(a.byte[4*j+1]) * SignExtend16(b.byte[4*j+1]))
+        	tmp3.word := Signed(ZeroExtend16(a.byte[4*j+2]) * SignExtend16(b.byte[4*j+2]))
+        	tmp4.word := Signed(ZeroExtend16(a.byte[4*j+3]) * SignExtend16(b.byte[4*j+3]))
+        	dst.dword[j] := src.dword[j] + tmp1 + tmp2 + tmp3 + tmp4
+        ENDFOR
+        dst[MAX:128] := 0
+        		
+
+_mm_dpbusds_avx_epi32
+---------------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i src, 
+    __m128i a, 
+    __m128i b
+:Param ETypes:
+    SI32 src, 
+    UI8 a, 
+    SI8 b
+
+.. code-block:: C
+
+    __m128i _mm_dpbusds_avx_epi32(__m128i src, __m128i a,
+                                  __m128i b)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 4 adjacent pairs of unsigned 8-bit integers in "a" with corresponding signed 8-bit integers in "b", producing 4 intermediate signed 16-bit results. Sum these 4 results with the corresponding 32-bit integer in "src" using signed saturation, and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.word := Signed(ZeroExtend16(a.byte[4*j]) * SignExtend16(b.byte[4*j]))
+        	tmp2.word := Signed(ZeroExtend16(a.byte[4*j+1]) * SignExtend16(b.byte[4*j+1]))
+        	tmp3.word := Signed(ZeroExtend16(a.byte[4*j+2]) * SignExtend16(b.byte[4*j+2]))
+        	tmp4.word := Signed(ZeroExtend16(a.byte[4*j+3]) * SignExtend16(b.byte[4*j+3]))
+        	dst.dword[j] := Saturate32(src.dword[j] + tmp1 + tmp2 + tmp3 + tmp4)
+        ENDFOR
+        dst[MAX:128] := 0
+        		
+
+_mm_dpwssd_avx_epi32
+--------------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i src, 
+    __m128i a, 
+    __m128i b
+:Param ETypes:
+    SI32 src, 
+    SI16 a, 
+    SI16 b
+
+.. code-block:: C
+
+    __m128i _mm_dpwssd_avx_epi32(__m128i src, __m128i a,
+                                 __m128i b)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 2 adjacent pairs of signed 16-bit integers in "a" with corresponding 16-bit integers in "b", producing 2 intermediate signed 32-bit results. Sum these 2 results with the corresponding 32-bit integer in "src", and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.dword := SignExtend32(a.word[2*j]) * SignExtend32(b.word[2*j])
+        	tmp2.dword := SignExtend32(a.word[2*j+1]) * SignExtend32(b.word[2*j+1])
+        	dst.dword[j] := src.dword[j] + tmp1 + tmp2
+        ENDFOR
+        dst[MAX:128] := 0
+        		
+
+_mm_dpwssds_avx_epi32
+---------------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i src, 
+    __m128i a, 
+    __m128i b
+:Param ETypes:
+    SI32 src, 
+    SI16 a, 
+    SI16 b
+
+.. code-block:: C
+
+    __m128i _mm_dpwssds_avx_epi32(__m128i src, __m128i a,
+                                  __m128i b)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 2 adjacent pairs of signed 16-bit integers in "a" with corresponding 16-bit integers in "b", producing 2 intermediate signed 32-bit results. Sum these 2 results with the corresponding 32-bit integer in "src" using signed saturation, and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.dword := SignExtend32(a.word[2*j]) * SignExtend32(b.word[2*j])
+        	tmp2.dword := SignExtend32(a.word[2*j+1]) * SignExtend32(b.word[2*j+1])
+        	dst.dword[j] := Saturate32(src.dword[j] + tmp1 + tmp2)
+        ENDFOR
+        dst[MAX:128] := 0
+        		
+
+_mm_dpbusd_epi32
+----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i src, 
+    __m128i a, 
+    __m128i b
+:Param ETypes:
+    SI32 src, 
+    SI16 a, 
+    SI16 b
+
+.. code-block:: C
+
+    __m128i _mm_dpbusd_epi32(__m128i src, __m128i a, __m128i b);
+
+.. admonition:: Intel Description
+
+    Multiply groups of 4 adjacent pairs of unsigned 8-bit integers in "a" with corresponding signed 8-bit integers in "b", producing 4 intermediate signed 16-bit results. Sum these 4 results with the corresponding 32-bit integer in "src", and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.word := Signed(ZeroExtend16(a.byte[4*j]) * SignExtend16(b.byte[4*j]))
+        	tmp2.word := Signed(ZeroExtend16(a.byte[4*j+1]) * SignExtend16(b.byte[4*j+1]))
+        	tmp3.word := Signed(ZeroExtend16(a.byte[4*j+2]) * SignExtend16(b.byte[4*j+2]))
+        	tmp4.word := Signed(ZeroExtend16(a.byte[4*j+3]) * SignExtend16(b.byte[4*j+3]))
+        	dst.dword[j] := src.dword[j] + tmp1 + tmp2 + tmp3 + tmp4
+        ENDFOR
+        dst[MAX:128] := 0
+        		
+
+_mm_dpbusds_epi32
+-----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i src, 
+    __m128i a, 
+    __m128i b
+:Param ETypes:
+    SI32 src, 
+    UI8 a, 
+    SI8 b
+
+.. code-block:: C
+
+    __m128i _mm_dpbusds_epi32(__m128i src, __m128i a,
+                              __m128i b)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 4 adjacent pairs of unsigned 8-bit integers in "a" with corresponding signed 8-bit integers in "b", producing 4 intermediate signed 16-bit results. Sum these 4 results with the corresponding 32-bit integer in "src" using signed saturation, and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.word := Signed(ZeroExtend16(a.byte[4*j]) * SignExtend16(b.byte[4*j]))
+        	tmp2.word := Signed(ZeroExtend16(a.byte[4*j+1]) * SignExtend16(b.byte[4*j+1]))
+        	tmp3.word := Signed(ZeroExtend16(a.byte[4*j+2]) * SignExtend16(b.byte[4*j+2]))
+        	tmp4.word := Signed(ZeroExtend16(a.byte[4*j+3]) * SignExtend16(b.byte[4*j+3]))
+        	dst.dword[j] := Saturate32(src.dword[j] + tmp1 + tmp2 + tmp3 + tmp4)
+        ENDFOR
+        dst[MAX:128] := 0
+        		
+
+_mm_dpwssd_epi32
+----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i src, 
+    __m128i a, 
+    __m128i b
+:Param ETypes:
+    SI32 src, 
+    SI16 a, 
+    SI16 b
+
+.. code-block:: C
+
+    __m128i _mm_dpwssd_epi32(__m128i src, __m128i a, __m128i b);
+
+.. admonition:: Intel Description
+
+    Multiply groups of 2 adjacent pairs of signed 16-bit integers in "a" with corresponding 16-bit integers in "b", producing 2 intermediate signed 32-bit results. Sum these 2 results with the corresponding 32-bit integer in "src", and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.dword := SignExtend32(a.word[2*j]) * SignExtend32(b.word[2*j])
+        	tmp2.dword := SignExtend32(a.word[2*j+1]) * SignExtend32(b.word[2*j+1])
+        	dst.dword[j] := src.dword[j] + tmp1 + tmp2
+        ENDFOR
+        dst[MAX:128] := 0
+        		
+
+_mm_dpwssds_epi32
+-----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i src, 
+    __m128i a, 
+    __m128i b
+:Param ETypes:
+    SI32 src, 
+    SI16 a, 
+    SI16 b
+
+.. code-block:: C
+
+    __m128i _mm_dpwssds_epi32(__m128i src, __m128i a,
+                              __m128i b)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 2 adjacent pairs of signed 16-bit integers in "a" with corresponding 16-bit integers in "b", producing 2 intermediate signed 32-bit results. Sum these 2 results with the corresponding 32-bit integer in "src" using signed saturation, and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.dword := SignExtend32(a.word[2*j]) * SignExtend32(b.word[2*j])
+        	tmp2.dword := SignExtend32(a.word[2*j+1]) * SignExtend32(b.word[2*j+1])
+        	dst.dword[j] := Saturate32(src.dword[j] + tmp1 + tmp2)
+        ENDFOR
+        dst[MAX:128] := 0
+        		
+
+_mm_dpwsud_epi32
+----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __W, 
+    __m128i __A, 
+    __m128i __B
+:Param ETypes:
+    SI32 __W, 
+    SI16 __A, 
+    UI16 __B
+
+.. code-block:: C
+
+    __m128i _mm_dpwsud_epi32(__m128i __W, __m128i __A,
+                             __m128i __B)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 2 adjacent pairs of signed 16-bit integers in "__A" with corresponding unsigned 16-bit integers in "__B", producing 2 intermediate signed 32-bit results. Sum these 2 results with the corresponding 32-bit integer in "__W", and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.dword := SignExtend32(__A.word[2*j]) * ZeroExtend32(__B.word[2*j])
+        	tmp2.dword := SignExtend32(__A.word[2*j+1]) * ZeroExtend32(__B.word[2*j+1])
+        	dst.dword[j] := __W.dword[j] + tmp1 + tmp2
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_dpwsuds_epi32
+-----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __W, 
+    __m128i __A, 
+    __m128i __B
+:Param ETypes:
+    SI32 __W, 
+    SI16 __A, 
+    UI16 __B
+
+.. code-block:: C
+
+    __m128i _mm_dpwsuds_epi32(__m128i __W, __m128i __A,
+                              __m128i __B)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 2 adjacent pairs of signed 16-bit integers in "__A" with corresponding unsigned 16-bit integers in "__B", producing 2 intermediate signed 32-bit results. Sum these 2 results with the corresponding 32-bit integer in "__W" with signed saturation, and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.dword := SignExtend32(__A.word[2*j]) * ZeroExtend32(__B.word[2*j])
+        	tmp2.dword := SignExtend32(__A.word[2*j+1]) * ZeroExtend32(__B.word[2*j+1])
+        	dst.dword[j] := SIGNED_DWORD_SATURATE(__W.dword[j] + tmp1 + tmp2)
+        ENDFOR
+        dst[MAX:128] := 0			
+
+_mm_dpwusd_epi32
+----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __W, 
+    __m128i __A, 
+    __m128i __B
+:Param ETypes:
+    SI32 __W, 
+    UI16 __A, 
+    SI16 __B
+
+.. code-block:: C
+
+    __m128i _mm_dpwusd_epi32(__m128i __W, __m128i __A,
+                             __m128i __B)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 2 adjacent pairs of unsigned 16-bit integers in "__A" with corresponding signed 16-bit integers in "__B", producing 2 intermediate signed 32-bit results. Sum these 2 results with the corresponding 32-bit integer in "__W", and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.dword := ZeroExtend32(__A.word[2*j]) * SignExtend32(__B.word[2*j])
+        	tmp2.dword := ZeroExtend32(__A.word[2*j+1]) * SignExtend32(__B.word[2*j+1])
+        	dst.dword[j] := __W.dword[j] + tmp1 + tmp2
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_dpwusds_epi32
+-----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __W, 
+    __m128i __A, 
+    __m128i __B
+:Param ETypes:
+    SI32 __W, 
+    UI16 __A, 
+    SI16 __B
+
+.. code-block:: C
+
+    __m128i _mm_dpwusds_epi32(__m128i __W, __m128i __A,
+                              __m128i __B)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 2 adjacent pairs of unsigned 16-bit integers in "__A" with corresponding signed 16-bit integers in "__B", producing 2 intermediate signed 32-bit results. Sum these 2 results with the corresponding 32-bit integer in "__W" with signed saturation, and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.dword := ZeroExtend32(__A.word[2*j]) * SignExtend32(__B.word[2*j])
+        	tmp2.dword := ZeroExtend32(__A.word[2*j+1]) * SignExtend32(__B.word[2*j+1])
+        	dst.dword[j] := SIGNED_DWORD_SATURATE(__W.dword[j] + tmp1 + tmp2)
+        ENDFOR
+        dst[MAX:128] := 0			
+
+_mm_dpwuud_epi32
+----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __W, 
+    __m128i __A, 
+    __m128i __B
+:Param ETypes:
+    UI32 __W, 
+    UI16 __A, 
+    UI16 __B
+
+.. code-block:: C
+
+    __m128i _mm_dpwuud_epi32(__m128i __W, __m128i __A,
+                             __m128i __B)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 2 adjacent pairs of unsigned 16-bit integers in "__A" with corresponding unsigned 16-bit integers in "__B", producing 2 intermediate signed 32-bit results. Sum these 2 results with the corresponding 32-bit integer in "__W", and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.dword := ZeroExtend32(__A.word[2*j]) * ZeroExtend32(__B.word[2*j])
+        	tmp2.dword := ZeroExtend32(__A.word[2*j+1]) * ZeroExtend32(__B.word[2*j+1])
+        	dst.dword[j] := __W.dword[j] + tmp1 + tmp2
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_dpwuuds_epi32
+-----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __W, 
+    __m128i __A, 
+    __m128i __B
+:Param ETypes:
+    UI32 __W, 
+    UI16 __A, 
+    UI16 __B
+
+.. code-block:: C
+
+    __m128i _mm_dpwuuds_epi32(__m128i __W, __m128i __A,
+                              __m128i __B)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 2 adjacent pairs of unsigned 16-bit integers in "__A" with corresponding unsigned 16-bit integers in "__B", producing 2 intermediate signed 32-bit results. Sum these 2 results with the corresponding 32-bit integer in "__W" with signed saturation, and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.dword := ZeroExtend32(__A.word[2*j]) * ZeroExtend32(__B.word[2*j])
+        	tmp2.dword := ZeroExtend32(__A.word[2*j+1]) * ZeroExtend32(__B.word[2*j+1])
+        	dst.dword[j] := UNSIGNED_DWORD_SATURATE(__W.dword[j] + tmp1 + tmp2)
+        ENDFOR
+        dst[MAX:128] := 0			
+
+_mm_dpbssd_epi32
+----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __W, 
+    __m128i __A, 
+    __m128i __B
+:Param ETypes:
+    SI32 __W, 
+    SI8 __A, 
+    SI8 __B
+
+.. code-block:: C
+
+    __m128i _mm_dpbssd_epi32(__m128i __W, __m128i __A,
+                             __m128i __B)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 4 adjacent pairs of signed 8-bit integers in "__A" with corresponding signed 8-bit integers in "__B", producing 4 intermediate signed 16-bit results. Sum these 4 results with the corresponding 32-bit integer in "__W", and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.word := SignExtend16(__A.byte[4*j]) * SignExtend16(__B.byte[4*j])
+        	tmp2.word := SignExtend16(__A.byte[4*j+1]) * SignExtend16(__B.byte[4*j+1])
+        	tmp3.word := SignExtend16(__A.byte[4*j+2]) * SignExtend16(__B.byte[4*j+2])
+        	tmp4.word := SignExtend16(__A.byte[4*j+3]) * SignExtend16(__B.byte[4*j+3])
+        	dst.dword[j] := __W.dword[j] + tmp1 + tmp2 + tmp3 + tmp4
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_dpbssds_epi32
+-----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __W, 
+    __m128i __A, 
+    __m128i __B
+:Param ETypes:
+    SI32 __W, 
+    SI8 __A, 
+    SI8 __B
+
+.. code-block:: C
+
+    __m128i _mm_dpbssds_epi32(__m128i __W, __m128i __A,
+                              __m128i __B)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 4 adjacent pairs of signed 8-bit integers in "__A" with corresponding signed 8-bit integers in "__B", producing 4 intermediate signed 16-bit results. Sum these 4 results with the corresponding 32-bit integer in "__W" with signed saturation, and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.word := SignExtend16(__A.byte[4*j]) * SignExtend16(__B.byte[4*j])
+        	tmp2.word := SignExtend16(__A.byte[4*j+1]) * SignExtend16(__B.byte[4*j+1])
+        	tmp3.word := SignExtend16(__A.byte[4*j+2]) * SignExtend16(__B.byte[4*j+2])
+        	tmp4.word := SignExtend16(__A.byte[4*j+3]) * SignExtend16(__B.byte[4*j+3])
+        	dst.dword[j] := SIGNED_DWORD_SATURATE(__W.dword[j] + tmp1 + tmp2 + tmp3 + tmp4)
+        ENDFOR
+        dst[MAX:128] := 0			
+
+_mm_dpbsud_epi32
+----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __W, 
+    __m128i __A, 
+    __m128i __B
+:Param ETypes:
+    SI32 __W, 
+    SI8 __A, 
+    UI8 __B
+
+.. code-block:: C
+
+    __m128i _mm_dpbsud_epi32(__m128i __W, __m128i __A,
+                             __m128i __B)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 4 adjacent pairs of signed 8-bit integers in "__A" with corresponding unsigned 8-bit integers in "__B", producing 4 intermediate signed 16-bit results. Sum these 4 results with the corresponding 32-bit integer in "__W", and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.word := Signed(SignExtend16(__A.byte[4*j]) * ZeroExtend16(__B.byte[4*j]))
+        	tmp2.word := Signed(SignExtend16(__A.byte[4*j+1]) * ZeroExtend16(__B.byte[4*j+1]))
+        	tmp3.word := Signed(SignExtend16(__A.byte[4*j+2]) * ZeroExtend16(__B.byte[4*j+2]))
+        	tmp4.word := Signed(SignExtend16(__A.byte[4*j+3]) * ZeroExtend16(__B.byte[4*j+3]))
+        	dst.dword[j] := __W.dword[j] + tmp1 + tmp2 + tmp3 + tmp4
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_dpbsuds_epi32
+-----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __W, 
+    __m128i __A, 
+    __m128i __B
+:Param ETypes:
+    SI32 __W, 
+    SI8 __A, 
+    UI8 __B
+
+.. code-block:: C
+
+    __m128i _mm_dpbsuds_epi32(__m128i __W, __m128i __A,
+                              __m128i __B)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 4 adjacent pairs of signed 8-bit integers in "__A" with corresponding unsigned 8-bit integers in "__B", producing 4 intermediate signed 16-bit results. Sum these 4 results with the corresponding 32-bit integer in "__W" with signed saturation, and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.word := Signed(SignExtend16(__A.byte[4*j]) * ZeroExtend16(__B.byte[4*j]))
+        	tmp2.word := Signed(SignExtend16(__A.byte[4*j+1]) * ZeroExtend16(__B.byte[4*j+1]))
+        	tmp3.word := Signed(SignExtend16(__A.byte[4*j+2]) * ZeroExtend16(__B.byte[4*j+2]))
+        	tmp4.word := Signed(SignExtend16(__A.byte[4*j+3]) * ZeroExtend16(__B.byte[4*j+3]))
+        	dst.dword[j] := SIGNED_DWORD_SATURATE(__W.dword[j] + tmp1 + tmp2 + tmp3 + tmp4)
+        ENDFOR
+        dst[MAX:128] := 0			
+
+_mm_dpbuud_epi32
+----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __W, 
+    __m128i __A, 
+    __m128i __B
+:Param ETypes:
+    SI32 __W, 
+    UI8 __A, 
+    UI8 __B
+
+.. code-block:: C
+
+    __m128i _mm_dpbuud_epi32(__m128i __W, __m128i __A,
+                             __m128i __B)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 4 adjacent pairs of unsigned 8-bit integers in "__A" with corresponding unsigned 8-bit integers in "__B", producing 4 intermediate signed 16-bit results. Sum these 4 results with the corresponding 32-bit integer in "__W", and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.word := ZeroExtend16(__A.byte[4*j]) * ZeroExtend16(__B.byte[4*j])
+        	tmp2.word := ZeroExtend16(__A.byte[4*j+1]) * ZeroExtend16(__B.byte[4*j+1])
+        	tmp3.word := ZeroExtend16(__A.byte[4*j+2]) * ZeroExtend16(__B.byte[4*j+2])
+        	tmp4.word := ZeroExtend16(__A.byte[4*j+3]) * ZeroExtend16(__B.byte[4*j+3])
+        	dst.dword[j] := __W.dword[j] + tmp1 + tmp2 + tmp3 + tmp4
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_dpbuuds_epi32
+-----------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i __W, 
+    __m128i __A, 
+    __m128i __B
+:Param ETypes:
+    SI32 __W, 
+    UI8 __A, 
+    UI8 __B
+
+.. code-block:: C
+
+    __m128i _mm_dpbuuds_epi32(__m128i __W, __m128i __A,
+                              __m128i __B)
+
+.. admonition:: Intel Description
+
+    Multiply groups of 4 adjacent pairs of unsigned 8-bit integers in "__A" with corresponding unsigned 8-bit integers in "__B", producing 4 intermediate signed 16-bit results. Sum these 4 results with the corresponding 32-bit integer in "__W" with unsigned saturation, and store the packed 32-bit results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	tmp1.word := ZeroExtend16(__A.byte[4*j]) * ZeroExtend16(__B.byte[4*j])
+        	tmp2.word := ZeroExtend16(__A.byte[4*j+1]) * ZeroExtend16(__B.byte[4*j+1])
+        	tmp3.word := ZeroExtend16(__A.byte[4*j+2]) * ZeroExtend16(__B.byte[4*j+2])
+        	tmp4.word := ZeroExtend16(__A.byte[4*j+3]) * ZeroExtend16(__B.byte[4*j+3])
+        	dst.dword[j] := UNSIGNED_DWORD_SATURATE(__W.dword[j] + tmp1 + tmp2 + tmp3 + tmp4)
+        ENDFOR
+        dst[MAX:128] := 0			
+
+_mm_fmadd_pd
+------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a, 
+    __m128d b, 
+    __m128d c
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    FP64 c
+
+.. code-block:: C
+
+    __m128d _mm_fmadd_pd(__m128d a, __m128d b, __m128d c);
+
+.. admonition:: Intel Description
+
+    Multiply packed double-precision (64-bit) floating-point elements in "a" and "b", add the intermediate result to packed elements in "c", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*64
+        	dst[i+63:i] := (a[i+63:i] * b[i+63:i]) + c[i+63:i]
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_fmadd_ps
+------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a, 
+    __m128 b, 
+    __m128 c
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    FP32 c
+
+.. code-block:: C
+
+    __m128 _mm_fmadd_ps(__m128 a, __m128 b, __m128 c);
+
+.. admonition:: Intel Description
+
+    Multiply packed single-precision (32-bit) floating-point elements in "a" and "b", add the intermediate result to packed elements in "c", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*32
+        	dst[i+31:i] := (a[i+31:i] * b[i+31:i]) + c[i+31:i]
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_fmadd_sd
+------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a, 
+    __m128d b, 
+    __m128d c
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    FP64 c
+
+.. code-block:: C
+
+    __m128d _mm_fmadd_sd(__m128d a, __m128d b, __m128d c);
+
+.. admonition:: Intel Description
+
+    Multiply the lower double-precision (64-bit) floating-point elements in "a" and "b", and add the intermediate result to the lower element in "c". Store the result in the lower element of "dst", and copy the upper element from "a" to the upper element of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := (a[63:0] * b[63:0]) + c[63:0]
+        dst[127:64] := a[127:64]
+        dst[MAX:128] := 0
+        	
+
+_mm_fmadd_ss
+------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a, 
+    __m128 b, 
+    __m128 c
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    FP32 c
+
+.. code-block:: C
+
+    __m128 _mm_fmadd_ss(__m128 a, __m128 b, __m128 c);
+
+.. admonition:: Intel Description
+
+    Multiply the lower single-precision (32-bit) floating-point elements in "a" and "b", and add the intermediate result to the lower element in "c". Store the result in the lower element of "dst", and copy the upper 3 packed elements from "a" to the upper elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := (a[31:0] * b[31:0]) + c[31:0]
+        dst[127:32] := a[127:32]
+        dst[MAX:128] := 0
+        	
+
+_mm_fmaddsub_pd
+---------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a, 
+    __m128d b, 
+    __m128d c
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    FP64 c
+
+.. code-block:: C
+
+    __m128d _mm_fmaddsub_pd(__m128d a, __m128d b, __m128d c);
+
+.. admonition:: Intel Description
+
+    Multiply packed double-precision (64-bit) floating-point elements in "a" and "b", alternatively add and subtract packed elements in "c" to/from the intermediate result, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*64
+        	IF ((j & 1) == 0) 
+        		dst[i+63:i] := (a[i+63:i] * b[i+63:i]) - c[i+63:i]
+        	ELSE
+        		dst[i+63:i] := (a[i+63:i] * b[i+63:i]) + c[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_fmaddsub_ps
+---------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a, 
+    __m128 b, 
+    __m128 c
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    FP32 c
+
+.. code-block:: C
+
+    __m128 _mm_fmaddsub_ps(__m128 a, __m128 b, __m128 c);
+
+.. admonition:: Intel Description
+
+    Multiply packed single-precision (32-bit) floating-point elements in "a" and "b", alternatively add and subtract packed elements in "c" to/from the intermediate result, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*32
+        	IF ((j & 1) == 0) 
+        		dst[i+31:i] := (a[i+31:i] * b[i+31:i]) - c[i+31:i]
+        	ELSE
+        		dst[i+31:i] := (a[i+31:i] * b[i+31:i]) + c[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_fmsub_pd
+------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a, 
+    __m128d b, 
+    __m128d c
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    FP64 c
+
+.. code-block:: C
+
+    __m128d _mm_fmsub_pd(__m128d a, __m128d b, __m128d c);
+
+.. admonition:: Intel Description
+
+    Multiply packed double-precision (64-bit) floating-point elements in "a" and "b", subtract packed elements in "c" from the intermediate result, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*64
+        	dst[i+63:i] := (a[i+63:i] * b[i+63:i]) - c[i+63:i]
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_fmsub_ps
+------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a, 
+    __m128 b, 
+    __m128 c
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    FP32 c
+
+.. code-block:: C
+
+    __m128 _mm_fmsub_ps(__m128 a, __m128 b, __m128 c);
+
+.. admonition:: Intel Description
+
+    Multiply packed single-precision (32-bit) floating-point elements in "a" and "b", subtract packed elements in "c" from the intermediate result, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*32
+        	dst[i+31:i] := (a[i+31:i] * b[i+31:i]) - c[i+31:i]
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_fmsub_sd
+------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a, 
+    __m128d b, 
+    __m128d c
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    FP64 c
+
+.. code-block:: C
+
+    __m128d _mm_fmsub_sd(__m128d a, __m128d b, __m128d c);
+
+.. admonition:: Intel Description
+
+    Multiply the lower double-precision (64-bit) floating-point elements in "a" and "b", and subtract the lower element in "c" from the intermediate result. Store the result in the lower element of "dst", and copy the upper element from "a" to the upper element of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := (a[63:0] * b[63:0]) - c[63:0]
+        dst[127:64] := a[127:64]
+        dst[MAX:128] := 0
+        	
+
+_mm_fmsub_ss
+------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a, 
+    __m128 b, 
+    __m128 c
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    FP32 c
+
+.. code-block:: C
+
+    __m128 _mm_fmsub_ss(__m128 a, __m128 b, __m128 c);
+
+.. admonition:: Intel Description
+
+    Multiply the lower single-precision (32-bit) floating-point elements in "a" and "b", and subtract the lower element in "c" from the intermediate result. Store the result in the lower element of "dst", and copy the upper 3 packed elements from "a" to the upper elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := (a[31:0] * b[31:0]) - c[31:0]
+        dst[127:32] := a[127:32]
+        dst[MAX:128] := 0
+        	
+
+_mm_fmsubadd_pd
+---------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a, 
+    __m128d b, 
+    __m128d c
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    FP64 c
+
+.. code-block:: C
+
+    __m128d _mm_fmsubadd_pd(__m128d a, __m128d b, __m128d c);
+
+.. admonition:: Intel Description
+
+    Multiply packed double-precision (64-bit) floating-point elements in "a" and "b", alternatively subtract and add packed elements in "c" from/to the intermediate result, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*64
+        	IF ((j & 1) == 0) 
+        		dst[i+63:i] := (a[i+63:i] * b[i+63:i]) + c[i+63:i]
+        	ELSE
+        		dst[i+63:i] := (a[i+63:i] * b[i+63:i]) - c[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_fmsubadd_ps
+---------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a, 
+    __m128 b, 
+    __m128 c
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    FP32 c
+
+.. code-block:: C
+
+    __m128 _mm_fmsubadd_ps(__m128 a, __m128 b, __m128 c);
+
+.. admonition:: Intel Description
+
+    Multiply packed single-precision (32-bit) floating-point elements in "a" and "b", alternatively subtract and add packed elements in "c" from/to the intermediate result, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*32
+        	IF ((j & 1) == 0) 
+        		dst[i+31:i] := (a[i+31:i] * b[i+31:i]) + c[i+31:i]
+        	ELSE
+        		dst[i+31:i] := (a[i+31:i] * b[i+31:i]) - c[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_fnmadd_pd
+-------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a, 
+    __m128d b, 
+    __m128d c
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    FP64 c
+
+.. code-block:: C
+
+    __m128d _mm_fnmadd_pd(__m128d a, __m128d b, __m128d c);
+
+.. admonition:: Intel Description
+
+    Multiply packed double-precision (64-bit) floating-point elements in "a" and "b", add the negated intermediate result to packed elements in "c", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*64
+        	dst[i+63:i] := -(a[i+63:i] * b[i+63:i]) + c[i+63:i]
+        ENDFOR	
+        dst[MAX:128] := 0
+        	
+
+_mm_fnmadd_ps
+-------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a, 
+    __m128 b, 
+    __m128 c
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    FP32 c
+
+.. code-block:: C
+
+    __m128 _mm_fnmadd_ps(__m128 a, __m128 b, __m128 c);
+
+.. admonition:: Intel Description
+
+    Multiply packed single-precision (32-bit) floating-point elements in "a" and "b", add the negated intermediate result to packed elements in "c", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*32
+        	dst[i+31:i] := -(a[i+31:i] * b[i+31:i]) + c[i+31:i]
+        ENDFOR	
+        dst[MAX:128] := 0
+        	
+
+_mm_fnmadd_sd
+-------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a, 
+    __m128d b, 
+    __m128d c
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    FP64 c
+
+.. code-block:: C
+
+    __m128d _mm_fnmadd_sd(__m128d a, __m128d b, __m128d c);
+
+.. admonition:: Intel Description
+
+    Multiply the lower double-precision (64-bit) floating-point elements in "a" and "b", and add the negated intermediate result to the lower element in "c". Store the result in the lower element of "dst", and copy the upper element from "a" to the upper element of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := -(a[63:0] * b[63:0]) + c[63:0]
+        dst[127:64] := a[127:64]
+        dst[MAX:128] := 0
+        	
+
+_mm_fnmadd_ss
+-------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a, 
+    __m128 b, 
+    __m128 c
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    FP32 c
+
+.. code-block:: C
+
+    __m128 _mm_fnmadd_ss(__m128 a, __m128 b, __m128 c);
+
+.. admonition:: Intel Description
+
+    Multiply the lower single-precision (32-bit) floating-point elements in "a" and "b", and add the negated intermediate result to the lower element in "c". Store the result in the lower element of "dst", and copy the upper 3 packed elements from "a" to the upper elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := -(a[31:0] * b[31:0]) + c[31:0]
+        dst[127:32] := a[127:32]
+        dst[MAX:128] := 0
+        	
+
+_mm_fnmsub_pd
+-------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a, 
+    __m128d b, 
+    __m128d c
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    FP64 c
+
+.. code-block:: C
+
+    __m128d _mm_fnmsub_pd(__m128d a, __m128d b, __m128d c);
+
+.. admonition:: Intel Description
+
+    Multiply packed double-precision (64-bit) floating-point elements in "a" and "b", subtract packed elements in "c" from the negated intermediate result, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*64
+        	dst[i+63:i] := -(a[i+63:i] * b[i+63:i]) - c[i+63:i]
+        ENDFOR	
+        dst[MAX:128] := 0
+        	
+
+_mm_fnmsub_ps
+-------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a, 
+    __m128 b, 
+    __m128 c
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    FP32 c
+
+.. code-block:: C
+
+    __m128 _mm_fnmsub_ps(__m128 a, __m128 b, __m128 c);
+
+.. admonition:: Intel Description
+
+    Multiply packed single-precision (32-bit) floating-point elements in "a" and "b", subtract packed elements in "c" from the negated intermediate result, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*32
+        	dst[i+31:i] := -(a[i+31:i] * b[i+31:i]) - c[i+31:i]
+        ENDFOR	
+        dst[MAX:128] := 0
+        	
+
+_mm_fnmsub_sd
+-------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a, 
+    __m128d b, 
+    __m128d c
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    FP64 c
+
+.. code-block:: C
+
+    __m128d _mm_fnmsub_sd(__m128d a, __m128d b, __m128d c);
+
+.. admonition:: Intel Description
+
+    Multiply the lower double-precision (64-bit) floating-point elements in "a" and "b", and subtract the lower element in "c" from the negated intermediate result. Store the result in the lower element of "dst", and copy the upper element from "a" to the upper element of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := -(a[63:0] * b[63:0]) - c[63:0]
+        dst[127:64] := a[127:64]
+        dst[MAX:128] := 0
+        	
+
+_mm_fnmsub_ss
+-------------
+:Tech: AVX_ALL
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: AVX_ALL-Arithmetic-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a, 
+    __m128 b, 
+    __m128 c
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    FP32 c
+
+.. code-block:: C
+
+    __m128 _mm_fnmsub_ss(__m128 a, __m128 b, __m128 c);
+
+.. admonition:: Intel Description
+
+    Multiply the lower single-precision (32-bit) floating-point elements in "a" and "b", and subtract the lower element in "c" from the negated intermediate result. Store the result in the lower element of "dst", and copy the upper 3 packed elements from "a" to the upper elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := -(a[31:0] * b[31:0]) - c[31:0]
+        dst[127:32] := a[127:32]
+        dst[MAX:128] := 0
+        	
+

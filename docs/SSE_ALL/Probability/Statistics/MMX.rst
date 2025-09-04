@@ -1,0 +1,71 @@
+SSE_ALL-Probability/Statistics-MMX
+==================================
+
+_m_pavgb
+--------
+:Tech: SSE_ALL
+:Category: Probability/Statistics
+:Header: xmmintrin.h
+:Searchable: SSE_ALL-Probability/Statistics-MMX
+:Register: MMX 64 bit
+:Return Type: __m64
+:Param Types:
+    __m64 a, 
+    __m64 b
+:Param ETypes:
+    UI8 a, 
+    UI8 b
+
+.. code-block:: C
+
+    __m64 _m_pavgb(__m64 a, __m64 b);
+
+.. admonition:: Intel Description
+
+    Average packed unsigned 8-bit integers in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*8
+        	dst[i+7:i] := (a[i+7:i] + b[i+7:i] + 1) >> 1
+        ENDFOR
+        	
+
+_m_pavgw
+--------
+:Tech: SSE_ALL
+:Category: Probability/Statistics
+:Header: xmmintrin.h
+:Searchable: SSE_ALL-Probability/Statistics-MMX
+:Register: MMX 64 bit
+:Return Type: __m64
+:Param Types:
+    __m64 a, 
+    __m64 b
+:Param ETypes:
+    UI16 a, 
+    UI16 b
+
+.. code-block:: C
+
+    __m64 _m_pavgw(__m64 a, __m64 b);
+
+.. admonition:: Intel Description
+
+    Average packed unsigned 16-bit integers in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*16
+        	dst[i+15:i] := (a[i+15:i] + b[i+15:i] + 1) >> 1
+        ENDFOR
+        	
+

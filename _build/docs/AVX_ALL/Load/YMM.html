@@ -1,0 +1,2377 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>AVX_ALL-Load-YMM &#8212; My Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/AVX_ALL/Load/YMM';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="AVX_ALL-Load-XMM" href="XMM.html" />
+    <link rel="prev" title="AVX_ALL-Store-XMM" href="../Store/XMM.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My Docs 1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../MMX/index.html">MMX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Shift/XMM.html">MMX-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Shift/MMX.html">MMX-Shift-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/General%20Support/XMM.html">MMX-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/General%20Support/MMX.html">MMX-General Support-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Logical/XMM.html">MMX-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Logical/MMX.html">MMX-Logical-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Swizzle/XMM.html">MMX-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Swizzle/MMX.html">MMX-Swizzle-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Arithmetic/XMM.html">MMX-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Arithmetic/MMX.html">MMX-Arithmetic-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Compare/XMM.html">MMX-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Compare/MMX.html">MMX-Compare-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Set/XMM.html">MMX-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Convert/XMM.html">MMX-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Convert/MMX.html">MMX-Convert-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Miscellaneous/XMM.html">MMX-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Miscellaneous/MMX.html">MMX-Miscellaneous-MMX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../SSE_ALL/index.html">SSE_ALL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Shift/XMM.html">SSE_ALL-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Cryptography/XMM.html">SSE_ALL-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Move/XMM.html">SSE_ALL-Move-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Cast/XMM.html">SSE_ALL-Cast-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/String%20Compare/XMM.html">SSE_ALL-String Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/General%20Support/XMM.html">SSE_ALL-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/General%20Support/Other.html">SSE_ALL-General Support-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Probability/Statistics/XMM.html">SSE_ALL-Probability/Statistics-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Probability/Statistics/MMX.html">SSE_ALL-Probability/Statistics-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Special%20Math%20Functions/XMM.html">SSE_ALL-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Special%20Math%20Functions/MMX.html">SSE_ALL-Special Math Functions-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Logical/XMM.html">SSE_ALL-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Swizzle/XMM.html">SSE_ALL-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Swizzle/Other.html">SSE_ALL-Swizzle-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Swizzle/MMX.html">SSE_ALL-Swizzle-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Store/XMM.html">SSE_ALL-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Store/MMX.html">SSE_ALL-Store-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Load/XMM.html">SSE_ALL-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Elementary%20Math%20Functions/XMM.html">SSE_ALL-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Arithmetic/XMM.html">SSE_ALL-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Arithmetic/MMX.html">SSE_ALL-Arithmetic-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Compare/XMM.html">SSE_ALL-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Set/XMM.html">SSE_ALL-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Convert/XMM.html">SSE_ALL-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Miscellaneous/XMM.html">SSE_ALL-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Miscellaneous/MMX.html">SSE_ALL-Miscellaneous-MMX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Other/index.html">Other</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cryptography/ZMM.html">Other-Cryptography-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cryptography/YMM.html">Other-Cryptography-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cryptography/XMM.html">Other-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Shift/Other.html">Other-Shift-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Bit%20Manipulation/XMM.html">Other-Bit Manipulation-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Bit%20Manipulation/Other.html">Other-Bit Manipulation-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cast/Other.html">Other-Cast-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/General%20Support/XMM.html">Other-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/General%20Support/Other.html">Other-General Support-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/General%20Support/MMX.html">Other-General Support-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Unknown/Other.html">Other-Unknown-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Random/Other.html">Other-Random-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Store/Other.html">Other-Store-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Load/Other.html">Other-Load-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/ZMM.html">Other-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/YMM.html">Other-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/XMM.html">Other-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/Other.html">Other-Arithmetic-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Convert/Other.html">Other-Convert-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/OS-Targeted/Other.html">Other-OS-Targeted-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Application-Targeted/ZMM.html">Other-Application-Targeted-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Application-Targeted/YMM.html">Other-Application-Targeted-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Application-Targeted/XMM.html">Other-Application-Targeted-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Miscellaneous/XMM.html">Other-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Miscellaneous/Other.html">Other-Miscellaneous-Other</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../SVML/index.html">SVML</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/ZMM.html">SVML-Probability/Statistics-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/YMM.html">SVML-Probability/Statistics-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/XMM.html">SVML-Probability/Statistics-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/ZMM.html">SVML-Special Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/YMM.html">SVML-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/XMM.html">SVML-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/ZMM.html">SVML-Trigonometry-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/YMM.html">SVML-Trigonometry-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/XMM.html">SVML-Trigonometry-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/ZMM.html">SVML-Elementary Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/YMM.html">SVML-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/XMM.html">SVML-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/ZMM.html">SVML-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/YMM.html">SVML-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/XMM.html">SVML-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Miscellaneous/YMM.html">SVML-Miscellaneous-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Miscellaneous/XMM.html">SVML-Miscellaneous-XMM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../AMX/index.html">AMX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../AMX/Application-Targeted/Other.html">AMX-Application-Targeted-Other</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../AVX-512/index.html">AVX-512</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Shift/ZMM.html">AVX-512-Shift-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Shift/YMM.html">AVX-512-Shift-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Shift/XMM.html">AVX-512-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Move/ZMM.html">AVX-512-Move-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Move/YMM.html">AVX-512-Move-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Move/XMM.html">AVX-512-Move-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Bit%20Manipulation/ZMM.html">AVX-512-Bit Manipulation-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Bit%20Manipulation/YMM.html">AVX-512-Bit Manipulation-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Bit%20Manipulation/XMM.html">AVX-512-Bit Manipulation-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Cast/ZMM.html">AVX-512-Cast-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Cast/YMM.html">AVX-512-Cast-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Cast/XMM.html">AVX-512-Cast-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/General%20Support/ZMM.html">AVX-512-General Support-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/General%20Support/YMM.html">AVX-512-General Support-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/General%20Support/XMM.html">AVX-512-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Special%20Math%20Functions/ZMM.html">AVX-512-Special Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Special%20Math%20Functions/YMM.html">AVX-512-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Special%20Math%20Functions/XMM.html">AVX-512-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Logical/ZMM.html">AVX-512-Logical-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Logical/YMM.html">AVX-512-Logical-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Logical/XMM.html">AVX-512-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Swizzle/ZMM.html">AVX-512-Swizzle-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Swizzle/YMM.html">AVX-512-Swizzle-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Swizzle/XMM.html">AVX-512-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/ZMM.html">AVX-512-Store-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/YMM.html">AVX-512-Store-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/XMM.html">AVX-512-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/Other.html">AVX-512-Store-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/ZMM.html">AVX-512-Load-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/YMM.html">AVX-512-Load-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/XMM.html">AVX-512-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/Other.html">AVX-512-Load-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Elementary%20Math%20Functions/ZMM.html">AVX-512-Elementary Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Elementary%20Math%20Functions/YMM.html">AVX-512-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Elementary%20Math%20Functions/XMM.html">AVX-512-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Arithmetic/ZMM.html">AVX-512-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Arithmetic/YMM.html">AVX-512-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Arithmetic/XMM.html">AVX-512-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Compare/ZMM.html">AVX-512-Compare-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Compare/YMM.html">AVX-512-Compare-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Compare/XMM.html">AVX-512-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/ZMM.html">AVX-512-Mask-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/YMM.html">AVX-512-Mask-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/XMM.html">AVX-512-Mask-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/Other.html">AVX-512-Mask-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Set/ZMM.html">AVX-512-Set-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Set/YMM.html">AVX-512-Set-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Set/XMM.html">AVX-512-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Convert/ZMM.html">AVX-512-Convert-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Convert/YMM.html">AVX-512-Convert-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Convert/XMM.html">AVX-512-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Miscellaneous/ZMM.html">AVX-512-Miscellaneous-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Miscellaneous/YMM.html">AVX-512-Miscellaneous-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Miscellaneous/XMM.html">AVX-512-Miscellaneous-XMM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">AVX_ALL</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Shift/YMM.html">AVX_ALL-Shift-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Shift/XMM.html">AVX_ALL-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Cryptography/YMM.html">AVX_ALL-Cryptography-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Cryptography/XMM.html">AVX_ALL-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Move/YMM.html">AVX_ALL-Move-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Cast/YMM.html">AVX_ALL-Cast-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General%20Support/YMM.html">AVX_ALL-General Support-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Probability/Statistics/YMM.html">AVX_ALL-Probability/Statistics-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Special%20Math%20Functions/YMM.html">AVX_ALL-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Logical/YMM.html">AVX_ALL-Logical-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Logical/XMM.html">AVX_ALL-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Swizzle/YMM.html">AVX_ALL-Swizzle-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Swizzle/XMM.html">AVX_ALL-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Store/YMM.html">AVX_ALL-Store-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Store/XMM.html">AVX_ALL-Store-XMM</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">AVX_ALL-Load-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="XMM.html">AVX_ALL-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Elementary%20Math%20Functions/YMM.html">AVX_ALL-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Arithmetic/YMM.html">AVX_ALL-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Arithmetic/XMM.html">AVX_ALL-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Compare/YMM.html">AVX_ALL-Compare-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Compare/XMM.html">AVX_ALL-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Set/YMM.html">AVX_ALL-Set-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Convert/YMM.html">AVX_ALL-Convert-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Convert/XMM.html">AVX_ALL-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Miscellaneous/YMM.html">AVX_ALL-Miscellaneous-YMM</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/AVX_ALL/Load/YMM.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AVX_ALL-Load-YMM</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-broadcast-ss">_mm256_broadcast_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-load-pd">_mm256_load_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-load-ps">_mm256_load_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-loadu-pd">_mm256_loadu_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-loadu-ps">_mm256_loadu_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-load-si256">_mm256_load_si256</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-loadu-si256">_mm256_loadu_si256</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-maskload-pd">_mm256_maskload_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-maskload-ps">_mm256_maskload_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-lddqu-si256">_mm256_lddqu_si256</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-loadu2-m128">_mm256_loadu2_m128</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-loadu2-m128d">_mm256_loadu2_m128d</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-loadu2-m128i">_mm256_loadu2_m128i</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i32gather-pd">_mm256_i32gather_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i32gather-ps">_mm256_i32gather_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i32gather-epi32">_mm256_i32gather_epi32</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i32gather-epi64">_mm256_i32gather_epi64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i64gather-pd">_mm256_i64gather_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i64gather-ps">_mm256_i64gather_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i64gather-epi32">_mm256_i64gather_epi32</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i64gather-epi64">_mm256_i64gather_epi64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i32gather-pd">_mm256_mask_i32gather_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i32gather-ps">_mm256_mask_i32gather_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i32gather-epi32">_mm256_mask_i32gather_epi32</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i32gather-epi64">_mm256_mask_i32gather_epi64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i64gather-pd">_mm256_mask_i64gather_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i64gather-ps">_mm256_mask_i64gather_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i64gather-epi32">_mm256_mask_i64gather_epi32</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i64gather-epi64">_mm256_mask_i64gather_epi64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-maskload-epi32">_mm256_maskload_epi32</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-maskload-epi64">_mm256_maskload_epi64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-stream-load-si256">_mm256_stream_load_si256</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="avx-all-load-ymm">
+<h1>AVX_ALL-Load-YMM<a class="headerlink" href="#avx-all-load-ymm" title="Link to this heading">#</a></h1>
+<section id="mm256-broadcast-ss">
+<h2>_mm256_broadcast_ss<a class="headerlink" href="#mm256-broadcast-ss" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float const * mem_addr</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 mem_addr</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256</span><span class="w"> </span><span class="nf">_mm256_broadcast_ss</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Broadcast a single-precision (32-bit) floating-point element from memory to all elements of “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>tmp[31:0] := MEM[mem_addr+31:mem_addr]
+FOR j := 0 to 7
+        i := j*32
+        dst[i+31:i] := tmp[31:0]
+ENDFOR
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-load-pd">
+<h2>_mm256_load_pd<a class="headerlink" href="#mm256-load-pd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>double const * mem_addr</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 mem_addr</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256d</span><span class="w"> </span><span class="nf">_mm256_load_pd</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Load 256-bits (composed of 4 packed double-precision (64-bit) floating-point elements) from memory into “dst”.</dt><dd><p>“mem_addr” must be aligned on a 32-byte boundary or a general-protection exception may be generated.</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[255:0] := MEM[mem_addr+255:mem_addr]
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-load-ps">
+<h2>_mm256_load_ps<a class="headerlink" href="#mm256-load-ps" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float const * mem_addr</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 mem_addr</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256</span><span class="w"> </span><span class="nf">_mm256_load_ps</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Load 256-bits (composed of 8 packed single-precision (32-bit) floating-point elements) from memory into “dst”.</dt><dd><p>“mem_addr” must be aligned on a 32-byte boundary or a general-protection exception may be generated.</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[255:0] := MEM[mem_addr+255:mem_addr]
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-loadu-pd">
+<h2>_mm256_loadu_pd<a class="headerlink" href="#mm256-loadu-pd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>double const * mem_addr</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 mem_addr</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256d</span><span class="w"> </span><span class="nf">_mm256_loadu_pd</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Load 256-bits (composed of 4 packed double-precision (64-bit) floating-point elements) from memory into “dst”.</dt><dd><p>“mem_addr” does not need to be aligned on any particular boundary.</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[255:0] := MEM[mem_addr+255:mem_addr]
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-loadu-ps">
+<h2>_mm256_loadu_ps<a class="headerlink" href="#mm256-loadu-ps" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float const * mem_addr</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 mem_addr</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256</span><span class="w"> </span><span class="nf">_mm256_loadu_ps</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Load 256-bits (composed of 8 packed single-precision (32-bit) floating-point elements) from memory into “dst”.</dt><dd><p>“mem_addr” does not need to be aligned on any particular boundary.</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[255:0] := MEM[mem_addr+255:mem_addr]
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-load-si256">
+<h2>_mm256_load_si256<a class="headerlink" href="#mm256-load-si256" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m256i const * mem_addr</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>M256 mem_addr</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256i</span><span class="w"> </span><span class="nf">_mm256_load_si256</span><span class="p">(</span><span class="n">__m256i</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Load 256-bits of integer data from memory into “dst”.</dt><dd><p>“mem_addr” must be aligned on a 32-byte boundary or a general-protection exception may be generated.</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[255:0] := MEM[mem_addr+255:mem_addr]
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-loadu-si256">
+<h2>_mm256_loadu_si256<a class="headerlink" href="#mm256-loadu-si256" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m256i const * mem_addr</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>M256 mem_addr</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256i</span><span class="w"> </span><span class="nf">_mm256_loadu_si256</span><span class="p">(</span><span class="n">__m256i</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Load 256-bits of integer data from memory into “dst”.</dt><dd><p>“mem_addr” does not need to be aligned on any particular boundary.</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[255:0] := MEM[mem_addr+255:mem_addr]
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-maskload-pd">
+<h2>_mm256_maskload_pd<a class="headerlink" href="#mm256-maskload-pd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>double const * mem_addr,
+__m256i mask</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 mem_addr,
+MASK mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256d</span><span class="w"> </span><span class="n">_mm256_maskload_pd</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">__m256i</span><span class="w"> </span><span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Load packed double-precision (64-bit) floating-point elements from memory into “dst” using “mask” (elements are zeroed out when the high bit of the corresponding element is not set).</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*64
+        IF mask[i+63]
+                dst[i+63:i] := MEM[mem_addr+i+63:mem_addr+i]
+        ELSE
+                dst[i+63:i] := 0
+        FI
+ENDFOR
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-maskload-ps">
+<h2>_mm256_maskload_ps<a class="headerlink" href="#mm256-maskload-ps" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float const * mem_addr,
+__m256i mask</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 mem_addr,
+MASK mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256</span><span class="w"> </span><span class="n">_mm256_maskload_ps</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">__m256i</span><span class="w"> </span><span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Load packed single-precision (32-bit) floating-point elements from memory into “dst” using “mask” (elements are zeroed out when the high bit of the corresponding element is not set).</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 7
+        i := j*32
+        IF mask[i+31]
+                dst[i+31:i] := MEM[mem_addr+i+31:mem_addr+i]
+        ELSE
+                dst[i+31:i] := 0
+        FI
+ENDFOR
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-lddqu-si256">
+<h2>_mm256_lddqu_si256<a class="headerlink" href="#mm256-lddqu-si256" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m256i const * mem_addr</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>M256 mem_addr</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256i</span><span class="w"> </span><span class="nf">_mm256_lddqu_si256</span><span class="p">(</span><span class="n">__m256i</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Load 256-bits of integer data from unaligned memory into “dst”. This intrinsic may perform better than “_mm256_loadu_si256” when the data crosses a cache line boundary.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[255:0] := MEM[mem_addr+255:mem_addr]
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-loadu2-m128">
+<h2>_mm256_loadu2_m128<a class="headerlink" href="#mm256-loadu2-m128" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float const* hiaddr,
+float const* loaddr</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 hiaddr,
+FP32 loaddr</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256</span><span class="w"> </span><span class="n">_mm256_loadu2_m128</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">hiaddr</span><span class="p">,</span>
+<span class="w">                          </span><span class="kt">float</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">loaddr</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Load two 128-bit values (composed of 4 packed single-precision (32-bit) floating-point elements) from memory, and combine them into a 256-bit value in “dst”.</dt><dd><p>“hiaddr” and “loaddr” do not need to be aligned on any particular boundary.</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[127:0] := MEM[loaddr+127:loaddr]
+dst[255:128] := MEM[hiaddr+127:hiaddr]
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-loadu2-m128d">
+<h2>_mm256_loadu2_m128d<a class="headerlink" href="#mm256-loadu2-m128d" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>double const* hiaddr,
+double const* loaddr</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 hiaddr,
+FP64 loaddr</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256d</span><span class="w"> </span><span class="n">_mm256_loadu2_m128d</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">hiaddr</span><span class="p">,</span>
+<span class="w">                            </span><span class="kt">double</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">loaddr</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Load two 128-bit values (composed of 2 packed double-precision (64-bit) floating-point elements) from memory, and combine them into a 256-bit value in “dst”.</dt><dd><p>“hiaddr” and “loaddr” do not need to be aligned on any particular boundary.</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[127:0] := MEM[loaddr+127:loaddr]
+dst[255:128] := MEM[hiaddr+127:hiaddr]
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-loadu2-m128i">
+<h2>_mm256_loadu2_m128i<a class="headerlink" href="#mm256-loadu2-m128i" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128i const* hiaddr,
+__m128i const* loaddr</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>M128 hiaddr,
+M128 loaddr</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256i</span><span class="w"> </span><span class="n">_mm256_loadu2_m128i</span><span class="p">(</span><span class="kr">__m128i</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">hiaddr</span><span class="p">,</span>
+<span class="w">                            </span><span class="kr">__m128i</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">loaddr</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Load two 128-bit values (composed of integer data) from memory, and combine them into a 256-bit value in “dst”.</dt><dd><p>“hiaddr” and “loaddr” do not need to be aligned on any particular boundary.</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[127:0] := MEM[loaddr+127:loaddr]
+dst[255:128] := MEM[hiaddr+127:hiaddr]
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-i32gather-pd">
+<h2>_mm256_i32gather_pd<a class="headerlink" href="#mm256-i32gather-pd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>double const* base_addr,
+__m128i vindex,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 base_addr,
+SI32 vindex,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256d</span><span class="w"> </span><span class="n">_mm256_i32gather_pd</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span>
+<span class="w">                            </span><span class="kr">__m128i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span>
+<span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather double-precision (64-bit) floating-point elements from memory using 32-bit indices. 64-bit elements are loaded from addresses starting at “base_addr” and offset by each 32-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst”. “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*64
+        m := j*32
+        addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        dst[i+63:i] := MEM[addr+63:addr]
+ENDFOR
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-i32gather-ps">
+<h2>_mm256_i32gather_ps<a class="headerlink" href="#mm256-i32gather-ps" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float const* base_addr,
+__m256i vindex,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 base_addr,
+SI32 vindex,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256</span><span class="w"> </span><span class="n">_mm256_i32gather_ps</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">__m256i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather single-precision (32-bit) floating-point elements from memory using 32-bit indices. 32-bit elements are loaded from addresses starting at “base_addr” and offset by each 32-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst”. “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 7
+        i := j*32
+        m := j*32
+        addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        dst[i+31:i] := MEM[addr+31:addr]
+ENDFOR
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-i32gather-epi32">
+<h2>_mm256_i32gather_epi32<a class="headerlink" href="#mm256-i32gather-epi32" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int const* base_addr,
+__m256i vindex,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>UI32 base_addr,
+SI32 vindex,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256i</span><span class="w"> </span><span class="n">_mm256_i32gather_epi32</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span>
+<span class="w">                               </span><span class="n">__m256i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span>
+<span class="w">                               </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather 32-bit integers from memory using 32-bit indices. 32-bit elements are loaded from addresses starting at “base_addr” and offset by each 32-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst”. “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 7
+        i := j*32
+        m := j*32
+        addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        dst[i+31:i] := MEM[addr+31:addr]
+ENDFOR
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-i32gather-epi64">
+<h2>_mm256_i32gather_epi64<a class="headerlink" href="#mm256-i32gather-epi64" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__int64 const* base_addr,
+__m128i vindex,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>UI64 base_addr,
+SI32 vindex,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256i</span><span class="w"> </span><span class="n">_mm256_i32gather_epi64</span><span class="p">(</span><span class="kr">__int64</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span>
+<span class="w">                               </span><span class="kr">__m128i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span>
+<span class="w">                               </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather 64-bit integers from memory using 32-bit indices. 64-bit elements are loaded from addresses starting at “base_addr” and offset by each 32-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst”. “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*64
+        m := j*32
+        addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        dst[i+63:i] := MEM[addr+63:addr]
+ENDFOR
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-i64gather-pd">
+<h2>_mm256_i64gather_pd<a class="headerlink" href="#mm256-i64gather-pd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>double const* base_addr,
+__m256i vindex,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 base_addr,
+SI64 vindex,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256d</span><span class="w"> </span><span class="n">_mm256_i64gather_pd</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">__m256i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span>
+<span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather double-precision (64-bit) floating-point elements from memory using 64-bit indices. 64-bit elements are loaded from addresses starting at “base_addr” and offset by each 64-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst”. “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*64
+        m := j*64
+        addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        dst[i+63:i] := MEM[addr+63:addr]
+ENDFOR
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-i64gather-ps">
+<h2>_mm256_i64gather_ps<a class="headerlink" href="#mm256-i64gather-ps" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float const* base_addr,
+__m256i vindex,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 base_addr,
+SI64 vindex,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm256_i64gather_ps</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">__m256i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather single-precision (32-bit) floating-point elements from memory using 64-bit indices. 32-bit elements are loaded from addresses starting at “base_addr” and offset by each 64-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst”. “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*32
+        m := j*64
+        addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        dst[i+31:i] := MEM[addr+31:addr]
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-i64gather-epi32">
+<h2>_mm256_i64gather_epi32<a class="headerlink" href="#mm256-i64gather-epi32" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int const* base_addr,
+__m256i vindex,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>UI32 base_addr,
+SI64 vindex,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128i</span><span class="w"> </span><span class="n">_mm256_i64gather_epi32</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span>
+<span class="w">                               </span><span class="n">__m256i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span>
+<span class="w">                               </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather 32-bit integers from memory using 64-bit indices. 32-bit elements are loaded from addresses starting at “base_addr” and offset by each 64-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst”. “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*32
+        m := j*64
+        addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        dst[i+31:i] := MEM[addr+31:addr]
+ENDFOR
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-i64gather-epi64">
+<h2>_mm256_i64gather_epi64<a class="headerlink" href="#mm256-i64gather-epi64" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__int64 const* base_addr,
+__m256i vindex,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>UI64 base_addr,
+SI64 vindex,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256i</span><span class="w"> </span><span class="n">_mm256_i64gather_epi64</span><span class="p">(</span><span class="kr">__int64</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span>
+<span class="w">                               </span><span class="n">__m256i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span>
+<span class="w">                               </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather 64-bit integers from memory using 64-bit indices. 64-bit elements are loaded from addresses starting at “base_addr” and offset by each 64-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst”. “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*64
+        m := j*64
+        addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        dst[i+63:i] := MEM[addr+63:addr]
+ENDFOR
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-mask-i32gather-pd">
+<h2>_mm256_mask_i32gather_pd<a class="headerlink" href="#mm256-mask-i32gather-pd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m256d src,
+double const* base_addr,
+__m128i vindex,
+__m256d mask,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 src,
+FP64 base_addr,
+SI32 vindex,
+MASK mask,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256d</span><span class="w"> </span><span class="n">_mm256_mask_i32gather_pd</span><span class="p">(</span><span class="n">__m256d</span><span class="w"> </span><span class="n">src</span><span class="p">,</span>
+<span class="w">                                 </span><span class="kt">double</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span>
+<span class="w">                                 </span><span class="kr">__m128i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span>
+<span class="w">                                 </span><span class="n">__m256d</span><span class="w"> </span><span class="n">mask</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather double-precision (64-bit) floating-point elements from memory using 32-bit indices. 64-bit elements are loaded from addresses starting at “base_addr” and offset by each 32-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst” using “mask” (elements are copied from “src” when the highest bit is not set in the corresponding element). “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*64
+        m := j*32
+        IF mask[i+63]
+                addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+                dst[i+63:i] := MEM[addr+63:addr]
+        ELSE
+                dst[i+63:i] := src[i+63:i]
+        FI
+ENDFOR
+mask[MAX:256] := 0
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-mask-i32gather-ps">
+<h2>_mm256_mask_i32gather_ps<a class="headerlink" href="#mm256-mask-i32gather-ps" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m256 src,
+float const* base_addr,
+__m256i vindex,
+__m256 mask,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 src,
+FP32 base_addr,
+SI32 vindex,
+MASK mask,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256</span><span class="w"> </span><span class="n">_mm256_mask_i32gather_ps</span><span class="p">(</span><span class="n">__m256</span><span class="w"> </span><span class="n">src</span><span class="p">,</span>
+<span class="w">                                </span><span class="kt">float</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">__m256i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span><span class="w"> </span><span class="n">__m256</span><span class="w"> </span><span class="n">mask</span><span class="p">,</span>
+<span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather single-precision (32-bit) floating-point elements from memory using 32-bit indices. 32-bit elements are loaded from addresses starting at “base_addr” and offset by each 32-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst” using “mask” (elements are copied from “src” when the highest bit is not set in the corresponding element). “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 7
+        i := j*32
+        m := j*32
+        IF mask[i+31]
+                addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+                dst[i+31:i] := MEM[addr+31:addr]
+        ELSE
+                dst[i+31:i] := src[i+31:i]
+        FI
+ENDFOR
+mask[MAX:256] := 0
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-mask-i32gather-epi32">
+<h2>_mm256_mask_i32gather_epi32<a class="headerlink" href="#mm256-mask-i32gather-epi32" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m256i src,
+int const* base_addr,
+__m256i vindex,
+__m256i mask,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>UI32 src,
+UI32 base_addr,
+SI32 vindex,
+MASK mask,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256i</span><span class="w"> </span><span class="n">_mm256_mask_i32gather_epi32</span><span class="p">(</span><span class="n">__m256i</span><span class="w"> </span><span class="n">src</span><span class="p">,</span>
+<span class="w">                                    </span><span class="kt">int</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span>
+<span class="w">                                    </span><span class="n">__m256i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span>
+<span class="w">                                    </span><span class="n">__m256i</span><span class="w"> </span><span class="n">mask</span><span class="p">,</span>
+<span class="w">                                    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather 32-bit integers from memory using 32-bit indices. 32-bit elements are loaded from addresses starting at “base_addr” and offset by each 32-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst” using “mask” (elements are copied from “src” when the highest bit is not set in the corresponding element). “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 7
+        i := j*32
+        m := j*32
+        IF mask[i+31]
+                addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+                dst[i+31:i] := MEM[addr+31:addr]
+        ELSE
+                dst[i+31:i] := src[i+31:i]
+        FI
+ENDFOR
+mask[MAX:256] := 0
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-mask-i32gather-epi64">
+<h2>_mm256_mask_i32gather_epi64<a class="headerlink" href="#mm256-mask-i32gather-epi64" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m256i src,
+__int64 const* base_addr,
+__m128i vindex,
+__m256i mask,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>UI64 src,
+UI64 base_addr,
+SI32 vindex,
+MASK mask,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256i</span><span class="w"> </span><span class="n">_mm256_mask_i32gather_epi64</span><span class="p">(</span>
+<span class="w">    </span><span class="n">__m256i</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span>
+<span class="w">    </span><span class="n">__m256i</span><span class="w"> </span><span class="n">mask</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather 64-bit integers from memory using 32-bit indices. 64-bit elements are loaded from addresses starting at “base_addr” and offset by each 32-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst” using “mask” (elements are copied from “src” when the highest bit is not set in the corresponding element). “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*64
+        m := j*32
+        IF mask[i+63]
+                addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+                dst[i+63:i] := MEM[addr+63:addr]
+        ELSE
+                dst[i+63:i] := src[i+63:i]
+        FI
+ENDFOR
+mask[MAX:256] := 0
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-mask-i64gather-pd">
+<h2>_mm256_mask_i64gather_pd<a class="headerlink" href="#mm256-mask-i64gather-pd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m256d src,
+double const* base_addr,
+__m256i vindex,
+__m256d mask,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 src,
+FP64 base_addr,
+SI64 vindex,
+MASK mask,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256d</span><span class="w"> </span><span class="n">_mm256_mask_i64gather_pd</span><span class="p">(</span><span class="n">__m256d</span><span class="w"> </span><span class="n">src</span><span class="p">,</span>
+<span class="w">                                 </span><span class="kt">double</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span>
+<span class="w">                                 </span><span class="n">__m256i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span>
+<span class="w">                                 </span><span class="n">__m256d</span><span class="w"> </span><span class="n">mask</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather double-precision (64-bit) floating-point elements from memory using 64-bit indices. 64-bit elements are loaded from addresses starting at “base_addr” and offset by each 64-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst” using “mask” (elements are copied from “src” when the highest bit is not set in the corresponding element). “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*64
+        m := j*64
+        IF mask[i+63]
+                addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+                dst[i+63:i] := MEM[addr+63:addr]
+        ELSE
+                dst[i+63:i] := src[i+63:i]
+        FI
+ENDFOR
+mask[MAX:256] := 0
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-mask-i64gather-ps">
+<h2>_mm256_mask_i64gather_ps<a class="headerlink" href="#mm256-mask-i64gather-ps" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128 src,
+float const* base_addr,
+__m256i vindex,
+__m128 mask,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP32 src,
+FP32 base_addr,
+SI64 vindex,
+MASK mask,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128</span><span class="w"> </span><span class="n">_mm256_mask_i64gather_ps</span><span class="p">(</span><span class="kr">__m128</span><span class="w"> </span><span class="n">src</span><span class="p">,</span>
+<span class="w">                                </span><span class="kt">float</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">__m256i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span><span class="w"> </span><span class="kr">__m128</span><span class="w"> </span><span class="n">mask</span><span class="p">,</span>
+<span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather single-precision (32-bit) floating-point elements from memory using 64-bit indices. 32-bit elements are loaded from addresses starting at “base_addr” and offset by each 64-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst” using “mask” (elements are copied from “src” when the highest bit is not set in the corresponding element). “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*32
+        m := j*64
+        IF mask[i+31]
+                addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+                dst[i+31:i] := MEM[addr+31:addr]
+        ELSE
+                dst[i+31:i] := src[i+31:i]
+        FI
+ENDFOR
+mask[MAX:128] := 0
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-mask-i64gather-epi32">
+<h2>_mm256_mask_i64gather_epi32<a class="headerlink" href="#mm256-mask-i64gather-epi32" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m128i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m128i src,
+int const* base_addr,
+__m256i vindex,
+__m128i mask,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>UI32 src,
+UI32 base_addr,
+SI64 vindex,
+MASK mask,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kr">__m128i</span><span class="w"> </span><span class="n">_mm256_mask_i64gather_epi32</span><span class="p">(</span><span class="kr">__m128i</span><span class="w"> </span><span class="n">src</span><span class="p">,</span>
+<span class="w">                                    </span><span class="kt">int</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span>
+<span class="w">                                    </span><span class="n">__m256i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span>
+<span class="w">                                    </span><span class="kr">__m128i</span><span class="w"> </span><span class="n">mask</span><span class="p">,</span>
+<span class="w">                                    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather 32-bit integers from memory using 64-bit indices. 32-bit elements are loaded from addresses starting at “base_addr” and offset by each 64-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst” using “mask” (elements are copied from “src” when the highest bit is not set in the corresponding element). “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*32
+        m := j*64
+        IF mask[i+31]
+                addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+                dst[i+31:i] := MEM[addr+31:addr]
+        ELSE
+                dst[i+31:i] := src[i+31:i]
+        FI
+ENDFOR
+mask[MAX:128] := 0
+dst[MAX:128] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-mask-i64gather-epi64">
+<h2>_mm256_mask_i64gather_epi64<a class="headerlink" href="#mm256-mask-i64gather-epi64" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m256i src,
+__int64 const* base_addr,
+__m256i vindex,
+__m256i mask,
+const int scale</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>UI64 src,
+UI64 base_addr,
+SI64 vindex,
+MASK mask,
+IMM scale</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256i</span><span class="w"> </span><span class="n">_mm256_mask_i64gather_epi64</span><span class="p">(</span>
+<span class="w">    </span><span class="n">__m256i</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">base_addr</span><span class="p">,</span><span class="w"> </span><span class="n">__m256i</span><span class="w"> </span><span class="n">vindex</span><span class="p">,</span>
+<span class="w">    </span><span class="n">__m256i</span><span class="w"> </span><span class="n">mask</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Gather 64-bit integers from memory using 64-bit indices. 64-bit elements are loaded from addresses starting at “base_addr” and offset by each 64-bit element in “vindex” (each index is scaled by the factor in “scale”). Gathered elements are merged into “dst” using “mask” (elements are copied from “src” when the highest bit is not set in the corresponding element). “scale” should be 1, 2, 4 or 8.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*64
+        m := j*64
+        IF mask[i+63]
+                addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+                dst[i+63:i] := MEM[addr+63:addr]
+        ELSE
+                dst[i+63:i] := src[i+63:i]
+        FI
+ENDFOR
+mask[MAX:256] := 0
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-maskload-epi32">
+<h2>_mm256_maskload_epi32<a class="headerlink" href="#mm256-maskload-epi32" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int const* mem_addr,
+__m256i mask</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>UI32 mem_addr,
+MASK mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256i</span><span class="w"> </span><span class="n">_mm256_maskload_epi32</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span>
+<span class="w">                              </span><span class="n">__m256i</span><span class="w"> </span><span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Load packed 32-bit integers from memory into “dst” using “mask” (elements are zeroed out when the highest bit is not set in the corresponding element).</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 7
+        i := j*32
+        IF mask[i+31]
+                dst[i+31:i] := MEM[mem_addr+i+31:mem_addr+i]
+        ELSE
+                dst[i+31:i] := 0
+        FI
+ENDFOR
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-maskload-epi64">
+<h2>_mm256_maskload_epi64<a class="headerlink" href="#mm256-maskload-epi64" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__int64 const* mem_addr,
+__m256i mask</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>UI64 mem_addr,
+MASK mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256i</span><span class="w"> </span><span class="n">_mm256_maskload_epi64</span><span class="p">(</span><span class="kr">__int64</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span>
+<span class="w">                              </span><span class="n">__m256i</span><span class="w"> </span><span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Load packed 64-bit integers from memory into “dst” using “mask” (elements are zeroed out when the highest bit is not set in the corresponding element).</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
+        i := j*64
+        IF mask[i+63]
+                dst[i+63:i] := MEM[mem_addr+i+63:mem_addr+i]
+        ELSE
+                dst[i+63:i] := 0
+        FI
+ENDFOR
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mm256-stream-load-si256">
+<h2>_mm256_stream_load_si256<a class="headerlink" href="#mm256-stream-load-si256" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AVX_ALL</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Load</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AVX_ALL-Load-YMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YMM 256 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m256i</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void const* mem_addr</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>M256 mem_addr</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m256i</span><span class="w"> </span><span class="nf">_mm256_stream_load_si256</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl class="simple">
+<dt>Load 256-bits of integer data from memory into “dst” using a non-temporal memory hint.</dt><dd><p>“mem_addr” must be aligned on a 32-byte boundary or a general-protection exception may be generated.</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[255:0] := MEM[mem_addr+255:mem_addr]
+dst[MAX:256] := 0
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Store/XMM.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AVX_ALL-Store-XMM</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="XMM.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AVX_ALL-Load-XMM</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-broadcast-ss">_mm256_broadcast_ss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-load-pd">_mm256_load_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-load-ps">_mm256_load_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-loadu-pd">_mm256_loadu_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-loadu-ps">_mm256_loadu_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-load-si256">_mm256_load_si256</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-loadu-si256">_mm256_loadu_si256</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-maskload-pd">_mm256_maskload_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-maskload-ps">_mm256_maskload_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-lddqu-si256">_mm256_lddqu_si256</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-loadu2-m128">_mm256_loadu2_m128</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-loadu2-m128d">_mm256_loadu2_m128d</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-loadu2-m128i">_mm256_loadu2_m128i</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i32gather-pd">_mm256_i32gather_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i32gather-ps">_mm256_i32gather_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i32gather-epi32">_mm256_i32gather_epi32</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i32gather-epi64">_mm256_i32gather_epi64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i64gather-pd">_mm256_i64gather_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i64gather-ps">_mm256_i64gather_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i64gather-epi32">_mm256_i64gather_epi32</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-i64gather-epi64">_mm256_i64gather_epi64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i32gather-pd">_mm256_mask_i32gather_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i32gather-ps">_mm256_mask_i32gather_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i32gather-epi32">_mm256_mask_i32gather_epi32</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i32gather-epi64">_mm256_mask_i32gather_epi64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i64gather-pd">_mm256_mask_i64gather_pd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i64gather-ps">_mm256_mask_i64gather_ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i64gather-epi32">_mm256_mask_i64gather_epi32</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-mask-i64gather-epi64">_mm256_mask_i64gather_epi64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-maskload-epi32">_mm256_maskload_epi32</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-maskload-epi64">_mm256_maskload_epi64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mm256-stream-load-si256">_mm256_stream_load_si256</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Your Name
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

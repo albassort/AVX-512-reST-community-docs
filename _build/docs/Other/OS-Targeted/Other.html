@@ -1,0 +1,1592 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Other-OS-Targeted-Other &#8212; My Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Other/OS-Targeted/Other';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Other-Application-Targeted-ZMM" href="../Application-Targeted/ZMM.html" />
+    <link rel="prev" title="Other-Convert-Other" href="../Convert/Other.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My Docs 1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../MMX/index.html">MMX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Shift/XMM.html">MMX-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Shift/MMX.html">MMX-Shift-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/General%20Support/XMM.html">MMX-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/General%20Support/MMX.html">MMX-General Support-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Logical/XMM.html">MMX-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Logical/MMX.html">MMX-Logical-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Swizzle/XMM.html">MMX-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Swizzle/MMX.html">MMX-Swizzle-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Arithmetic/XMM.html">MMX-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Arithmetic/MMX.html">MMX-Arithmetic-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Compare/XMM.html">MMX-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Compare/MMX.html">MMX-Compare-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Set/XMM.html">MMX-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Convert/XMM.html">MMX-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Convert/MMX.html">MMX-Convert-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Miscellaneous/XMM.html">MMX-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Miscellaneous/MMX.html">MMX-Miscellaneous-MMX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../SSE_ALL/index.html">SSE_ALL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Shift/XMM.html">SSE_ALL-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Cryptography/XMM.html">SSE_ALL-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Move/XMM.html">SSE_ALL-Move-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Cast/XMM.html">SSE_ALL-Cast-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/String%20Compare/XMM.html">SSE_ALL-String Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/General%20Support/XMM.html">SSE_ALL-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/General%20Support/Other.html">SSE_ALL-General Support-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Probability/Statistics/XMM.html">SSE_ALL-Probability/Statistics-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Probability/Statistics/MMX.html">SSE_ALL-Probability/Statistics-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Special%20Math%20Functions/XMM.html">SSE_ALL-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Special%20Math%20Functions/MMX.html">SSE_ALL-Special Math Functions-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Logical/XMM.html">SSE_ALL-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Swizzle/XMM.html">SSE_ALL-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Swizzle/Other.html">SSE_ALL-Swizzle-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Swizzle/MMX.html">SSE_ALL-Swizzle-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Store/XMM.html">SSE_ALL-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Store/MMX.html">SSE_ALL-Store-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Load/XMM.html">SSE_ALL-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Elementary%20Math%20Functions/XMM.html">SSE_ALL-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Arithmetic/XMM.html">SSE_ALL-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Arithmetic/MMX.html">SSE_ALL-Arithmetic-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Compare/XMM.html">SSE_ALL-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Set/XMM.html">SSE_ALL-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Convert/XMM.html">SSE_ALL-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Miscellaneous/XMM.html">SSE_ALL-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Miscellaneous/MMX.html">SSE_ALL-Miscellaneous-MMX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Other</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Cryptography/ZMM.html">Other-Cryptography-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Cryptography/YMM.html">Other-Cryptography-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Cryptography/XMM.html">Other-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Shift/Other.html">Other-Shift-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Bit%20Manipulation/XMM.html">Other-Bit Manipulation-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Bit%20Manipulation/Other.html">Other-Bit Manipulation-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Cast/Other.html">Other-Cast-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General%20Support/XMM.html">Other-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General%20Support/Other.html">Other-General Support-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General%20Support/MMX.html">Other-General Support-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unknown/Other.html">Other-Unknown-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Random/Other.html">Other-Random-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Store/Other.html">Other-Store-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Load/Other.html">Other-Load-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Arithmetic/ZMM.html">Other-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Arithmetic/YMM.html">Other-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Arithmetic/XMM.html">Other-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Arithmetic/Other.html">Other-Arithmetic-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Convert/Other.html">Other-Convert-Other</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Other-OS-Targeted-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Application-Targeted/ZMM.html">Other-Application-Targeted-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Application-Targeted/YMM.html">Other-Application-Targeted-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Application-Targeted/XMM.html">Other-Application-Targeted-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Miscellaneous/XMM.html">Other-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Miscellaneous/Other.html">Other-Miscellaneous-Other</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../SVML/index.html">SVML</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/ZMM.html">SVML-Probability/Statistics-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/YMM.html">SVML-Probability/Statistics-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/XMM.html">SVML-Probability/Statistics-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/ZMM.html">SVML-Special Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/YMM.html">SVML-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/XMM.html">SVML-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/ZMM.html">SVML-Trigonometry-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/YMM.html">SVML-Trigonometry-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/XMM.html">SVML-Trigonometry-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/ZMM.html">SVML-Elementary Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/YMM.html">SVML-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/XMM.html">SVML-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/ZMM.html">SVML-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/YMM.html">SVML-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/XMM.html">SVML-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Miscellaneous/YMM.html">SVML-Miscellaneous-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Miscellaneous/XMM.html">SVML-Miscellaneous-XMM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../AMX/index.html">AMX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../AMX/Application-Targeted/Other.html">AMX-Application-Targeted-Other</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../AVX-512/index.html">AVX-512</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Shift/ZMM.html">AVX-512-Shift-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Shift/YMM.html">AVX-512-Shift-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Shift/XMM.html">AVX-512-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Move/ZMM.html">AVX-512-Move-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Move/YMM.html">AVX-512-Move-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Move/XMM.html">AVX-512-Move-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Bit%20Manipulation/ZMM.html">AVX-512-Bit Manipulation-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Bit%20Manipulation/YMM.html">AVX-512-Bit Manipulation-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Bit%20Manipulation/XMM.html">AVX-512-Bit Manipulation-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Cast/ZMM.html">AVX-512-Cast-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Cast/YMM.html">AVX-512-Cast-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Cast/XMM.html">AVX-512-Cast-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/General%20Support/ZMM.html">AVX-512-General Support-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/General%20Support/YMM.html">AVX-512-General Support-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/General%20Support/XMM.html">AVX-512-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Special%20Math%20Functions/ZMM.html">AVX-512-Special Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Special%20Math%20Functions/YMM.html">AVX-512-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Special%20Math%20Functions/XMM.html">AVX-512-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Logical/ZMM.html">AVX-512-Logical-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Logical/YMM.html">AVX-512-Logical-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Logical/XMM.html">AVX-512-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Swizzle/ZMM.html">AVX-512-Swizzle-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Swizzle/YMM.html">AVX-512-Swizzle-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Swizzle/XMM.html">AVX-512-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/ZMM.html">AVX-512-Store-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/YMM.html">AVX-512-Store-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/XMM.html">AVX-512-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/Other.html">AVX-512-Store-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/ZMM.html">AVX-512-Load-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/YMM.html">AVX-512-Load-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/XMM.html">AVX-512-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/Other.html">AVX-512-Load-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Elementary%20Math%20Functions/ZMM.html">AVX-512-Elementary Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Elementary%20Math%20Functions/YMM.html">AVX-512-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Elementary%20Math%20Functions/XMM.html">AVX-512-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Arithmetic/ZMM.html">AVX-512-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Arithmetic/YMM.html">AVX-512-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Arithmetic/XMM.html">AVX-512-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Compare/ZMM.html">AVX-512-Compare-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Compare/YMM.html">AVX-512-Compare-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Compare/XMM.html">AVX-512-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/ZMM.html">AVX-512-Mask-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/YMM.html">AVX-512-Mask-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/XMM.html">AVX-512-Mask-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/Other.html">AVX-512-Mask-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Set/ZMM.html">AVX-512-Set-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Set/YMM.html">AVX-512-Set-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Set/XMM.html">AVX-512-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Convert/ZMM.html">AVX-512-Convert-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Convert/YMM.html">AVX-512-Convert-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Convert/XMM.html">AVX-512-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Miscellaneous/ZMM.html">AVX-512-Miscellaneous-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Miscellaneous/YMM.html">AVX-512-Miscellaneous-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Miscellaneous/XMM.html">AVX-512-Miscellaneous-XMM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../AVX_ALL/index.html">AVX_ALL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Shift/YMM.html">AVX_ALL-Shift-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Shift/XMM.html">AVX_ALL-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Cryptography/YMM.html">AVX_ALL-Cryptography-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Cryptography/XMM.html">AVX_ALL-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Move/YMM.html">AVX_ALL-Move-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Cast/YMM.html">AVX_ALL-Cast-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/General%20Support/YMM.html">AVX_ALL-General Support-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Probability/Statistics/YMM.html">AVX_ALL-Probability/Statistics-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Special%20Math%20Functions/YMM.html">AVX_ALL-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Logical/YMM.html">AVX_ALL-Logical-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Logical/XMM.html">AVX_ALL-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Swizzle/YMM.html">AVX_ALL-Swizzle-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Swizzle/XMM.html">AVX_ALL-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Store/YMM.html">AVX_ALL-Store-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Store/XMM.html">AVX_ALL-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Load/YMM.html">AVX_ALL-Load-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Load/XMM.html">AVX_ALL-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Elementary%20Math%20Functions/YMM.html">AVX_ALL-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Arithmetic/YMM.html">AVX_ALL-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Arithmetic/XMM.html">AVX_ALL-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Compare/YMM.html">AVX_ALL-Compare-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Compare/XMM.html">AVX_ALL-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Set/YMM.html">AVX_ALL-Set-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Convert/YMM.html">AVX_ALL-Convert-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Convert/XMM.html">AVX_ALL-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Miscellaneous/YMM.html">AVX_ALL-Miscellaneous-YMM</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/Other/OS-Targeted/Other.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Other-OS-Targeted-Other</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fxrstor">_fxrstor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fxrstor64">_fxrstor64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fxsave">_fxsave</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fxsave64">_fxsave64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invpcid">_invpcid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsavec">_xsavec</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsavec64">_xsavec64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsaveopt">_xsaveopt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsaveopt64">_xsaveopt64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsaves">_xsaves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsaves64">_xsaves64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xrstors">_xrstors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xrstors64">_xrstors64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xgetbv">_xgetbv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xrstor">_xrstor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xrstor64">_xrstor64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsave">_xsave</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsave64">_xsave64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsetbv">_xsetbv</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="other-os-targeted-other">
+<h1>Other-OS-Targeted-Other<a class="headerlink" href="#other-os-targeted-other" title="Link to this heading">#</a></h1>
+<section id="fxrstor">
+<h2>_fxrstor<a class="headerlink" href="#fxrstor" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_fxrstor</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Reload the x87 FPU, MMX technology, XMM, and MXCSR registers from the 512-byte memory image at “mem_addr”. This data should have been written to memory previously using the FXSAVE instruction, and in the same format as required by the operating mode. “mem_addr” must be aligned on a 16-byte boundary.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>state_x87_fpu_mmx_sse := fxrstor(MEM[mem_addr+512*8:mem_addr])
+</pre></div>
+</div>
+</div>
+</section>
+<section id="fxrstor64">
+<h2>_fxrstor64<a class="headerlink" href="#fxrstor64" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_fxrstor64</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Reload the x87 FPU, MMX technology, XMM, and MXCSR registers from the 512-byte memory image at “mem_addr”. This data should have been written to memory previously using the FXSAVE64 instruction, and in the same format as required by the operating mode. “mem_addr” must be aligned on a 16-byte boundary.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>state_x87_fpu_mmx_sse := fxrstor64(MEM[mem_addr+512*8:mem_addr])
+</pre></div>
+</div>
+</div>
+</section>
+<section id="fxsave">
+<h2>_fxsave<a class="headerlink" href="#fxsave" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_fxsave</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Save the current state of the x87 FPU, MMX technology, XMM, and MXCSR registers to a 512-byte memory location at “mem_addr”. The layout of the 512-byte region depends on the operating mode. Bytes [511:464] are available for software use and will not be overwritten by the processor.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>MEM[mem_addr+512*8:mem_addr] := fxsave(state_x87_fpu_mmx_sse)
+</pre></div>
+</div>
+</div>
+</section>
+<section id="fxsave64">
+<h2>_fxsave64<a class="headerlink" href="#fxsave64" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_fxsave64</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Save the current state of the x87 FPU, MMX technology, XMM, and MXCSR registers to a 512-byte memory location at “mem_addr”. The layout of the 512-byte region depends on the operating mode. Bytes [511:464] are available for software use and will not be overwritten by the processor.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>MEM[mem_addr+512*8:mem_addr] := fxsave64(state_x87_fpu_mmx_sse)
+</pre></div>
+</div>
+</div>
+</section>
+<section id="invpcid">
+<h2>_invpcid<a class="headerlink" href="#invpcid" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>unsigned int type,
+void* descriptor</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>UI32 type,</dt><dd><p>descriptor</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_invpcid</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">descriptor</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<dl>
+<dt>Invalidate mappings in the Translation Lookaside Buffers (TLBs) and paging-structure caches for the processor context identifier (PCID) specified by “descriptor” based on the invalidation type specified in “type”.</dt><dd><p>The PCID “descriptor” is specified as a 16-byte memory operand (with no alignment restrictions) where bits [11:0] specify the PCID, and bits [127:64] specify the linear address; bits [63:12] are reserved.
+The types supported are:</p>
+<blockquote>
+<div><ol class="arabic simple" start="0">
+<li><p>Individual-address invalidation: If “type” is 0, the logical processor invalidates mappings for a single linear address and tagged with the PCID specified in “descriptor”, except global translations. The instruction may also invalidate global translations, mappings for other linear addresses, or mappings tagged with other PCIDs.</p></li>
+<li><p>Single-context invalidation: If “type” is 1, the logical processor invalidates all mappings tagged with the PCID specified in “descriptor” except global translations. In some cases, it may invalidate mappings for other PCIDs as well.</p></li>
+<li><p>All-context invalidation: If “type” is 2, the logical processor invalidates all mappings tagged with any PCID.</p></li>
+<li><p>All-context invalidation, retaining global translations: If “type” is 3, the logical processor invalidates all mappings tagged with any PCID except global translations, ignoring “descriptor”. The instruction may also invalidate global translations as well.</p></li>
+</ol>
+</div></blockquote>
+</dd>
+</dl>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CASE type[1:0] OF
+0: // individual-address invalidation retaining global translations
+        OP_PCID := MEM[descriptor+11:descriptor]
+        ADDR := MEM[descriptor+127:descriptor+64]
+        BREAK
+1: // single PCID invalidation retaining globals
+        OP_PCID := MEM[descriptor+11:descriptor]
+        // invalidate all mappings tagged with OP_PCID except global translations
+        BREAK
+2: // all PCID invalidation
+        // invalidate all mappings tagged with any PCID
+        BREAK
+3: // all PCID invalidation retaining global translations
+        // invalidate all mappings tagged with any PCID except global translations
+        BREAK
+ESAC
+</pre></div>
+</div>
+</div>
+</section>
+<section id="xsavec">
+<h2>_xsavec<a class="headerlink" href="#xsavec" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>void * mem_addr,
+unsigned __int64 save_mask</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>mem_addr,</p>
+</div></blockquote>
+<p>UI64 save_mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_xsavec</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">save_mask</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a full or partial save of the enabled processor states to memory at “mem_addr”; xsavec differs from xsave in that it uses compaction and that it may use init optimization. State is saved based on bits [62:0] in “save_mask” and “XCR0”. “mem_addr” must be aligned on a 64-byte boundary.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+FOR i := 0 to 62
+        IF mask[i]
+                CASE (i) OF
+                0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+                1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+                DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+                ESAC
+                mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        FI
+        i := i + 1
+ENDFOR
+</pre></div>
+</div>
+</div>
+</section>
+<section id="xsavec64">
+<h2>_xsavec64<a class="headerlink" href="#xsavec64" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>void * mem_addr,
+unsigned __int64 save_mask</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>mem_addr,</p>
+</div></blockquote>
+<p>UI64 save_mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_xsavec64</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">save_mask</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a full or partial save of the enabled processor states to memory at “mem_addr”; xsavec differs from xsave in that it uses compaction and that it may use init optimization. State is saved based on bits [62:0] in “save_mask” and “XCR0”. “mem_addr” must be aligned on a 64-byte boundary.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+FOR i := 0 to 62
+        IF mask[i]
+                CASE (i) OF
+                0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+                1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+                DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+                ESAC
+                mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        FI
+        i := i + 1
+ENDFOR
+</pre></div>
+</div>
+</div>
+</section>
+<section id="xsaveopt">
+<h2>_xsaveopt<a class="headerlink" href="#xsaveopt" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>void * mem_addr,
+unsigned __int64 save_mask</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>mem_addr,</p>
+</div></blockquote>
+<p>UI64 save_mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_xsaveopt</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">save_mask</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a full or partial save of the enabled processor states to memory at “mem_addr”. State is saved based on bits [62:0] in “save_mask” and “XCR0”. “mem_addr” must be aligned on a 64-byte boundary. The hardware may optimize the manner in which data is saved. The performance of this instruction will be equal to or better than using the XSAVE instruction.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+FOR i := 0 to 62
+        IF mask[i]
+                CASE (i) OF
+                0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+                1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+                2: mem_addr.EXT_SAVE_Area2[YMM] := ProcessorState[YMM]
+                DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+                ESAC
+                mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        FI
+        i := i + 1
+ENDFOR
+</pre></div>
+</div>
+</div>
+</section>
+<section id="xsaveopt64">
+<h2>_xsaveopt64<a class="headerlink" href="#xsaveopt64" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>void * mem_addr,
+unsigned __int64 save_mask</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>mem_addr,</p>
+</div></blockquote>
+<p>UI64 save_mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">_xsaveopt64</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span>
+<span class="w">                 </span><span class="kt">unsigned</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">save_mask</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a full or partial save of the enabled processor states to memory at “mem_addr”. State is saved based on bits [62:0] in “save_mask” and “XCR0”. “mem_addr” must be aligned on a 64-byte boundary. The hardware may optimize the manner in which data is saved. The performance of this instruction will be equal to or better than using the XSAVE64 instruction.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+FOR i := 0 to 62
+        IF mask[i]
+                CASE (i) OF
+                0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+                1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+                2: mem_addr.EXT_SAVE_Area2[YMM] := ProcessorState[YMM]
+                DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+                ESAC
+                mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        FI
+        i := i + 1
+ENDFOR
+</pre></div>
+</div>
+</div>
+</section>
+<section id="xsaves">
+<h2>_xsaves<a class="headerlink" href="#xsaves" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>void * mem_addr,
+unsigned __int64 save_mask</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>mem_addr,</p>
+</div></blockquote>
+<p>UI64 save_mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_xsaves</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">save_mask</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a full or partial save of the enabled processor states to memory at “mem_addr”; xsaves differs from xsave in that it can save state components corresponding to bits set in IA32_XSS MSR and that it may use the modified optimization. State is saved based on bits [62:0] in “save_mask” and “XCR0”. “mem_addr” must be aligned on a 64-byte boundary.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+FOR i := 0 to 62
+        IF mask[i]
+                CASE (i) OF
+                0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+                1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+                DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+                ESAC
+                mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        FI
+        i := i + 1
+ENDFOR
+</pre></div>
+</div>
+</div>
+</section>
+<section id="xsaves64">
+<h2>_xsaves64<a class="headerlink" href="#xsaves64" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>void * mem_addr,
+unsigned __int64 save_mask</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>mem_addr,</p>
+</div></blockquote>
+<p>UI64 save_mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_xsaves64</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">save_mask</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a full or partial save of the enabled processor states to memory at “mem_addr”; xsaves differs from xsave in that it can save state components corresponding to bits set in IA32_XSS MSR and that it may use the modified optimization. State is saved based on bits [62:0] in “save_mask” and “XCR0”. “mem_addr” must be aligned on a 64-byte boundary.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+FOR i := 0 to 62
+        IF mask[i]
+                CASE (i) OF
+                0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+                1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+                DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+                ESAC
+                mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        FI
+        i := i + 1
+ENDFOR
+</pre></div>
+</div>
+</div>
+</section>
+<section id="xrstors">
+<h2>_xrstors<a class="headerlink" href="#xrstors" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>const void * mem_addr,
+unsigned __int64 rs_mask</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>mem_addr,</p>
+</div></blockquote>
+<p>UI64 rs_mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">_xrstors</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span>
+<span class="w">              </span><span class="kt">unsigned</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">rs_mask</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a full or partial restore of the enabled processor states using the state information stored in memory at “mem_addr”. xrstors differs from xrstor in that it can restore state components corresponding to bits set in the IA32_XSS MSR; xrstors cannot restore from an xsave area in which the extended region is in the standard form. State is restored based on bits [62:0] in “rs_mask”, “XCR0”, and “mem_addr.HEADER.XSTATE_BV”. “mem_addr” must be aligned on a 64-byte boundary.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>st_mask := mem_addr.HEADER.XSTATE_BV[62:0]
+FOR i := 0 to 62
+        IF (rs_mask[i] AND XCR0[i])
+                IF st_mask[i]
+                        CASE (i) OF
+                        0: ProcessorState[x87_FPU] := mem_addr.FPUSSESave_Area[FPU]
+                        1: ProcessorState[SSE] := mem_addr.FPUSSESaveArea[SSE]
+                        DEFAULT: ProcessorState[i] := mem_addr.Ext_Save_Area[i]
+                        ESAC
+                ELSE
+                        // ProcessorExtendedState := Processor Supplied Values
+                        CASE (i) OF
+                        1: MXCSR := mem_addr.FPUSSESave_Area[SSE]
+                        ESAC
+                FI
+        FI
+        i := i + 1
+ENDFOR
+</pre></div>
+</div>
+</div>
+</section>
+<section id="xrstors64">
+<h2>_xrstors64<a class="headerlink" href="#xrstors64" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>const void * mem_addr,
+unsigned __int64 rs_mask</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>mem_addr,</p>
+</div></blockquote>
+<p>UI64 rs_mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">_xrstors64</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span>
+<span class="w">                </span><span class="kt">unsigned</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">rs_mask</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a full or partial restore of the enabled processor states using the state information stored in memory at “mem_addr”. xrstors differs from xrstor in that it can restore state components corresponding to bits set in the IA32_XSS MSR; xrstors cannot restore from an xsave area in which the extended region is in the standard form. State is restored based on bits [62:0] in “rs_mask”, “XCR0”, and “mem_addr.HEADER.XSTATE_BV”. “mem_addr” must be aligned on a 64-byte boundary.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>st_mask := mem_addr.HEADER.XSTATE_BV[62:0]
+FOR i := 0 to 62
+        IF (rs_mask[i] AND XCR0[i])
+                IF st_mask[i]
+                        CASE (i) OF
+                        0: ProcessorState[x87_FPU] := mem_addr.FPUSSESave_Area[FPU]
+                        1: ProcessorState[SSE] := mem_addr.FPUSSESaveArea[SSE]
+                        DEFAULT: ProcessorState[i] := mem_addr.Ext_Save_Area[i]
+                        ESAC
+                ELSE
+                        // ProcessorExtendedState := Processor Supplied Values
+                        CASE (i) OF
+                        1: MXCSR := mem_addr.FPUSSESave_Area[SSE]
+                        ESAC
+                FI
+        FI
+        i := i + 1
+ENDFOR
+</pre></div>
+</div>
+</div>
+</section>
+<section id="xgetbv">
+<h2>_xgetbv<a class="headerlink" href="#xgetbv" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>unsigned __int64</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>unsigned int a</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>UI32 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="nf">_xgetbv</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Copy up to 64-bits from the value of the extended control register (XCR) specified by “a” into “dst”. Currently only XFEATURE_ENABLED_MASK XCR is supported.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[63:0] := XCR[a]
+</pre></div>
+</div>
+</div>
+</section>
+<section id="xrstor">
+<h2>_xrstor<a class="headerlink" href="#xrstor" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>void * mem_addr,
+unsigned __int64 rs_mask</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>mem_addr,</p>
+</div></blockquote>
+<p>UI64 rs_mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_xrstor</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">rs_mask</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a full or partial restore of the enabled processor states using the state information stored in memory at “mem_addr”. State is restored based on bits [62:0] in “rs_mask”, “XCR0”, and “mem_addr.HEADER.XSTATE_BV”. “mem_addr” must be aligned on a 64-byte boundary.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>st_mask := mem_addr.HEADER.XSTATE_BV[62:0]
+FOR i := 0 to 62
+        IF (rs_mask[i] AND XCR0[i])
+                IF st_mask[i]
+                        CASE (i) OF
+                        0: ProcessorState[x87_FPU] := mem_addr.FPUSSESave_Area[FPU]
+                        1: ProcessorState[SSE] := mem_addr.FPUSSESaveArea[SSE]
+                        DEFAULT: ProcessorState[i] := mem_addr.Ext_Save_Area[i]
+                        ESAC
+                ELSE
+                        // ProcessorExtendedState := Processor Supplied Values
+                        CASE (i) OF
+                        1: MXCSR := mem_addr.FPUSSESave_Area[SSE]
+                        ESAC
+                FI
+        FI
+        i := i + 1
+ENDFOR
+</pre></div>
+</div>
+</div>
+</section>
+<section id="xrstor64">
+<h2>_xrstor64<a class="headerlink" href="#xrstor64" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>void * mem_addr,
+unsigned __int64 rs_mask</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>mem_addr,</p>
+</div></blockquote>
+<p>UI64 rs_mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_xrstor64</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">rs_mask</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a full or partial restore of the enabled processor states using the state information stored in memory at “mem_addr”. State is restored based on bits [62:0] in “rs_mask”, “XCR0”, and “mem_addr.HEADER.XSTATE_BV”. “mem_addr” must be aligned on a 64-byte boundary.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>st_mask := mem_addr.HEADER.XSTATE_BV[62:0]
+FOR i := 0 to 62
+        IF (rs_mask[i] AND XCR0[i])
+                IF st_mask[i]
+                        CASE (i) OF
+                        0: ProcessorState[x87_FPU] := mem_addr.FPUSSESave_Area[FPU]
+                        1: ProcessorState[SSE] := mem_addr.FPUSSESaveArea[SSE]
+                        DEFAULT: ProcessorState[i] := mem_addr.Ext_Save_Area[i]
+                        ESAC
+                ELSE
+                        // ProcessorExtendedState := Processor Supplied Values
+                        CASE (i) OF
+                        1: MXCSR := mem_addr.FPUSSESave_Area[SSE]
+                        ESAC
+                FI
+        FI
+        i := i + 1
+ENDFOR
+</pre></div>
+</div>
+</div>
+</section>
+<section id="xsave">
+<h2>_xsave<a class="headerlink" href="#xsave" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>void * mem_addr,
+unsigned __int64 save_mask</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>mem_addr,</p>
+</div></blockquote>
+<p>UI64 save_mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_xsave</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">save_mask</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a full or partial save of the enabled processor states to memory at “mem_addr”. State is saved based on bits [62:0] in “save_mask” and “XCR0”. “mem_addr” must be aligned on a 64-byte boundary.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+FOR i := 0 to 62
+        IF mask[i]
+                CASE (i) OF
+                0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+                1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+                DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+                ESAC
+                mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        FI
+        i := i + 1
+ENDFOR
+</pre></div>
+</div>
+</div>
+</section>
+<section id="xsave64">
+<h2>_xsave64<a class="headerlink" href="#xsave64" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>void * mem_addr,
+unsigned __int64 save_mask</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>mem_addr,</p>
+</div></blockquote>
+<p>UI64 save_mask</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_xsave64</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">save_mask</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform a full or partial save of the enabled processor states to memory at “mem_addr”. State is saved based on bits [62:0] in “save_mask” and “XCR0”. “mem_addr” must be aligned on a 64-byte boundary.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mask[62:0] := save_mask[62:0] AND XCR0[62:0]
+FOR i := 0 to 62
+        IF mask[i]
+                CASE (i) OF
+                0: mem_addr.FPUSSESave_Area[FPU] := ProcessorState[x87_FPU]
+                1: mem_addr.FPUSSESaveArea[SSE] := ProcessorState[SSE]
+                DEFAULT: mem_addr.Ext_Save_Area[i] := ProcessorState[i]
+                ESAC
+                mem_addr.HEADER.XSTATE_BV[i] := INIT_FUNCTION[i]
+        FI
+        i := i + 1
+ENDFOR
+</pre></div>
+</div>
+</div>
+</section>
+<section id="xsetbv">
+<h2>_xsetbv<a class="headerlink" href="#xsetbv" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Other</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>OS-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Other-OS-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>unsigned int a,
+unsigned __int64 val</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>UI32 a,
+UI64 val</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_xsetbv</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">val</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Copy 64-bits from “val” to the extended control register (XCR) specified by “a”. Currently only XFEATURE_ENABLED_MASK XCR is supported.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>XCR[a] := val[63:0]
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Convert/Other.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Other-Convert-Other</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Application-Targeted/ZMM.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Other-Application-Targeted-ZMM</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fxrstor">_fxrstor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fxrstor64">_fxrstor64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fxsave">_fxsave</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fxsave64">_fxsave64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invpcid">_invpcid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsavec">_xsavec</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsavec64">_xsavec64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsaveopt">_xsaveopt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsaveopt64">_xsaveopt64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsaves">_xsaves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsaves64">_xsaves64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xrstors">_xrstors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xrstors64">_xrstors64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xgetbv">_xgetbv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xrstor">_xrstor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xrstor64">_xrstor64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsave">_xsave</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsave64">_xsave64</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xsetbv">_xsetbv</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Your Name
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

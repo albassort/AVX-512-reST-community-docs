@@ -1,0 +1,738 @@
+_mm512_castpd128_pd512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m128d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_castpd128_pd512(__m128d a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m128d to type __m512d; the upper 384 bits of the result are undefined. 
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castpd256_pd512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m256d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_castpd256_pd512(__m256d a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256d to type __m512d; the upper 256 bits of the result are undefined. 
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castpd512_pd128
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m128d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m128d _mm512_castpd512_pd128(__m512d a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m512d to type __m128d. 
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castps512_ps128
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m128
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m128 _mm512_castps512_ps128(__m512 a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m512 to type __m128. 
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castpd512_pd256
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m256d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m256d _mm512_castpd512_pd256(__m512d a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m512d to type __m256d. 
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castps128_ps512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m128 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_castps128_ps512(__m128 a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m128 to type __m512; the upper 384 bits of the result are undefined. 
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castps256_ps512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m256 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_castps256_ps512(__m256 a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256 to type __m512; the upper 256 bits of the result are undefined. 
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castps512_ps256
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m256
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m256 _mm512_castps512_ps256(__m512 a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m512 to type __m256. 
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castsi128_si512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m128i a
+:Param ETypes:
+    M512 a
+
+.. code-block:: C
+
+    __m512i _mm512_castsi128_si512(__m128i a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m128i to type __m512i; the upper 384 bits of the result are undefined. 
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castsi256_si512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m256i a
+:Param ETypes:
+    M512 a
+
+.. code-block:: C
+
+    __m512i _mm512_castsi256_si512(__m256i a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256i to type __m512i; the upper 256 bits of the result are undefined.
+    	 This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castsi512_si128
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m128i
+:Param Types:
+    __m512i a
+:Param ETypes:
+    M128 a
+
+.. code-block:: C
+
+    __m128i _mm512_castsi512_si128(__m512i a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m512i to type __m128i.
+    	 This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castsi512_si256
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m256i
+:Param Types:
+    __m512i a
+:Param ETypes:
+    M256 a
+
+.. code-block:: C
+
+    __m256i _mm512_castsi512_si256(__m512i a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m512i to type __m256i.
+    	 This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_zextpd128_pd512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m128d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_zextpd128_pd512(__m128d a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m128d to type __m512d; the upper 384 bits of the result are zeroed. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_zextps128_ps512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m128 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_zextps128_ps512(__m128 a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m128 to type __m512; the upper 384 bits of the result are zeroed. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_zextsi128_si512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m128i a
+:Param ETypes:
+    M512 a
+
+.. code-block:: C
+
+    __m512i _mm512_zextsi128_si512(__m128i a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m128i to type __m512i; the upper 384 bits of the result are zeroed. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_zextpd256_pd512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m256d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_zextpd256_pd512(__m256d a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256d to type __m512d; the upper 256 bits of the result are zeroed. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_zextps256_ps512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m256 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_zextps256_ps512(__m256 a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256 to type __m512; the upper 256 bits of the result are zeroed. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_zextsi256_si512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m256i a
+:Param ETypes:
+    M512 a
+
+.. code-block:: C
+
+    __m512i _mm512_zextsi256_si512(__m256i a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m256i to type __m512i; the upper 256 bits of the result are zeroed. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castpd_ps
+^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512 _mm512_castpd_ps(__m512d a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m512d to type __m512.
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castpd_si512
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512i _mm512_castpd_si512(__m512d a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m512d to type __m512i.
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castps_pd
+^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512d _mm512_castps_pd(__m512 a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m512 to type __m512d.
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castps_si512
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512i _mm512_castps_si512(__m512 a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m512 to type __m512i.
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castsi512_pd
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512i a
+:Param ETypes:
+    UI64 a
+
+.. code-block:: C
+
+    __m512d _mm512_castsi512_pd(__m512i a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m512i to type __m512d.
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castsi512_ps
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512i a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    __m512 _mm512_castsi512_ps(__m512i a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type __m512i to type __m512.
+    	This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castph_ps
+^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512 _mm512_castph_ps(__m512h a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type "__m512h" to type "__m512". This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castph_pd
+^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512d _mm512_castph_pd(__m512h a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type "__m512h" to type "__m512d". This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castph_si512
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512i _mm512_castph_si512(__m512h a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type "__m512h" to type "__m512i". This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castps_ph
+^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512h _mm512_castps_ph(__m512 a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type "__m512" to type "__m512h". This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castpd_ph
+^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512h _mm512_castpd_ph(__m512d a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type "__m512d" to type "__m512h". This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castsi512_ph
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m512i a
+:Param ETypes:
+    UI16 a
+
+.. code-block:: C
+
+    __m512h _mm512_castsi512_ph(__m512i a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type "__m512i" to type "__m512h". This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castph512_ph128
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m128h
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m128h _mm512_castph512_ph128(__m512h a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type "__m512h" to type "__m128h". This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castph512_ph256
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m256h
+:Param Types:
+    __m512h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m256h _mm512_castph512_ph256(__m512h a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type "__m512h" to type "__m256h". This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castph128_ph512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m128h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_castph128_ph512(__m128h a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type "__m128h" to type "__m512h". This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_castph256_ph512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m256h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_castph256_ph512(__m256h a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type "__m256h" to type "__m512h". This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_zextph128_ph512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m128h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_zextph128_ph512(__m128h a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type "__m128h" to type "__m512h"; the upper 128 bits of the result are zeroed. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+
+_mm512_zextph256_ph512
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Cast
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    __m256h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_zextph256_ph512(__m256h a);
+
+.. admonition:: Intel Description
+
+    Cast vector of type "__m256h" to type "__m512h"; the upper 128 bits of the result are zeroed. This intrinsic is only used for compilation and does not generate any instructions, thus it has zero latency.
+

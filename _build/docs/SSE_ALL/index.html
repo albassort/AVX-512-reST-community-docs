@@ -1,0 +1,1169 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SSE_ALL &#8212; My Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/SSE_ALL/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SSE_ALL-Shift-XMM" href="Shift/XMM.html" />
+    <link rel="prev" title="MMX-Miscellaneous-MMX" href="../MMX/Miscellaneous/MMX.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My Docs 1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../MMX/index.html">MMX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Shift/XMM.html">MMX-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Shift/MMX.html">MMX-Shift-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/General%20Support/XMM.html">MMX-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/General%20Support/MMX.html">MMX-General Support-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Logical/XMM.html">MMX-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Logical/MMX.html">MMX-Logical-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Swizzle/XMM.html">MMX-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Swizzle/MMX.html">MMX-Swizzle-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Arithmetic/XMM.html">MMX-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Arithmetic/MMX.html">MMX-Arithmetic-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Compare/XMM.html">MMX-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Compare/MMX.html">MMX-Compare-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Set/XMM.html">MMX-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Convert/XMM.html">MMX-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Convert/MMX.html">MMX-Convert-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Miscellaneous/XMM.html">MMX-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Miscellaneous/MMX.html">MMX-Miscellaneous-MMX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">SSE_ALL</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html">SSE_ALL-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/XMM.html">SSE_ALL-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Move/XMM.html">SSE_ALL-Move-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/XMM.html">SSE_ALL-Cast-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html">SSE_ALL-String Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/XMM.html">SSE_ALL-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/Other.html">SSE_ALL-General Support-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Probability/Statistics/XMM.html">SSE_ALL-Probability/Statistics-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Probability/Statistics/MMX.html">SSE_ALL-Probability/Statistics-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html">SSE_ALL-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/MMX.html">SSE_ALL-Special Math Functions-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html">SSE_ALL-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html">SSE_ALL-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/Other.html">SSE_ALL-Swizzle-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/MMX.html">SSE_ALL-Swizzle-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html">SSE_ALL-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/MMX.html">SSE_ALL-Store-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html">SSE_ALL-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Elementary%20Math%20Functions/XMM.html">SSE_ALL-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html">SSE_ALL-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/MMX.html">SSE_ALL-Arithmetic-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html">SSE_ALL-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html">SSE_ALL-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html">SSE_ALL-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html">SSE_ALL-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/MMX.html">SSE_ALL-Miscellaneous-MMX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Other/index.html">Other</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Cryptography/ZMM.html">Other-Cryptography-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Cryptography/YMM.html">Other-Cryptography-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Cryptography/XMM.html">Other-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Shift/Other.html">Other-Shift-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Bit%20Manipulation/XMM.html">Other-Bit Manipulation-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Bit%20Manipulation/Other.html">Other-Bit Manipulation-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Cast/Other.html">Other-Cast-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/General%20Support/XMM.html">Other-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/General%20Support/Other.html">Other-General Support-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/General%20Support/MMX.html">Other-General Support-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Unknown/Other.html">Other-Unknown-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Random/Other.html">Other-Random-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Store/Other.html">Other-Store-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Load/Other.html">Other-Load-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Arithmetic/ZMM.html">Other-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Arithmetic/YMM.html">Other-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Arithmetic/XMM.html">Other-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Arithmetic/Other.html">Other-Arithmetic-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Convert/Other.html">Other-Convert-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/OS-Targeted/Other.html">Other-OS-Targeted-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Application-Targeted/ZMM.html">Other-Application-Targeted-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Application-Targeted/YMM.html">Other-Application-Targeted-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Application-Targeted/XMM.html">Other-Application-Targeted-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Miscellaneous/XMM.html">Other-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Miscellaneous/Other.html">Other-Miscellaneous-Other</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../SVML/index.html">SVML</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Probability/Statistics/ZMM.html">SVML-Probability/Statistics-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Probability/Statistics/YMM.html">SVML-Probability/Statistics-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Probability/Statistics/XMM.html">SVML-Probability/Statistics-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Special%20Math%20Functions/ZMM.html">SVML-Special Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Special%20Math%20Functions/YMM.html">SVML-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Special%20Math%20Functions/XMM.html">SVML-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Trigonometry/ZMM.html">SVML-Trigonometry-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Trigonometry/YMM.html">SVML-Trigonometry-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Trigonometry/XMM.html">SVML-Trigonometry-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Elementary%20Math%20Functions/ZMM.html">SVML-Elementary Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Elementary%20Math%20Functions/YMM.html">SVML-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Elementary%20Math%20Functions/XMM.html">SVML-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Arithmetic/ZMM.html">SVML-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Arithmetic/YMM.html">SVML-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Arithmetic/XMM.html">SVML-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Miscellaneous/YMM.html">SVML-Miscellaneous-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Miscellaneous/XMM.html">SVML-Miscellaneous-XMM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../AMX/index.html">AMX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../AMX/Application-Targeted/Other.html">AMX-Application-Targeted-Other</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../AVX-512/index.html">AVX-512</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Shift/ZMM.html">AVX-512-Shift-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Shift/YMM.html">AVX-512-Shift-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Shift/XMM.html">AVX-512-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Move/ZMM.html">AVX-512-Move-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Move/YMM.html">AVX-512-Move-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Move/XMM.html">AVX-512-Move-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Bit%20Manipulation/ZMM.html">AVX-512-Bit Manipulation-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Bit%20Manipulation/YMM.html">AVX-512-Bit Manipulation-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Bit%20Manipulation/XMM.html">AVX-512-Bit Manipulation-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Cast/ZMM.html">AVX-512-Cast-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Cast/YMM.html">AVX-512-Cast-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Cast/XMM.html">AVX-512-Cast-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/General%20Support/ZMM.html">AVX-512-General Support-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/General%20Support/YMM.html">AVX-512-General Support-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/General%20Support/XMM.html">AVX-512-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Special%20Math%20Functions/ZMM.html">AVX-512-Special Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Special%20Math%20Functions/YMM.html">AVX-512-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Special%20Math%20Functions/XMM.html">AVX-512-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Logical/ZMM.html">AVX-512-Logical-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Logical/YMM.html">AVX-512-Logical-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Logical/XMM.html">AVX-512-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Swizzle/ZMM.html">AVX-512-Swizzle-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Swizzle/YMM.html">AVX-512-Swizzle-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Swizzle/XMM.html">AVX-512-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Store/ZMM.html">AVX-512-Store-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Store/YMM.html">AVX-512-Store-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Store/XMM.html">AVX-512-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Store/Other.html">AVX-512-Store-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Load/ZMM.html">AVX-512-Load-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Load/YMM.html">AVX-512-Load-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Load/XMM.html">AVX-512-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Load/Other.html">AVX-512-Load-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Elementary%20Math%20Functions/ZMM.html">AVX-512-Elementary Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Elementary%20Math%20Functions/YMM.html">AVX-512-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Elementary%20Math%20Functions/XMM.html">AVX-512-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Arithmetic/ZMM.html">AVX-512-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Arithmetic/YMM.html">AVX-512-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Arithmetic/XMM.html">AVX-512-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Compare/ZMM.html">AVX-512-Compare-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Compare/YMM.html">AVX-512-Compare-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Compare/XMM.html">AVX-512-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Mask/ZMM.html">AVX-512-Mask-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Mask/YMM.html">AVX-512-Mask-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Mask/XMM.html">AVX-512-Mask-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Mask/Other.html">AVX-512-Mask-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Set/ZMM.html">AVX-512-Set-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Set/YMM.html">AVX-512-Set-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Set/XMM.html">AVX-512-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Convert/ZMM.html">AVX-512-Convert-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Convert/YMM.html">AVX-512-Convert-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Convert/XMM.html">AVX-512-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Miscellaneous/ZMM.html">AVX-512-Miscellaneous-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Miscellaneous/YMM.html">AVX-512-Miscellaneous-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Miscellaneous/XMM.html">AVX-512-Miscellaneous-XMM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../AVX_ALL/index.html">AVX_ALL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Shift/YMM.html">AVX_ALL-Shift-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Shift/XMM.html">AVX_ALL-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Cryptography/YMM.html">AVX_ALL-Cryptography-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Cryptography/XMM.html">AVX_ALL-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Move/YMM.html">AVX_ALL-Move-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Cast/YMM.html">AVX_ALL-Cast-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/General%20Support/YMM.html">AVX_ALL-General Support-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Probability/Statistics/YMM.html">AVX_ALL-Probability/Statistics-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Special%20Math%20Functions/YMM.html">AVX_ALL-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Logical/YMM.html">AVX_ALL-Logical-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Logical/XMM.html">AVX_ALL-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Swizzle/YMM.html">AVX_ALL-Swizzle-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Swizzle/XMM.html">AVX_ALL-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Store/YMM.html">AVX_ALL-Store-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Store/XMM.html">AVX_ALL-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Load/YMM.html">AVX_ALL-Load-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Load/XMM.html">AVX_ALL-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Elementary%20Math%20Functions/YMM.html">AVX_ALL-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Arithmetic/YMM.html">AVX_ALL-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Arithmetic/XMM.html">AVX_ALL-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Compare/YMM.html">AVX_ALL-Compare-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Compare/XMM.html">AVX_ALL-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Set/YMM.html">AVX_ALL-Set-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Convert/YMM.html">AVX_ALL-Convert-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Convert/XMM.html">AVX_ALL-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX_ALL/Miscellaneous/YMM.html">AVX_ALL-Miscellaneous-YMM</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/SSE_ALL/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>SSE_ALL</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="sse-all">
+<h1>SSE_ALL<a class="headerlink" href="#sse-all" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Shift/XMM.html">SSE_ALL-Shift-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-slli-si128">_mm_slli_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-bslli-si128">_mm_bslli_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-bsrli-si128">_mm_bsrli_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-slli-epi16">_mm_slli_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-sll-epi16">_mm_sll_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-slli-epi32">_mm_slli_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-sll-epi32">_mm_sll_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-slli-epi64">_mm_slli_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-sll-epi64">_mm_sll_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-srai-epi16">_mm_srai_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-sra-epi16">_mm_sra_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-srai-epi32">_mm_srai_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-sra-epi32">_mm_sra_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-srli-si128">_mm_srli_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-srli-epi16">_mm_srli_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-srl-epi16">_mm_srl_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-srli-epi32">_mm_srli_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-srl-epi32">_mm_srl_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-srli-epi64">_mm_srli_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-srl-epi64">_mm_srl_epi64</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Cryptography/XMM.html">SSE_ALL-Cryptography-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/XMM.html#mm-crc32-u8">_mm_crc32_u8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/XMM.html#mm-crc32-u16">_mm_crc32_u16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/XMM.html#mm-crc32-u32">_mm_crc32_u32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/XMM.html#mm-crc32-u64">_mm_crc32_u64</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Move/XMM.html">SSE_ALL-Move-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Move/XMM.html#mm-move-ss">_mm_move_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Move/XMM.html#mm-movehl-ps">_mm_movehl_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Move/XMM.html#mm-movelh-ps">_mm_movelh_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Move/XMM.html#mm-movpi64-epi64">_mm_movpi64_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Move/XMM.html#mm-move-epi64">_mm_move_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Move/XMM.html#mm-move-sd">_mm_move_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Move/XMM.html#mm-movedup-pd">_mm_movedup_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Move/XMM.html#mm-movehdup-ps">_mm_movehdup_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Move/XMM.html#mm-moveldup-ps">_mm_moveldup_ps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Cast/XMM.html">SSE_ALL-Cast-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Cast/XMM.html#mm-castpd-ps">_mm_castpd_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/XMM.html#mm-castpd-si128">_mm_castpd_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/XMM.html#mm-castps-pd">_mm_castps_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/XMM.html#mm-castps-si128">_mm_castps_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/XMM.html#mm-castsi128-pd">_mm_castsi128_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/XMM.html#mm-castsi128-ps">_mm_castsi128_ps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="String%20Compare/XMM.html">SSE_ALL-String Compare-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html#mm-cmpistrm">_mm_cmpistrm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html#mm-cmpistri">_mm_cmpistri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html#mm-cmpistrz">_mm_cmpistrz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html#mm-cmpistrc">_mm_cmpistrc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html#mm-cmpistrs">_mm_cmpistrs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html#mm-cmpistro">_mm_cmpistro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html#mm-cmpistra">_mm_cmpistra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html#mm-cmpestrm">_mm_cmpestrm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html#mm-cmpestri">_mm_cmpestri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html#mm-cmpestrz">_mm_cmpestrz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html#mm-cmpestrc">_mm_cmpestrc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html#mm-cmpestrs">_mm_cmpestrs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html#mm-cmpestro">_mm_cmpestro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String%20Compare/XMM.html#mm-cmpestra">_mm_cmpestra</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="General%20Support/XMM.html">SSE_ALL-General Support-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/XMM.html#mm-getcsr">_mm_getcsr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/XMM.html#mm-setcsr">_mm_setcsr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/XMM.html#mm-prefetch">_mm_prefetch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/XMM.html#mm-sfence">_mm_sfence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/XMM.html#mm-malloc">_mm_malloc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/XMM.html#mm-free">_mm_free</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/XMM.html#mm-undefined-ps">_mm_undefined_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/XMM.html#mm-undefined-pd">_mm_undefined_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/XMM.html#mm-undefined-si128">_mm_undefined_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/XMM.html#mm-pause">_mm_pause</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/XMM.html#mm-clflush">_mm_clflush</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/XMM.html#mm-lfence">_mm_lfence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/XMM.html#mm-mfence">_mm_mfence</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="General%20Support/Other.html">SSE_ALL-General Support-Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/Other.html#mm-get-exception-state">_MM_GET_EXCEPTION_STATE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/Other.html#mm-set-exception-state">_MM_SET_EXCEPTION_STATE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/Other.html#mm-get-exception-mask">_MM_GET_EXCEPTION_MASK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/Other.html#mm-set-exception-mask">_MM_SET_EXCEPTION_MASK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/Other.html#mm-get-rounding-mode">_MM_GET_ROUNDING_MODE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/Other.html#mm-set-rounding-mode">_MM_SET_ROUNDING_MODE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/Other.html#mm-get-flush-zero-mode">_MM_GET_FLUSH_ZERO_MODE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/Other.html#mm-set-flush-zero-mode">_MM_SET_FLUSH_ZERO_MODE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Probability/Statistics/XMM.html">SSE_ALL-Probability/Statistics-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Probability/Statistics/XMM.html#mm-avg-pu8">_mm_avg_pu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Probability/Statistics/XMM.html#mm-avg-pu16">_mm_avg_pu16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Probability/Statistics/XMM.html#mm-avg-epu8">_mm_avg_epu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Probability/Statistics/XMM.html#mm-avg-epu16">_mm_avg_epu16</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Probability/Statistics/MMX.html">SSE_ALL-Probability/Statistics-MMX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Probability/Statistics/MMX.html#m-pavgb">_m_pavgb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Probability/Statistics/MMX.html#m-pavgw">_m_pavgw</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Special%20Math%20Functions/XMM.html">SSE_ALL-Special Math Functions-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-max-pi16">_mm_max_pi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-max-pu8">_mm_max_pu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-min-pi16">_mm_min_pi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-min-pu8">_mm_min_pu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-min-ss">_mm_min_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-min-ps">_mm_min_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-max-ss">_mm_max_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-max-ps">_mm_max_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-max-epi16">_mm_max_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-max-epu8">_mm_max_epu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-min-epi16">_mm_min_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-min-epu8">_mm_min_epu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-max-sd">_mm_max_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-max-pd">_mm_max_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-min-sd">_mm_min_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-min-pd">_mm_min_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-max-epi8">_mm_max_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-max-epi32">_mm_max_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-max-epu32">_mm_max_epu32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-max-epu16">_mm_max_epu16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-min-epi8">_mm_min_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-min-epi32">_mm_min_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-min-epu32">_mm_min_epu32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-min-epu16">_mm_min_epu16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-round-pd">_mm_round_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-floor-pd">_mm_floor_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-ceil-pd">_mm_ceil_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-round-ps">_mm_round_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-floor-ps">_mm_floor_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-ceil-ps">_mm_ceil_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-round-sd">_mm_round_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-floor-sd">_mm_floor_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-ceil-sd">_mm_ceil_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-round-ss">_mm_round_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-floor-ss">_mm_floor_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-ceil-ss">_mm_ceil_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-abs-pi8">_mm_abs_pi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-abs-epi8">_mm_abs_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-abs-pi16">_mm_abs_pi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-abs-epi16">_mm_abs_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-abs-pi32">_mm_abs_pi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/XMM.html#mm-abs-epi32">_mm_abs_epi32</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Special%20Math%20Functions/MMX.html">SSE_ALL-Special Math Functions-MMX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/MMX.html#m-pmaxsw">_m_pmaxsw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/MMX.html#m-pmaxub">_m_pmaxub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/MMX.html#m-pminsw">_m_pminsw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/MMX.html#m-pminub">_m_pminub</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Logical/XMM.html">SSE_ALL-Logical-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-and-ps">_mm_and_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-andnot-ps">_mm_andnot_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-or-ps">_mm_or_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-xor-ps">_mm_xor_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-and-si128">_mm_and_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-andnot-si128">_mm_andnot_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-or-si128">_mm_or_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-xor-si128">_mm_xor_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-and-pd">_mm_and_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-andnot-pd">_mm_andnot_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-or-pd">_mm_or_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-xor-pd">_mm_xor_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-testz-si128">_mm_testz_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-testc-si128">_mm_testc_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-testnzc-si128">_mm_testnzc_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-test-all-zeros">_mm_test_all_zeros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-test-mix-ones-zeros">_mm_test_mix_ones_zeros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-test-all-ones">_mm_test_all_ones</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Swizzle/XMM.html">SSE_ALL-Swizzle-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-extract-pi16">_mm_extract_pi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-insert-pi16">_mm_insert_pi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-shuffle-pi16">_mm_shuffle_pi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-shuffle-ps">_mm_shuffle_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-unpackhi-ps">_mm_unpackhi_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-unpacklo-ps">_mm_unpacklo_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-extract-epi16">_mm_extract_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-insert-epi16">_mm_insert_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-shuffle-epi32">_mm_shuffle_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-shufflehi-epi16">_mm_shufflehi_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-shufflelo-epi16">_mm_shufflelo_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-unpackhi-epi8">_mm_unpackhi_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-unpackhi-epi16">_mm_unpackhi_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-unpackhi-epi32">_mm_unpackhi_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-unpackhi-epi64">_mm_unpackhi_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-unpacklo-epi8">_mm_unpacklo_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-unpacklo-epi16">_mm_unpacklo_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-unpacklo-epi32">_mm_unpacklo_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-unpacklo-epi64">_mm_unpacklo_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-unpackhi-pd">_mm_unpackhi_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-unpacklo-pd">_mm_unpacklo_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-shuffle-pd">_mm_shuffle_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-blend-pd">_mm_blend_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-blend-ps">_mm_blend_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-blendv-pd">_mm_blendv_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-blendv-ps">_mm_blendv_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-blendv-epi8">_mm_blendv_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-blend-epi16">_mm_blend_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-extract-ps">_mm_extract_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-extract-epi8">_mm_extract_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-extract-epi32">_mm_extract_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-extract-epi64">_mm_extract_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-insert-ps">_mm_insert_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-insert-epi8">_mm_insert_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-insert-epi32">_mm_insert_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-insert-epi64">_mm_insert_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-shuffle-epi8">_mm_shuffle_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-shuffle-pi8">_mm_shuffle_pi8</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Swizzle/Other.html">SSE_ALL-Swizzle-Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/Other.html#mm-transpose4-ps">_MM_TRANSPOSE4_PS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Swizzle/MMX.html">SSE_ALL-Swizzle-MMX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/MMX.html#m-pextrw">_m_pextrw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/MMX.html#m-pinsrw">_m_pinsrw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/MMX.html#m-pshufw">_m_pshufw</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Store/XMM.html">SSE_ALL-Store-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-stream-pi">_mm_stream_pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-maskmove-si64">_mm_maskmove_si64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-stream-ps">_mm_stream_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-storeh-pi">_mm_storeh_pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-storel-pi">_mm_storel_pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-store-ss">_mm_store_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-store1-ps">_mm_store1_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-store-ps1">_mm_store_ps1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-store-ps">_mm_store_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-storeu-ps">_mm_storeu_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-storer-ps">_mm_storer_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-storeu-si16">_mm_storeu_si16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-storeu-si64">_mm_storeu_si64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-storeu-si32">_mm_storeu_si32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-maskmoveu-si128">_mm_maskmoveu_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-store-si128">_mm_store_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-storeu-si128">_mm_storeu_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-storel-epi64">_mm_storel_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-stream-si128">_mm_stream_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-stream-si32">_mm_stream_si32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-stream-si64">_mm_stream_si64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-stream-pd">_mm_stream_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-store-sd">_mm_store_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-store1-pd">_mm_store1_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-store-pd1">_mm_store_pd1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-store-pd">_mm_store_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-storeu-pd">_mm_storeu_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-storer-pd">_mm_storer_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-storeh-pd">_mm_storeh_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-storel-pd">_mm_storel_pd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Store/MMX.html">SSE_ALL-Store-MMX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Store/MMX.html#m-maskmovq">_m_maskmovq</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Load/XMM.html">SSE_ALL-Load-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-loadh-pi">_mm_loadh_pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-loadl-pi">_mm_loadl_pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-load-ss">_mm_load_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-load1-ps">_mm_load1_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-load-ps1">_mm_load_ps1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-load-ps">_mm_load_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-loadu-ps">_mm_loadu_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-loadr-ps">_mm_loadr_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-loadu-si64">_mm_loadu_si64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-loadu-si16">_mm_loadu_si16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-loadu-si32">_mm_loadu_si32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-loadl-epi64">_mm_loadl_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-load-si128">_mm_load_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-loadu-si128">_mm_loadu_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-load-pd">_mm_load_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-load1-pd">_mm_load1_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-load-pd1">_mm_load_pd1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-loadr-pd">_mm_loadr_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-loadu-pd">_mm_loadu_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-load-sd">_mm_load_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-loadh-pd">_mm_loadh_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-loadl-pd">_mm_loadl_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-lddqu-si128">_mm_lddqu_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-loaddup-pd">_mm_loaddup_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-stream-load-si128">_mm_stream_load_si128</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Elementary%20Math%20Functions/XMM.html">SSE_ALL-Elementary Math Functions-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Elementary%20Math%20Functions/XMM.html#mm-sqrt-ss">_mm_sqrt_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Elementary%20Math%20Functions/XMM.html#mm-sqrt-ps">_mm_sqrt_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Elementary%20Math%20Functions/XMM.html#mm-rcp-ss">_mm_rcp_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Elementary%20Math%20Functions/XMM.html#mm-rcp-ps">_mm_rcp_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Elementary%20Math%20Functions/XMM.html#mm-rsqrt-ss">_mm_rsqrt_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Elementary%20Math%20Functions/XMM.html#mm-rsqrt-ps">_mm_rsqrt_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Elementary%20Math%20Functions/XMM.html#mm-sqrt-sd">_mm_sqrt_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Elementary%20Math%20Functions/XMM.html#mm-sqrt-pd">_mm_sqrt_pd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Arithmetic/XMM.html">SSE_ALL-Arithmetic-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-mulhi-pu16">_mm_mulhi_pu16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-add-ss">_mm_add_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-add-ps">_mm_add_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sub-ss">_mm_sub_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sub-ps">_mm_sub_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-mul-ss">_mm_mul_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-mul-ps">_mm_mul_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-div-ss">_mm_div_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-div-ps">_mm_div_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-add-epi8">_mm_add_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-add-epi16">_mm_add_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-add-epi32">_mm_add_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-add-si64">_mm_add_si64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-add-epi64">_mm_add_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-adds-epi8">_mm_adds_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-adds-epi16">_mm_adds_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-adds-epu8">_mm_adds_epu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-adds-epu16">_mm_adds_epu16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-madd-epi16">_mm_madd_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-mulhi-epi16">_mm_mulhi_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-mulhi-epu16">_mm_mulhi_epu16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-mullo-epi16">_mm_mullo_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-mul-su32">_mm_mul_su32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-mul-epu32">_mm_mul_epu32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sub-epi8">_mm_sub_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sub-epi16">_mm_sub_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sub-epi32">_mm_sub_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sub-si64">_mm_sub_si64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sub-epi64">_mm_sub_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-subs-epi8">_mm_subs_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-subs-epi16">_mm_subs_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-subs-epu8">_mm_subs_epu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-subs-epu16">_mm_subs_epu16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-add-sd">_mm_add_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-add-pd">_mm_add_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-div-sd">_mm_div_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-div-pd">_mm_div_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-mul-sd">_mm_mul_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-mul-pd">_mm_mul_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sub-sd">_mm_sub_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sub-pd">_mm_sub_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-addsub-ps">_mm_addsub_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-addsub-pd">_mm_addsub_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hadd-pd">_mm_hadd_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hadd-ps">_mm_hadd_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hsub-pd">_mm_hsub_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hsub-ps">_mm_hsub_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dp-pd">_mm_dp_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dp-ps">_mm_dp_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-mul-epi32">_mm_mul_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-mullo-epi32">_mm_mullo_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hadd-epi16">_mm_hadd_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hadds-epi16">_mm_hadds_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hadd-epi32">_mm_hadd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hadd-pi16">_mm_hadd_pi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hadd-pi32">_mm_hadd_pi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hadds-pi16">_mm_hadds_pi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hsub-epi16">_mm_hsub_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hsubs-epi16">_mm_hsubs_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hsub-epi32">_mm_hsub_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hsub-pi16">_mm_hsub_pi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hsub-pi32">_mm_hsub_pi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-hsubs-pi16">_mm_hsubs_pi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-maddubs-epi16">_mm_maddubs_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-maddubs-pi16">_mm_maddubs_pi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-mulhrs-epi16">_mm_mulhrs_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-mulhrs-pi16">_mm_mulhrs_pi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sign-epi8">_mm_sign_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sign-epi16">_mm_sign_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sign-epi32">_mm_sign_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sign-pi8">_mm_sign_pi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sign-pi16">_mm_sign_pi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-sign-pi32">_mm_sign_pi32</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Arithmetic/MMX.html">SSE_ALL-Arithmetic-MMX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/MMX.html#m-pmulhuw">_m_pmulhuw</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Compare/XMM.html">SSE_ALL-Compare-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpeq-ss">_mm_cmpeq_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpeq-ps">_mm_cmpeq_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmplt-ss">_mm_cmplt_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmplt-ps">_mm_cmplt_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmple-ss">_mm_cmple_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmple-ps">_mm_cmple_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpgt-ss">_mm_cmpgt_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpgt-ps">_mm_cmpgt_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpge-ss">_mm_cmpge_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpge-ps">_mm_cmpge_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpneq-ss">_mm_cmpneq_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpneq-ps">_mm_cmpneq_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpnlt-ss">_mm_cmpnlt_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpnlt-ps">_mm_cmpnlt_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpnle-ss">_mm_cmpnle_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpnle-ps">_mm_cmpnle_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpngt-ss">_mm_cmpngt_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpngt-ps">_mm_cmpngt_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpnge-ss">_mm_cmpnge_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpnge-ps">_mm_cmpnge_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpord-ss">_mm_cmpord_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpord-ps">_mm_cmpord_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpunord-ss">_mm_cmpunord_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpunord-ps">_mm_cmpunord_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-comieq-ss">_mm_comieq_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-comilt-ss">_mm_comilt_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-comile-ss">_mm_comile_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-comigt-ss">_mm_comigt_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-comige-ss">_mm_comige_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-comineq-ss">_mm_comineq_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-ucomieq-ss">_mm_ucomieq_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-ucomilt-ss">_mm_ucomilt_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-ucomile-ss">_mm_ucomile_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-ucomigt-ss">_mm_ucomigt_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-ucomige-ss">_mm_ucomige_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-ucomineq-ss">_mm_ucomineq_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpeq-epi8">_mm_cmpeq_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpeq-epi16">_mm_cmpeq_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpeq-epi32">_mm_cmpeq_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpgt-epi8">_mm_cmpgt_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpgt-epi16">_mm_cmpgt_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpgt-epi32">_mm_cmpgt_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmplt-epi8">_mm_cmplt_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmplt-epi16">_mm_cmplt_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmplt-epi32">_mm_cmplt_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpeq-sd">_mm_cmpeq_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmplt-sd">_mm_cmplt_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmple-sd">_mm_cmple_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpgt-sd">_mm_cmpgt_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpge-sd">_mm_cmpge_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpord-sd">_mm_cmpord_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpunord-sd">_mm_cmpunord_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpneq-sd">_mm_cmpneq_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpnlt-sd">_mm_cmpnlt_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpnle-sd">_mm_cmpnle_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpngt-sd">_mm_cmpngt_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpnge-sd">_mm_cmpnge_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpeq-pd">_mm_cmpeq_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmplt-pd">_mm_cmplt_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmple-pd">_mm_cmple_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpgt-pd">_mm_cmpgt_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpge-pd">_mm_cmpge_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpord-pd">_mm_cmpord_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpunord-pd">_mm_cmpunord_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpneq-pd">_mm_cmpneq_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpnlt-pd">_mm_cmpnlt_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpnle-pd">_mm_cmpnle_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpngt-pd">_mm_cmpngt_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpnge-pd">_mm_cmpnge_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-comieq-sd">_mm_comieq_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-comilt-sd">_mm_comilt_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-comile-sd">_mm_comile_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-comigt-sd">_mm_comigt_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-comige-sd">_mm_comige_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-comineq-sd">_mm_comineq_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-ucomieq-sd">_mm_ucomieq_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-ucomilt-sd">_mm_ucomilt_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-ucomile-sd">_mm_ucomile_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-ucomigt-sd">_mm_ucomigt_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-ucomige-sd">_mm_ucomige_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-ucomineq-sd">_mm_ucomineq_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpeq-epi64">_mm_cmpeq_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmpgt-epi64">_mm_cmpgt_epi64</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Set/XMM.html">SSE_ALL-Set-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set-ss">_mm_set_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set1-ps">_mm_set1_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set-ps1">_mm_set_ps1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set-ps">_mm_set_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-setr-ps">_mm_setr_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-setzero-ps">_mm_setzero_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set-epi64">_mm_set_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set-epi64x">_mm_set_epi64x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set-epi32">_mm_set_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set-epi16">_mm_set_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set-epi8">_mm_set_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set1-epi64">_mm_set1_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set1-epi64x">_mm_set1_epi64x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set1-epi32">_mm_set1_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set1-epi16">_mm_set1_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set1-epi8">_mm_set1_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-setr-epi64">_mm_setr_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-setr-epi32">_mm_setr_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-setr-epi16">_mm_setr_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-setr-epi8">_mm_setr_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-setzero-si128">_mm_setzero_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set-sd">_mm_set_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set1-pd">_mm_set1_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set-pd1">_mm_set_pd1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-set-pd">_mm_set_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-setr-pd">_mm_setr_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/XMM.html#mm-setzero-pd">_mm_setzero_pd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Convert/XMM.html">SSE_ALL-Convert-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsi32-ss">_mm_cvtsi32_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvt-si2ss">_mm_cvt_si2ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsi64-ss">_mm_cvtsi64_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtpi32-ps">_mm_cvtpi32_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvt-pi2ps">_mm_cvt_pi2ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtpi16-ps">_mm_cvtpi16_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtpu16-ps">_mm_cvtpu16_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtpi8-ps">_mm_cvtpi8_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtpu8-ps">_mm_cvtpu8_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtpi32x2-ps">_mm_cvtpi32x2_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtss-si32">_mm_cvtss_si32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvt-ss2si">_mm_cvt_ss2si</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtss-si64">_mm_cvtss_si64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtss-f32">_mm_cvtss_f32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtps-pi32">_mm_cvtps_pi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvt-ps2pi">_mm_cvt_ps2pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvttss-si32">_mm_cvttss_si32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtt-ss2si">_mm_cvtt_ss2si</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvttss-si64">_mm_cvttss_si64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvttps-pi32">_mm_cvttps_pi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtt-ps2pi">_mm_cvtt_ps2pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtps-pi16">_mm_cvtps_pi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtps-pi8">_mm_cvtps_pi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtepi32-pd">_mm_cvtepi32_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsi32-sd">_mm_cvtsi32_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsi64-sd">_mm_cvtsi64_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsi64x-sd">_mm_cvtsi64x_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtepi32-ps">_mm_cvtepi32_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtpi32-pd">_mm_cvtpi32_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsi32-si128">_mm_cvtsi32_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsi64-si128">_mm_cvtsi64_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsi64x-si128">_mm_cvtsi64x_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsi128-si32">_mm_cvtsi128_si32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsi128-si64">_mm_cvtsi128_si64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsi128-si64x">_mm_cvtsi128_si64x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtpd-ps">_mm_cvtpd_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtps-pd">_mm_cvtps_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtpd-epi32">_mm_cvtpd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsd-si32">_mm_cvtsd_si32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsd-si64">_mm_cvtsd_si64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsd-si64x">_mm_cvtsd_si64x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsd-ss">_mm_cvtsd_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtsd-f64">_mm_cvtsd_f64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtss-sd">_mm_cvtss_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvttpd-epi32">_mm_cvttpd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvttsd-si32">_mm_cvttsd_si32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvttsd-si64">_mm_cvttsd_si64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvttsd-si64x">_mm_cvttsd_si64x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtps-epi32">_mm_cvtps_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvttps-epi32">_mm_cvttps_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtpd-pi32">_mm_cvtpd_pi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvttpd-pi32">_mm_cvttpd_pi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtepi8-epi16">_mm_cvtepi8_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtepi8-epi32">_mm_cvtepi8_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtepi8-epi64">_mm_cvtepi8_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtepi16-epi32">_mm_cvtepi16_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtepi16-epi64">_mm_cvtepi16_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtepi32-epi64">_mm_cvtepi32_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtepu8-epi16">_mm_cvtepu8_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtepu8-epi32">_mm_cvtepu8_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtepu8-epi64">_mm_cvtepu8_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtepu16-epi32">_mm_cvtepu16_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtepu16-epi64">_mm_cvtepu16_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtepu32-epi64">_mm_cvtepu32_epi64</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Miscellaneous/XMM.html">SSE_ALL-Miscellaneous-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-sad-pu8">_mm_sad_pu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-movemask-pi8">_mm_movemask_pi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-movemask-ps">_mm_movemask_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-sad-epu8">_mm_sad_epu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-movepi64-pi64">_mm_movepi64_pi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-packs-epi16">_mm_packs_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-packs-epi32">_mm_packs_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-packus-epi16">_mm_packus_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-movemask-epi8">_mm_movemask_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-movemask-pd">_mm_movemask_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-mpsadbw-epu8">_mm_mpsadbw_epu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-packus-epi32">_mm_packus_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-minpos-epu16">_mm_minpos_epu16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-alignr-epi8">_mm_alignr_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/XMM.html#mm-alignr-pi8">_mm_alignr_pi8</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Miscellaneous/MMX.html">SSE_ALL-Miscellaneous-MMX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/MMX.html#m-psadbw">_m_psadbw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/MMX.html#m-pmovmskb">_m_pmovmskb</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../MMX/Miscellaneous/MMX.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MMX-Miscellaneous-MMX</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Shift/XMM.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SSE_ALL-Shift-XMM</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Your Name
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

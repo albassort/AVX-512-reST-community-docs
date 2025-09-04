@@ -1,0 +1,1146 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>AVX_ALL &#8212; My Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/AVX_ALL/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="AVX_ALL-Shift-YMM" href="Shift/YMM.html" />
+    <link rel="prev" title="AVX-512-Miscellaneous-XMM" href="../AVX-512/Miscellaneous/XMM.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My Docs 1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../MMX/index.html">MMX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Shift/XMM.html">MMX-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Shift/MMX.html">MMX-Shift-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/General%20Support/XMM.html">MMX-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/General%20Support/MMX.html">MMX-General Support-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Logical/XMM.html">MMX-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Logical/MMX.html">MMX-Logical-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Swizzle/XMM.html">MMX-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Swizzle/MMX.html">MMX-Swizzle-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Arithmetic/XMM.html">MMX-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Arithmetic/MMX.html">MMX-Arithmetic-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Compare/XMM.html">MMX-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Compare/MMX.html">MMX-Compare-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Set/XMM.html">MMX-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Convert/XMM.html">MMX-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Convert/MMX.html">MMX-Convert-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Miscellaneous/XMM.html">MMX-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MMX/Miscellaneous/MMX.html">MMX-Miscellaneous-MMX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../SSE_ALL/index.html">SSE_ALL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Shift/XMM.html">SSE_ALL-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Cryptography/XMM.html">SSE_ALL-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Move/XMM.html">SSE_ALL-Move-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Cast/XMM.html">SSE_ALL-Cast-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/String%20Compare/XMM.html">SSE_ALL-String Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/General%20Support/XMM.html">SSE_ALL-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/General%20Support/Other.html">SSE_ALL-General Support-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Probability/Statistics/XMM.html">SSE_ALL-Probability/Statistics-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Probability/Statistics/MMX.html">SSE_ALL-Probability/Statistics-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Special%20Math%20Functions/XMM.html">SSE_ALL-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Special%20Math%20Functions/MMX.html">SSE_ALL-Special Math Functions-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Logical/XMM.html">SSE_ALL-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Swizzle/XMM.html">SSE_ALL-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Swizzle/Other.html">SSE_ALL-Swizzle-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Swizzle/MMX.html">SSE_ALL-Swizzle-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Store/XMM.html">SSE_ALL-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Store/MMX.html">SSE_ALL-Store-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Load/XMM.html">SSE_ALL-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Elementary%20Math%20Functions/XMM.html">SSE_ALL-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Arithmetic/XMM.html">SSE_ALL-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Arithmetic/MMX.html">SSE_ALL-Arithmetic-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Compare/XMM.html">SSE_ALL-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Set/XMM.html">SSE_ALL-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Convert/XMM.html">SSE_ALL-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Miscellaneous/XMM.html">SSE_ALL-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SSE_ALL/Miscellaneous/MMX.html">SSE_ALL-Miscellaneous-MMX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Other/index.html">Other</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Cryptography/ZMM.html">Other-Cryptography-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Cryptography/YMM.html">Other-Cryptography-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Cryptography/XMM.html">Other-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Shift/Other.html">Other-Shift-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Bit%20Manipulation/XMM.html">Other-Bit Manipulation-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Bit%20Manipulation/Other.html">Other-Bit Manipulation-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Cast/Other.html">Other-Cast-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/General%20Support/XMM.html">Other-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/General%20Support/Other.html">Other-General Support-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/General%20Support/MMX.html">Other-General Support-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Unknown/Other.html">Other-Unknown-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Random/Other.html">Other-Random-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Store/Other.html">Other-Store-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Load/Other.html">Other-Load-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Arithmetic/ZMM.html">Other-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Arithmetic/YMM.html">Other-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Arithmetic/XMM.html">Other-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Arithmetic/Other.html">Other-Arithmetic-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Convert/Other.html">Other-Convert-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/OS-Targeted/Other.html">Other-OS-Targeted-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Application-Targeted/ZMM.html">Other-Application-Targeted-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Application-Targeted/YMM.html">Other-Application-Targeted-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Application-Targeted/XMM.html">Other-Application-Targeted-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Miscellaneous/XMM.html">Other-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Other/Miscellaneous/Other.html">Other-Miscellaneous-Other</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../SVML/index.html">SVML</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Probability/Statistics/ZMM.html">SVML-Probability/Statistics-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Probability/Statistics/YMM.html">SVML-Probability/Statistics-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Probability/Statistics/XMM.html">SVML-Probability/Statistics-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Special%20Math%20Functions/ZMM.html">SVML-Special Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Special%20Math%20Functions/YMM.html">SVML-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Special%20Math%20Functions/XMM.html">SVML-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Trigonometry/ZMM.html">SVML-Trigonometry-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Trigonometry/YMM.html">SVML-Trigonometry-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Trigonometry/XMM.html">SVML-Trigonometry-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Elementary%20Math%20Functions/ZMM.html">SVML-Elementary Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Elementary%20Math%20Functions/YMM.html">SVML-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Elementary%20Math%20Functions/XMM.html">SVML-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Arithmetic/ZMM.html">SVML-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Arithmetic/YMM.html">SVML-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Arithmetic/XMM.html">SVML-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Miscellaneous/YMM.html">SVML-Miscellaneous-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVML/Miscellaneous/XMM.html">SVML-Miscellaneous-XMM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../AMX/index.html">AMX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../AMX/Application-Targeted/Other.html">AMX-Application-Targeted-Other</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../AVX-512/index.html">AVX-512</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Shift/ZMM.html">AVX-512-Shift-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Shift/YMM.html">AVX-512-Shift-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Shift/XMM.html">AVX-512-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Move/ZMM.html">AVX-512-Move-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Move/YMM.html">AVX-512-Move-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Move/XMM.html">AVX-512-Move-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Bit%20Manipulation/ZMM.html">AVX-512-Bit Manipulation-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Bit%20Manipulation/YMM.html">AVX-512-Bit Manipulation-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Bit%20Manipulation/XMM.html">AVX-512-Bit Manipulation-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Cast/ZMM.html">AVX-512-Cast-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Cast/YMM.html">AVX-512-Cast-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Cast/XMM.html">AVX-512-Cast-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/General%20Support/ZMM.html">AVX-512-General Support-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/General%20Support/YMM.html">AVX-512-General Support-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/General%20Support/XMM.html">AVX-512-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Special%20Math%20Functions/ZMM.html">AVX-512-Special Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Special%20Math%20Functions/YMM.html">AVX-512-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Special%20Math%20Functions/XMM.html">AVX-512-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Logical/ZMM.html">AVX-512-Logical-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Logical/YMM.html">AVX-512-Logical-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Logical/XMM.html">AVX-512-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Swizzle/ZMM.html">AVX-512-Swizzle-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Swizzle/YMM.html">AVX-512-Swizzle-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Swizzle/XMM.html">AVX-512-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Store/ZMM.html">AVX-512-Store-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Store/YMM.html">AVX-512-Store-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Store/XMM.html">AVX-512-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Store/Other.html">AVX-512-Store-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Load/ZMM.html">AVX-512-Load-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Load/YMM.html">AVX-512-Load-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Load/XMM.html">AVX-512-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Load/Other.html">AVX-512-Load-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Elementary%20Math%20Functions/ZMM.html">AVX-512-Elementary Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Elementary%20Math%20Functions/YMM.html">AVX-512-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Elementary%20Math%20Functions/XMM.html">AVX-512-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Arithmetic/ZMM.html">AVX-512-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Arithmetic/YMM.html">AVX-512-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Arithmetic/XMM.html">AVX-512-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Compare/ZMM.html">AVX-512-Compare-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Compare/YMM.html">AVX-512-Compare-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Compare/XMM.html">AVX-512-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Mask/ZMM.html">AVX-512-Mask-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Mask/YMM.html">AVX-512-Mask-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Mask/XMM.html">AVX-512-Mask-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Mask/Other.html">AVX-512-Mask-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Set/ZMM.html">AVX-512-Set-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Set/YMM.html">AVX-512-Set-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Set/XMM.html">AVX-512-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Convert/ZMM.html">AVX-512-Convert-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Convert/YMM.html">AVX-512-Convert-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Convert/XMM.html">AVX-512-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Miscellaneous/ZMM.html">AVX-512-Miscellaneous-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Miscellaneous/YMM.html">AVX-512-Miscellaneous-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AVX-512/Miscellaneous/XMM.html">AVX-512-Miscellaneous-XMM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">AVX_ALL</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html">AVX_ALL-Shift-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html">AVX_ALL-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/YMM.html">AVX_ALL-Cryptography-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/XMM.html">AVX_ALL-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Move/YMM.html">AVX_ALL-Move-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html">AVX_ALL-Cast-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/YMM.html">AVX_ALL-General Support-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Probability/Statistics/YMM.html">AVX_ALL-Probability/Statistics-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html">AVX_ALL-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html">AVX_ALL-Logical-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html">AVX_ALL-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html">AVX_ALL-Swizzle-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html">AVX_ALL-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html">AVX_ALL-Store-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html">AVX_ALL-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html">AVX_ALL-Load-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html">AVX_ALL-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Elementary%20Math%20Functions/YMM.html">AVX_ALL-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html">AVX_ALL-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html">AVX_ALL-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/YMM.html">AVX_ALL-Compare-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html">AVX_ALL-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html">AVX_ALL-Set-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html">AVX_ALL-Convert-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html">AVX_ALL-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/YMM.html">AVX_ALL-Miscellaneous-YMM</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/AVX_ALL/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AVX_ALL</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="avx-all">
+<h1>AVX_ALL<a class="headerlink" href="#avx-all" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Shift/YMM.html">AVX_ALL-Shift-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-slli-si256">_mm256_slli_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-bslli-epi128">_mm256_bslli_epi128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-sll-epi16">_mm256_sll_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-slli-epi16">_mm256_slli_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-sll-epi32">_mm256_sll_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-slli-epi32">_mm256_slli_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-sll-epi64">_mm256_sll_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-slli-epi64">_mm256_slli_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-sllv-epi32">_mm256_sllv_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-sllv-epi64">_mm256_sllv_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-sra-epi16">_mm256_sra_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-srai-epi16">_mm256_srai_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-sra-epi32">_mm256_sra_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-srai-epi32">_mm256_srai_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-srav-epi32">_mm256_srav_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-srli-si256">_mm256_srli_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-bsrli-epi128">_mm256_bsrli_epi128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-srl-epi16">_mm256_srl_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-srli-epi16">_mm256_srli_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-srl-epi32">_mm256_srl_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-srli-epi32">_mm256_srli_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-srl-epi64">_mm256_srl_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-srli-epi64">_mm256_srli_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-srlv-epi32">_mm256_srlv_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/YMM.html#mm256-srlv-epi64">_mm256_srlv_epi64</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Shift/XMM.html">AVX_ALL-Shift-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-sllv-epi32">_mm_sllv_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-sllv-epi64">_mm_sllv_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-srav-epi32">_mm_srav_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-srlv-epi32">_mm_srlv_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shift/XMM.html#mm-srlv-epi64">_mm_srlv_epi64</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Cryptography/YMM.html">AVX_ALL-Cryptography-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/YMM.html#mm256-sha512msg1-epi64">_mm256_sha512msg1_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/YMM.html#mm256-sha512msg2-epi64">_mm256_sha512msg2_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/YMM.html#mm256-sha512rnds2-epi64">_mm256_sha512rnds2_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/YMM.html#mm256-sm4key4-epi32">_mm256_sm4key4_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/YMM.html#mm256-sm4rnds4-epi32">_mm256_sm4rnds4_epi32</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Cryptography/XMM.html">AVX_ALL-Cryptography-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/XMM.html#mm-sm3msg1-epi32">_mm_sm3msg1_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/XMM.html#mm-sm3msg2-epi32">_mm_sm3msg2_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/XMM.html#mm-sm3rnds2-epi32">_mm_sm3rnds2_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/XMM.html#mm-sm4key4-epi32">_mm_sm4key4_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography/XMM.html#mm-sm4rnds4-epi32">_mm_sm4rnds4_epi32</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Move/YMM.html">AVX_ALL-Move-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Move/YMM.html#mm256-movehdup-ps">_mm256_movehdup_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Move/YMM.html#mm256-moveldup-ps">_mm256_moveldup_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Move/YMM.html#mm256-movedup-pd">_mm256_movedup_pd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Cast/YMM.html">AVX_ALL-Cast-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-castpd-ps">_mm256_castpd_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-castps-pd">_mm256_castps_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-castps-si256">_mm256_castps_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-castpd-si256">_mm256_castpd_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-castsi256-ps">_mm256_castsi256_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-castsi256-pd">_mm256_castsi256_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-castps256-ps128">_mm256_castps256_ps128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-castpd256-pd128">_mm256_castpd256_pd128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-castsi256-si128">_mm256_castsi256_si128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-castps128-ps256">_mm256_castps128_ps256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-castpd128-pd256">_mm256_castpd128_pd256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-castsi128-si256">_mm256_castsi128_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-zextps128-ps256">_mm256_zextps128_ps256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-zextpd128-pd256">_mm256_zextpd128_pd256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cast/YMM.html#mm256-zextsi128-si256">_mm256_zextsi128_si256</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="General%20Support/YMM.html">AVX_ALL-General Support-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/YMM.html#mm256-zeroall">_mm256_zeroall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/YMM.html#mm256-zeroupper">_mm256_zeroupper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/YMM.html#mm256-undefined-ps">_mm256_undefined_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/YMM.html#mm256-undefined-pd">_mm256_undefined_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General%20Support/YMM.html#mm256-undefined-si256">_mm256_undefined_si256</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Probability/Statistics/YMM.html">AVX_ALL-Probability/Statistics-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Probability/Statistics/YMM.html#mm256-avg-epu8">_mm256_avg_epu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Probability/Statistics/YMM.html#mm256-avg-epu16">_mm256_avg_epu16</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Special%20Math%20Functions/YMM.html">AVX_ALL-Special Math Functions-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-max-pd">_mm256_max_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-max-ps">_mm256_max_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-min-pd">_mm256_min_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-min-ps">_mm256_min_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-round-pd">_mm256_round_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-round-ps">_mm256_round_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-floor-ps">_mm256_floor_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-ceil-ps">_mm256_ceil_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-floor-pd">_mm256_floor_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-ceil-pd">_mm256_ceil_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-abs-epi8">_mm256_abs_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-abs-epi16">_mm256_abs_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-abs-epi32">_mm256_abs_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-max-epi8">_mm256_max_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-max-epi16">_mm256_max_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-max-epi32">_mm256_max_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-max-epu8">_mm256_max_epu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-max-epu16">_mm256_max_epu16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-max-epu32">_mm256_max_epu32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-min-epi8">_mm256_min_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-min-epi16">_mm256_min_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-min-epi32">_mm256_min_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-min-epu8">_mm256_min_epu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-min-epu16">_mm256_min_epu16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Special%20Math%20Functions/YMM.html#mm256-min-epu32">_mm256_min_epu32</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Logical/YMM.html">AVX_ALL-Logical-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-and-pd">_mm256_and_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-and-ps">_mm256_and_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-andnot-pd">_mm256_andnot_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-andnot-ps">_mm256_andnot_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-or-pd">_mm256_or_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-or-ps">_mm256_or_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-xor-pd">_mm256_xor_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-xor-ps">_mm256_xor_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-testz-si256">_mm256_testz_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-testc-si256">_mm256_testc_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-testnzc-si256">_mm256_testnzc_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-testz-pd">_mm256_testz_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-testc-pd">_mm256_testc_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-testnzc-pd">_mm256_testnzc_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-testz-ps">_mm256_testz_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-testc-ps">_mm256_testc_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-testnzc-ps">_mm256_testnzc_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-and-si256">_mm256_and_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-andnot-si256">_mm256_andnot_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-or-si256">_mm256_or_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/YMM.html#mm256-xor-si256">_mm256_xor_si256</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Logical/XMM.html">AVX_ALL-Logical-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-testz-pd">_mm_testz_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-testc-pd">_mm_testc_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-testnzc-pd">_mm_testnzc_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-testz-ps">_mm_testz_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-testc-ps">_mm_testc_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logical/XMM.html#mm-testnzc-ps">_mm_testnzc_ps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Swizzle/YMM.html">AVX_ALL-Swizzle-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-blend-pd">_mm256_blend_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-blend-ps">_mm256_blend_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-blendv-pd">_mm256_blendv_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-blendv-ps">_mm256_blendv_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-shuffle-pd">_mm256_shuffle_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-shuffle-ps">_mm256_shuffle_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-extractf128-ps">_mm256_extractf128_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-extractf128-pd">_mm256_extractf128_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-extractf128-si256">_mm256_extractf128_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-extract-epi32">_mm256_extract_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-extract-epi64">_mm256_extract_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-permutevar-ps">_mm256_permutevar_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-permute-ps">_mm256_permute_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-permutevar-pd">_mm256_permutevar_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-permute-pd">_mm256_permute_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-permute2f128-ps">_mm256_permute2f128_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-permute2f128-pd">_mm256_permute2f128_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-permute2f128-si256">_mm256_permute2f128_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-insertf128-ps">_mm256_insertf128_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-insertf128-pd">_mm256_insertf128_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-insertf128-si256">_mm256_insertf128_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-insert-epi8">_mm256_insert_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-insert-epi16">_mm256_insert_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-insert-epi32">_mm256_insert_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-insert-epi64">_mm256_insert_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-unpackhi-pd">_mm256_unpackhi_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-unpackhi-ps">_mm256_unpackhi_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-unpacklo-pd">_mm256_unpacklo_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-unpacklo-ps">_mm256_unpacklo_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-broadcast-sd">_mm256_broadcast_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-broadcast-ps">_mm256_broadcast_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-broadcast-pd">_mm256_broadcast_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-extract-epi8">_mm256_extract_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-extract-epi16">_mm256_extract_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-blend-epi16">_mm256_blend_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-blend-epi32">_mm256_blend_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-blendv-epi8">_mm256_blendv_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-broadcastb-epi8">_mm256_broadcastb_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-broadcastd-epi32">_mm256_broadcastd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-broadcastq-epi64">_mm256_broadcastq_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-broadcastsd-pd">_mm256_broadcastsd_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-broadcastsi128-si256">_mm256_broadcastsi128_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-broadcastss-ps">_mm256_broadcastss_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-broadcastw-epi16">_mm256_broadcastw_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-extracti128-si256">_mm256_extracti128_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-inserti128-si256">_mm256_inserti128_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-permute2x128-si256">_mm256_permute2x128_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-permute4x64-epi64">_mm256_permute4x64_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-permute4x64-pd">_mm256_permute4x64_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-permutevar8x32-epi32">_mm256_permutevar8x32_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-permutevar8x32-ps">_mm256_permutevar8x32_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-shuffle-epi32">_mm256_shuffle_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-shuffle-epi8">_mm256_shuffle_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-shufflehi-epi16">_mm256_shufflehi_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-shufflelo-epi16">_mm256_shufflelo_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-unpackhi-epi8">_mm256_unpackhi_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-unpackhi-epi16">_mm256_unpackhi_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-unpackhi-epi32">_mm256_unpackhi_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-unpackhi-epi64">_mm256_unpackhi_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-unpacklo-epi8">_mm256_unpacklo_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-unpacklo-epi16">_mm256_unpacklo_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-unpacklo-epi32">_mm256_unpacklo_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/YMM.html#mm256-unpacklo-epi64">_mm256_unpacklo_epi64</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Swizzle/XMM.html">AVX_ALL-Swizzle-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-permutevar-ps">_mm_permutevar_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-permute-ps">_mm_permute_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-permutevar-pd">_mm_permutevar_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-permute-pd">_mm_permute_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-broadcast-ss">_mm_broadcast_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-blend-epi32">_mm_blend_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-broadcastb-epi8">_mm_broadcastb_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-broadcastd-epi32">_mm_broadcastd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-broadcastq-epi64">_mm_broadcastq_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-broadcastsd-pd">_mm_broadcastsd_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-broadcastsi128-si256">_mm_broadcastsi128_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-broadcastss-ps">_mm_broadcastss_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Swizzle/XMM.html#mm-broadcastw-epi16">_mm_broadcastw_epi16</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Store/YMM.html">AVX_ALL-Store-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-store-pd">_mm256_store_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-store-ps">_mm256_store_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-storeu-pd">_mm256_storeu_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-storeu-ps">_mm256_storeu_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-store-si256">_mm256_store_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-storeu-si256">_mm256_storeu_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-maskstore-pd">_mm256_maskstore_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-maskstore-ps">_mm256_maskstore_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-stream-si256">_mm256_stream_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-stream-pd">_mm256_stream_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-stream-ps">_mm256_stream_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-storeu2-m128">_mm256_storeu2_m128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-storeu2-m128d">_mm256_storeu2_m128d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-storeu2-m128i">_mm256_storeu2_m128i</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-maskstore-epi32">_mm256_maskstore_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/YMM.html#mm256-maskstore-epi64">_mm256_maskstore_epi64</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Store/XMM.html">AVX_ALL-Store-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-maskstore-pd">_mm_maskstore_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-maskstore-ps">_mm_maskstore_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-maskstore-epi32">_mm_maskstore_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Store/XMM.html#mm-maskstore-epi64">_mm_maskstore_epi64</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Load/YMM.html">AVX_ALL-Load-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-broadcast-ss">_mm256_broadcast_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-load-pd">_mm256_load_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-load-ps">_mm256_load_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-loadu-pd">_mm256_loadu_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-loadu-ps">_mm256_loadu_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-load-si256">_mm256_load_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-loadu-si256">_mm256_loadu_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-maskload-pd">_mm256_maskload_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-maskload-ps">_mm256_maskload_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-lddqu-si256">_mm256_lddqu_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-loadu2-m128">_mm256_loadu2_m128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-loadu2-m128d">_mm256_loadu2_m128d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-loadu2-m128i">_mm256_loadu2_m128i</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-i32gather-pd">_mm256_i32gather_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-i32gather-ps">_mm256_i32gather_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-i32gather-epi32">_mm256_i32gather_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-i32gather-epi64">_mm256_i32gather_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-i64gather-pd">_mm256_i64gather_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-i64gather-ps">_mm256_i64gather_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-i64gather-epi32">_mm256_i64gather_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-i64gather-epi64">_mm256_i64gather_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-mask-i32gather-pd">_mm256_mask_i32gather_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-mask-i32gather-ps">_mm256_mask_i32gather_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-mask-i32gather-epi32">_mm256_mask_i32gather_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-mask-i32gather-epi64">_mm256_mask_i32gather_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-mask-i64gather-pd">_mm256_mask_i64gather_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-mask-i64gather-ps">_mm256_mask_i64gather_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-mask-i64gather-epi32">_mm256_mask_i64gather_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-mask-i64gather-epi64">_mm256_mask_i64gather_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-maskload-epi32">_mm256_maskload_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-maskload-epi64">_mm256_maskload_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/YMM.html#mm256-stream-load-si256">_mm256_stream_load_si256</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Load/XMM.html">AVX_ALL-Load-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-maskload-pd">_mm_maskload_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-maskload-ps">_mm_maskload_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-i32gather-pd">_mm_i32gather_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-i32gather-ps">_mm_i32gather_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-i32gather-epi32">_mm_i32gather_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-i32gather-epi64">_mm_i32gather_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-i64gather-pd">_mm_i64gather_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-i64gather-ps">_mm_i64gather_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-i64gather-epi32">_mm_i64gather_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-i64gather-epi64">_mm_i64gather_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-mask-i32gather-pd">_mm_mask_i32gather_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-mask-i32gather-ps">_mm_mask_i32gather_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-mask-i32gather-epi32">_mm_mask_i32gather_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-mask-i32gather-epi64">_mm_mask_i32gather_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-mask-i64gather-pd">_mm_mask_i64gather_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-mask-i64gather-ps">_mm_mask_i64gather_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-mask-i64gather-epi32">_mm_mask_i64gather_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-mask-i64gather-epi64">_mm_mask_i64gather_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-maskload-epi32">_mm_maskload_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load/XMM.html#mm-maskload-epi64">_mm_maskload_epi64</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Elementary%20Math%20Functions/YMM.html">AVX_ALL-Elementary Math Functions-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Elementary%20Math%20Functions/YMM.html#mm256-rcp-ps">_mm256_rcp_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Elementary%20Math%20Functions/YMM.html#mm256-rsqrt-ps">_mm256_rsqrt_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Elementary%20Math%20Functions/YMM.html#mm256-sqrt-pd">_mm256_sqrt_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Elementary%20Math%20Functions/YMM.html#mm256-sqrt-ps">_mm256_sqrt_ps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Arithmetic/YMM.html">AVX_ALL-Arithmetic-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-add-pd">_mm256_add_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-add-ps">_mm256_add_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-addsub-pd">_mm256_addsub_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-addsub-ps">_mm256_addsub_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-div-pd">_mm256_div_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-div-ps">_mm256_div_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dp-ps">_mm256_dp_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-hadd-pd">_mm256_hadd_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-hadd-ps">_mm256_hadd_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-hsub-pd">_mm256_hsub_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-hsub-ps">_mm256_hsub_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-mul-pd">_mm256_mul_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-mul-ps">_mm256_mul_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-sub-pd">_mm256_sub_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-sub-ps">_mm256_sub_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-add-epi8">_mm256_add_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-add-epi16">_mm256_add_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-add-epi32">_mm256_add_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-add-epi64">_mm256_add_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-adds-epi8">_mm256_adds_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-adds-epi16">_mm256_adds_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-adds-epu8">_mm256_adds_epu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-adds-epu16">_mm256_adds_epu16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-hadd-epi16">_mm256_hadd_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-hadd-epi32">_mm256_hadd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-hadds-epi16">_mm256_hadds_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-hsub-epi16">_mm256_hsub_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-hsub-epi32">_mm256_hsub_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-hsubs-epi16">_mm256_hsubs_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-madd-epi16">_mm256_madd_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-maddubs-epi16">_mm256_maddubs_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-mul-epi32">_mm256_mul_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-mul-epu32">_mm256_mul_epu32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-mulhi-epi16">_mm256_mulhi_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-mulhi-epu16">_mm256_mulhi_epu16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-mulhrs-epi16">_mm256_mulhrs_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-mullo-epi16">_mm256_mullo_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-mullo-epi32">_mm256_mullo_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-sad-epu8">_mm256_sad_epu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-sign-epi8">_mm256_sign_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-sign-epi16">_mm256_sign_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-sign-epi32">_mm256_sign_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-sub-epi8">_mm256_sub_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-sub-epi16">_mm256_sub_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-sub-epi32">_mm256_sub_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-sub-epi64">_mm256_sub_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-subs-epi8">_mm256_subs_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-subs-epi16">_mm256_subs_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-subs-epu8">_mm256_subs_epu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-subs-epu16">_mm256_subs_epu16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-madd52hi-avx-epu64">_mm256_madd52hi_avx_epu64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-madd52lo-avx-epu64">_mm256_madd52lo_avx_epu64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-madd52hi-epu64">_mm256_madd52hi_epu64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-madd52lo-epu64">_mm256_madd52lo_epu64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpbusd-avx-epi32">_mm256_dpbusd_avx_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpbusds-avx-epi32">_mm256_dpbusds_avx_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpwssd-avx-epi32">_mm256_dpwssd_avx_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpwssds-avx-epi32">_mm256_dpwssds_avx_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpbusd-epi32">_mm256_dpbusd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpbusds-epi32">_mm256_dpbusds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpwssd-epi32">_mm256_dpwssd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpwssds-epi32">_mm256_dpwssds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpwsud-epi32">_mm256_dpwsud_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpwsuds-epi32">_mm256_dpwsuds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpwusd-epi32">_mm256_dpwusd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpwusds-epi32">_mm256_dpwusds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpwuud-epi32">_mm256_dpwuud_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpwuuds-epi32">_mm256_dpwuuds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpbssd-epi32">_mm256_dpbssd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpbssds-epi32">_mm256_dpbssds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpbsud-epi32">_mm256_dpbsud_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpbsuds-epi32">_mm256_dpbsuds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpbuud-epi32">_mm256_dpbuud_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-dpbuuds-epi32">_mm256_dpbuuds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-fmadd-pd">_mm256_fmadd_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-fmadd-ps">_mm256_fmadd_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-fmaddsub-pd">_mm256_fmaddsub_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-fmaddsub-ps">_mm256_fmaddsub_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-fmsub-pd">_mm256_fmsub_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-fmsub-ps">_mm256_fmsub_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-fmsubadd-pd">_mm256_fmsubadd_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-fmsubadd-ps">_mm256_fmsubadd_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-fnmadd-pd">_mm256_fnmadd_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-fnmadd-ps">_mm256_fnmadd_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-fnmsub-pd">_mm256_fnmsub_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/YMM.html#mm256-fnmsub-ps">_mm256_fnmsub_ps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Arithmetic/XMM.html">AVX_ALL-Arithmetic-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-madd52hi-avx-epu64">_mm_madd52hi_avx_epu64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-madd52lo-avx-epu64">_mm_madd52lo_avx_epu64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-madd52hi-epu64">_mm_madd52hi_epu64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-madd52lo-epu64">_mm_madd52lo_epu64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpbusd-avx-epi32">_mm_dpbusd_avx_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpbusds-avx-epi32">_mm_dpbusds_avx_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpwssd-avx-epi32">_mm_dpwssd_avx_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpwssds-avx-epi32">_mm_dpwssds_avx_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpbusd-epi32">_mm_dpbusd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpbusds-epi32">_mm_dpbusds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpwssd-epi32">_mm_dpwssd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpwssds-epi32">_mm_dpwssds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpwsud-epi32">_mm_dpwsud_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpwsuds-epi32">_mm_dpwsuds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpwusd-epi32">_mm_dpwusd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpwusds-epi32">_mm_dpwusds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpwuud-epi32">_mm_dpwuud_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpwuuds-epi32">_mm_dpwuuds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpbssd-epi32">_mm_dpbssd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpbssds-epi32">_mm_dpbssds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpbsud-epi32">_mm_dpbsud_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpbsuds-epi32">_mm_dpbsuds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpbuud-epi32">_mm_dpbuud_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-dpbuuds-epi32">_mm_dpbuuds_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fmadd-pd">_mm_fmadd_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fmadd-ps">_mm_fmadd_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fmadd-sd">_mm_fmadd_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fmadd-ss">_mm_fmadd_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fmaddsub-pd">_mm_fmaddsub_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fmaddsub-ps">_mm_fmaddsub_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fmsub-pd">_mm_fmsub_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fmsub-ps">_mm_fmsub_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fmsub-sd">_mm_fmsub_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fmsub-ss">_mm_fmsub_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fmsubadd-pd">_mm_fmsubadd_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fmsubadd-ps">_mm_fmsubadd_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fnmadd-pd">_mm_fnmadd_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fnmadd-ps">_mm_fnmadd_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fnmadd-sd">_mm_fnmadd_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fnmadd-ss">_mm_fnmadd_ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fnmsub-pd">_mm_fnmsub_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fnmsub-ps">_mm_fnmsub_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fnmsub-sd">_mm_fnmsub_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arithmetic/XMM.html#mm-fnmsub-ss">_mm_fnmsub_ss</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Compare/YMM.html">AVX_ALL-Compare-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Compare/YMM.html#mm256-cmp-pd">_mm256_cmp_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/YMM.html#mm256-cmp-ps">_mm256_cmp_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/YMM.html#mm256-cmpeq-epi8">_mm256_cmpeq_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/YMM.html#mm256-cmpeq-epi16">_mm256_cmpeq_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/YMM.html#mm256-cmpeq-epi32">_mm256_cmpeq_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/YMM.html#mm256-cmpeq-epi64">_mm256_cmpeq_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/YMM.html#mm256-cmpgt-epi8">_mm256_cmpgt_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/YMM.html#mm256-cmpgt-epi16">_mm256_cmpgt_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/YMM.html#mm256-cmpgt-epi32">_mm256_cmpgt_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/YMM.html#mm256-cmpgt-epi64">_mm256_cmpgt_epi64</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Compare/XMM.html">AVX_ALL-Compare-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmp-pd">_mm_cmp_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmp-ps">_mm_cmp_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmp-sd">_mm_cmp_sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compare/XMM.html#mm-cmp-ss">_mm_cmp_ss</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Set/YMM.html">AVX_ALL-Set-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-setzero-pd">_mm256_setzero_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-setzero-ps">_mm256_setzero_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-setzero-si256">_mm256_setzero_si256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set-pd">_mm256_set_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set-ps">_mm256_set_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set-epi8">_mm256_set_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set-epi16">_mm256_set_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set-epi32">_mm256_set_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set-epi64x">_mm256_set_epi64x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-setr-pd">_mm256_setr_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-setr-ps">_mm256_setr_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-setr-epi8">_mm256_setr_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-setr-epi16">_mm256_setr_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-setr-epi32">_mm256_setr_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-setr-epi64x">_mm256_setr_epi64x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set1-pd">_mm256_set1_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set1-ps">_mm256_set1_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set1-epi8">_mm256_set1_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set1-epi16">_mm256_set1_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set1-epi32">_mm256_set1_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set1-epi64x">_mm256_set1_epi64x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set-m128">_mm256_set_m128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set-m128d">_mm256_set_m128d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-set-m128i">_mm256_set_m128i</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-setr-m128">_mm256_setr_m128</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-setr-m128d">_mm256_setr_m128d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set/YMM.html#mm256-setr-m128i">_mm256_setr_m128i</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Convert/YMM.html">AVX_ALL-Convert-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtepi32-pd">_mm256_cvtepi32_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtepi32-ps">_mm256_cvtepi32_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtpd-ps">_mm256_cvtpd_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtps-epi32">_mm256_cvtps_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtps-pd">_mm256_cvtps_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvttpd-epi32">_mm256_cvttpd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtpd-epi32">_mm256_cvtpd_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvttps-epi32">_mm256_cvttps_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtss-f32">_mm256_cvtss_f32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtsd-f64">_mm256_cvtsd_f64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtsi256-si32">_mm256_cvtsi256_si32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtepi16-epi32">_mm256_cvtepi16_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtepi16-epi64">_mm256_cvtepi16_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtepi32-epi64">_mm256_cvtepi32_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtepi8-epi16">_mm256_cvtepi8_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtepi8-epi32">_mm256_cvtepi8_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtepi8-epi64">_mm256_cvtepi8_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtepu16-epi32">_mm256_cvtepu16_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtepu16-epi64">_mm256_cvtepu16_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtepu32-epi64">_mm256_cvtepu32_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtepu8-epi16">_mm256_cvtepu8_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtepu8-epi32">_mm256_cvtepu8_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtepu8-epi64">_mm256_cvtepu8_epi64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-bcstnebf16-ps">_mm256_bcstnebf16_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-bcstnesh-ps">_mm256_bcstnesh_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtneebf16-ps">_mm256_cvtneebf16_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtneeph-ps">_mm256_cvtneeph_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtneobf16-ps">_mm256_cvtneobf16_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtneoph-ps">_mm256_cvtneoph_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtneps-avx-pbh">_mm256_cvtneps_avx_pbh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtneps-pbh">_mm256_cvtneps_pbh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtph-ps">_mm256_cvtph_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/YMM.html#mm256-cvtps-ph">_mm256_cvtps_ph</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Convert/XMM.html">AVX_ALL-Convert-XMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-bcstnebf16-ps">_mm_bcstnebf16_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-bcstnesh-ps">_mm_bcstnesh_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtneebf16-ps">_mm_cvtneebf16_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtneeph-ps">_mm_cvtneeph_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtneobf16-ps">_mm_cvtneobf16_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtneoph-ps">_mm_cvtneoph_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtneps-avx-pbh">_mm_cvtneps_avx_pbh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtneps-pbh">_mm_cvtneps_pbh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtph-ps">_mm_cvtph_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convert/XMM.html#mm-cvtps-ph">_mm_cvtps_ph</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Miscellaneous/YMM.html">AVX_ALL-Miscellaneous-YMM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/YMM.html#mm256-movemask-pd">_mm256_movemask_pd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/YMM.html#mm256-movemask-ps">_mm256_movemask_ps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/YMM.html#mm256-alignr-epi8">_mm256_alignr_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/YMM.html#mm256-movemask-epi8">_mm256_movemask_epi8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/YMM.html#mm256-mpsadbw-epu8">_mm256_mpsadbw_epu8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/YMM.html#mm256-packs-epi16">_mm256_packs_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/YMM.html#mm256-packs-epi32">_mm256_packs_epi32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/YMM.html#mm256-packus-epi16">_mm256_packus_epi16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Miscellaneous/YMM.html#mm256-packus-epi32">_mm256_packus_epi32</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../AVX-512/Miscellaneous/XMM.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AVX-512-Miscellaneous-XMM</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Shift/YMM.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AVX_ALL-Shift-YMM</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Your Name
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

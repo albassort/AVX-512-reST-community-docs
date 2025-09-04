@@ -1,0 +1,2574 @@
+_mm512_mask_storeu_epi16
+^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __mmask32 k, 
+    __m512i a
+:Param ETypes:
+    UI16 mem_addr, 
+    MASK k, 
+    UI16 a
+
+.. code-block:: C
+
+    void _mm512_mask_storeu_epi16(void* mem_addr, __mmask32 k,
+                                  __m512i a)
+
+.. admonition:: Intel Description
+
+    Store packed 16-bit integers from "a" into memory using writemask "k".
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		MEM[mem_addr+i+15:mem_addr+i] := a[i+15:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_storeu_epi8
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __mmask64 k, 
+    __m512i a
+:Param ETypes:
+    UI8 mem_addr, 
+    MASK k, 
+    UI8 a
+
+.. code-block:: C
+
+    void _mm512_mask_storeu_epi8(void* mem_addr, __mmask64 k,
+                                 __m512i a)
+
+.. admonition:: Intel Description
+
+    Store packed 8-bit integers from "a" into memory using writemask "k".
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 63
+        	i := j*8
+        	IF k[j]
+        		MEM[mem_addr+i+7:mem_addr+i] := a[i+7:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_storeu_epi16
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512i a
+:Param ETypes:
+    UI16 mem_addr, 
+    UI16 a
+
+.. code-block:: C
+
+    void _mm512_storeu_epi16(void* mem_addr, __m512i a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits (composed of 32 packed 16-bit integers) from "a" into memory.
+    		"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_storeu_epi8
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512i a
+:Param ETypes:
+    UI8 mem_addr, 
+    UI8 a
+
+.. code-block:: C
+
+    void _mm512_storeu_epi8(void* mem_addr, __m512i a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits (composed of 64 packed 8-bit integers) from "a" into memory.
+    		"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_mask_cvtsepi16_storeu_epi8
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask32 k, 
+    __m512i a
+:Param ETypes:
+    SI8 base_addr, 
+    MASK k, 
+    SI16 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtsepi16_storeu_epi8(void* base_addr,
+                                           __mmask32 k,
+                                           __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed signed 16-bit integers in "a" to packed 8-bit integers with signed saturation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := 16*j
+        	l := 8*j
+        	IF k[j]
+        		MEM[base_addr+l+7:base_addr+l] := Saturate8(a[i+15:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtusepi16_storeu_epi8
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask32 k, 
+    __m512i a
+:Param ETypes:
+    UI8 base_addr, 
+    MASK k, 
+    UI16 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtusepi16_storeu_epi8(void* base_addr,
+                                            __mmask32 k,
+                                            __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed unsigned 16-bit integers in "a" to packed unsigned 8-bit integers with unsigned saturation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := 16*j
+        	l := 8*j
+        	IF k[j]
+        		MEM[base_addr+l+7:base_addr+l] := SaturateU8(a[i+15:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtepi16_storeu_epi8
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask32 k, 
+    __m512i a
+:Param ETypes:
+    UI8 base_addr, 
+    MASK k, 
+    UI16 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtepi16_storeu_epi8(void* base_addr,
+                                          __mmask32 k,
+                                          __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed 16-bit integers in "a" to packed 8-bit integers with truncation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := 16*j
+        	l := 8*j
+        	IF k[j]
+        		MEM[base_addr+l+7:base_addr+l] := Truncate8(a[i+15:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_storeu_epi64
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512i a
+:Param ETypes:
+    UI64 mem_addr, 
+    UI64 a
+
+.. code-block:: C
+
+    void _mm512_storeu_epi64(void* mem_addr, __m512i a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits (composed of 8 packed 64-bit integers) from "a" into memory.
+    		"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_storeu_epi32
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512i a
+:Param ETypes:
+    UI32 mem_addr, 
+    UI32 a
+
+.. code-block:: C
+
+    void _mm512_storeu_epi32(void* mem_addr, __m512i a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits (composed of 16 packed 32-bit integers) from "a" into memory.
+    		"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_mask_storeu_epi32
+^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __mmask16 k, 
+    __m512i a
+:Param ETypes:
+    UI32 mem_addr, 
+    MASK k, 
+    UI32 a
+
+.. code-block:: C
+
+    void _mm512_mask_storeu_epi32(void* mem_addr, __mmask16 k,
+                                  __m512i a)
+
+.. admonition:: Intel Description
+
+    Store packed 32-bit integers from "a" into memory using writemask "k".
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		MEM[mem_addr+i+31:mem_addr+i] := a[i+31:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_storeu_si512
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512i a
+:Param ETypes:
+    M512 mem_addr, 
+    M512 a
+
+.. code-block:: C
+
+    void _mm512_storeu_si512(void* mem_addr, __m512i a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits of integer data from "a" into memory.
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_mask_storeu_epi64
+^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __mmask8 k, 
+    __m512i a
+:Param ETypes:
+    UI64 mem_addr, 
+    MASK k, 
+    UI64 a
+
+.. code-block:: C
+
+    void _mm512_mask_storeu_epi64(void* mem_addr, __mmask8 k,
+                                  __m512i a)
+
+.. admonition:: Intel Description
+
+    Store packed 64-bit integers from "a" into memory using writemask "k".
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		MEM[mem_addr+i+63:mem_addr+i] := a[i+63:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_stream_si512
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512i a
+:Param ETypes:
+    M512 mem_addr, 
+    M512 a
+
+.. code-block:: C
+
+    void _mm512_stream_si512(void* mem_addr, __m512i a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits of integer data from "a" into memory using a non-temporal memory hint. 
+    	"mem_addr" must be aligned on a 64-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_stream_pd
+^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512d a
+:Param ETypes:
+    FP64 mem_addr, 
+    FP64 a
+
+.. code-block:: C
+
+    void _mm512_stream_pd(void* mem_addr, __m512d a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits (composed of 8 packed double-precision (64-bit) floating-point elements) from "a" into memory using a non-temporal memory hint. 
+    	"mem_addr" must be aligned on a 64-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_stream_ps
+^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512 a
+:Param ETypes:
+    FP32 mem_addr, 
+    FP32 a
+
+.. code-block:: C
+
+    void _mm512_stream_ps(void* mem_addr, __m512 a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits (composed of 16 packed single-precision (32-bit) floating-point elements) from "a" into memory using a non-temporal memory hint. 
+    	"mem_addr" must be aligned on a 64-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_mask_storeu_pd
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 mem_addr, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    void _mm512_mask_storeu_pd(void* mem_addr, __mmask8 k,
+                               __m512d a)
+
+.. admonition:: Intel Description
+
+    Store packed double-precision (64-bit) floating-point elements from "a" into memory using writemask "k".
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		MEM[mem_addr+i+63:mem_addr+i] := a[i+63:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_storeu_pd
+^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512d a
+:Param ETypes:
+    FP64 mem_addr, 
+    FP64 a
+
+.. code-block:: C
+
+    void _mm512_storeu_pd(void* mem_addr, __m512d a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits (composed of 8 packed double-precision (64-bit) floating-point elements) from "a" into memory. 
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_mask_storeu_ps
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 mem_addr, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    void _mm512_mask_storeu_ps(void* mem_addr, __mmask16 k,
+                               __m512 a)
+
+.. admonition:: Intel Description
+
+    Store packed single-precision (32-bit) floating-point elements from "a" into memory using writemask "k".
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		MEM[mem_addr+i+31:mem_addr+i] := a[i+31:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_storeu_ps
+^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512 a
+:Param ETypes:
+    FP32 mem_addr, 
+    FP32 a
+
+.. code-block:: C
+
+    void _mm512_storeu_ps(void* mem_addr, __m512 a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits (composed of 16 packed single-precision (32-bit) floating-point elements) from "a" into memory. 
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_i32scatter_epi64
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __m256i vindex, 
+    __m512i a, 
+    int scale
+:Param ETypes:
+    UI64 base_addr, 
+    SI32 vindex, 
+    UI64 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_i32scatter_epi64(void* base_addr,
+                                 __m256i vindex, __m512i a,
+                                 int scale)
+
+.. admonition:: Intel Description
+
+    Scatter 64-bit integers from "a" into memory using 32-bit indices. 64-bit elements are stored at addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale"). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	m := j*32
+        	addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        	MEM[addr+63:addr] := a[i+63:i]
+        ENDFOR
+        	
+
+_mm512_mask_i32scatter_epi64
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m256i vindex, 
+    __m512i a, 
+    int scale
+:Param ETypes:
+    UI64 base_addr, 
+    MASK k, 
+    SI32 vindex, 
+    UI64 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_mask_i32scatter_epi64(void* base_addr,
+                                      __mmask8 k,
+                                      __m256i vindex, __m512i a,
+                                      int scale)
+
+.. admonition:: Intel Description
+
+    Scatter 64-bit integers from "a" into memory using 32-bit indices. 64-bit elements are stored at addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale") subject to mask "k" (elements are not stored when the corresponding mask bit is not set). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	m := j*32
+        	IF k[j]
+        		addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        		MEM[addr+63:addr] := a[i+63:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_i64scatter_epi32
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __m512i vindex, 
+    __m256i a, 
+    int scale
+:Param ETypes:
+    UI32 base_addr, 
+    SI64 vindex, 
+    UI32 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_i64scatter_epi32(void* base_addr,
+                                 __m512i vindex, __m256i a,
+                                 int scale)
+
+.. admonition:: Intel Description
+
+    Scatter 32-bit integers from "a" into memory using 64-bit indices. 32-bit elements are stored at addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale"). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	m := j*64
+        	addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        	MEM[addr+31:addr] := a[i+31:i]
+        ENDFOR
+        	
+
+_mm512_mask_i64scatter_epi32
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i vindex, 
+    __m256i a, 
+    int scale
+:Param ETypes:
+    UI32 base_addr, 
+    MASK k, 
+    SI64 vindex, 
+    UI32 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_mask_i64scatter_epi32(void* base_addr,
+                                      __mmask8 k,
+                                      __m512i vindex, __m256i a,
+                                      int scale)
+
+.. admonition:: Intel Description
+
+    Scatter 32-bit integers from "a" into memory using 64-bit indices. 32-bit elements are stored at addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale") subject to mask "k" (elements are not stored when the corresponding mask bit is not set). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	m := j*64
+        	IF k[j]
+        		addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        		MEM[addr+31:addr] := a[i+31:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_i64scatter_epi64
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __m512i vindex, 
+    __m512i a, 
+    int scale
+:Param ETypes:
+    UI64 base_addr, 
+    SI64 vindex, 
+    UI64 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_i64scatter_epi64(void* base_addr,
+                                 __m512i vindex, __m512i a,
+                                 int scale)
+
+.. admonition:: Intel Description
+
+    Scatter 64-bit integers from "a" into memory using 64-bit indices. 64-bit elements are stored at addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale"). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	m := j*64
+        	addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        	MEM[addr+63:addr] := a[i+63:i]
+        ENDFOR
+        	
+
+_mm512_mask_i64scatter_epi64
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i vindex, 
+    __m512i a, 
+    int scale
+:Param ETypes:
+    UI64 base_addr, 
+    MASK k, 
+    SI64 vindex, 
+    UI64 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_mask_i64scatter_epi64(void* base_addr,
+                                      __mmask8 k,
+                                      __m512i vindex, __m512i a,
+                                      int scale)
+
+.. admonition:: Intel Description
+
+    Scatter 64-bit integers from "a" into memory using 64-bit indices. 64-bit elements are stored at addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale") subject to mask "k" (elements are not stored when the corresponding mask bit is not set). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	m := j*64
+        	IF k[j]
+        		addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        		MEM[addr+63:addr] := a[i+63:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_i32scatter_pd
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __m256i vindex, 
+    __m512d a, 
+    int scale
+:Param ETypes:
+    FP64 base_addr, 
+    SI32 vindex, 
+    FP64 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_i32scatter_pd(void* base_addr, __m256i vindex,
+                              __m512d a, int scale)
+
+.. admonition:: Intel Description
+
+    Scatter double-precision (64-bit) floating-point elements from "a" into memory using 32-bit indices. 64-bit elements are stored at addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale"). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	m := j*32
+        	addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        	MEM[addr+63:addr] := a[i+63:i]
+        ENDFOR
+        	
+
+_mm512_mask_i32scatter_pd
+^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m256i vindex, 
+    __m512d a, 
+    int scale
+:Param ETypes:
+    FP64 base_addr, 
+    MASK k, 
+    SI32 vindex, 
+    FP64 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_mask_i32scatter_pd(void* base_addr, __mmask8 k,
+                                   __m256i vindex, __m512d a,
+                                   int scale)
+
+.. admonition:: Intel Description
+
+    Scatter double-precision (64-bit) floating-point elements from "a" into memory using 32-bit indices. 64-bit elements are stored at addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale") subject to mask "k" (elements are not stored when the corresponding mask bit is not set). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	m := j*32
+        	IF k[j]
+        		addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        		MEM[addr+63:addr] := a[i+63:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_i64scatter_pd
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __m512i vindex, 
+    __m512d a, 
+    int scale
+:Param ETypes:
+    FP64 base_addr, 
+    SI64 vindex, 
+    FP64 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_i64scatter_pd(void* base_addr, __m512i vindex,
+                              __m512d a, int scale)
+
+.. admonition:: Intel Description
+
+    Scatter double-precision (64-bit) floating-point elements from "a" into memory using 64-bit indices. 64-bit elements are stored at addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale"). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	m := j*64
+        	addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        	MEM[addr+63:addr] := a[i+63:i]
+        ENDFOR
+        	
+
+_mm512_mask_i64scatter_pd
+^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i vindex, 
+    __m512d a, 
+    int scale
+:Param ETypes:
+    FP64 base_addr, 
+    MASK k, 
+    SI64 vindex, 
+    FP64 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_mask_i64scatter_pd(void* base_addr, __mmask8 k,
+                                   __m512i vindex, __m512d a,
+                                   int scale)
+
+.. admonition:: Intel Description
+
+    Scatter double-precision (64-bit) floating-point elements from "a" into memory using 64-bit indices. 64-bit elements are stored at addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale") subject to mask "k" (elements are not stored when the corresponding mask bit is not set). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	m := j*64
+        	IF k[j]
+        		addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        		MEM[addr+63:addr] := a[i+63:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_i64scatter_ps
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __m512i vindex, 
+    __m256 a, 
+    int scale
+:Param ETypes:
+    FP32 base_addr, 
+    SI64 vindex, 
+    FP32 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_i64scatter_ps(void* base_addr, __m512i vindex,
+                              __m256 a, int scale)
+
+.. admonition:: Intel Description
+
+    Scatter single-precision (32-bit) floating-point elements from "a" into memory using 64-bit indices. 32-bit elements are stored at addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale") subject to mask "k" (elements are not stored when the corresponding mask bit is not set). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	m := j*64
+        	addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        	MEM[addr+31:addr] := a[i+31:i]
+        ENDFOR
+        	
+
+_mm512_mask_i64scatter_ps
+^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i vindex, 
+    __m256 a, 
+    int scale
+:Param ETypes:
+    FP32 base_addr, 
+    MASK k, 
+    SI64 vindex, 
+    FP32 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_mask_i64scatter_ps(void* base_addr, __mmask8 k,
+                                   __m512i vindex, __m256 a,
+                                   int scale)
+
+.. admonition:: Intel Description
+
+    Scatter single-precision (32-bit) floating-point elements from "a" into memory using 64-bit indices. 32-bit elements are stored at addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale") subject to mask "k" (elements are not stored when the corresponding mask bit is not set). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	m := j*64
+        	IF k[j]
+        		addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        		MEM[addr+31:addr] := a[i+31:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_mullox_epi64
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m512i a, 
+    __m512i b
+:Param ETypes:
+    UI64 a, 
+    UI64 b
+
+.. code-block:: C
+
+    __m512i _mm512_mullox_epi64(__m512i a, __m512i b);
+
+.. admonition:: Intel Description
+
+    Multiplies elements in packed 64-bit integer vectors "a" and "b" together, storing the lower 64 bits of the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := a[i+63:i] * b[i+63:i]
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_mullox_epi64
+^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m512i src, 
+    __mmask8 k, 
+    __m512i a, 
+    __m512i b
+:Param ETypes:
+    UI64 src, 
+    MASK k, 
+    UI64 a, 
+    UI64 b
+
+.. code-block:: C
+
+    __m512i _mm512_mask_mullox_epi64(__m512i src, __mmask8 k,
+                                     __m512i a, __m512i b)
+
+.. admonition:: Intel Description
+
+    Multiplies elements in packed 64-bit integer vectors "a" and "b" together, storing the lower 64 bits of the result in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := a[i+63:i] * b[i+63:i]
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_cvtepi32_storeu_epi8
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask16 k, 
+    __m512i a
+:Param ETypes:
+    UI8 base_addr, 
+    MASK k, 
+    UI32 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtepi32_storeu_epi8(void* base_addr,
+                                          __mmask16 k,
+                                          __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed 32-bit integers in "a" to packed 8-bit integers with truncation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := 32*j
+        	l := 8*j
+        	IF k[j]
+        		MEM[base_addr+l+7:base_addr+l] := Truncate8(a[i+31:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtepi32_storeu_epi16
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask16 k, 
+    __m512i a
+:Param ETypes:
+    UI16 base_addr, 
+    MASK k, 
+    UI32 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtepi32_storeu_epi16(void* base_addr,
+                                           __mmask16 k,
+                                           __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed 32-bit integers in "a" to packed 16-bit integers with truncation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := 32*j
+        	l := 16*j
+        	IF k[j]
+        		MEM[base_addr+l+15:base_addr+l] := Truncate16(a[i+31:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtepi64_storeu_epi8
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i a
+:Param ETypes:
+    UI8 base_addr, 
+    MASK k, 
+    UI64 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtepi64_storeu_epi8(void* base_addr,
+                                          __mmask8 k,
+                                          __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed 64-bit integers in "a" to packed 8-bit integers with truncation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := 64*j
+        	l := 8*j
+        	IF k[j]
+        		MEM[base_addr+l+7:base_addr+l] := Truncate8(a[i+63:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtepi64_storeu_epi32
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i a
+:Param ETypes:
+    UI32 base_addr, 
+    MASK k, 
+    UI64 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtepi64_storeu_epi32(void* base_addr,
+                                           __mmask8 k,
+                                           __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed 64-bit integers in "a" to packed 32-bit integers with truncation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := 64*j
+        	l := 32*j
+        	IF k[j]
+        		MEM[base_addr+l+31:base_addr+l] := Truncate32(a[i+63:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtepi64_storeu_epi16
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i a
+:Param ETypes:
+    UI16 base_addr, 
+    MASK k, 
+    UI64 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtepi64_storeu_epi16(void* base_addr,
+                                           __mmask8 k,
+                                           __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed 64-bit integers in "a" to packed 16-bit integers with truncation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := 64*j
+        	l := 16*j
+        	IF k[j]
+        		MEM[base_addr+l+15:base_addr+l] := Truncate16(a[i+63:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtsepi32_storeu_epi8
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask16 k, 
+    __m512i a
+:Param ETypes:
+    SI8 base_addr, 
+    MASK k, 
+    SI32 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtsepi32_storeu_epi8(void* base_addr,
+                                           __mmask16 k,
+                                           __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed signed 32-bit integers in "a" to packed 8-bit integers with signed saturation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := 32*j
+        	l := 8*j
+        	IF k[j]
+        		MEM[base_addr+l+7:base_addr+l] := Saturate8(a[i+31:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtsepi32_storeu_epi16
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask16 k, 
+    __m512i a
+:Param ETypes:
+    SI16 base_addr, 
+    MASK k, 
+    SI32 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtsepi32_storeu_epi16(void* base_addr,
+                                            __mmask16 k,
+                                            __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed signed 32-bit integers in "a" to packed 16-bit integers with signed saturation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := 32*j
+        	l := 16*j
+        	IF k[j]
+        		MEM[base_addr+l+15:base_addr+l] := Saturate16(a[i+31:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtsepi64_storeu_epi8
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i a
+:Param ETypes:
+    SI8 base_addr, 
+    MASK k, 
+    SI64 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtsepi64_storeu_epi8(void* base_addr,
+                                           __mmask8 k,
+                                           __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed signed 64-bit integers in "a" to packed 8-bit integers with signed saturation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := 64*j
+        	l := 8*j
+        	IF k[j]
+        		MEM[base_addr+l+7:base_addr+l] := Saturate8(a[i+63:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtsepi64_storeu_epi32
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i a
+:Param ETypes:
+    SI32 base_addr, 
+    MASK k, 
+    SI64 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtsepi64_storeu_epi32(void* base_addr,
+                                            __mmask8 k,
+                                            __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed signed 64-bit integers in "a" to packed 32-bit integers with signed saturation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := 64*j
+        	l := 32*j
+        	IF k[j]
+        		MEM[base_addr+l+31:base_addr+l] := Saturate32(a[i+63:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtsepi64_storeu_epi16
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i a
+:Param ETypes:
+    SI16 base_addr, 
+    MASK k, 
+    SI64 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtsepi64_storeu_epi16(void* base_addr,
+                                            __mmask8 k,
+                                            __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed signed 64-bit integers in "a" to packed 16-bit integers with signed saturation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := 64*j
+        	l := 16*j
+        	IF k[j]
+        		MEM[base_addr+l+15:base_addr+l] := Saturate16(a[i+63:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtusepi32_storeu_epi8
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask16 k, 
+    __m512i a
+:Param ETypes:
+    UI8 base_addr, 
+    MASK k, 
+    UI32 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtusepi32_storeu_epi8(void* base_addr,
+                                            __mmask16 k,
+                                            __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed unsigned 32-bit integers in "a" to packed 8-bit integers with unsigned saturation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := 32*j
+        	l := 8*j
+        	IF k[j]
+        		MEM[base_addr+l+7:base_addr+l] := SaturateU8(a[i+31:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtusepi32_storeu_epi16
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask16 k, 
+    __m512i a
+:Param ETypes:
+    UI16 base_addr, 
+    MASK k, 
+    UI32 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtusepi32_storeu_epi16(void* base_addr,
+                                             __mmask16 k,
+                                             __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed unsigned 32-bit integers in "a" to packed 16-bit integers with unsigned saturation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := 32*j
+        	l := 16*j
+        	IF k[j]
+        		MEM[base_addr+l+15:base_addr+l] := SaturateU16(a[i+31:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtusepi64_storeu_epi8
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i a
+:Param ETypes:
+    UI8 base_addr, 
+    MASK k, 
+    UI64 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtusepi64_storeu_epi8(void* base_addr,
+                                            __mmask8 k,
+                                            __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed unsigned 64-bit integers in "a" to packed 8-bit integers with unsigned saturation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := 64*j
+        	l := 8*j
+        	IF k[j]
+        		MEM[base_addr+l+7:base_addr+l] := SaturateU8(a[i+63:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtusepi64_storeu_epi32
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i a
+:Param ETypes:
+    UI32 base_addr, 
+    MASK k, 
+    UI64 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtusepi64_storeu_epi32(void* base_addr,
+                                             __mmask8 k,
+                                             __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed unsigned 64-bit integers in "a" to packed 32-bit integers with unsigned saturation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := 64*j
+        	l := 32*j
+        	IF k[j]
+        		MEM[base_addr+l+31:base_addr+l] := SaturateU32(a[i+63:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_cvtusepi64_storeu_epi16
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i a
+:Param ETypes:
+    UI16 base_addr, 
+    MASK k, 
+    UI64 a
+
+.. code-block:: C
+
+    void _mm512_mask_cvtusepi64_storeu_epi16(void* base_addr,
+                                             __mmask8 k,
+                                             __m512i a)
+
+.. admonition:: Intel Description
+
+    Convert packed unsigned 64-bit integers in "a" to packed 16-bit integers with unsigned saturation, and store the active results (those with their respective bit set in writemask "k") to unaligned memory at "base_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := 64*j
+        	l := 16*j
+        	IF k[j]
+        		MEM[base_addr+l+15:base_addr+l] := SaturateU16(a[i+63:i])
+        	FI
+        ENDFOR
+        	
+
+_mm512_mask_store_pd
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 mem_addr, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    void _mm512_mask_store_pd(void* mem_addr, __mmask8 k,
+                              __m512d a)
+
+.. admonition:: Intel Description
+
+    Store packed double-precision (64-bit) floating-point elements from "a" into memory using writemask "k".
+    	"mem_addr" must be aligned on a 64-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		MEM[mem_addr+i+63:mem_addr+i] := a[i+63:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_store_pd
+^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512d a
+:Param ETypes:
+    FP64 mem_addr, 
+    FP64 a
+
+.. code-block:: C
+
+    void _mm512_store_pd(void* mem_addr, __m512d a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits (composed of 8 packed double-precision (64-bit) floating-point elements) from "a" into memory.
+    	"mem_addr" must be aligned on a 64-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_mask_store_ps
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 mem_addr, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    void _mm512_mask_store_ps(void* mem_addr, __mmask16 k,
+                              __m512 a)
+
+.. admonition:: Intel Description
+
+    Store packed single-precision (32-bit) floating-point elements from "a" into memory using writemask "k".
+    	"mem_addr" must be aligned on a 64-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		MEM[mem_addr+i+31:mem_addr+i] := a[i+31:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_store_ps
+^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512 a
+:Param ETypes:
+    FP32 mem_addr, 
+    FP32 a
+
+.. code-block:: C
+
+    void _mm512_store_ps(void* mem_addr, __m512 a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits (composed of 16 packed single-precision (32-bit) floating-point elements) from "a" into memory. 
+    	"mem_addr" must be aligned on a 64-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_mask_store_epi32
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __mmask16 k, 
+    __m512i a
+:Param ETypes:
+    UI32 mem_addr, 
+    MASK k, 
+    UI32 a
+
+.. code-block:: C
+
+    void _mm512_mask_store_epi32(void* mem_addr, __mmask16 k,
+                                 __m512i a)
+
+.. admonition:: Intel Description
+
+    Store packed 32-bit integers from "a" into memory using writemask "k".
+    	"mem_addr" must be aligned on a 64-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		MEM[mem_addr+i+31:mem_addr+i] := a[i+31:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_store_epi32
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512i a
+:Param ETypes:
+    UI32 mem_addr, 
+    UI32 a
+
+.. code-block:: C
+
+    void _mm512_store_epi32(void* mem_addr, __m512i a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits (composed of 16 packed 32-bit integers) from "a" into memory. 
+    	"mem_addr" must be aligned on a 64-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_store_si512
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512i a
+:Param ETypes:
+    M512 mem_addr, 
+    M512 a
+
+.. code-block:: C
+
+    void _mm512_store_si512(void* mem_addr, __m512i a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits of integer data from "a" into memory. 
+    	"mem_addr" must be aligned on a 64-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_mask_store_epi64
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __mmask8 k, 
+    __m512i a
+:Param ETypes:
+    UI64 mem_addr, 
+    MASK k, 
+    UI64 a
+
+.. code-block:: C
+
+    void _mm512_mask_store_epi64(void* mem_addr, __mmask8 k,
+                                 __m512i a)
+
+.. admonition:: Intel Description
+
+    Store packed 64-bit integers from "a" into memory using writemask "k".
+    	"mem_addr" must be aligned on a 64-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		MEM[mem_addr+i+63:mem_addr+i] := a[i+63:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_store_epi64
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* mem_addr, 
+    __m512i a
+:Param ETypes:
+    UI64 mem_addr, 
+    UI64 a
+
+.. code-block:: C
+
+    void _mm512_store_epi64(void* mem_addr, __m512i a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits (composed of 8 packed 64-bit integers) from "a" into memory. 
+    	"mem_addr" must be aligned on a 64-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_i32scatter_epi32
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __m512i vindex, 
+    __m512i a, 
+    int scale
+:Param ETypes:
+    UI32 base_addr, 
+    SI32 vindex, 
+    UI32 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_i32scatter_epi32(void* base_addr,
+                                 __m512i vindex, __m512i a,
+                                 int scale)
+
+.. admonition:: Intel Description
+
+    Scatter 32-bit integers from "a" into memory using 32-bit indices. 32-bit elements are stored at addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale"). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	m := j*32
+        	addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        	MEM[addr+31:addr] := a[i+31:i]
+        ENDFOR
+        	
+
+_mm512_mask_i32scatter_epi32
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask16 k, 
+    __m512i vindex, 
+    __m512i a, 
+    int scale
+:Param ETypes:
+    UI32 base_addr, 
+    MASK k, 
+    SI32 vindex, 
+    UI32 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_mask_i32scatter_epi32(void* base_addr,
+                                      __mmask16 k,
+                                      __m512i vindex, __m512i a,
+                                      int scale)
+
+.. admonition:: Intel Description
+
+    Scatter 32-bit integers from "a" into memory using 32-bit indices. 32-bit elements are stored at addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale") subject to mask "k" (elements are not stored when the corresponding mask bit is not set). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	m := j*32
+        	IF k[j]
+        		addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        		MEM[addr+31:addr] := a[i+31:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_i32scatter_ps
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __m512i vindex, 
+    __m512 a, 
+    int scale
+:Param ETypes:
+    FP32 base_addr, 
+    SI32 vindex, 
+    FP32 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_i32scatter_ps(void* base_addr, __m512i vindex,
+                              __m512 a, int scale)
+
+.. admonition:: Intel Description
+
+    Scatter single-precision (32-bit) floating-point elements from "a" into memory using 32-bit indices. 32-bit elements are stored at addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale"). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	m := j*32
+        	addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        	MEM[addr+31:addr] := a[i+31:i]
+        ENDFOR
+        	
+
+_mm512_mask_i32scatter_ps
+^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask16 k, 
+    __m512i vindex, 
+    __m512 a, 
+    int scale
+:Param ETypes:
+    FP32 base_addr, 
+    MASK k, 
+    SI32 vindex, 
+    FP32 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_mask_i32scatter_ps(void* base_addr, __mmask16 k,
+                                   __m512i vindex, __m512 a,
+                                   int scale)
+
+.. admonition:: Intel Description
+
+    Scatter single-precision (32-bit) floating-point elements from "a" into memory using 32-bit indices. 32-bit elements are stored at addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale") subject to mask "k" (elements are not stored when the corresponding mask bit is not set). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	m := j*32
+        	IF k[j]
+        		addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        		MEM[addr+31:addr] := a[i+31:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_i32loscatter_pd
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __m512i vindex, 
+    __m512d a, 
+    int scale
+:Param ETypes:
+    FP64 base_addr, 
+    SI32 vindex, 
+    FP64 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_i32loscatter_pd(void* base_addr, __m512i vindex,
+                                __m512d a, int scale)
+
+.. admonition:: Intel Description
+
+    Stores 8 packed double-precision (64-bit) floating-point elements in "a" and to memory locations starting at location "base_addr" at packed 32-bit integer indices stored in "vindex" scaled by "scale".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	m := j*32
+        	addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        	MEM[addr+63:addr] := a[i+63:i]
+        ENDFOR
+        	
+
+_mm512_mask_i32loscatter_pd
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i vindex, 
+    __m512d a, 
+    int scale
+:Param ETypes:
+    FP64 base_addr, 
+    MASK k, 
+    SI32 vindex, 
+    FP64 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_mask_i32loscatter_pd(void* base_addr,
+                                     __mmask8 k, __m512i vindex,
+                                     __m512d a, int scale)
+
+.. admonition:: Intel Description
+
+    Stores 8 packed double-precision (64-bit) floating-point elements in "a" to memory locations starting at location "base_addr" at packed 32-bit integer indices stored in "vindex" scaled by "scale". Only those elements whose corresponding mask bit is set in writemask "k" are written to memory.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	m := j*32
+        	IF k[j]
+        		addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        		MEM[addr+63:addr] := a[i+63:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_i32loscatter_epi64
+^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __m512i vindex, 
+    __m512i a, 
+    int scale
+:Param ETypes:
+    UI64 base_addr, 
+    SI32 vindex, 
+    UI64 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_i32loscatter_epi64(void* base_addr,
+                                   __m512i vindex, __m512i a,
+                                   int scale)
+
+.. admonition:: Intel Description
+
+    Stores 8 packed 64-bit integer elements located in "a" and stores them in memory locations starting at location "base_addr" at packed 32-bit integer indices stored in "vindex" scaled by "scale".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	m := j*32
+        	addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        	MEM[addr+63:addr] := a[i+63:i]
+        ENDFOR
+        	
+
+_mm512_mask_i32loscatter_epi64
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void* base_addr, 
+    __mmask8 k, 
+    __m512i vindex, 
+    __m512i a, 
+    int scale
+:Param ETypes:
+    UI64 base_addr, 
+    MASK k, 
+    SI32 vindex, 
+    UI64 a, 
+    IMM scale
+
+.. code-block:: C
+
+    void _mm512_mask_i32loscatter_epi64(void* base_addr,
+                                        __mmask8 k,
+                                        __m512i vindex,
+                                        __m512i a, int scale)
+
+.. admonition:: Intel Description
+
+    Stores 8 packed 64-bit integer elements located in "a" and stores them in memory locations starting at location "base_addr" at packed 32-bit integer indices stored in "vindex" scaled by "scale" using writemask "k" (elements whose corresponding mask bit is not set are not written to memory).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	m := j*32
+        	IF k[j]
+        		addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        		MEM[addr+63:addr] := a[i+63:i]
+        	FI
+        ENDFOR
+        	
+
+_mm512_store_ph
+^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void * mem_addr, 
+    __m512h a
+:Param ETypes:
+    FP16 mem_addr, 
+    FP16 a
+
+.. code-block:: C
+
+    void _mm512_store_ph(void * mem_addr, __m512h a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits (composed of 32 packed half-precision (16-bit) floating-point elements) from "a" into memory. 
+    	"mem_addr" must be aligned on a 64-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+
+_mm512_storeu_ph
+^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Store
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: void
+:Param Types:
+    void * mem_addr, 
+    __m512h a
+:Param ETypes:
+    FP16 mem_addr, 
+    FP16 a
+
+.. code-block:: C
+
+    void _mm512_storeu_ph(void * mem_addr, __m512h a);
+
+.. admonition:: Intel Description
+
+    Store 512-bits (composed of 32 packed half-precision (16-bit) floating-point elements) from "a" into memory. 
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[mem_addr+511:mem_addr] := a[511:0]
+        	
+

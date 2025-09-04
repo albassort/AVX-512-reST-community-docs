@@ -1,0 +1,2413 @@
+_mm256_blend_pd
+^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m256d a, 
+    __m256d b, 
+    const int imm8
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256d _mm256_blend_pd(__m256d a, __m256d b,
+                            const int imm8)
+
+.. admonition:: Intel Description
+
+    Blend packed double-precision (64-bit) floating-point elements from "a" and "b" using control mask "imm8", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*64
+        	IF imm8[j]
+        		dst[i+63:i] := b[i+63:i]
+        	ELSE
+        		dst[i+63:i] := a[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_blend_ps
+^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m256 a, 
+    __m256 b, 
+    const int imm8
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256 _mm256_blend_ps(__m256 a, __m256 b, const int imm8);
+
+.. admonition:: Intel Description
+
+    Blend packed single-precision (32-bit) floating-point elements from "a" and "b" using control mask "imm8", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	IF imm8[j]
+        		dst[i+31:i] := b[i+31:i]
+        	ELSE
+        		dst[i+31:i] := a[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_blendv_pd
+^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m256d a, 
+    __m256d b, 
+    __m256d mask
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    MASK mask
+
+.. code-block:: C
+
+    __m256d _mm256_blendv_pd(__m256d a, __m256d b,
+                             __m256d mask)
+
+.. admonition:: Intel Description
+
+    Blend packed double-precision (64-bit) floating-point elements from "a" and "b" using "mask", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*64
+        	IF mask[i+63]
+        		dst[i+63:i] := b[i+63:i]
+        	ELSE
+        		dst[i+63:i] := a[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_blendv_ps
+^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m256 a, 
+    __m256 b, 
+    __m256 mask
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    MASK mask
+
+.. code-block:: C
+
+    __m256 _mm256_blendv_ps(__m256 a, __m256 b, __m256 mask);
+
+.. admonition:: Intel Description
+
+    Blend packed single-precision (32-bit) floating-point elements from "a" and "b" using "mask", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	IF mask[i+31]
+        		dst[i+31:i] := b[i+31:i]
+        	ELSE
+        		dst[i+31:i] := a[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_shuffle_pd
+^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m256d a, 
+    __m256d b, 
+    const int imm8
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256d _mm256_shuffle_pd(__m256d a, __m256d b,
+                              const int imm8)
+
+.. admonition:: Intel Description
+
+    Shuffle double-precision (64-bit) floating-point elements within 128-bit lanes using the control in "imm8", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := (imm8[0] == 0) ? a[63:0] : a[127:64]
+        dst[127:64] := (imm8[1] == 0) ? b[63:0] : b[127:64]
+        dst[191:128] := (imm8[2] == 0) ? a[191:128] : a[255:192]
+        dst[255:192] := (imm8[3] == 0) ? b[191:128] : b[255:192]
+        dst[MAX:256] := 0
+        	
+
+_mm256_shuffle_ps
+^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m256 a, 
+    __m256 b, 
+    const int imm8
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256 _mm256_shuffle_ps(__m256 a, __m256 b,
+                             const int imm8)
+
+.. admonition:: Intel Description
+
+    Shuffle single-precision (32-bit) floating-point elements in "a" within 128-bit lanes using the control in "imm8", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE SELECT4(src, control) {
+        	CASE(control[1:0]) OF
+        	0:	tmp[31:0] := src[31:0]
+        	1:	tmp[31:0] := src[63:32]
+        	2:	tmp[31:0] := src[95:64]
+        	3:	tmp[31:0] := src[127:96]
+        	ESAC
+        	RETURN tmp[31:0]
+        }
+        dst[31:0] := SELECT4(a[127:0], imm8[1:0])
+        dst[63:32] := SELECT4(a[127:0], imm8[3:2])
+        dst[95:64] := SELECT4(b[127:0], imm8[5:4])
+        dst[127:96] := SELECT4(b[127:0], imm8[7:6])
+        dst[159:128] := SELECT4(a[255:128], imm8[1:0])
+        dst[191:160] := SELECT4(a[255:128], imm8[3:2])
+        dst[223:192] := SELECT4(b[255:128], imm8[5:4])
+        dst[255:224] := SELECT4(b[255:128], imm8[7:6])
+        dst[MAX:256] := 0
+        	
+
+_mm256_extractf128_ps
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m128
+:Param Types:
+    __m256 a, 
+    const int imm8
+:Param ETypes:
+    FP32 a, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m128 _mm256_extractf128_ps(__m256 a, const int imm8);
+
+.. admonition:: Intel Description
+
+    Extract 128 bits (composed of 4 packed single-precision (32-bit) floating-point elements) from "a", selected with "imm8", and store the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        CASE imm8[0] OF
+        0: dst[127:0] := a[127:0]
+        1: dst[127:0] := a[255:128]
+        ESAC
+        dst[MAX:128] := 0
+        	
+
+_mm256_extractf128_pd
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m128d
+:Param Types:
+    __m256d a, 
+    const int imm8
+:Param ETypes:
+    FP64 a, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m128d _mm256_extractf128_pd(__m256d a, const int imm8);
+
+.. admonition:: Intel Description
+
+    Extract 128 bits (composed of 2 packed double-precision (64-bit) floating-point elements) from "a", selected with "imm8", and store the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        CASE imm8[0] OF
+        0: dst[127:0] := a[127:0]
+        1: dst[127:0] := a[255:128]
+        ESAC
+        dst[MAX:128] := 0
+        	
+
+_mm256_extractf128_si256
+^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m128i
+:Param Types:
+    __m256i a, 
+    const int imm8
+:Param ETypes:
+    M128 a, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m128i _mm256_extractf128_si256(__m256i a, const int imm8);
+
+.. admonition:: Intel Description
+
+    Extract 128 bits (composed of integer data) from "a", selected with "imm8", and store the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        CASE imm8[0] OF
+        0: dst[127:0] := a[127:0]
+        1: dst[127:0] := a[255:128]
+        ESAC
+        dst[MAX:128] := 0
+        	
+
+_mm256_extract_epi32
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __int32
+:Param Types:
+    __m256i a, 
+    const int index
+:Param ETypes:
+    UI32 a, 
+    IMM index
+
+.. code-block:: C
+
+    __int32 _mm256_extract_epi32(__m256i a, const int index);
+
+.. admonition:: Intel Description
+
+    Extract a 32-bit integer from "a", selected with "index", and store the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := (a[255:0] >> (index[2:0] * 32))[31:0]
+        	
+
+_mm256_extract_epi64
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __int64
+:Param Types:
+    __m256i a, 
+    const int index
+:Param ETypes:
+    UI64 a, 
+    IMM index
+
+.. code-block:: C
+
+    __int64 _mm256_extract_epi64(__m256i a, const int index);
+
+.. admonition:: Intel Description
+
+    Extract a 64-bit integer from "a", selected with "index", and store the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := (a[255:0] >> (index[1:0] * 64))[63:0]
+        	
+
+_mm256_permutevar_ps
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m256 a, 
+    __m256i b
+:Param ETypes:
+    FP32 a, 
+    UI32 b
+
+.. code-block:: C
+
+    __m256 _mm256_permutevar_ps(__m256 a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Shuffle single-precision (32-bit) floating-point elements in "a" within 128-bit lanes using the control in "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE SELECT4(src, control) {
+        	CASE(control[1:0]) OF
+        	0:	tmp[31:0] := src[31:0]
+        	1:	tmp[31:0] := src[63:32]
+        	2:	tmp[31:0] := src[95:64]
+        	3:	tmp[31:0] := src[127:96]
+        	ESAC
+        	RETURN tmp[31:0]
+        }
+        dst[31:0] := SELECT4(a[127:0], b[1:0])
+        dst[63:32] := SELECT4(a[127:0], b[33:32])
+        dst[95:64] := SELECT4(a[127:0], b[65:64])
+        dst[127:96] := SELECT4(a[127:0], b[97:96])
+        dst[159:128] := SELECT4(a[255:128], b[129:128])
+        dst[191:160] := SELECT4(a[255:128], b[161:160])
+        dst[223:192] := SELECT4(a[255:128], b[193:192])
+        dst[255:224] := SELECT4(a[255:128], b[225:224])
+        dst[MAX:256] := 0
+        	
+
+_mm256_permute_ps
+^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m256 a, 
+    int imm8
+:Param ETypes:
+    FP32 a, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256 _mm256_permute_ps(__m256 a, int imm8);
+
+.. admonition:: Intel Description
+
+    Shuffle single-precision (32-bit) floating-point elements in "a" within 128-bit lanes using the control in "imm8", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE SELECT4(src, control) {
+        	CASE(control[1:0]) OF
+        	0:	tmp[31:0] := src[31:0]
+        	1:	tmp[31:0] := src[63:32]
+        	2:	tmp[31:0] := src[95:64]
+        	3:	tmp[31:0] := src[127:96]
+        	ESAC
+        	RETURN tmp[31:0]
+        }
+        dst[31:0] := SELECT4(a[127:0], imm8[1:0])
+        dst[63:32] := SELECT4(a[127:0], imm8[3:2])
+        dst[95:64] := SELECT4(a[127:0], imm8[5:4])
+        dst[127:96] := SELECT4(a[127:0], imm8[7:6])
+        dst[159:128] := SELECT4(a[255:128], imm8[1:0])
+        dst[191:160] := SELECT4(a[255:128], imm8[3:2])
+        dst[223:192] := SELECT4(a[255:128], imm8[5:4])
+        dst[255:224] := SELECT4(a[255:128], imm8[7:6])
+        dst[MAX:256] := 0
+        	
+
+_mm256_permutevar_pd
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m256d a, 
+    __m256i b
+:Param ETypes:
+    FP64 a, 
+    UI64 b
+
+.. code-block:: C
+
+    __m256d _mm256_permutevar_pd(__m256d a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Shuffle double-precision (64-bit) floating-point elements in "a" within 128-bit lanes using the control in "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        IF (b[1] == 0) dst[63:0] := a[63:0]; FI
+        IF (b[1] == 1) dst[63:0] := a[127:64]; FI
+        IF (b[65] == 0) dst[127:64] := a[63:0]; FI
+        IF (b[65] == 1) dst[127:64] := a[127:64]; FI
+        IF (b[129] == 0) dst[191:128] := a[191:128]; FI
+        IF (b[129] == 1) dst[191:128] := a[255:192]; FI
+        IF (b[193] == 0) dst[255:192] := a[191:128]; FI
+        IF (b[193] == 1) dst[255:192] := a[255:192]; FI
+        dst[MAX:256] := 0
+        	
+
+_mm256_permute_pd
+^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m256d a, 
+    int imm8
+:Param ETypes:
+    FP64 a, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256d _mm256_permute_pd(__m256d a, int imm8);
+
+.. admonition:: Intel Description
+
+    Shuffle double-precision (64-bit) floating-point elements in "a" within 128-bit lanes using the control in "imm8", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        IF (imm8[0] == 0) dst[63:0] := a[63:0]; FI
+        IF (imm8[0] == 1) dst[63:0] := a[127:64]; FI
+        IF (imm8[1] == 0) dst[127:64] := a[63:0]; FI
+        IF (imm8[1] == 1) dst[127:64] := a[127:64]; FI
+        IF (imm8[2] == 0) dst[191:128] := a[191:128]; FI
+        IF (imm8[2] == 1) dst[191:128] := a[255:192]; FI
+        IF (imm8[3] == 0) dst[255:192] := a[191:128]; FI
+        IF (imm8[3] == 1) dst[255:192] := a[255:192]; FI
+        dst[MAX:256] := 0
+        	
+
+_mm256_permute2f128_ps
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m256 a, 
+    __m256 b, 
+    int imm8
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256 _mm256_permute2f128_ps(__m256 a, __m256 b, int imm8);
+
+.. admonition:: Intel Description
+
+    Shuffle 128-bits (composed of 4 packed single-precision (32-bit) floating-point elements) selected by "imm8" from "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE SELECT4(src1, src2, control) {
+        	CASE(control[1:0]) OF
+        	0:	tmp[127:0] := src1[127:0]
+        	1:	tmp[127:0] := src1[255:128]
+        	2:	tmp[127:0] := src2[127:0]
+        	3:	tmp[127:0] := src2[255:128]
+        	ESAC
+        	IF control[3]
+        		tmp[127:0] := 0
+        	FI
+        	RETURN tmp[127:0]
+        }
+        dst[127:0] := SELECT4(a[255:0], b[255:0], imm8[3:0])
+        dst[255:128] := SELECT4(a[255:0], b[255:0], imm8[7:4])
+        dst[MAX:256] := 0
+        	
+
+_mm256_permute2f128_pd
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m256d a, 
+    __m256d b, 
+    int imm8
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256d _mm256_permute2f128_pd(__m256d a, __m256d b,
+                                   int imm8)
+
+.. admonition:: Intel Description
+
+    Shuffle 128-bits (composed of 2 packed double-precision (64-bit) floating-point elements) selected by "imm8" from "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE SELECT4(src1, src2, control) {
+        	CASE(control[1:0]) OF
+        	0:	tmp[127:0] := src1[127:0]
+        	1:	tmp[127:0] := src1[255:128]
+        	2:	tmp[127:0] := src2[127:0]
+        	3:	tmp[127:0] := src2[255:128]
+        	ESAC
+        	IF control[3]
+        		tmp[127:0] := 0
+        	FI
+        	RETURN tmp[127:0]
+        }
+        dst[127:0] := SELECT4(a[255:0], b[255:0], imm8[3:0])
+        dst[255:128] := SELECT4(a[255:0], b[255:0], imm8[7:4])
+        dst[MAX:256] := 0
+        	
+
+_mm256_permute2f128_si256
+^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b, 
+    int imm8
+:Param ETypes:
+    M256 a, 
+    M256 b, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256i _mm256_permute2f128_si256(__m256i a, __m256i b,
+                                      int imm8)
+
+.. admonition:: Intel Description
+
+    Shuffle 128-bits (composed of integer data) selected by "imm8" from "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE SELECT4(src1, src2, control) {
+        	CASE(control[1:0]) OF
+        	0:	tmp[127:0] := src1[127:0]
+        	1:	tmp[127:0] := src1[255:128]
+        	2:	tmp[127:0] := src2[127:0]
+        	3:	tmp[127:0] := src2[255:128]
+        	ESAC
+        	IF control[3]
+        		tmp[127:0] := 0
+        	FI
+        	RETURN tmp[127:0]
+        }
+        dst[127:0] := SELECT4(a[255:0], b[255:0], imm8[3:0])
+        dst[255:128] := SELECT4(a[255:0], b[255:0], imm8[7:4])
+        dst[MAX:256] := 0
+        	
+
+_mm256_insertf128_ps
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m256 a, 
+    __m128 b, 
+    int imm8
+:Param ETypes:
+    FP32 a, 
+    FP32 b, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256 _mm256_insertf128_ps(__m256 a, __m128 b, int imm8);
+
+.. admonition:: Intel Description
+
+    Copy "a" to "dst", then insert 128 bits (composed of 4 packed single-precision (32-bit) floating-point elements) from "b" into "dst" at the location specified by "imm8".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := a[255:0]
+        CASE (imm8[0]) OF
+        0: dst[127:0] := b[127:0]
+        1: dst[255:128] := b[127:0]
+        ESAC
+        dst[MAX:256] := 0
+        	
+
+_mm256_insertf128_pd
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m256d a, 
+    __m128d b, 
+    int imm8
+:Param ETypes:
+    FP64 a, 
+    FP64 b, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256d _mm256_insertf128_pd(__m256d a, __m128d b,
+                                 int imm8)
+
+.. admonition:: Intel Description
+
+    Copy "a" to "dst", then insert 128 bits (composed of 2 packed double-precision (64-bit) floating-point elements) from "b" into "dst" at the location specified by "imm8".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := a[255:0]
+        CASE imm8[0] OF
+        0: dst[127:0] := b[127:0]
+        1: dst[255:128] := b[127:0]
+        ESAC
+        dst[MAX:256] := 0
+        	
+
+_mm256_insertf128_si256
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m128i b, 
+    int imm8
+:Param ETypes:
+    M256 a, 
+    M128 b, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256i _mm256_insertf128_si256(__m256i a, __m128i b,
+                                    int imm8)
+
+.. admonition:: Intel Description
+
+    Copy "a" to "dst", then insert 128 bits from "b" into "dst" at the location specified by "imm8".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := a[255:0]
+        CASE (imm8[0]) OF
+        0: dst[127:0] := b[127:0]
+        1: dst[255:128] := b[127:0]
+        ESAC
+        dst[MAX:256] := 0
+        	
+
+_mm256_insert_epi8
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __int8 i, 
+    const int index
+:Param ETypes:
+    UI8 a, 
+    UI8 i, 
+    IMM index
+
+.. code-block:: C
+
+    __m256i _mm256_insert_epi8(__m256i a, __int8 i,
+                               const int index)
+
+.. admonition:: Intel Description
+
+    Copy "a" to "dst", and insert the 8-bit integer "i" into "dst" at the location specified by "index".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := a[255:0]
+        sel := index[4:0]*8
+        dst[sel+7:sel] := i[7:0]
+        	
+
+_mm256_insert_epi16
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __int16 i, 
+    const int index
+:Param ETypes:
+    UI16 a, 
+    UI16 i, 
+    IMM index
+
+.. code-block:: C
+
+    __m256i _mm256_insert_epi16(__m256i a, __int16 i,
+                                const int index)
+
+.. admonition:: Intel Description
+
+    Copy "a" to "dst", and insert the 16-bit integer "i" into "dst" at the location specified by "index".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := a[255:0]
+        sel := index[3:0]*16
+        dst[sel+15:sel] := i[15:0]
+        	
+
+_mm256_insert_epi32
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __int32 i, 
+    const int index
+:Param ETypes:
+    UI32 a, 
+    UI32 i, 
+    IMM index
+
+.. code-block:: C
+
+    __m256i _mm256_insert_epi32(__m256i a, __int32 i,
+                                const int index)
+
+.. admonition:: Intel Description
+
+    Copy "a" to "dst", and insert the 32-bit integer "i" into "dst" at the location specified by "index".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := a[255:0]
+        sel := index[2:0]*32
+        dst[sel+31:sel] := i[31:0]
+        	
+
+_mm256_insert_epi64
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __int64 i, 
+    const int index
+:Param ETypes:
+    UI64 a, 
+    UI64 i, 
+    IMM index
+
+.. code-block:: C
+
+    __m256i _mm256_insert_epi64(__m256i a, __int64 i,
+                                const int index)
+
+.. admonition:: Intel Description
+
+    Copy "a" to "dst", and insert the 64-bit integer "i" into "dst" at the location specified by "index".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := a[255:0]
+        sel := index[1:0]*64
+        dst[sel+63:sel] := i[63:0]
+        	
+
+_mm256_unpackhi_pd
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m256d a, 
+    __m256d b
+:Param ETypes:
+    FP64 a, 
+    FP64 b
+
+.. code-block:: C
+
+    __m256d _mm256_unpackhi_pd(__m256d a, __m256d b);
+
+.. admonition:: Intel Description
+
+    Unpack and interleave double-precision (64-bit) floating-point elements from the high half of each 128-bit lane in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE INTERLEAVE_HIGH_QWORDS(src1[127:0], src2[127:0]) {
+        	dst[63:0] := src1[127:64] 
+        	dst[127:64] := src2[127:64] 
+        	RETURN dst[127:0]	
+        }
+        dst[127:0] := INTERLEAVE_HIGH_QWORDS(a[127:0], b[127:0])
+        dst[255:128] := INTERLEAVE_HIGH_QWORDS(a[255:128], b[255:128])
+        dst[MAX:256] := 0
+        	
+
+_mm256_unpackhi_ps
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m256 a, 
+    __m256 b
+:Param ETypes:
+    FP32 a, 
+    FP32 b
+
+.. code-block:: C
+
+    __m256 _mm256_unpackhi_ps(__m256 a, __m256 b);
+
+.. admonition:: Intel Description
+
+    Unpack and interleave single-precision (32-bit) floating-point elements from the high half of each 128-bit lane in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE INTERLEAVE_HIGH_DWORDS(src1[127:0], src2[127:0]) {
+        	dst[31:0] := src1[95:64] 
+        	dst[63:32] := src2[95:64] 
+        	dst[95:64] := src1[127:96] 
+        	dst[127:96] := src2[127:96] 
+        	RETURN dst[127:0]	
+        }
+        dst[127:0] := INTERLEAVE_HIGH_DWORDS(a[127:0], b[127:0])
+        dst[255:128] := INTERLEAVE_HIGH_DWORDS(a[255:128], b[255:128])
+        dst[MAX:256] := 0
+        	
+
+_mm256_unpacklo_pd
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m256d a, 
+    __m256d b
+:Param ETypes:
+    FP64 a, 
+    FP64 b
+
+.. code-block:: C
+
+    __m256d _mm256_unpacklo_pd(__m256d a, __m256d b);
+
+.. admonition:: Intel Description
+
+    Unpack and interleave double-precision (64-bit) floating-point elements from the low half of each 128-bit lane in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE INTERLEAVE_QWORDS(src1[127:0], src2[127:0]) {
+        	dst[63:0] := src1[63:0] 
+        	dst[127:64] := src2[63:0] 
+        	RETURN dst[127:0]
+        }
+        dst[127:0] := INTERLEAVE_QWORDS(a[127:0], b[127:0])
+        dst[255:128] := INTERLEAVE_QWORDS(a[255:128], b[255:128])
+        dst[MAX:256] := 0
+        	
+
+_mm256_unpacklo_ps
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m256 a, 
+    __m256 b
+:Param ETypes:
+    FP32 a, 
+    FP32 b
+
+.. code-block:: C
+
+    __m256 _mm256_unpacklo_ps(__m256 a, __m256 b);
+
+.. admonition:: Intel Description
+
+    Unpack and interleave single-precision (32-bit) floating-point elements from the low half of each 128-bit lane in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE INTERLEAVE_DWORDS(src1[127:0], src2[127:0]) {
+        	dst[31:0] := src1[31:0] 
+        	dst[63:32] := src2[31:0] 
+        	dst[95:64] := src1[63:32] 
+        	dst[127:96] := src2[63:32] 
+        	RETURN dst[127:0]	
+        }
+        dst[127:0] := INTERLEAVE_DWORDS(a[127:0], b[127:0])
+        dst[255:128] := INTERLEAVE_DWORDS(a[255:128], b[255:128])
+        dst[MAX:256] := 0
+        	
+
+_mm256_broadcast_sd
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    double const * mem_addr
+:Param ETypes:
+    FP64 mem_addr
+
+.. code-block:: C
+
+    __m256d _mm256_broadcast_sd(double const * mem_addr);
+
+.. admonition:: Intel Description
+
+    Broadcast a double-precision (64-bit) floating-point element from memory to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[63:0] := MEM[mem_addr+63:mem_addr]
+        FOR j := 0 to 3
+        	i := j*64
+        	dst[i+63:i] := tmp[63:0]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_broadcast_ps
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m128 const * mem_addr
+:Param ETypes:
+    FP32 mem_addr
+
+.. code-block:: C
+
+    __m256 _mm256_broadcast_ps(__m128 const * mem_addr);
+
+.. admonition:: Intel Description
+
+    Broadcast 128 bits from memory (composed of 4 packed single-precision (32-bit) floating-point elements) to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[127:0] := MEM[mem_addr+127:mem_addr]
+        dst[127:0] := tmp[127:0]
+        dst[255:128] := tmp[127:0]
+        dst[MAX:256] := 0
+        	
+
+_mm256_broadcast_pd
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m128d const * mem_addr
+:Param ETypes:
+    FP64 mem_addr
+
+.. code-block:: C
+
+    __m256d _mm256_broadcast_pd(__m128d const * mem_addr);
+
+.. admonition:: Intel Description
+
+    Broadcast 128 bits from memory (composed of 2 packed double-precision (64-bit) floating-point elements) to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[127:0] := MEM[mem_addr+127:mem_addr]
+        dst[127:0] := tmp[127:0]
+        dst[255:128] := tmp[127:0]
+        dst[MAX:256] := 0
+        	
+
+_mm256_extract_epi8
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: int
+:Param Types:
+    __m256i a, 
+    const int index
+:Param ETypes:
+    UI8 a, 
+    IMM index
+
+.. code-block:: C
+
+    int _mm256_extract_epi8(__m256i a, const int index);
+
+.. admonition:: Intel Description
+
+    Extract an 8-bit integer from "a", selected with "index", and store the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[7:0] := (a[255:0] >> (index[4:0] * 8))[7:0]
+        	
+
+_mm256_extract_epi16
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: int
+:Param Types:
+    __m256i a, 
+    const int index
+:Param ETypes:
+    UI16 a, 
+    IMM index
+
+.. code-block:: C
+
+    int _mm256_extract_epi16(__m256i a, const int index);
+
+.. admonition:: Intel Description
+
+    Extract a 16-bit integer from "a", selected with "index", and store the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[15:0] := (a[255:0] >> (index[3:0] * 16))[15:0]
+        	
+
+_mm256_blend_epi16
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b, 
+    const int imm8
+:Param ETypes:
+    UI16 a, 
+    UI16 b, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256i _mm256_blend_epi16(__m256i a, __m256i b,
+                               const int imm8)
+
+.. admonition:: Intel Description
+
+    Blend packed 16-bit integers from "a" and "b" within 128-bit lanes using control mask "imm8", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*16
+        	IF imm8[j%8]
+        		dst[i+15:i] := b[i+15:i]
+        	ELSE
+        		dst[i+15:i] := a[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_blend_epi32
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b, 
+    const int imm8
+:Param ETypes:
+    UI32 a, 
+    UI32 b, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256i _mm256_blend_epi32(__m256i a, __m256i b,
+                               const int imm8)
+
+.. admonition:: Intel Description
+
+    Blend packed 32-bit integers from "a" and "b" using control mask "imm8", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	IF imm8[j]
+        		dst[i+31:i] := b[i+31:i]
+        	ELSE
+        		dst[i+31:i] := a[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_blendv_epi8
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b, 
+    __m256i mask
+:Param ETypes:
+    UI8 a, 
+    UI8 b, 
+    MASK mask
+
+.. code-block:: C
+
+    __m256i _mm256_blendv_epi8(__m256i a, __m256i b,
+                               __m256i mask)
+
+.. admonition:: Intel Description
+
+    Blend packed 8-bit integers from "a" and "b" using "mask", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*8
+        	IF mask[i+7]
+        		dst[i+7:i] := b[i+7:i]
+        	ELSE
+        		dst[i+7:i] := a[i+7:i]
+        	FI
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_broadcastb_epi8
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m128i a
+:Param ETypes:
+    UI8 a
+
+.. code-block:: C
+
+    __m256i _mm256_broadcastb_epi8(__m128i a);
+
+.. admonition:: Intel Description
+
+    Broadcast the low packed 8-bit integer from "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*8
+        	dst[i+7:i] := a[7:0]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_broadcastd_epi32
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m128i a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    __m256i _mm256_broadcastd_epi32(__m128i a);
+
+.. admonition:: Intel Description
+
+    Broadcast the low packed 32-bit integer from "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	dst[i+31:i] := a[31:0]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_broadcastq_epi64
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m128i a
+:Param ETypes:
+    UI64 a
+
+.. code-block:: C
+
+    __m256i _mm256_broadcastq_epi64(__m128i a);
+
+.. admonition:: Intel Description
+
+    Broadcast the low packed 64-bit integer from "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*64
+        	dst[i+63:i] := a[63:0]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_broadcastsd_pd
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m128d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m256d _mm256_broadcastsd_pd(__m128d a);
+
+.. admonition:: Intel Description
+
+    Broadcast the low double-precision (64-bit) floating-point element from "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*64
+        	dst[i+63:i] := a[63:0]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_broadcastsi128_si256
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m128i a
+:Param ETypes:
+    M128 a
+
+.. code-block:: C
+
+    __m256i _mm256_broadcastsi128_si256(__m128i a);
+
+.. admonition:: Intel Description
+
+    Broadcast 128 bits of integer data from "a" to all 128-bit lanes in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[127:0] := a[127:0]
+        dst[255:128] := a[127:0]
+        dst[MAX:256] := 0
+        	
+
+_mm256_broadcastss_ps
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m128 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m256 _mm256_broadcastss_ps(__m128 a);
+
+.. admonition:: Intel Description
+
+    Broadcast the low single-precision (32-bit) floating-point element from "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	dst[i+31:i] := a[31:0]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_broadcastw_epi16
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m128i a
+:Param ETypes:
+    UI16 a
+
+.. code-block:: C
+
+    __m256i _mm256_broadcastw_epi16(__m128i a);
+
+.. admonition:: Intel Description
+
+    Broadcast the low packed 16-bit integer from "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*16
+        	dst[i+15:i] := a[15:0]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_extracti128_si256
+^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m128i
+:Param Types:
+    __m256i a, 
+    const int imm8
+:Param ETypes:
+    M128 a, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m128i _mm256_extracti128_si256(__m256i a, const int imm8);
+
+.. admonition:: Intel Description
+
+    Extract 128 bits (composed of integer data) from "a", selected with "imm8", and store the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        CASE imm8[0] OF
+        0: dst[127:0] := a[127:0]
+        1: dst[127:0] := a[255:128]
+        ESAC
+        dst[MAX:128] := 0
+        	
+
+_mm256_inserti128_si256
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m128i b, 
+    const int imm8
+:Param ETypes:
+    M256 a, 
+    M128 b, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256i _mm256_inserti128_si256(__m256i a, __m128i b,
+                                    const int imm8)
+
+.. admonition:: Intel Description
+
+    Copy "a" to "dst", then insert 128 bits (composed of integer data) from "b" into "dst" at the location specified by "imm8".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := a[255:0]
+        CASE (imm8[0]) OF
+        0: dst[127:0] := b[127:0]
+        1: dst[255:128] := b[127:0]
+        ESAC
+        dst[MAX:256] := 0
+        	
+
+_mm256_permute2x128_si256
+^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b, 
+    const int imm8
+:Param ETypes:
+    M256 a, 
+    M256 b, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256i _mm256_permute2x128_si256(__m256i a, __m256i b,
+                                      const int imm8)
+
+.. admonition:: Intel Description
+
+    Shuffle 128-bits (composed of integer data) selected by "imm8" from "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE SELECT4(src1, src2, control) {
+        	CASE(control[1:0]) OF
+        	0:	tmp[127:0] := src1[127:0]
+        	1:	tmp[127:0] := src1[255:128]
+        	2:	tmp[127:0] := src2[127:0]
+        	3:	tmp[127:0] := src2[255:128]
+        	ESAC
+        	IF control[3]
+        		tmp[127:0] := 0
+        	FI
+        	RETURN tmp[127:0]
+        }
+        dst[127:0] := SELECT4(a[255:0], b[255:0], imm8[3:0])
+        dst[255:128] := SELECT4(a[255:0], b[255:0], imm8[7:4])
+        dst[MAX:256] := 0
+        	
+
+_mm256_permute4x64_epi64
+^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    const int imm8
+:Param ETypes:
+    UI64 a, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256i _mm256_permute4x64_epi64(__m256i a, const int imm8);
+
+.. admonition:: Intel Description
+
+    Shuffle 64-bit integers in "a" across lanes using the control in "imm8", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE SELECT4(src, control) {
+        	CASE(control[1:0]) OF
+        	0:	tmp[63:0] := src[63:0]
+        	1:	tmp[63:0] := src[127:64]
+        	2:	tmp[63:0] := src[191:128]
+        	3:	tmp[63:0] := src[255:192]
+        	ESAC
+        	RETURN tmp[63:0]
+        }
+        dst[63:0] := SELECT4(a[255:0], imm8[1:0])
+        dst[127:64] := SELECT4(a[255:0], imm8[3:2])
+        dst[191:128] := SELECT4(a[255:0], imm8[5:4])
+        dst[255:192] := SELECT4(a[255:0], imm8[7:6])
+        dst[MAX:256] := 0
+        	
+
+_mm256_permute4x64_pd
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m256d a, 
+    const int imm8
+:Param ETypes:
+    FP64 a, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256d _mm256_permute4x64_pd(__m256d a, const int imm8);
+
+.. admonition:: Intel Description
+
+    Shuffle double-precision (64-bit) floating-point elements in "a" across lanes using the control in "imm8", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE SELECT4(src, control) {
+        	CASE(control[1:0]) OF
+        	0:	tmp[63:0] := src[63:0]
+        	1:	tmp[63:0] := src[127:64]
+        	2:	tmp[63:0] := src[191:128]
+        	3:	tmp[63:0] := src[255:192]
+        	ESAC
+        	RETURN tmp[63:0]
+        }
+        dst[63:0] := SELECT4(a[255:0], imm8[1:0])
+        dst[127:64] := SELECT4(a[255:0], imm8[3:2])
+        dst[191:128] := SELECT4(a[255:0], imm8[5:4])
+        dst[255:192] := SELECT4(a[255:0], imm8[7:6])
+        dst[MAX:256] := 0
+        	
+
+_mm256_permutevar8x32_epi32
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i idx
+:Param ETypes:
+    UI32 a, 
+    UI32 idx
+
+.. code-block:: C
+
+    __m256i _mm256_permutevar8x32_epi32(__m256i a, __m256i idx);
+
+.. admonition:: Intel Description
+
+    Shuffle 32-bit integers in "a" across lanes using the corresponding index in "idx", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	id := idx[i+2:i]*32
+        	dst[i+31:i] := a[id+31:id]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_permutevar8x32_ps
+^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m256 a, 
+    __m256i idx
+:Param ETypes:
+    FP32 a, 
+    UI32 idx
+
+.. code-block:: C
+
+    __m256 _mm256_permutevar8x32_ps(__m256 a, __m256i idx);
+
+.. admonition:: Intel Description
+
+    Shuffle single-precision (32-bit) floating-point elements in "a" across lanes using the corresponding index in "idx".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	id := idx[i+2:i]*32
+        	dst[i+31:i] := a[id+31:id]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_shuffle_epi32
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    const int imm8
+:Param ETypes:
+    UI32 a, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256i _mm256_shuffle_epi32(__m256i a, const int imm8);
+
+.. admonition:: Intel Description
+
+    Shuffle 32-bit integers in "a" within 128-bit lanes using the control in "imm8", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE SELECT4(src, control) {
+        	CASE(control[1:0]) OF
+        	0:	tmp[31:0] := src[31:0]
+        	1:	tmp[31:0] := src[63:32]
+        	2:	tmp[31:0] := src[95:64]
+        	3:	tmp[31:0] := src[127:96]
+        	ESAC
+        	RETURN tmp[31:0]
+        }
+        dst[31:0] := SELECT4(a[127:0], imm8[1:0])
+        dst[63:32] := SELECT4(a[127:0], imm8[3:2])
+        dst[95:64] := SELECT4(a[127:0], imm8[5:4])
+        dst[127:96] := SELECT4(a[127:0], imm8[7:6])
+        dst[159:128] := SELECT4(a[255:128], imm8[1:0])
+        dst[191:160] := SELECT4(a[255:128], imm8[3:2])
+        dst[223:192] := SELECT4(a[255:128], imm8[5:4])
+        dst[255:224] := SELECT4(a[255:128], imm8[7:6])
+        dst[MAX:256] := 0
+        	
+
+_mm256_shuffle_epi8
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI8 a, 
+    UI8 b
+
+.. code-block:: C
+
+    __m256i _mm256_shuffle_epi8(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Shuffle 8-bit integers in "a" within 128-bit lanes according to shuffle control mask in the corresponding 8-bit element of "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*8
+        	IF b[i+7] == 1
+        		dst[i+7:i] := 0
+        	ELSE
+        		index[3:0] := b[i+3:i]
+        		dst[i+7:i] := a[index*8+7:index*8]
+        	FI
+        	IF b[128+i+7] == 1
+        		dst[128+i+7:128+i] := 0
+        	ELSE
+        		index[3:0] := b[128+i+3:128+i]
+        		dst[128+i+7:128+i] := a[128+index*8+7:128+index*8]
+        	FI
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_shufflehi_epi16
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    const int imm8
+:Param ETypes:
+    UI16 a, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256i _mm256_shufflehi_epi16(__m256i a, const int imm8);
+
+.. admonition:: Intel Description
+
+    Shuffle 16-bit integers in the high 64 bits of 128-bit lanes of "a" using the control in "imm8". Store the results in the high 64 bits of 128-bit lanes of "dst", with the low 64 bits of 128-bit lanes being copied from from "a" to "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := a[63:0]
+        dst[79:64] := (a >> (imm8[1:0] * 16))[79:64]
+        dst[95:80] := (a >> (imm8[3:2] * 16))[79:64]
+        dst[111:96] := (a >> (imm8[5:4] * 16))[79:64]
+        dst[127:112] := (a >> (imm8[7:6] * 16))[79:64]
+        dst[191:128] := a[191:128]
+        dst[207:192] := (a >> (imm8[1:0] * 16))[207:192]
+        dst[223:208] := (a >> (imm8[3:2] * 16))[207:192]
+        dst[239:224] := (a >> (imm8[5:4] * 16))[207:192]
+        dst[255:240] := (a >> (imm8[7:6] * 16))[207:192]
+        dst[MAX:256] := 0
+        	
+
+_mm256_shufflelo_epi16
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    const int imm8
+:Param ETypes:
+    UI16 a, 
+    IMM imm8
+
+.. code-block:: C
+
+    __m256i _mm256_shufflelo_epi16(__m256i a, const int imm8);
+
+.. admonition:: Intel Description
+
+    Shuffle 16-bit integers in the low 64 bits of 128-bit lanes of "a" using the control in "imm8". Store the results in the low 64 bits of 128-bit lanes of "dst", with the high 64 bits of 128-bit lanes being copied from from "a" to "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[15:0] := (a >> (imm8[1:0] * 16))[15:0]
+        dst[31:16] := (a >> (imm8[3:2] * 16))[15:0]
+        dst[47:32] := (a >> (imm8[5:4] * 16))[15:0]
+        dst[63:48] := (a >> (imm8[7:6] * 16))[15:0]
+        dst[127:64] := a[127:64]
+        dst[143:128] := (a >> (imm8[1:0] * 16))[143:128]
+        dst[159:144] := (a >> (imm8[3:2] * 16))[143:128]
+        dst[175:160] := (a >> (imm8[5:4] * 16))[143:128]
+        dst[191:176] := (a >> (imm8[7:6] * 16))[143:128]
+        dst[255:192] := a[255:192]
+        dst[MAX:256] := 0
+        	
+
+_mm256_unpackhi_epi8
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI8 a, 
+    UI8 b
+
+.. code-block:: C
+
+    __m256i _mm256_unpackhi_epi8(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Unpack and interleave 8-bit integers from the high half of each 128-bit lane in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE INTERLEAVE_HIGH_BYTES(src1[127:0], src2[127:0]) {
+        	dst[7:0] := src1[71:64] 
+        	dst[15:8] := src2[71:64] 
+        	dst[23:16] := src1[79:72] 
+        	dst[31:24] := src2[79:72] 
+        	dst[39:32] := src1[87:80] 
+        	dst[47:40] := src2[87:80] 
+        	dst[55:48] := src1[95:88] 
+        	dst[63:56] := src2[95:88] 
+        	dst[71:64] := src1[103:96] 
+        	dst[79:72] := src2[103:96] 
+        	dst[87:80] := src1[111:104] 
+        	dst[95:88] := src2[111:104] 
+        	dst[103:96] := src1[119:112] 
+        	dst[111:104] := src2[119:112] 
+        	dst[119:112] := src1[127:120] 
+        	dst[127:120] := src2[127:120] 
+        	RETURN dst[127:0]	
+        }
+        dst[127:0] := INTERLEAVE_HIGH_BYTES(a[127:0], b[127:0])
+        dst[255:128] := INTERLEAVE_HIGH_BYTES(a[255:128], b[255:128])
+        dst[MAX:256] := 0
+        	
+
+_mm256_unpackhi_epi16
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI16 a, 
+    UI16 b
+
+.. code-block:: C
+
+    __m256i _mm256_unpackhi_epi16(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Unpack and interleave 16-bit integers from the high half of each 128-bit lane in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE INTERLEAVE_HIGH_WORDS(src1[127:0], src2[127:0]) {
+        	dst[15:0] := src1[79:64]
+        	dst[31:16] := src2[79:64] 
+        	dst[47:32] := src1[95:80] 
+        	dst[63:48] := src2[95:80] 
+        	dst[79:64] := src1[111:96] 
+        	dst[95:80] := src2[111:96] 
+        	dst[111:96] := src1[127:112] 
+        	dst[127:112] := src2[127:112] 
+        	RETURN dst[127:0]
+        }
+        dst[127:0] := INTERLEAVE_HIGH_WORDS(a[127:0], b[127:0])
+        dst[255:128] := INTERLEAVE_HIGH_WORDS(a[255:128], b[255:128])
+        dst[MAX:256] := 0
+        	
+
+_mm256_unpackhi_epi32
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI32 a, 
+    UI32 b
+
+.. code-block:: C
+
+    __m256i _mm256_unpackhi_epi32(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Unpack and interleave 32-bit integers from the high half of each 128-bit lane in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE INTERLEAVE_HIGH_DWORDS(src1[127:0], src2[127:0]) {
+        	dst[31:0] := src1[95:64] 
+        	dst[63:32] := src2[95:64] 
+        	dst[95:64] := src1[127:96] 
+        	dst[127:96] := src2[127:96] 
+        	RETURN dst[127:0]	
+        }
+        dst[127:0] := INTERLEAVE_HIGH_DWORDS(a[127:0], b[127:0])
+        dst[255:128] := INTERLEAVE_HIGH_DWORDS(a[255:128], b[255:128])
+        dst[MAX:256] := 0
+        	
+
+_mm256_unpackhi_epi64
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI64 a, 
+    UI64 b
+
+.. code-block:: C
+
+    __m256i _mm256_unpackhi_epi64(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Unpack and interleave 64-bit integers from the high half of each 128-bit lane in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE INTERLEAVE_HIGH_QWORDS(src1[127:0], src2[127:0]) {
+        	dst[63:0] := src1[127:64] 
+        	dst[127:64] := src2[127:64] 
+        	RETURN dst[127:0]	
+        }
+        dst[127:0] := INTERLEAVE_HIGH_QWORDS(a[127:0], b[127:0])
+        dst[255:128] := INTERLEAVE_HIGH_QWORDS(a[255:128], b[255:128])
+        dst[MAX:256] := 0
+        	
+
+_mm256_unpacklo_epi8
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI8 a, 
+    UI8 b
+
+.. code-block:: C
+
+    __m256i _mm256_unpacklo_epi8(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Unpack and interleave 8-bit integers from the low half of each 128-bit lane in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE INTERLEAVE_BYTES(src1[127:0], src2[127:0]) {
+        	dst[7:0] := src1[7:0] 
+        	dst[15:8] := src2[7:0] 
+        	dst[23:16] := src1[15:8] 
+        	dst[31:24] := src2[15:8] 
+        	dst[39:32] := src1[23:16] 
+        	dst[47:40] := src2[23:16] 
+        	dst[55:48] := src1[31:24] 
+        	dst[63:56] := src2[31:24] 
+        	dst[71:64] := src1[39:32]
+        	dst[79:72] := src2[39:32] 
+        	dst[87:80] := src1[47:40] 
+        	dst[95:88] := src2[47:40] 
+        	dst[103:96] := src1[55:48] 
+        	dst[111:104] := src2[55:48] 
+        	dst[119:112] := src1[63:56] 
+        	dst[127:120] := src2[63:56] 
+        	RETURN dst[127:0]
+        }
+        dst[127:0] := INTERLEAVE_BYTES(a[127:0], b[127:0])
+        dst[255:128] := INTERLEAVE_BYTES(a[255:128], b[255:128])
+        dst[MAX:256] := 0
+        	
+
+_mm256_unpacklo_epi16
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI16 a, 
+    UI16 b
+
+.. code-block:: C
+
+    __m256i _mm256_unpacklo_epi16(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Unpack and interleave 16-bit integers from the low half of each 128-bit lane in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE INTERLEAVE_WORDS(src1[127:0], src2[127:0]) {
+        	dst[15:0] := src1[15:0] 
+        	dst[31:16] := src2[15:0] 
+        	dst[47:32] := src1[31:16] 
+        	dst[63:48] := src2[31:16] 
+        	dst[79:64] := src1[47:32] 
+        	dst[95:80] := src2[47:32] 
+        	dst[111:96] := src1[63:48] 
+        	dst[127:112] := src2[63:48] 
+        	RETURN dst[127:0]	
+        }
+        dst[127:0] := INTERLEAVE_WORDS(a[127:0], b[127:0])
+        dst[255:128] := INTERLEAVE_WORDS(a[255:128], b[255:128])
+        dst[MAX:256] := 0
+        	
+
+_mm256_unpacklo_epi32
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI32 a, 
+    UI32 b
+
+.. code-block:: C
+
+    __m256i _mm256_unpacklo_epi32(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Unpack and interleave 32-bit integers from the low half of each 128-bit lane in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE INTERLEAVE_DWORDS(src1[127:0], src2[127:0]) {
+        	dst[31:0] := src1[31:0] 
+        	dst[63:32] := src2[31:0] 
+        	dst[95:64] := src1[63:32] 
+        	dst[127:96] := src2[63:32] 
+        	RETURN dst[127:0]	
+        }
+        dst[127:0] := INTERLEAVE_DWORDS(a[127:0], b[127:0])
+        dst[255:128] := INTERLEAVE_DWORDS(a[255:128], b[255:128])
+        dst[MAX:256] := 0
+        	
+
+_mm256_unpacklo_epi64
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX_ALL
+:Category: Swizzle
+:Header: immintrin.h
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI64 a, 
+    UI64 b
+
+.. code-block:: C
+
+    __m256i _mm256_unpacklo_epi64(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Unpack and interleave 64-bit integers from the low half of each 128-bit lane in "a" and "b", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        DEFINE INTERLEAVE_QWORDS(src1[127:0], src2[127:0]) {
+        	dst[63:0] := src1[63:0] 
+        	dst[127:64] := src2[63:0] 
+        	RETURN dst[127:0]
+        }
+        dst[127:0] := INTERLEAVE_QWORDS(a[127:0], b[127:0])
+        dst[255:128] := INTERLEAVE_QWORDS(a[255:128], b[255:128])
+        dst[MAX:256] := 0
+        	
+

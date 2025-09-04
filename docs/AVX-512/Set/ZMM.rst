@@ -1,0 +1,2271 @@
+AVX-512-Set-ZMM
+===============
+
+_mm512_mask_set1_epi8
+---------------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m512i src, 
+    __mmask64 k, 
+    char a
+:Param ETypes:
+    UI8 src, 
+    MASK k, 
+    UI8 a
+
+.. code-block:: C
+
+    __m512i _mm512_mask_set1_epi8(__m512i src, __mmask64 k,
+                                  char a)
+
+.. admonition:: Intel Description
+
+    Broadcast 8-bit integer "a" to all elements of "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 63
+        	i := j*8
+        	IF k[j]
+        		dst[i+7:i] := a[7:0]
+        	ELSE
+        		dst[i+7:i] := src[i+7:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_maskz_set1_epi8
+----------------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __mmask64 k, 
+    char a
+:Param ETypes:
+    MASK k, 
+    UI8 a
+
+.. code-block:: C
+
+    __m512i _mm512_maskz_set1_epi8(__mmask64 k, char a);
+
+.. admonition:: Intel Description
+
+    Broadcast 8-bit integer "a" to all elements of "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 63
+        	i := j*8
+        	IF k[j]
+        		dst[i+7:i] := a[7:0]
+        	ELSE
+        		dst[i+7:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_set1_epi16
+----------------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m512i src, 
+    __mmask32 k, 
+    short a
+:Param ETypes:
+    UI16 src, 
+    MASK k, 
+    UI16 a
+
+.. code-block:: C
+
+    __m512i _mm512_mask_set1_epi16(__m512i src, __mmask32 k,
+                                   short a)
+
+.. admonition:: Intel Description
+
+    Broadcast 16-bit integer "a" to all elements of "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := a[15:0]
+        	ELSE
+        		dst[i+15:i] := src[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_maskz_set1_epi16
+-----------------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __mmask32 k, 
+    short a
+:Param ETypes:
+    MASK k, 
+    UI16 a
+
+.. code-block:: C
+
+    __m512i _mm512_maskz_set1_epi16(__mmask32 k, short a);
+
+.. admonition:: Intel Description
+
+    Broadcast the low packed 16-bit integer from "a" to all elements of "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := a[15:0]
+        	ELSE
+        		dst[i+15:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_set1_epi8
+----------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    char a
+:Param ETypes:
+    UI8 a
+
+.. code-block:: C
+
+    __m512i _mm512_set1_epi8(char a);
+
+.. admonition:: Intel Description
+
+    Broadcast 8-bit integer "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 63
+        	i := j*8
+        	dst[i+7:i] := a[7:0]
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_set1_epi32
+----------------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m512i src, 
+    __mmask16 k, 
+    int a
+:Param ETypes:
+    UI32 src, 
+    MASK k, 
+    UI32 a
+
+.. code-block:: C
+
+    __m512i _mm512_mask_set1_epi32(__m512i src, __mmask16 k,
+                                   int a)
+
+.. admonition:: Intel Description
+
+    Broadcast 32-bit integer "a" to all elements of "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := a[31:0]
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_maskz_set1_epi32
+-----------------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __mmask16 k, 
+    int a
+:Param ETypes:
+    MASK k, 
+    UI32 a
+
+.. code-block:: C
+
+    __m512i _mm512_maskz_set1_epi32(__mmask16 k, int a);
+
+.. admonition:: Intel Description
+
+    Broadcast 32-bit integer "a" to all elements of "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := a[31:0]
+        	ELSE
+        		dst[i+31:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_set1_epi32
+-----------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    __m512i _mm512_set1_epi32(int a);
+
+.. admonition:: Intel Description
+
+    Broadcast 32-bit integer "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := a[31:0]
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_set1_epi64
+----------------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m512i src, 
+    __mmask8 k, 
+    __int64 a
+:Param ETypes:
+    UI64 src, 
+    MASK k, 
+    UI64 a
+
+.. code-block:: C
+
+    __m512i _mm512_mask_set1_epi64(__m512i src, __mmask8 k,
+                                   __int64 a)
+
+.. admonition:: Intel Description
+
+    Broadcast 64-bit integer "a" to all elements of "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := a[63:0]
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_maskz_set1_epi64
+-----------------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __mmask8 k, 
+    __int64 a
+:Param ETypes:
+    MASK k, 
+    UI64 a
+
+.. code-block:: C
+
+    __m512i _mm512_maskz_set1_epi64(__mmask8 k, __int64 a);
+
+.. admonition:: Intel Description
+
+    Broadcast 64-bit integer "a" to all elements of "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := a[63:0]
+        	ELSE
+        		dst[i+63:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_set1_epi64
+-----------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __int64 a
+:Param ETypes:
+    UI64 a
+
+.. code-block:: C
+
+    __m512i _mm512_set1_epi64(__int64 a);
+
+.. admonition:: Intel Description
+
+    Broadcast 64-bit integer "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := a[63:0]
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_set1_epi16
+-----------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    short a
+:Param ETypes:
+    UI16 a
+
+.. code-block:: C
+
+    __m512i _mm512_set1_epi16(short a);
+
+.. admonition:: Intel Description
+
+    Broadcast the low packed 16-bit integer from "a" to all all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	dst[i+15:i] := a[15:0]
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_set1_pd
+--------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    double a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_set1_pd(double a);
+
+.. admonition:: Intel Description
+
+    Broadcast double-precision (64-bit) floating-point value "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	dst[i+63:i] := a[63:0]
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_set1_ps
+--------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    float a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_set1_ps(float a);
+
+.. admonition:: Intel Description
+
+    Broadcast single-precision (32-bit) floating-point value "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	dst[i+31:i] := a[31:0]
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_set4_epi32
+-----------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    int d, 
+    int c, 
+    int b, 
+    int a
+:Param ETypes:
+    UI32 d, 
+    UI32 c, 
+    UI32 b, 
+    UI32 a
+
+.. code-block:: C
+
+    __m512i _mm512_set4_epi32(int d, int c, int b, int a);
+
+.. admonition:: Intel Description
+
+    Set packed 32-bit integers in "dst" with the repeated 4 element sequence.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := a
+        dst[63:32] := b
+        dst[95:64] := c
+        dst[127:96] := d
+        dst[159:128] := a
+        dst[191:160] := b
+        dst[223:192] := c
+        dst[255:224] := d
+        dst[287:256] := a
+        dst[319:288] := b
+        dst[351:320] := c
+        dst[383:352] := d
+        dst[415:384] := a
+        dst[447:416] := b
+        dst[479:448] := c
+        dst[511:480] := d
+        dst[MAX:512] := 0
+        	
+
+_mm512_set4_epi64
+-----------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __int64 d, 
+    __int64 c, 
+    __int64 b, 
+    __int64 a
+:Param ETypes:
+    UI64 d, 
+    UI64 c, 
+    UI64 b, 
+    UI64 a
+
+.. code-block:: C
+
+    __m512i _mm512_set4_epi64(__int64 d, __int64 c, __int64 b,
+                              __int64 a)
+
+.. admonition:: Intel Description
+
+    Set packed 64-bit integers in "dst" with the repeated 4 element sequence.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := a
+        dst[127:64] := b
+        dst[191:128] := c
+        dst[255:192] := d
+        dst[319:256] := a
+        dst[383:320] := b
+        dst[447:384] := c
+        dst[511:448] := d
+        dst[MAX:512] := 0
+        	
+
+_mm512_set4_pd
+--------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    double d, 
+    double c, 
+    double b, 
+    double a
+:Param ETypes:
+    FP64 d, 
+    FP64 c, 
+    FP64 b, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_set4_pd(double d, double c, double b,
+                           double a)
+
+.. admonition:: Intel Description
+
+    Set packed double-precision (64-bit) floating-point elements in "dst" with the repeated 4 element sequence.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := a
+        dst[127:64] := b
+        dst[191:128] := c
+        dst[255:192] := d
+        dst[319:256] := a
+        dst[383:320] := b
+        dst[447:384] := c
+        dst[511:448] := d
+        dst[MAX:512] := 0
+        	
+
+_mm512_set4_ps
+--------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    float d, 
+    float c, 
+    float b, 
+    float a
+:Param ETypes:
+    FP32 d, 
+    FP32 c, 
+    FP32 b, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_set4_ps(float d, float c, float b, float a);
+
+.. admonition:: Intel Description
+
+    Set packed single-precision (32-bit) floating-point elements in "dst" with the repeated 4 element sequence.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := a
+        dst[63:32] := b
+        dst[95:64] := c
+        dst[127:96] := d
+        dst[159:128] := a
+        dst[191:160] := b
+        dst[223:192] := c
+        dst[255:224] := d
+        dst[287:256] := a
+        dst[319:288] := b
+        dst[351:320] := c
+        dst[383:352] := d
+        dst[415:384] := a
+        dst[447:416] := b
+        dst[479:448] := c
+        dst[511:480] := d
+        dst[MAX:512] := 0
+        	
+
+_mm512_set_epi8
+---------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    char e63, 
+    char e62, 
+    char e61, 
+    char e60, 
+    char e59, 
+    char e58, 
+    char e57, 
+    char e56, 
+    char e55, 
+    char e54, 
+    char e53, 
+    char e52, 
+    char e51, 
+    char e50, 
+    char e49, 
+    char e48, 
+    char e47, 
+    char e46, 
+    char e45, 
+    char e44, 
+    char e43, 
+    char e42, 
+    char e41, 
+    char e40, 
+    char e39, 
+    char e38, 
+    char e37, 
+    char e36, 
+    char e35, 
+    char e34, 
+    char e33, 
+    char e32, 
+    char e31, 
+    char e30, 
+    char e29, 
+    char e28, 
+    char e27, 
+    char e26, 
+    char e25, 
+    char e24, 
+    char e23, 
+    char e22, 
+    char e21, 
+    char e20, 
+    char e19, 
+    char e18, 
+    char e17, 
+    char e16, 
+    char e15, 
+    char e14, 
+    char e13, 
+    char e12, 
+    char e11, 
+    char e10, 
+    char e9, 
+    char e8, 
+    char e7, 
+    char e6, 
+    char e5, 
+    char e4, 
+    char e3, 
+    char e2, 
+    char e1, 
+    char e0
+:Param ETypes:
+    UI8 e63, 
+    UI8 e62, 
+    UI8 e61, 
+    UI8 e60, 
+    UI8 e59, 
+    UI8 e58, 
+    UI8 e57, 
+    UI8 e56, 
+    UI8 e55, 
+    UI8 e54, 
+    UI8 e53, 
+    UI8 e52, 
+    UI8 e51, 
+    UI8 e50, 
+    UI8 e49, 
+    UI8 e48, 
+    UI8 e47, 
+    UI8 e46, 
+    UI8 e45, 
+    UI8 e44, 
+    UI8 e43, 
+    UI8 e42, 
+    UI8 e41, 
+    UI8 e40, 
+    UI8 e39, 
+    UI8 e38, 
+    UI8 e37, 
+    UI8 e36, 
+    UI8 e35, 
+    UI8 e34, 
+    UI8 e33, 
+    UI8 e32, 
+    UI8 e31, 
+    UI8 e30, 
+    UI8 e29, 
+    UI8 e28, 
+    UI8 e27, 
+    UI8 e26, 
+    UI8 e25, 
+    UI8 e24, 
+    UI8 e23, 
+    UI8 e22, 
+    UI8 e21, 
+    UI8 e20, 
+    UI8 e19, 
+    UI8 e18, 
+    UI8 e17, 
+    UI8 e16, 
+    UI8 e15, 
+    UI8 e14, 
+    UI8 e13, 
+    UI8 e12, 
+    UI8 e11, 
+    UI8 e10, 
+    UI8 e9, 
+    UI8 e8, 
+    UI8 e7, 
+    UI8 e6, 
+    UI8 e5, 
+    UI8 e4, 
+    UI8 e3, 
+    UI8 e2, 
+    UI8 e1, 
+    UI8 e0
+
+.. code-block:: C
+
+    __m512i _mm512_set_epi8(
+        char e63, char e62, char e61, char e60, char e59,
+        char e58, char e57, char e56, char e55, char e54,
+        char e53, char e52, char e51, char e50, char e49,
+        char e48, char e47, char e46, char e45, char e44,
+        char e43, char e42, char e41, char e40, char e39,
+        char e38, char e37, char e36, char e35, char e34,
+        char e33, char e32, char e31, char e30, char e29,
+        char e28, char e27, char e26, char e25, char e24,
+        char e23, char e22, char e21, char e20, char e19,
+        char e18, char e17, char e16, char e15, char e14,
+        char e13, char e12, char e11, char e10, char e9,
+        char e8, char e7, char e6, char e5, char e4, char e3,
+        char e2, char e1, char e0)
+
+.. admonition:: Intel Description
+
+    Set packed 8-bit integers in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[7:0] := e0
+        dst[15:8] := e1
+        dst[23:16] := e2
+        dst[31:24] := e3
+        dst[39:32] := e4
+        dst[47:40] := e5
+        dst[55:48] := e6
+        dst[63:56] := e7
+        dst[71:64] := e8
+        dst[79:72] := e9
+        dst[87:80] := e10
+        dst[95:88] := e11
+        dst[103:96] := e12
+        dst[111:104] := e13
+        dst[119:112] := e14
+        dst[127:120] := e15
+        dst[135:128] := e16
+        dst[143:136] := e17
+        dst[151:144] := e18
+        dst[159:152] := e19
+        dst[167:160] := e20
+        dst[175:168] := e21
+        dst[183:176] := e22
+        dst[191:184] := e23
+        dst[199:192] := e24
+        dst[207:200] := e25
+        dst[215:208] := e26
+        dst[223:216] := e27
+        dst[231:224] := e28
+        dst[239:232] := e29
+        dst[247:240] := e30
+        dst[255:248] := e31
+        dst[263:256] := e32
+        dst[271:264] := e33
+        dst[279:272] := e34
+        dst[287:280] := e35
+        dst[295:288] := e36
+        dst[303:296] := e37
+        dst[311:304] := e38
+        dst[319:312] := e39
+        dst[327:320] := e40
+        dst[335:328] := e41
+        dst[343:336] := e42
+        dst[351:344] := e43
+        dst[359:352] := e44
+        dst[367:360] := e45
+        dst[375:368] := e46
+        dst[383:376] := e47
+        dst[391:384] := e48
+        dst[399:392] := e49
+        dst[407:400] := e50
+        dst[415:408] := e51
+        dst[423:416] := e52
+        dst[431:424] := e53
+        dst[439:432] := e54
+        dst[447:440] := e55
+        dst[455:448] := e56
+        dst[463:456] := e57
+        dst[471:464] := e58
+        dst[479:472] := e59
+        dst[487:480] := e60
+        dst[495:488] := e61
+        dst[503:496] := e62
+        dst[511:504] := e63
+        dst[MAX:512] := 0
+        	
+
+_mm512_set_epi16
+----------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    short e31, 
+    short e30, 
+    short e29, 
+    short e28, 
+    short e27, 
+    short e26, 
+    short e25, 
+    short e24, 
+    short e23, 
+    short e22, 
+    short e21, 
+    short e20, 
+    short e19, 
+    short e18, 
+    short e17, 
+    short e16, 
+    short e15, 
+    short e14, 
+    short e13, 
+    short e12, 
+    short e11, 
+    short e10, 
+    short e9, 
+    short e8, 
+    short e7, 
+    short e6, 
+    short e5, 
+    short e4, 
+    short e3, 
+    short e2, 
+    short e1, 
+    short e0
+:Param ETypes:
+    UI16 e31, 
+    UI16 e30, 
+    UI16 e29, 
+    UI16 e28, 
+    UI16 e27, 
+    UI16 e26, 
+    UI16 e25, 
+    UI16 e24, 
+    UI16 e23, 
+    UI16 e22, 
+    UI16 e21, 
+    UI16 e20, 
+    UI16 e19, 
+    UI16 e18, 
+    UI16 e17, 
+    UI16 e16, 
+    UI16 e15, 
+    UI16 e14, 
+    UI16 e13, 
+    UI16 e12, 
+    UI16 e11, 
+    UI16 e10, 
+    UI16 e9, 
+    UI16 e8, 
+    UI16 e7, 
+    UI16 e6, 
+    UI16 e5, 
+    UI16 e4, 
+    UI16 e3, 
+    UI16 e2, 
+    UI16 e1, 
+    UI16 e0
+
+.. code-block:: C
+
+    __m512i _mm512_set_epi16(
+        short e31, short e30, short e29, short e28, short e27,
+        short e26, short e25, short e24, short e23, short e22,
+        short e21, short e20, short e19, short e18, short e17,
+        short e16, short e15, short e14, short e13, short e12,
+        short e11, short e10, short e9, short e8, short e7,
+        short e6, short e5, short e4, short e3, short e2,
+        short e1, short e0)
+
+.. admonition:: Intel Description
+
+    Set packed 16-bit integers in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[15:0] := e0
+        dst[31:16] := e1
+        dst[47:32] := e2
+        dst[63:48] := e3
+        dst[79:64] := e4
+        dst[95:80] := e5
+        dst[111:96] := e6
+        dst[127:112] := e7
+        dst[143:128] := e8
+        dst[159:144] := e9
+        dst[175:160] := e10
+        dst[191:176] := e11
+        dst[207:192] := e12
+        dst[223:208] := e13
+        dst[239:224] := e14
+        dst[255:240] := e15
+        dst[271:256] := e16
+        dst[287:272] := e17
+        dst[303:288] := e18
+        dst[319:304] := e19
+        dst[335:320] := e20
+        dst[351:336] := e21
+        dst[367:352] := e22
+        dst[383:368] := e23
+        dst[399:384] := e24
+        dst[415:400] := e25
+        dst[431:416] := e26
+        dst[447:432] := e27
+        dst[463:448] := e28
+        dst[479:464] := e29
+        dst[495:480] := e30
+        dst[511:496] := e31
+        dst[MAX:512] := 0
+        	
+
+_mm512_set_epi32
+----------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    int e15, 
+    int e14, 
+    int e13, 
+    int e12, 
+    int e11, 
+    int e10, 
+    int e9, 
+    int e8, 
+    int e7, 
+    int e6, 
+    int e5, 
+    int e4, 
+    int e3, 
+    int e2, 
+    int e1, 
+    int e0
+:Param ETypes:
+    UI32 e15, 
+    UI32 e14, 
+    UI32 e13, 
+    UI32 e12, 
+    UI32 e11, 
+    UI32 e10, 
+    UI32 e9, 
+    UI32 e8, 
+    UI32 e7, 
+    UI32 e6, 
+    UI32 e5, 
+    UI32 e4, 
+    UI32 e3, 
+    UI32 e2, 
+    UI32 e1, 
+    UI32 e0
+
+.. code-block:: C
+
+    __m512i _mm512_set_epi32(int e15, int e14, int e13, int e12,
+                             int e11, int e10, int e9, int e8,
+                             int e7, int e6, int e5, int e4,
+                             int e3, int e2, int e1, int e0)
+
+.. admonition:: Intel Description
+
+    Set packed 32-bit integers in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := e0
+        dst[63:32] := e1
+        dst[95:64] := e2
+        dst[127:96] := e3
+        dst[159:128] := e4
+        dst[191:160] := e5
+        dst[223:192] := e6
+        dst[255:224] := e7
+        dst[287:256] := e8
+        dst[319:288] := e9
+        dst[351:320] := e10
+        dst[383:352] := e11
+        dst[415:384] := e12
+        dst[447:416] := e13
+        dst[479:448] := e14
+        dst[511:480] := e15
+        dst[MAX:512] := 0
+        	
+
+_mm512_set_epi64
+----------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __int64 e7, 
+    __int64 e6, 
+    __int64 e5, 
+    __int64 e4, 
+    __int64 e3, 
+    __int64 e2, 
+    __int64 e1, 
+    __int64 e0
+:Param ETypes:
+    UI64 e7, 
+    UI64 e6, 
+    UI64 e5, 
+    UI64 e4, 
+    UI64 e3, 
+    UI64 e2, 
+    UI64 e1, 
+    UI64 e0
+
+.. code-block:: C
+
+    __m512i _mm512_set_epi64(__int64 e7, __int64 e6, __int64 e5,
+                             __int64 e4, __int64 e3, __int64 e2,
+                             __int64 e1, __int64 e0)
+
+.. admonition:: Intel Description
+
+    Set packed 64-bit integers in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := e0
+        dst[127:64] := e1
+        dst[191:128] := e2
+        dst[255:192] := e3
+        dst[319:256] := e4
+        dst[383:320] := e5
+        dst[447:384] := e6
+        dst[511:448] := e7
+        dst[MAX:512] := 0
+        	
+
+_mm512_set_pd
+-------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    double e7, 
+    double e6, 
+    double e5, 
+    double e4, 
+    double e3, 
+    double e2, 
+    double e1, 
+    double e0
+:Param ETypes:
+    FP64 e7, 
+    FP64 e6, 
+    FP64 e5, 
+    FP64 e4, 
+    FP64 e3, 
+    FP64 e2, 
+    FP64 e1, 
+    FP64 e0
+
+.. code-block:: C
+
+    __m512d _mm512_set_pd(double e7, double e6, double e5,
+                          double e4, double e3, double e2,
+                          double e1, double e0)
+
+.. admonition:: Intel Description
+
+    Set packed double-precision (64-bit) floating-point elements in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := e0
+        dst[127:64] := e1
+        dst[191:128] := e2
+        dst[255:192] := e3
+        dst[319:256] := e4
+        dst[383:320] := e5
+        dst[447:384] := e6
+        dst[511:448] := e7
+        dst[MAX:512] := 0
+        	
+
+_mm512_set_ps
+-------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    float e15, 
+    float e14, 
+    float e13, 
+    float e12, 
+    float e11, 
+    float e10, 
+    float e9, 
+    float e8, 
+    float e7, 
+    float e6, 
+    float e5, 
+    float e4, 
+    float e3, 
+    float e2, 
+    float e1, 
+    float e0
+:Param ETypes:
+    FP32 e15, 
+    FP32 e14, 
+    FP32 e13, 
+    FP32 e12, 
+    FP32 e11, 
+    FP32 e10, 
+    FP32 e9, 
+    FP32 e8, 
+    FP32 e7, 
+    FP32 e6, 
+    FP32 e5, 
+    FP32 e4, 
+    FP32 e3, 
+    FP32 e2, 
+    FP32 e1, 
+    FP32 e0
+
+.. code-block:: C
+
+    __m512 _mm512_set_ps(float e15, float e14, float e13,
+                         float e12, float e11, float e10,
+                         float e9, float e8, float e7, float e6,
+                         float e5, float e4, float e3, float e2,
+                         float e1, float e0)
+
+.. admonition:: Intel Description
+
+    Set packed single-precision (32-bit) floating-point elements in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := e0
+        dst[63:32] := e1
+        dst[95:64] := e2
+        dst[127:96] := e3
+        dst[159:128] := e4
+        dst[191:160] := e5
+        dst[223:192] := e6
+        dst[255:224] := e7
+        dst[287:256] := e8
+        dst[319:288] := e9
+        dst[351:320] := e10
+        dst[383:352] := e11
+        dst[415:384] := e12
+        dst[447:416] := e13
+        dst[479:448] := e14
+        dst[511:480] := e15
+        dst[MAX:512] := 0
+        	
+
+_mm512_setr4_epi32
+------------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    int d, 
+    int c, 
+    int b, 
+    int a
+:Param ETypes:
+    UI32 d, 
+    UI32 c, 
+    UI32 b, 
+    UI32 a
+
+.. code-block:: C
+
+    __m512i _mm512_setr4_epi32(int d, int c, int b, int a);
+
+.. admonition:: Intel Description
+
+    Set packed 32-bit integers in "dst" with the repeated 4 element sequence in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := d
+        dst[63:32] := c
+        dst[95:64] := b
+        dst[127:96] := a
+        dst[159:128] := d
+        dst[191:160] := c
+        dst[223:192] := b
+        dst[255:224] := a
+        dst[287:256] := d
+        dst[319:288] := c
+        dst[351:320] := b
+        dst[383:352] := a
+        dst[415:384] := d
+        dst[447:416] := c
+        dst[479:448] := b
+        dst[511:480] := a
+        dst[MAX:512] := 0
+        	
+
+_mm512_setr4_epi64
+------------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __int64 d, 
+    __int64 c, 
+    __int64 b, 
+    __int64 a
+:Param ETypes:
+    UI64 d, 
+    UI64 c, 
+    UI64 b, 
+    UI64 a
+
+.. code-block:: C
+
+    __m512i _mm512_setr4_epi64(__int64 d, __int64 c, __int64 b,
+                               __int64 a)
+
+.. admonition:: Intel Description
+
+    Set packed 64-bit integers in "dst" with the repeated 4 element sequence in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := d
+        dst[127:64] := c
+        dst[191:128] := b
+        dst[255:192] := a
+        dst[319:256] := d
+        dst[383:320] := c
+        dst[447:384] := b
+        dst[511:448] := a
+        dst[MAX:512] := 0
+        	
+
+_mm512_setr4_pd
+---------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    double d, 
+    double c, 
+    double b, 
+    double a
+:Param ETypes:
+    FP64 d, 
+    FP64 c, 
+    FP64 b, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_setr4_pd(double d, double c, double b,
+                            double a)
+
+.. admonition:: Intel Description
+
+    Set packed double-precision (64-bit) floating-point elements in "dst" with the repeated 4 element sequence in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := d
+        dst[127:64] := c
+        dst[191:128] := b
+        dst[255:192] := a
+        dst[319:256] := d
+        dst[383:320] := c
+        dst[447:384] := b
+        dst[511:448] := a
+        dst[MAX:512] := 0
+        	
+
+_mm512_setr4_ps
+---------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    float d, 
+    float c, 
+    float b, 
+    float a
+:Param ETypes:
+    FP32 d, 
+    FP32 c, 
+    FP32 b, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_setr4_ps(float d, float c, float b, float a);
+
+.. admonition:: Intel Description
+
+    Set packed single-precision (32-bit) floating-point elements in "dst" with the repeated 4 element sequence in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := d
+        dst[63:32] := c
+        dst[95:64] := b
+        dst[127:96] := a
+        dst[159:128] := d
+        dst[191:160] := c
+        dst[223:192] := b
+        dst[255:224] := a
+        dst[287:256] := d
+        dst[319:288] := c
+        dst[351:320] := b
+        dst[383:352] := a
+        dst[415:384] := d
+        dst[447:416] := c
+        dst[479:448] := b
+        dst[511:480] := a
+        dst[MAX:512] := 0
+        	
+
+_mm512_setr_epi32
+-----------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    int e15, 
+    int e14, 
+    int e13, 
+    int e12, 
+    int e11, 
+    int e10, 
+    int e9, 
+    int e8, 
+    int e7, 
+    int e6, 
+    int e5, 
+    int e4, 
+    int e3, 
+    int e2, 
+    int e1, 
+    int e0
+:Param ETypes:
+    UI32 e15, 
+    UI32 e14, 
+    UI32 e13, 
+    UI32 e12, 
+    UI32 e11, 
+    UI32 e10, 
+    UI32 e9, 
+    UI32 e8, 
+    UI32 e7, 
+    UI32 e6, 
+    UI32 e5, 
+    UI32 e4, 
+    UI32 e3, 
+    UI32 e2, 
+    UI32 e1, 
+    UI32 e0
+
+.. code-block:: C
+
+    __m512i _mm512_setr_epi32(int e15, int e14, int e13,
+                              int e12, int e11, int e10, int e9,
+                              int e8, int e7, int e6, int e5,
+                              int e4, int e3, int e2, int e1,
+                              int e0)
+
+.. admonition:: Intel Description
+
+    Set packed 32-bit integers in "dst" with the supplied values in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := e15
+        dst[63:32] := e14
+        dst[95:64] := e13
+        dst[127:96] := e12
+        dst[159:128] := e11
+        dst[191:160] := e10
+        dst[223:192] := e9
+        dst[255:224] := e8
+        dst[287:256] := e7
+        dst[319:288] := e6
+        dst[351:320] := e5
+        dst[383:352] := e4
+        dst[415:384] := e3
+        dst[447:416] := e2
+        dst[479:448] := e1
+        dst[511:480] := e0
+        dst[MAX:512] := 0
+        	
+
+_mm512_setr_epi64
+-----------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __int64 e7, 
+    __int64 e6, 
+    __int64 e5, 
+    __int64 e4, 
+    __int64 e3, 
+    __int64 e2, 
+    __int64 e1, 
+    __int64 e0
+:Param ETypes:
+    UI64 e7, 
+    UI64 e6, 
+    UI64 e5, 
+    UI64 e4, 
+    UI64 e3, 
+    UI64 e2, 
+    UI64 e1, 
+    UI64 e0
+
+.. code-block:: C
+
+    __m512i _mm512_setr_epi64(__int64 e7, __int64 e6,
+                              __int64 e5, __int64 e4,
+                              __int64 e3, __int64 e2,
+                              __int64 e1, __int64 e0)
+
+.. admonition:: Intel Description
+
+    Set packed 64-bit integers in "dst" with the supplied values in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := e7
+        dst[127:64] := e6
+        dst[191:128] := e5
+        dst[255:192] := e4
+        dst[319:256] := e3
+        dst[383:320] := e2
+        dst[447:384] := e1
+        dst[511:448] := e0
+        dst[MAX:512] := 0
+        	
+
+_mm512_setr_pd
+--------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    double e7, 
+    double e6, 
+    double e5, 
+    double e4, 
+    double e3, 
+    double e2, 
+    double e1, 
+    double e0
+:Param ETypes:
+    FP64 e7, 
+    FP64 e6, 
+    FP64 e5, 
+    FP64 e4, 
+    FP64 e3, 
+    FP64 e2, 
+    FP64 e1, 
+    FP64 e0
+
+.. code-block:: C
+
+    __m512d _mm512_setr_pd(double e7, double e6, double e5,
+                           double e4, double e3, double e2,
+                           double e1, double e0)
+
+.. admonition:: Intel Description
+
+    Set packed double-precision (64-bit) floating-point elements in "dst" with the supplied values in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := e7
+        dst[127:64] := e6
+        dst[191:128] := e5
+        dst[255:192] := e4
+        dst[319:256] := e3
+        dst[383:320] := e2
+        dst[447:384] := e1
+        dst[511:448] := e0
+        dst[MAX:512] := 0
+        	
+
+_mm512_setr_ps
+--------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    float e15, 
+    float e14, 
+    float e13, 
+    float e12, 
+    float e11, 
+    float e10, 
+    float e9, 
+    float e8, 
+    float e7, 
+    float e6, 
+    float e5, 
+    float e4, 
+    float e3, 
+    float e2, 
+    float e1, 
+    float e0
+:Param ETypes:
+    FP32 e15, 
+    FP32 e14, 
+    FP32 e13, 
+    FP32 e12, 
+    FP32 e11, 
+    FP32 e10, 
+    FP32 e9, 
+    FP32 e8, 
+    FP32 e7, 
+    FP32 e6, 
+    FP32 e5, 
+    FP32 e4, 
+    FP32 e3, 
+    FP32 e2, 
+    FP32 e1, 
+    FP32 e0
+
+.. code-block:: C
+
+    __m512 _mm512_setr_ps(float e15, float e14, float e13,
+                          float e12, float e11, float e10,
+                          float e9, float e8, float e7,
+                          float e6, float e5, float e4,
+                          float e3, float e2, float e1,
+                          float e0)
+
+.. admonition:: Intel Description
+
+    Set packed single-precision (32-bit) floating-point elements in "dst" with the supplied values in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := e15
+        dst[63:32] := e14
+        dst[95:64] := e13
+        dst[127:96] := e12
+        dst[159:128] := e11
+        dst[191:160] := e10
+        dst[223:192] := e9
+        dst[255:224] := e8
+        dst[287:256] := e7
+        dst[319:288] := e6
+        dst[351:320] := e5
+        dst[383:352] := e4
+        dst[415:384] := e3
+        dst[447:416] := e2
+        dst[479:448] := e1
+        dst[511:480] := e0
+        dst[MAX:512] := 0
+        	
+
+_mm512_setzero
+--------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512
+
+.. code-block:: C
+
+    __m512 _mm512_setzero(void );
+
+.. admonition:: Intel Description
+
+    Return vector of type __m512 with all elements set to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[MAX:0] := 0
+        	
+
+_mm512_setzero_epi32
+--------------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+
+.. code-block:: C
+
+    
+
+.. admonition:: Intel Description
+
+    Return vector of type __m512i with all elements set to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[MAX:0] := 0
+        	
+
+_mm512_setzero_pd
+-----------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512d
+
+.. code-block:: C
+
+    
+
+.. admonition:: Intel Description
+
+    Return vector of type __m512d with all elements set to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[MAX:0] := 0
+        	
+
+_mm512_setzero_ps
+-----------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512
+
+.. code-block:: C
+
+    
+
+.. admonition:: Intel Description
+
+    Return vector of type __m512 with all elements set to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[MAX:0] := 0
+        	
+
+_mm512_setzero_si512
+--------------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512i
+
+.. code-block:: C
+
+    
+
+.. admonition:: Intel Description
+
+    Return vector of type __m512i with all elements set to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[MAX:0] := 0
+        	
+
+_mm512_set_ph
+-------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    _Float16 e31, 
+    _Float16 e30, 
+    _Float16 e29, 
+    _Float16 e28, 
+    _Float16 e27, 
+    _Float16 e26, 
+    _Float16 e25, 
+    _Float16 e24, 
+    _Float16 e23, 
+    _Float16 e22, 
+    _Float16 e21, 
+    _Float16 e20, 
+    _Float16 e19, 
+    _Float16 e18, 
+    _Float16 e17, 
+    _Float16 e16, 
+    _Float16 e15, 
+    _Float16 e14, 
+    _Float16 e13, 
+    _Float16 e12, 
+    _Float16 e11, 
+    _Float16 e10, 
+    _Float16 e9, 
+    _Float16 e8, 
+    _Float16 e7, 
+    _Float16 e6, 
+    _Float16 e5, 
+    _Float16 e4, 
+    _Float16 e3, 
+    _Float16 e2, 
+    _Float16 e1, 
+    _Float16 e0
+:Param ETypes:
+    FP16 e31, 
+    FP16 e30, 
+    FP16 e29, 
+    FP16 e28, 
+    FP16 e27, 
+    FP16 e26, 
+    FP16 e25, 
+    FP16 e24, 
+    FP16 e23, 
+    FP16 e22, 
+    FP16 e21, 
+    FP16 e20, 
+    FP16 e19, 
+    FP16 e18, 
+    FP16 e17, 
+    FP16 e16, 
+    FP16 e15, 
+    FP16 e14, 
+    FP16 e13, 
+    FP16 e12, 
+    FP16 e11, 
+    FP16 e10, 
+    FP16 e9, 
+    FP16 e8, 
+    FP16 e7, 
+    FP16 e6, 
+    FP16 e5, 
+    FP16 e4, 
+    FP16 e3, 
+    FP16 e2, 
+    FP16 e1, 
+    FP16 e0
+
+.. code-block:: C
+
+    __m512h _mm512_set_ph(
+        _Float16 e31, _Float16 e30, _Float16 e29, _Float16 e28,
+        _Float16 e27, _Float16 e26, _Float16 e25, _Float16 e24,
+        _Float16 e23, _Float16 e22, _Float16 e21, _Float16 e20,
+        _Float16 e19, _Float16 e18, _Float16 e17, _Float16 e16,
+        _Float16 e15, _Float16 e14, _Float16 e13, _Float16 e12,
+        _Float16 e11, _Float16 e10, _Float16 e9, _Float16 e8,
+        _Float16 e7, _Float16 e6, _Float16 e5, _Float16 e4,
+        _Float16 e3, _Float16 e2, _Float16 e1, _Float16 e0)
+
+.. admonition:: Intel Description
+
+    Set packed half-precision (16-bit) floating-point elements in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst.fp16[0] := e0
+        dst.fp16[1] := e1
+        dst.fp16[2] := e2
+        dst.fp16[3] := e3
+        dst.fp16[4] := e4
+        dst.fp16[5] := e5
+        dst.fp16[6] := e6
+        dst.fp16[7] := e7
+        dst.fp16[8] := e8
+        dst.fp16[9] := e9
+        dst.fp16[10] := e10
+        dst.fp16[11] := e11
+        dst.fp16[12] := e12
+        dst.fp16[13] := e13
+        dst.fp16[14] := e14
+        dst.fp16[15] := e15
+        dst.fp16[16] := e16
+        dst.fp16[17] := e17
+        dst.fp16[18] := e18
+        dst.fp16[19] := e19
+        dst.fp16[20] := e20
+        dst.fp16[21] := e21
+        dst.fp16[22] := e22
+        dst.fp16[23] := e23
+        dst.fp16[24] := e24
+        dst.fp16[25] := e25
+        dst.fp16[26] := e26
+        dst.fp16[27] := e27
+        dst.fp16[28] := e28
+        dst.fp16[29] := e29
+        dst.fp16[30] := e30
+        dst.fp16[31] := e31
+        	
+
+_mm512_setr_ph
+--------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    _Float16 e31, 
+    _Float16 e30, 
+    _Float16 e29, 
+    _Float16 e28, 
+    _Float16 e27, 
+    _Float16 e26, 
+    _Float16 e25, 
+    _Float16 e24, 
+    _Float16 e23, 
+    _Float16 e22, 
+    _Float16 e21, 
+    _Float16 e20, 
+    _Float16 e19, 
+    _Float16 e18, 
+    _Float16 e17, 
+    _Float16 e16, 
+    _Float16 e15, 
+    _Float16 e14, 
+    _Float16 e13, 
+    _Float16 e12, 
+    _Float16 e11, 
+    _Float16 e10, 
+    _Float16 e9, 
+    _Float16 e8, 
+    _Float16 e7, 
+    _Float16 e6, 
+    _Float16 e5, 
+    _Float16 e4, 
+    _Float16 e3, 
+    _Float16 e2, 
+    _Float16 e1, 
+    _Float16 e0
+:Param ETypes:
+    FP16 e31, 
+    FP16 e30, 
+    FP16 e29, 
+    FP16 e28, 
+    FP16 e27, 
+    FP16 e26, 
+    FP16 e25, 
+    FP16 e24, 
+    FP16 e23, 
+    FP16 e22, 
+    FP16 e21, 
+    FP16 e20, 
+    FP16 e19, 
+    FP16 e18, 
+    FP16 e17, 
+    FP16 e16, 
+    FP16 e15, 
+    FP16 e14, 
+    FP16 e13, 
+    FP16 e12, 
+    FP16 e11, 
+    FP16 e10, 
+    FP16 e9, 
+    FP16 e8, 
+    FP16 e7, 
+    FP16 e6, 
+    FP16 e5, 
+    FP16 e4, 
+    FP16 e3, 
+    FP16 e2, 
+    FP16 e1, 
+    FP16 e0
+
+.. code-block:: C
+
+    __m512h _mm512_setr_ph(
+        _Float16 e31, _Float16 e30, _Float16 e29, _Float16 e28,
+        _Float16 e27, _Float16 e26, _Float16 e25, _Float16 e24,
+        _Float16 e23, _Float16 e22, _Float16 e21, _Float16 e20,
+        _Float16 e19, _Float16 e18, _Float16 e17, _Float16 e16,
+        _Float16 e15, _Float16 e14, _Float16 e13, _Float16 e12,
+        _Float16 e11, _Float16 e10, _Float16 e9, _Float16 e8,
+        _Float16 e7, _Float16 e6, _Float16 e5, _Float16 e4,
+        _Float16 e3, _Float16 e2, _Float16 e1, _Float16 e0)
+
+.. admonition:: Intel Description
+
+    Set packed half-precision (16-bit) floating-point elements in "dst" with the supplied values in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst.fp16[0] := e31
+        dst.fp16[1] := e30
+        dst.fp16[2] := e29
+        dst.fp16[3] := e28
+        dst.fp16[4] := e27
+        dst.fp16[5] := e26
+        dst.fp16[6] := e25
+        dst.fp16[7] := e24
+        dst.fp16[8] := e23
+        dst.fp16[9] := e22
+        dst.fp16[10] := e21
+        dst.fp16[11] := e20
+        dst.fp16[12] := e19
+        dst.fp16[13] := e18
+        dst.fp16[14] := e17
+        dst.fp16[15] := e16
+        dst.fp16[16] := e15
+        dst.fp16[17] := e14
+        dst.fp16[18] := e13
+        dst.fp16[19] := e12
+        dst.fp16[20] := e11
+        dst.fp16[21] := e10
+        dst.fp16[22] := e9
+        dst.fp16[23] := e8
+        dst.fp16[24] := e7
+        dst.fp16[25] := e6
+        dst.fp16[26] := e5
+        dst.fp16[27] := e4
+        dst.fp16[28] := e3
+        dst.fp16[29] := e2
+        dst.fp16[30] := e1
+        dst.fp16[31] := e0
+        	
+
+_mm512_set1_ph
+--------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    _Float16 a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_set1_ph(_Float16 a);
+
+.. admonition:: Intel Description
+
+    Broadcast half-precision (16-bit) floating-point value "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR i := 0 to 31
+        	dst.fp16[i] := a[15:0]
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_set1_pch
+---------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512h
+:Param Types:
+    _Float16 _Complex a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m512h _mm512_set1_pch(_Float16 _Complex a);
+
+.. admonition:: Intel Description
+
+    Broadcast half-precision (16-bit) complex floating-point value "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR i := 0 to 15
+        	dst.fp16[2*i+0] := a[15:0]
+        	dst.fp16[2*i+1] := a[31:16]
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_setzero_ph
+-----------------
+:Tech: AVX-512
+:Category: Set
+:Header: immintrin.h
+:Searchable: AVX-512-Set-ZMM
+:Register: ZMM 512 bit
+:Return Type: __m512h
+
+.. code-block:: C
+
+    
+
+.. admonition:: Intel Description
+
+    Return vector of type __m512h with all elements set to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[MAX:0] := 0
+        	
+

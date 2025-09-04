@@ -1,0 +1,915 @@
+_mm512_mask_mov_epi16
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m512i src, 
+    __mmask32 k, 
+    __m512i a
+:Param ETypes:
+    UI16 src, 
+    MASK k, 
+    UI16 a
+
+.. code-block:: C
+
+    __m512i _mm512_mask_mov_epi16(__m512i src, __mmask32 k,
+                                  __m512i a)
+
+.. admonition:: Intel Description
+
+    Move packed 16-bit integers from "a" into "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := a[i+15:i]
+        	ELSE
+        		dst[i+15:i] := src[i+15:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_maskz_mov_epi16
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __mmask32 k, 
+    __m512i a
+:Param ETypes:
+    MASK k, 
+    UI16 a
+
+.. code-block:: C
+
+    __m512i _mm512_maskz_mov_epi16(__mmask32 k, __m512i a);
+
+.. admonition:: Intel Description
+
+    Move packed 16-bit integers from "a" into "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := j*16
+        	IF k[j]
+        		dst[i+15:i] := a[i+15:i]
+        	ELSE
+        		dst[i+15:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_mov_epi8
+^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m512i src, 
+    __mmask64 k, 
+    __m512i a
+:Param ETypes:
+    UI8 src, 
+    MASK k, 
+    UI8 a
+
+.. code-block:: C
+
+    __m512i _mm512_mask_mov_epi8(__m512i src, __mmask64 k,
+                                 __m512i a)
+
+.. admonition:: Intel Description
+
+    Move packed 8-bit integers from "a" into "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 63
+        	i := j*8
+        	IF k[j]
+        		dst[i+7:i] := a[i+7:i]
+        	ELSE
+        		dst[i+7:i] := src[i+7:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_maskz_mov_epi8
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __mmask64 k, 
+    __m512i a
+:Param ETypes:
+    MASK k, 
+    UI8 a
+
+.. code-block:: C
+
+    __m512i _mm512_maskz_mov_epi8(__mmask64 k, __m512i a);
+
+.. admonition:: Intel Description
+
+    Move packed 8-bit integers from "a" into "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 63
+        	i := j*8
+        	IF k[j]
+        		dst[i+7:i] := a[i+7:i]
+        	ELSE
+        		dst[i+7:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_maskz_mov_pd
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_maskz_mov_pd(__mmask8 k, __m512d a);
+
+.. admonition:: Intel Description
+
+    Move packed double-precision (64-bit) floating-point elements from "a" into "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := a[i+63:i]
+        	ELSE
+        		dst[i+63:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_maskz_mov_ps
+^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_maskz_mov_ps(__mmask16 k, __m512 a);
+
+.. admonition:: Intel Description
+
+    Move packed single-precision (32-bit) floating-point elements from "a" into "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := a[i+31:i]
+        	ELSE
+        		dst[i+31:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_movedup_pd
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_movedup_pd(__m512d src, __mmask8 k,
+                                   __m512d a)
+
+.. admonition:: Intel Description
+
+    Duplicate even-indexed double-precision (64-bit) floating-point elements from "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[63:0] := a[63:0]
+        tmp[127:64] := a[63:0]
+        tmp[191:128] := a[191:128]
+        tmp[255:192] := a[191:128]
+        tmp[319:256] := a[319:256] 
+        tmp[383:320] := a[319:256] 
+        tmp[447:384] := a[447:384]
+        tmp[511:448] := a[447:384]
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := tmp[i+63:i]
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_maskz_movedup_pd
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_maskz_movedup_pd(__mmask8 k, __m512d a);
+
+.. admonition:: Intel Description
+
+    Duplicate even-indexed double-precision (64-bit) floating-point elements from "a", and store the results in "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[63:0] := a[63:0]
+        tmp[127:64] := a[63:0]
+        tmp[191:128] := a[191:128]
+        tmp[255:192] := a[191:128]
+        tmp[319:256] := a[319:256] 
+        tmp[383:320] := a[319:256] 
+        tmp[447:384] := a[447:384]
+        tmp[511:448] := a[447:384]
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := tmp[i+63:i]
+        	ELSE
+        		dst[i+63:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_movedup_pd
+^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_movedup_pd(__m512d a);
+
+.. admonition:: Intel Description
+
+    Duplicate even-indexed double-precision (64-bit) floating-point elements from "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := a[63:0]
+        dst[127:64] := a[63:0]
+        dst[191:128] := a[191:128]
+        dst[255:192] := a[191:128]
+        dst[319:256] := a[319:256]
+        dst[383:320] := a[319:256]
+        dst[447:384] := a[447:384]
+        dst[511:448] := a[447:384]
+        dst[MAX:512] := 0
+        	
+
+_mm512_maskz_mov_epi32
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __mmask16 k, 
+    __m512i a
+:Param ETypes:
+    MASK k, 
+    UI32 a
+
+.. code-block:: C
+
+    __m512i _mm512_maskz_mov_epi32(__mmask16 k, __m512i a);
+
+.. admonition:: Intel Description
+
+    Move packed 32-bit integers from "a" into "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := a[i+31:i]
+        	ELSE
+        		dst[i+31:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_maskz_mov_epi64
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __mmask8 k, 
+    __m512i a
+:Param ETypes:
+    MASK k, 
+    UI64 a
+
+.. code-block:: C
+
+    __m512i _mm512_maskz_mov_epi64(__mmask8 k, __m512i a);
+
+.. admonition:: Intel Description
+
+    Move packed 64-bit integers from "a" into "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := a[i+63:i]
+        	ELSE
+        		dst[i+63:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_movehdup_ps
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_movehdup_ps(__m512 src, __mmask16 k,
+                                   __m512 a)
+
+.. admonition:: Intel Description
+
+    Duplicate odd-indexed single-precision (32-bit) floating-point elements from "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[31:0] := a[63:32] 
+        tmp[63:32] := a[63:32] 
+        tmp[95:64] := a[127:96] 
+        tmp[127:96] := a[127:96]
+        tmp[159:128] := a[191:160] 
+        tmp[191:160] := a[191:160] 
+        tmp[223:192] := a[255:224] 
+        tmp[255:224] := a[255:224]
+        tmp[287:256] := a[319:288] 
+        tmp[319:288] := a[319:288] 
+        tmp[351:320] := a[383:352] 
+        tmp[383:352] := a[383:352] 
+        tmp[415:384] := a[447:416] 
+        tmp[447:416] := a[447:416] 
+        tmp[479:448] := a[511:480]
+        tmp[511:480] := a[511:480]
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := tmp[i+31:i]
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_maskz_movehdup_ps
+^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_maskz_movehdup_ps(__mmask16 k, __m512 a);
+
+.. admonition:: Intel Description
+
+    Duplicate odd-indexed single-precision (32-bit) floating-point elements from "a", and store the results in "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[31:0] := a[63:32] 
+        tmp[63:32] := a[63:32] 
+        tmp[95:64] := a[127:96] 
+        tmp[127:96] := a[127:96]
+        tmp[159:128] := a[191:160] 
+        tmp[191:160] := a[191:160] 
+        tmp[223:192] := a[255:224] 
+        tmp[255:224] := a[255:224]
+        tmp[287:256] := a[319:288] 
+        tmp[319:288] := a[319:288] 
+        tmp[351:320] := a[383:352] 
+        tmp[383:352] := a[383:352] 
+        tmp[415:384] := a[447:416] 
+        tmp[447:416] := a[447:416] 
+        tmp[479:448] := a[511:480]
+        tmp[511:480] := a[511:480]
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := tmp[i+31:i]
+        	ELSE
+        		dst[i+31:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_movehdup_ps
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_movehdup_ps(__m512 a);
+
+.. admonition:: Intel Description
+
+    Duplicate odd-indexed single-precision (32-bit) floating-point elements from "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := a[63:32] 
+        dst[63:32] := a[63:32] 
+        dst[95:64] := a[127:96] 
+        dst[127:96] := a[127:96]
+        dst[159:128] := a[191:160] 
+        dst[191:160] := a[191:160] 
+        dst[223:192] := a[255:224] 
+        dst[255:224] := a[255:224]
+        dst[287:256] := a[319:288] 
+        dst[319:288] := a[319:288] 
+        dst[351:320] := a[383:352] 
+        dst[383:352] := a[383:352] 
+        dst[415:384] := a[447:416] 
+        dst[447:416] := a[447:416] 
+        dst[479:448] := a[511:480]
+        dst[511:480] := a[511:480]
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_moveldup_ps
+^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_moveldup_ps(__m512 src, __mmask16 k,
+                                   __m512 a)
+
+.. admonition:: Intel Description
+
+    Duplicate even-indexed single-precision (32-bit) floating-point elements from "a", and store the results in "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[31:0] := a[31:0] 
+        tmp[63:32] := a[31:0] 
+        tmp[95:64] := a[95:64] 
+        tmp[127:96] := a[95:64]
+        tmp[159:128] := a[159:128] 
+        tmp[191:160] := a[159:128] 
+        tmp[223:192] := a[223:192] 
+        tmp[255:224] := a[223:192]
+        tmp[287:256] := a[287:256] 
+        tmp[319:288] := a[287:256] 
+        tmp[351:320] := a[351:320] 
+        tmp[383:352] := a[351:320] 
+        tmp[415:384] := a[415:384] 
+        tmp[447:416] := a[415:384] 
+        tmp[479:448] := a[479:448]
+        tmp[511:480] := a[479:448]
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := tmp[i+31:i]
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR	
+        dst[MAX:512] := 0
+        	
+
+_mm512_maskz_moveldup_ps
+^^^^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_maskz_moveldup_ps(__mmask16 k, __m512 a);
+
+.. admonition:: Intel Description
+
+    Duplicate even-indexed single-precision (32-bit) floating-point elements from "a", and store the results in "dst" using zeromask "k" (elements are zeroed out when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[31:0] := a[31:0] 
+        tmp[63:32] := a[31:0] 
+        tmp[95:64] := a[95:64] 
+        tmp[127:96] := a[95:64]
+        tmp[159:128] := a[159:128] 
+        tmp[191:160] := a[159:128] 
+        tmp[223:192] := a[223:192] 
+        tmp[255:224] := a[223:192]
+        tmp[287:256] := a[287:256] 
+        tmp[319:288] := a[287:256] 
+        tmp[351:320] := a[351:320] 
+        tmp[383:352] := a[351:320] 
+        tmp[415:384] := a[415:384] 
+        tmp[447:416] := a[415:384] 
+        tmp[479:448] := a[479:448]
+        tmp[511:480] := a[479:448]
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := tmp[i+31:i]
+        	ELSE
+        		dst[i+31:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_moveldup_ps
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_moveldup_ps(__m512 a);
+
+.. admonition:: Intel Description
+
+    Duplicate even-indexed single-precision (32-bit) floating-point elements from "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := a[31:0] 
+        dst[63:32] := a[31:0] 
+        dst[95:64] := a[95:64] 
+        dst[127:96] := a[95:64]
+        dst[159:128] := a[159:128] 
+        dst[191:160] := a[159:128] 
+        dst[223:192] := a[223:192] 
+        dst[255:224] := a[223:192]
+        dst[287:256] := a[287:256] 
+        dst[319:288] := a[287:256] 
+        dst[351:320] := a[351:320] 
+        dst[383:352] := a[351:320] 
+        dst[415:384] := a[415:384] 
+        dst[447:416] := a[415:384] 
+        dst[479:448] := a[479:448]
+        dst[511:480] := a[479:448]
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_mov_pd
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512d
+:Param Types:
+    __m512d src, 
+    __mmask8 k, 
+    __m512d a
+:Param ETypes:
+    FP64 src, 
+    MASK k, 
+    FP64 a
+
+.. code-block:: C
+
+    __m512d _mm512_mask_mov_pd(__m512d src, __mmask8 k,
+                               __m512d a)
+
+.. admonition:: Intel Description
+
+    Move packed double-precision (64-bit) floating-point elements from "a" to "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := a[i+63:i]
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_mov_ps
+^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512
+:Param Types:
+    __m512 src, 
+    __mmask16 k, 
+    __m512 a
+:Param ETypes:
+    FP32 src, 
+    MASK k, 
+    FP32 a
+
+.. code-block:: C
+
+    __m512 _mm512_mask_mov_ps(__m512 src, __mmask16 k,
+                              __m512 a)
+
+.. admonition:: Intel Description
+
+    Move packed single-precision (32-bit) floating-point elements from "a" to "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := a[i+31:i]
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_mov_epi32
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m512i src, 
+    __mmask16 k, 
+    __m512i a
+:Param ETypes:
+    UI32 src, 
+    MASK k, 
+    UI32 a
+
+.. code-block:: C
+
+    __m512i _mm512_mask_mov_epi32(__m512i src, __mmask16 k,
+                                  __m512i a)
+
+.. admonition:: Intel Description
+
+    Move packed 32-bit integers from "a" to "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*32
+        	IF k[j]
+        		dst[i+31:i] := a[i+31:i]
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+
+_mm512_mask_mov_epi64
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: AVX-512
+:Category: Move
+:Header: immintrin.h
+:Register: ZMM 512 bit
+:Return Type: __m512i
+:Param Types:
+    __m512i src, 
+    __mmask8 k, 
+    __m512i a
+:Param ETypes:
+    UI64 src, 
+    MASK k, 
+    UI64 a
+
+.. code-block:: C
+
+    __m512i _mm512_mask_mov_epi64(__m512i src, __mmask8 k,
+                                  __m512i a)
+
+.. admonition:: Intel Description
+
+    Move packed 64-bit integers from "a" to "dst" using writemask "k" (elements are copied from "src" when the corresponding mask bit is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*64
+        	IF k[j]
+        		dst[i+63:i] := a[i+63:i]
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        dst[MAX:512] := 0
+        	
+

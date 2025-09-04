@@ -1,0 +1,628 @@
+_addcarryx_u32
+^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Return Type: unsigned char
+:Param Types:
+    unsigned char c_in, 
+    unsigned int a, 
+    unsigned int b, 
+    unsigned int * out
+:Param ETypes:
+    UI8 c_in, 
+    UI32 a, 
+    UI32 b, 
+    UI32 out
+
+.. code-block:: C
+
+    unsigned char _addcarryx_u32(unsigned char c_in, unsigned int a, unsigned int b, unsigned int * out);
+
+.. admonition:: Intel Description
+
+    Add unsigned 32-bit integers "a" and "b" with unsigned 8-bit carry-in "c_in" (carry or overflow flag), and store the unsigned 32-bit result in "out", and the carry-out in "dst" (carry or overflow flag).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[32:0] := a[31:0] + b[31:0] + (c_in > 0 ? 1 : 0)
+        MEM[out+31:out] := tmp[31:0]
+        dst[0] := tmp[32]
+        dst[7:1] := 0
+        	
+
+_addcarryx_u64
+^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Return Type: unsigned char
+:Param Types:
+    unsigned char c_in, 
+    unsigned __int64 a, 
+    unsigned __int64 b, 
+    unsigned __int64 * out
+:Param ETypes:
+    UI8 c_in, 
+    UI64 a, 
+    UI64 b, 
+    UI64 out
+
+.. code-block:: C
+
+    unsigned char _addcarryx_u64(unsigned char c_in, unsigned __int64 a, unsigned __int64 b, unsigned __int64 * out);
+
+.. admonition:: Intel Description
+
+    Add unsigned 64-bit integers "a" and "b" with unsigned 8-bit carry-in "c_in" (carry or overflow flag), and store the unsigned 64-bit result in "out", and the carry-out in "dst" (carry or overflow flag).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[64:0] := a[63:0] + b[63:0] + (c_in > 0 ? 1 : 0)
+        MEM[out+63:out] := tmp[63:0]
+        dst[0] := tmp[64]
+        dst[7:1] := 0
+        	
+
+_mulx_u32
+^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Return Type: unsigned int
+:Param Types:
+    unsigned int a, 
+    unsigned int b, 
+    unsigned int* hi
+:Param ETypes:
+    UI32 a, 
+    UI32 b, 
+    UI32 hi
+
+.. code-block:: C
+
+    unsigned int _mulx_u32(unsigned int a, unsigned int b, unsigned int* hi);
+
+.. admonition:: Intel Description
+
+    Multiply unsigned 32-bit integers "a" and "b", store the low 32-bits of the result in "dst", and store the high 32-bits in "hi". This does not read or write arithmetic flags.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := (a * b)[31:0]
+        MEM[hi+31:hi] := (a * b)[63:32]
+        	
+
+_mulx_u64
+^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Return Type: unsigned __int64
+:Param Types:
+    unsigned __int64 a, 
+    unsigned __int64 b, 
+    unsigned __int64* hi
+:Param ETypes:
+    UI64 a, 
+    UI64 b, 
+    UI64 hi
+
+.. code-block:: C
+
+    unsigned __int64 _mulx_u64(unsigned __int64 a, unsigned __int64 b, unsigned __int64* hi);
+
+.. admonition:: Intel Description
+
+    Multiply unsigned 64-bit integers "a" and "b", store the low 64-bits of the result in "dst", and store the high 64-bits in "hi". This does not read or write arithmetic flags.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := (a * b)[63:0]
+        MEM[hi+63:hi]  := (a * b)[127:64]
+        	
+
+_cmpccxadd_epi32
+^^^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Return Type: int
+:Param Types:
+    void* __A, 
+    int __B, 
+    int __C, 
+    const int __D
+:Param ETypes:
+    SI32 __A, 
+    SI32 __B, 
+    SI32 __C, 
+    SI32 __D
+
+.. code-block:: C
+
+    int _cmpccxadd_epi32(void* __A, int __B, int __C,
+                         const int __D)
+
+.. admonition:: Intel Description
+
+    Compares the value from the memory "__A" with the value of "__B". If the specified condition "__D" is met, then add the third operand "__C" to the "__A" and write it into "__A", else the value of "__A" is unchanged. The return value is the original value of "__A".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        CASE (__D[3:0]) OF
+        0: OP := _CMPCCX_O
+        1: OP := _CMPCCX_NO
+        2: OP := _CMPCCX_B
+        3: OP := _CMPCCX_NB
+        4: OP := _CMPCCX_Z
+        5: OP := _CMPCCX_NZ
+        6: OP := _CMPCCX_BE
+        7: OP := _CMPCCX_NBE
+        8: OP := _CMPCCX_S
+        9: OP := _CMPCCX_NS
+        10: OP := _CMPCCX_P
+        11: OP := _CMPCCX_NP
+        12: OP := _CMPCCX_L
+        13: OP := _CMPCCX_NL
+        14: OP := _CMPCCX_LE
+        15: OP := _CMPCCX_NLE
+        ESAC
+        tmp1 := LOAD_LOCK(__A)
+        tmp2 := tmp1 + __C
+        IF (tmp1[31:0] OP __B[31:0])
+        	STORE_UNLOCK(__A, tmp2)
+        ELSE
+        	STORE_UNLOCK(__A, tmp1)
+        FI
+        dst[31:0] := tmp1[31:0]
+        	
+
+_cmpccxadd_epi64
+^^^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Return Type: __int64
+:Param Types:
+    void* __A, 
+    __int64 __B, 
+    __int64 __C, 
+    const int __D
+:Param ETypes:
+    SI64 __A, 
+    SI64 __B, 
+    SI64 __C, 
+    SI32 __D
+
+.. code-block:: C
+
+    __int64 _cmpccxadd_epi64(void* __A, __int64 __B,
+                             __int64 __C, const int __D)
+
+.. admonition:: Intel Description
+
+    Compares the value from the memory "__A" with the value of "__B". If the specified condition "__D" is met, then add the third operand "__C" to the "__A" and write it into "__A", else the value of "__A" is unchanged. The return value is the original value of "__A".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        CASE (__D[3:0]) OF
+        0: OP := _CMPCCX_O
+        1: OP := _CMPCCX_NO
+        2: OP := _CMPCCX_B
+        3: OP := _CMPCCX_NB
+        4: OP := _CMPCCX_Z
+        5: OP := _CMPCCX_NZ
+        6: OP := _CMPCCX_BE
+        7: OP := _CMPCCX_NBE
+        8: OP := _CMPCCX_S
+        9: OP := _CMPCCX_NS
+        10: OP := _CMPCCX_P
+        11: OP := _CMPCCX_NP
+        12: OP := _CMPCCX_L
+        13: OP := _CMPCCX_NL
+        14: OP := _CMPCCX_LE
+        15: OP := _CMPCCX_NLE
+        ESAC
+        tmp1 := LOAD_LOCK(__A)
+        tmp2 := tmp1 + __C
+        IF (tmp1[63:0] OP __B[63:0])
+        	STORE_UNLOCK(__A, tmp2)
+        ELSE
+        	STORE_UNLOCK(__A, tmp1)
+        FI
+        dst[63:0] := tmp1[63:0]
+        	
+
+_addcarry_u32
+^^^^^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Return Type: unsigned char
+:Param Types:
+    unsigned char c_in, 
+    unsigned int a, 
+    unsigned int b, 
+    unsigned int * out
+:Param ETypes:
+    UI8 c_in, 
+    UI32 a, 
+    UI32 b, 
+    UI32 out
+
+.. code-block:: C
+
+    unsigned char _addcarry_u32(unsigned char c_in, unsigned int a, unsigned int b, unsigned int * out);
+
+.. admonition:: Intel Description
+
+    Add unsigned 32-bit integers "a" and "b" with unsigned 8-bit carry-in "c_in" (carry flag), and store the unsigned 32-bit result in "out", and the carry-out in "dst" (carry or overflow flag).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[32:0] := a[31:0] + b[31:0] + (c_in > 0 ? 1 : 0)
+        MEM[out+31:out] := tmp[31:0]
+        dst[0] := tmp[32]
+        dst[7:1] := 0
+        	
+
+_addcarry_u64
+^^^^^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Return Type: unsigned char
+:Param Types:
+    unsigned char c_in, 
+    unsigned __int64 a, 
+    unsigned __int64 b, 
+    unsigned __int64 * out
+:Param ETypes:
+    UI8 c_in, 
+    UI64 a, 
+    UI64 b, 
+    UI64 out
+
+.. code-block:: C
+
+    unsigned char _addcarry_u64(unsigned char c_in, unsigned __int64 a, unsigned __int64 b, unsigned __int64 * out);
+
+.. admonition:: Intel Description
+
+    Add unsigned 64-bit integers "a" and "b" with unsigned 8-bit carry-in "c_in" (carry flag), and store the unsigned 64-bit result in "out", and the carry-out in "dst" (carry or overflow flag).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[64:0] := a[63:0] + b[63:0] + (c_in > 0 ? 1 : 0)
+        MEM[out+63:out] := tmp[63:0]
+        dst[0] := tmp[64]
+        dst[7:1] := 0
+        	
+
+_subborrow_u32
+^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Return Type: unsigned char
+:Param Types:
+    unsigned char c_in, 
+    unsigned int a, 
+    unsigned int b, 
+    unsigned int * out
+:Param ETypes:
+    UI8 c_in, 
+    UI32 a, 
+    UI32 b, 
+    UI32 out
+
+.. code-block:: C
+
+    unsigned char _subborrow_u32(unsigned char c_in, unsigned int a, unsigned int b, unsigned int * out);
+
+.. admonition:: Intel Description
+
+    Add unsigned 8-bit borrow "c_in" (carry flag) to unsigned 32-bit integer "b", and subtract the result from unsigned 32-bit integer "a". Store the unsigned 32-bit result in "out", and the carry-out in "dst" (carry or overflow flag).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[32:0] := a[31:0] - (b[31:0] + (c_in > 0 ? 1 : 0))
+        MEM[out+31:out] := tmp[31:0]
+        dst[0] := tmp[32]
+        dst[7:1] := 0
+        	
+
+_subborrow_u64
+^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: immintrin.h
+:Return Type: unsigned char
+:Param Types:
+    unsigned char c_in, 
+    unsigned __int64 a, 
+    unsigned __int64 b, 
+    unsigned __int64 * out
+:Param ETypes:
+    UI8 c_in, 
+    UI64 a, 
+    UI64 b, 
+    UI64 out
+
+.. code-block:: C
+
+    unsigned char _subborrow_u64(unsigned char c_in, unsigned __int64 a, unsigned __int64 b, unsigned __int64 * out);
+
+.. admonition:: Intel Description
+
+    Add unsigned 8-bit borrow "c_in" (carry flag) to unsigned 64-bit integer "b", and subtract the result from unsigned 64-bit integer "a". Store the unsigned 64-bit result in "out", and the carry-out in "dst" (carry or overflow flag).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[64:0] := a[63:0] - (b[63:0] + (c_in > 0 ? 1 : 0))
+        MEM[out+63:out] := tmp[63:0]
+        dst[0] := tmp[64]
+        dst[7:1] := 0
+        	
+
+_aadd_i32
+^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: x86gprintrin.h
+:Return Type: void
+:Param Types:
+    int* __A, 
+    int __B
+:Param ETypes:
+    SI32 __A, 
+    SI32 __B
+
+.. code-block:: C
+
+    void _aadd_i32(int* __A, int __B);
+
+.. admonition:: Intel Description
+
+    Atomically add a 32-bit value at memory operand "__A" and a 32-bit "__B", and store the result to the same memory location.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[__A+31:__A] := MEM[__A+31:__A] + __B[31:0]
+        
+
+_aadd_i64
+^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: x86gprintrin.h
+:Return Type: void
+:Param Types:
+    __int64* __A, 
+    __int64 __B
+:Param ETypes:
+    SI64 __A, 
+    SI64 __B
+
+.. code-block:: C
+
+    void _aadd_i64(__int64* __A, __int64 __B);
+
+.. admonition:: Intel Description
+
+    Atomically add a 64-bit value at memory operand "__A" and a 64-bit "__B", and store the result to the same memory location.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[__A+63:__A] := MEM[__A+63:__A] + __B[63:0]
+        
+
+_aand_i32
+^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: x86gprintrin.h
+:Return Type: void
+:Param Types:
+    int* __A, 
+    int __B
+:Param ETypes:
+    SI32 __A, 
+    SI32 __B
+
+.. code-block:: C
+
+    void _aand_i32(int* __A, int __B);
+
+.. admonition:: Intel Description
+
+    Atomically and a 32-bit value at memory operand "__A" and a 32-bit "__B", and store the result to the same memory location.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[__A+31:__A] := MEM[__A+31:__A] AND __B[31:0]
+        
+
+_aand_i64
+^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: x86gprintrin.h
+:Return Type: void
+:Param Types:
+    __int64* __A, 
+    __int64 __B
+:Param ETypes:
+    SI64 __A, 
+    SI64 __B
+
+.. code-block:: C
+
+    void _aand_i64(__int64* __A, __int64 __B);
+
+.. admonition:: Intel Description
+
+    Atomically and a 64-bit value at memory operand "__A" and a 64-bit "__B", and store the result to the same memory location.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[__A+63:__A] := MEM[__A+63:__A] AND __B[63:0]
+        
+
+_aor_i32
+^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: x86gprintrin.h
+:Return Type: void
+:Param Types:
+    int* __A, 
+    int __B
+:Param ETypes:
+    SI32 __A, 
+    SI32 __B
+
+.. code-block:: C
+
+    void _aor_i32(int* __A, int __B);
+
+.. admonition:: Intel Description
+
+    Atomically or a 32-bit value at memory operand "__A" and a 32-bit "__B", and store the result to the same memory location.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[__A+31:__A] := MEM[__A+31:__A] OR __B[31:0]
+        
+
+_aor_i64
+^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: x86gprintrin.h
+:Return Type: void
+:Param Types:
+    __int64* __A, 
+    __int64 __B
+:Param ETypes:
+    SI64 __A, 
+    SI64 __B
+
+.. code-block:: C
+
+    void _aor_i64(__int64* __A, __int64 __B);
+
+.. admonition:: Intel Description
+
+    Atomically or a 64-bit value at memory operand "__A" and a 64-bit "__B", and store the result to the same memory location.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[__A+63:__A] := MEM[__A+63:__A] OR __B[63:0]
+        
+
+_axor_i32
+^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: x86gprintrin.h
+:Return Type: void
+:Param Types:
+    int* __A, 
+    int __B
+:Param ETypes:
+    SI32 __A, 
+    SI32 __B
+
+.. code-block:: C
+
+    void _axor_i32(int* __A, int __B);
+
+.. admonition:: Intel Description
+
+    Atomically xor a 32-bit value at memory operand "__A" and a 32-bit "__B", and store the result to the same memory location.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[__A+31:__A] := MEM[__A+31:__A] XOR __B[31:0]
+        
+
+_axor_i64
+^^^^^^^^^
+:Tech: Other
+:Category: Arithmetic
+:Header: x86gprintrin.h
+:Return Type: void
+:Param Types:
+    __int64* __A, 
+    __int64 __B
+:Param ETypes:
+    SI64 __A, 
+    SI64 __B
+
+.. code-block:: C
+
+    void _axor_i64(__int64* __A, __int64 __B);
+
+.. admonition:: Intel Description
+
+    Atomically xor a 64-bit value at memory operand "__A" and a 64-bit "__B", and store the result to the same memory location.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        MEM[__A+63:__A] := MEM[__A+63:__A] XOR __B[63:0]
+        
+

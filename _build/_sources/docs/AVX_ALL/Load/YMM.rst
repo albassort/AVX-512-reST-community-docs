@@ -1,0 +1,1285 @@
+AVX_ALL-Load-YMM
+================
+
+_mm256_broadcast_ss
+-------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    float const * mem_addr
+:Param ETypes:
+    FP32 mem_addr
+
+.. code-block:: C
+
+    __m256 _mm256_broadcast_ss(float const * mem_addr);
+
+.. admonition:: Intel Description
+
+    Broadcast a single-precision (32-bit) floating-point element from memory to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        tmp[31:0] := MEM[mem_addr+31:mem_addr]
+        FOR j := 0 to 7
+        	i := j*32
+        	dst[i+31:i] := tmp[31:0]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_load_pd
+--------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    double const * mem_addr
+:Param ETypes:
+    FP64 mem_addr
+
+.. code-block:: C
+
+    __m256d _mm256_load_pd(double const * mem_addr);
+
+.. admonition:: Intel Description
+
+    Load 256-bits (composed of 4 packed double-precision (64-bit) floating-point elements) from memory into "dst".
+    	"mem_addr" must be aligned on a 32-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := MEM[mem_addr+255:mem_addr]
+        dst[MAX:256] := 0
+        	
+
+_mm256_load_ps
+--------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    float const * mem_addr
+:Param ETypes:
+    FP32 mem_addr
+
+.. code-block:: C
+
+    __m256 _mm256_load_ps(float const * mem_addr);
+
+.. admonition:: Intel Description
+
+    Load 256-bits (composed of 8 packed single-precision (32-bit) floating-point elements) from memory into "dst".
+    	"mem_addr" must be aligned on a 32-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := MEM[mem_addr+255:mem_addr]
+        dst[MAX:256] := 0
+        	
+
+_mm256_loadu_pd
+---------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    double const * mem_addr
+:Param ETypes:
+    FP64 mem_addr
+
+.. code-block:: C
+
+    __m256d _mm256_loadu_pd(double const * mem_addr);
+
+.. admonition:: Intel Description
+
+    Load 256-bits (composed of 4 packed double-precision (64-bit) floating-point elements) from memory into "dst".
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := MEM[mem_addr+255:mem_addr]
+        dst[MAX:256] := 0
+        	
+
+_mm256_loadu_ps
+---------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    float const * mem_addr
+:Param ETypes:
+    FP32 mem_addr
+
+.. code-block:: C
+
+    __m256 _mm256_loadu_ps(float const * mem_addr);
+
+.. admonition:: Intel Description
+
+    Load 256-bits (composed of 8 packed single-precision (32-bit) floating-point elements) from memory into "dst".
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := MEM[mem_addr+255:mem_addr]
+        dst[MAX:256] := 0
+        	
+
+_mm256_load_si256
+-----------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i const * mem_addr
+:Param ETypes:
+    M256 mem_addr
+
+.. code-block:: C
+
+    __m256i _mm256_load_si256(__m256i const * mem_addr);
+
+.. admonition:: Intel Description
+
+    Load 256-bits of integer data from memory into "dst".
+    	"mem_addr" must be aligned on a 32-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := MEM[mem_addr+255:mem_addr]
+        dst[MAX:256] := 0
+        	
+
+_mm256_loadu_si256
+------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i const * mem_addr
+:Param ETypes:
+    M256 mem_addr
+
+.. code-block:: C
+
+    __m256i _mm256_loadu_si256(__m256i const * mem_addr);
+
+.. admonition:: Intel Description
+
+    Load 256-bits of integer data from memory into "dst".
+    	"mem_addr" does not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := MEM[mem_addr+255:mem_addr]
+        dst[MAX:256] := 0
+        	
+
+_mm256_maskload_pd
+------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    double const * mem_addr, 
+    __m256i mask
+:Param ETypes:
+    FP64 mem_addr, 
+    MASK mask
+
+.. code-block:: C
+
+    __m256d _mm256_maskload_pd(double const* mem_addr,
+                               __m256i mask)
+
+.. admonition:: Intel Description
+
+    Load packed double-precision (64-bit) floating-point elements from memory into "dst" using "mask" (elements are zeroed out when the high bit of the corresponding element is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*64
+        	IF mask[i+63]
+        		dst[i+63:i] := MEM[mem_addr+i+63:mem_addr+i]
+        	ELSE
+        		dst[i+63:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_maskload_ps
+------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    float const * mem_addr, 
+    __m256i mask
+:Param ETypes:
+    FP32 mem_addr, 
+    MASK mask
+
+.. code-block:: C
+
+    __m256 _mm256_maskload_ps(float const* mem_addr,
+                              __m256i mask)
+
+.. admonition:: Intel Description
+
+    Load packed single-precision (32-bit) floating-point elements from memory into "dst" using "mask" (elements are zeroed out when the high bit of the corresponding element is not set).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	IF mask[i+31]
+        		dst[i+31:i] := MEM[mem_addr+i+31:mem_addr+i]
+        	ELSE
+        		dst[i+31:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_lddqu_si256
+------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i const * mem_addr
+:Param ETypes:
+    M256 mem_addr
+
+.. code-block:: C
+
+    __m256i _mm256_lddqu_si256(__m256i const * mem_addr);
+
+.. admonition:: Intel Description
+
+    Load 256-bits of integer data from unaligned memory into "dst". This intrinsic may perform better than "_mm256_loadu_si256" when the data crosses a cache line boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := MEM[mem_addr+255:mem_addr]
+        dst[MAX:256] := 0
+        	
+
+_mm256_loadu2_m128
+------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    float const* hiaddr, 
+    float const* loaddr
+:Param ETypes:
+    FP32 hiaddr, 
+    FP32 loaddr
+
+.. code-block:: C
+
+    __m256 _mm256_loadu2_m128(float const* hiaddr,
+                              float const* loaddr)
+
+.. admonition:: Intel Description
+
+    Load two 128-bit values (composed of 4 packed single-precision (32-bit) floating-point elements) from memory, and combine them into a 256-bit value in "dst".
+    	"hiaddr" and "loaddr" do not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[127:0] := MEM[loaddr+127:loaddr]
+        dst[255:128] := MEM[hiaddr+127:hiaddr]
+        dst[MAX:256] := 0
+        	
+
+_mm256_loadu2_m128d
+-------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    double const* hiaddr, 
+    double const* loaddr
+:Param ETypes:
+    FP64 hiaddr, 
+    FP64 loaddr
+
+.. code-block:: C
+
+    __m256d _mm256_loadu2_m128d(double const* hiaddr,
+                                double const* loaddr)
+
+.. admonition:: Intel Description
+
+    Load two 128-bit values (composed of 2 packed double-precision (64-bit) floating-point elements) from memory, and combine them into a 256-bit value in "dst".
+    	"hiaddr" and "loaddr" do not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[127:0] := MEM[loaddr+127:loaddr]
+        dst[255:128] := MEM[hiaddr+127:hiaddr]
+        dst[MAX:256] := 0
+        	
+
+_mm256_loadu2_m128i
+-------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m128i const* hiaddr, 
+    __m128i const* loaddr
+:Param ETypes:
+    M128 hiaddr, 
+    M128 loaddr
+
+.. code-block:: C
+
+    __m256i _mm256_loadu2_m128i(__m128i const* hiaddr,
+                                __m128i const* loaddr)
+
+.. admonition:: Intel Description
+
+    Load two 128-bit values (composed of integer data) from memory, and combine them into a 256-bit value in "dst".
+    	"hiaddr" and "loaddr" do not need to be aligned on any particular boundary.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[127:0] := MEM[loaddr+127:loaddr]
+        dst[255:128] := MEM[hiaddr+127:hiaddr]
+        dst[MAX:256] := 0
+        	
+
+_mm256_i32gather_pd
+-------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    double const* base_addr, 
+    __m128i vindex, 
+    const int scale
+:Param ETypes:
+    FP64 base_addr, 
+    SI32 vindex, 
+    IMM scale
+
+.. code-block:: C
+
+    __m256d _mm256_i32gather_pd(double const* base_addr,
+                                __m128i vindex,
+                                const int scale)
+
+.. admonition:: Intel Description
+
+    Gather double-precision (64-bit) floating-point elements from memory using 32-bit indices. 64-bit elements are loaded from addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst". "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*64
+        	m := j*32
+        	addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        	dst[i+63:i] := MEM[addr+63:addr]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_i32gather_ps
+-------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    float const* base_addr, 
+    __m256i vindex, 
+    const int scale
+:Param ETypes:
+    FP32 base_addr, 
+    SI32 vindex, 
+    IMM scale
+
+.. code-block:: C
+
+    __m256 _mm256_i32gather_ps(float const* base_addr,
+                               __m256i vindex, const int scale)
+
+.. admonition:: Intel Description
+
+    Gather single-precision (32-bit) floating-point elements from memory using 32-bit indices. 32-bit elements are loaded from addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst". "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	m := j*32
+        	addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        	dst[i+31:i] := MEM[addr+31:addr]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_i32gather_epi32
+----------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    int const* base_addr, 
+    __m256i vindex, 
+    const int scale
+:Param ETypes:
+    UI32 base_addr, 
+    SI32 vindex, 
+    IMM scale
+
+.. code-block:: C
+
+    __m256i _mm256_i32gather_epi32(int const* base_addr,
+                                   __m256i vindex,
+                                   const int scale)
+
+.. admonition:: Intel Description
+
+    Gather 32-bit integers from memory using 32-bit indices. 32-bit elements are loaded from addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst". "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	m := j*32
+        	addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        	dst[i+31:i] := MEM[addr+31:addr]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_i32gather_epi64
+----------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __int64 const* base_addr, 
+    __m128i vindex, 
+    const int scale
+:Param ETypes:
+    UI64 base_addr, 
+    SI32 vindex, 
+    IMM scale
+
+.. code-block:: C
+
+    __m256i _mm256_i32gather_epi64(__int64 const* base_addr,
+                                   __m128i vindex,
+                                   const int scale)
+
+.. admonition:: Intel Description
+
+    Gather 64-bit integers from memory using 32-bit indices. 64-bit elements are loaded from addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst". "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*64
+        	m := j*32
+        	addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        	dst[i+63:i] := MEM[addr+63:addr]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_i64gather_pd
+-------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    double const* base_addr, 
+    __m256i vindex, 
+    const int scale
+:Param ETypes:
+    FP64 base_addr, 
+    SI64 vindex, 
+    IMM scale
+
+.. code-block:: C
+
+    __m256d _mm256_i64gather_pd(double const* base_addr,
+                                __m256i vindex,
+                                const int scale)
+
+.. admonition:: Intel Description
+
+    Gather double-precision (64-bit) floating-point elements from memory using 64-bit indices. 64-bit elements are loaded from addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst". "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*64
+        	m := j*64
+        	addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        	dst[i+63:i] := MEM[addr+63:addr]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_i64gather_ps
+-------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m128
+:Param Types:
+    float const* base_addr, 
+    __m256i vindex, 
+    const int scale
+:Param ETypes:
+    FP32 base_addr, 
+    SI64 vindex, 
+    IMM scale
+
+.. code-block:: C
+
+    __m128 _mm256_i64gather_ps(float const* base_addr,
+                               __m256i vindex, const int scale)
+
+.. admonition:: Intel Description
+
+    Gather single-precision (32-bit) floating-point elements from memory using 64-bit indices. 32-bit elements are loaded from addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst". "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*32
+        	m := j*64
+        	addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        	dst[i+31:i] := MEM[addr+31:addr]
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm256_i64gather_epi32
+----------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m128i
+:Param Types:
+    int const* base_addr, 
+    __m256i vindex, 
+    const int scale
+:Param ETypes:
+    UI32 base_addr, 
+    SI64 vindex, 
+    IMM scale
+
+.. code-block:: C
+
+    __m128i _mm256_i64gather_epi32(int const* base_addr,
+                                   __m256i vindex,
+                                   const int scale)
+
+.. admonition:: Intel Description
+
+    Gather 32-bit integers from memory using 64-bit indices. 32-bit elements are loaded from addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst". "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*32
+        	m := j*64
+        	addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        	dst[i+31:i] := MEM[addr+31:addr]
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm256_i64gather_epi64
+----------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __int64 const* base_addr, 
+    __m256i vindex, 
+    const int scale
+:Param ETypes:
+    UI64 base_addr, 
+    SI64 vindex, 
+    IMM scale
+
+.. code-block:: C
+
+    __m256i _mm256_i64gather_epi64(__int64 const* base_addr,
+                                   __m256i vindex,
+                                   const int scale)
+
+.. admonition:: Intel Description
+
+    Gather 64-bit integers from memory using 64-bit indices. 64-bit elements are loaded from addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst". "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*64
+        	m := j*64
+        	addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        	dst[i+63:i] := MEM[addr+63:addr]
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_mask_i32gather_pd
+------------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m256d src, 
+    double const* base_addr, 
+    __m128i vindex, 
+    __m256d mask, 
+    const int scale
+:Param ETypes:
+    FP64 src, 
+    FP64 base_addr, 
+    SI32 vindex, 
+    MASK mask, 
+    IMM scale
+
+.. code-block:: C
+
+    __m256d _mm256_mask_i32gather_pd(__m256d src,
+                                     double const* base_addr,
+                                     __m128i vindex,
+                                     __m256d mask,
+                                     const int scale)
+
+.. admonition:: Intel Description
+
+    Gather double-precision (64-bit) floating-point elements from memory using 32-bit indices. 64-bit elements are loaded from addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst" using "mask" (elements are copied from "src" when the highest bit is not set in the corresponding element). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*64
+        	m := j*32
+        	IF mask[i+63]
+        		addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        		dst[i+63:i] := MEM[addr+63:addr]
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        mask[MAX:256] := 0
+        dst[MAX:256] := 0
+        	
+
+_mm256_mask_i32gather_ps
+------------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256
+:Param Types:
+    __m256 src, 
+    float const* base_addr, 
+    __m256i vindex, 
+    __m256 mask, 
+    const int scale
+:Param ETypes:
+    FP32 src, 
+    FP32 base_addr, 
+    SI32 vindex, 
+    MASK mask, 
+    IMM scale
+
+.. code-block:: C
+
+    __m256 _mm256_mask_i32gather_ps(__m256 src,
+                                    float const* base_addr,
+                                    __m256i vindex, __m256 mask,
+                                    const int scale)
+
+.. admonition:: Intel Description
+
+    Gather single-precision (32-bit) floating-point elements from memory using 32-bit indices. 32-bit elements are loaded from addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst" using "mask" (elements are copied from "src" when the highest bit is not set in the corresponding element). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	m := j*32
+        	IF mask[i+31]
+        		addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        		dst[i+31:i] := MEM[addr+31:addr]
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        mask[MAX:256] := 0
+        dst[MAX:256] := 0
+        	
+
+_mm256_mask_i32gather_epi32
+---------------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i src, 
+    int const* base_addr, 
+    __m256i vindex, 
+    __m256i mask, 
+    const int scale
+:Param ETypes:
+    UI32 src, 
+    UI32 base_addr, 
+    SI32 vindex, 
+    MASK mask, 
+    IMM scale
+
+.. code-block:: C
+
+    __m256i _mm256_mask_i32gather_epi32(__m256i src,
+                                        int const* base_addr,
+                                        __m256i vindex,
+                                        __m256i mask,
+                                        const int scale)
+
+.. admonition:: Intel Description
+
+    Gather 32-bit integers from memory using 32-bit indices. 32-bit elements are loaded from addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst" using "mask" (elements are copied from "src" when the highest bit is not set in the corresponding element). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	m := j*32
+        	IF mask[i+31]
+        		addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        		dst[i+31:i] := MEM[addr+31:addr]
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        mask[MAX:256] := 0
+        dst[MAX:256] := 0
+        	
+
+_mm256_mask_i32gather_epi64
+---------------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i src, 
+    __int64 const* base_addr, 
+    __m128i vindex, 
+    __m256i mask, 
+    const int scale
+:Param ETypes:
+    UI64 src, 
+    UI64 base_addr, 
+    SI32 vindex, 
+    MASK mask, 
+    IMM scale
+
+.. code-block:: C
+
+    __m256i _mm256_mask_i32gather_epi64(
+        __m256i src, __int64 const* base_addr, __m128i vindex,
+        __m256i mask, const int scale)
+
+.. admonition:: Intel Description
+
+    Gather 64-bit integers from memory using 32-bit indices. 64-bit elements are loaded from addresses starting at "base_addr" and offset by each 32-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst" using "mask" (elements are copied from "src" when the highest bit is not set in the corresponding element). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*64
+        	m := j*32
+        	IF mask[i+63]
+        		addr := base_addr + SignExtend64(vindex[m+31:m]) * ZeroExtend64(scale) * 8
+        		dst[i+63:i] := MEM[addr+63:addr]
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        mask[MAX:256] := 0
+        dst[MAX:256] := 0
+        	
+
+_mm256_mask_i64gather_pd
+------------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256d
+:Param Types:
+    __m256d src, 
+    double const* base_addr, 
+    __m256i vindex, 
+    __m256d mask, 
+    const int scale
+:Param ETypes:
+    FP64 src, 
+    FP64 base_addr, 
+    SI64 vindex, 
+    MASK mask, 
+    IMM scale
+
+.. code-block:: C
+
+    __m256d _mm256_mask_i64gather_pd(__m256d src,
+                                     double const* base_addr,
+                                     __m256i vindex,
+                                     __m256d mask,
+                                     const int scale)
+
+.. admonition:: Intel Description
+
+    Gather double-precision (64-bit) floating-point elements from memory using 64-bit indices. 64-bit elements are loaded from addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst" using "mask" (elements are copied from "src" when the highest bit is not set in the corresponding element). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*64
+        	m := j*64
+        	IF mask[i+63]
+        		addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        		dst[i+63:i] := MEM[addr+63:addr]
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        mask[MAX:256] := 0
+        dst[MAX:256] := 0
+        	
+
+_mm256_mask_i64gather_ps
+------------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m128
+:Param Types:
+    __m128 src, 
+    float const* base_addr, 
+    __m256i vindex, 
+    __m128 mask, 
+    const int scale
+:Param ETypes:
+    FP32 src, 
+    FP32 base_addr, 
+    SI64 vindex, 
+    MASK mask, 
+    IMM scale
+
+.. code-block:: C
+
+    __m128 _mm256_mask_i64gather_ps(__m128 src,
+                                    float const* base_addr,
+                                    __m256i vindex, __m128 mask,
+                                    const int scale)
+
+.. admonition:: Intel Description
+
+    Gather single-precision (32-bit) floating-point elements from memory using 64-bit indices. 32-bit elements are loaded from addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst" using "mask" (elements are copied from "src" when the highest bit is not set in the corresponding element). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*32
+        	m := j*64
+        	IF mask[i+31]
+        		addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        		dst[i+31:i] := MEM[addr+31:addr]
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        mask[MAX:128] := 0
+        dst[MAX:128] := 0
+        	
+
+_mm256_mask_i64gather_epi32
+---------------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m128i
+:Param Types:
+    __m128i src, 
+    int const* base_addr, 
+    __m256i vindex, 
+    __m128i mask, 
+    const int scale
+:Param ETypes:
+    UI32 src, 
+    UI32 base_addr, 
+    SI64 vindex, 
+    MASK mask, 
+    IMM scale
+
+.. code-block:: C
+
+    __m128i _mm256_mask_i64gather_epi32(__m128i src,
+                                        int const* base_addr,
+                                        __m256i vindex,
+                                        __m128i mask,
+                                        const int scale)
+
+.. admonition:: Intel Description
+
+    Gather 32-bit integers from memory using 64-bit indices. 32-bit elements are loaded from addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst" using "mask" (elements are copied from "src" when the highest bit is not set in the corresponding element). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*32
+        	m := j*64
+        	IF mask[i+31]
+        		addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        		dst[i+31:i] := MEM[addr+31:addr]
+        	ELSE
+        		dst[i+31:i] := src[i+31:i]
+        	FI
+        ENDFOR
+        mask[MAX:128] := 0
+        dst[MAX:128] := 0
+        	
+
+_mm256_mask_i64gather_epi64
+---------------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i src, 
+    __int64 const* base_addr, 
+    __m256i vindex, 
+    __m256i mask, 
+    const int scale
+:Param ETypes:
+    UI64 src, 
+    UI64 base_addr, 
+    SI64 vindex, 
+    MASK mask, 
+    IMM scale
+
+.. code-block:: C
+
+    __m256i _mm256_mask_i64gather_epi64(
+        __m256i src, __int64 const* base_addr, __m256i vindex,
+        __m256i mask, const int scale)
+
+.. admonition:: Intel Description
+
+    Gather 64-bit integers from memory using 64-bit indices. 64-bit elements are loaded from addresses starting at "base_addr" and offset by each 64-bit element in "vindex" (each index is scaled by the factor in "scale"). Gathered elements are merged into "dst" using "mask" (elements are copied from "src" when the highest bit is not set in the corresponding element). "scale" should be 1, 2, 4 or 8.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*64
+        	m := j*64
+        	IF mask[i+63]
+        		addr := base_addr + vindex[m+63:m] * ZeroExtend64(scale) * 8
+        		dst[i+63:i] := MEM[addr+63:addr]
+        	ELSE
+        		dst[i+63:i] := src[i+63:i]
+        	FI
+        ENDFOR
+        mask[MAX:256] := 0
+        dst[MAX:256] := 0
+        	
+
+_mm256_maskload_epi32
+---------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    int const* mem_addr, 
+    __m256i mask
+:Param ETypes:
+    UI32 mem_addr, 
+    MASK mask
+
+.. code-block:: C
+
+    __m256i _mm256_maskload_epi32(int const* mem_addr,
+                                  __m256i mask)
+
+.. admonition:: Intel Description
+
+    Load packed 32-bit integers from memory into "dst" using "mask" (elements are zeroed out when the highest bit is not set in the corresponding element).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*32
+        	IF mask[i+31]
+        		dst[i+31:i] := MEM[mem_addr+i+31:mem_addr+i]
+        	ELSE
+        		dst[i+31:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_maskload_epi64
+---------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __int64 const* mem_addr, 
+    __m256i mask
+:Param ETypes:
+    UI64 mem_addr, 
+    MASK mask
+
+.. code-block:: C
+
+    __m256i _mm256_maskload_epi64(__int64 const* mem_addr,
+                                  __m256i mask)
+
+.. admonition:: Intel Description
+
+    Load packed 64-bit integers from memory into "dst" using "mask" (elements are zeroed out when the highest bit is not set in the corresponding element).
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*64
+        	IF mask[i+63]
+        		dst[i+63:i] := MEM[mem_addr+i+63:mem_addr+i]
+        	ELSE
+        		dst[i+63:i] := 0
+        	FI
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_stream_load_si256
+------------------------
+:Tech: AVX_ALL
+:Category: Load
+:Header: immintrin.h
+:Searchable: AVX_ALL-Load-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    void const* mem_addr
+:Param ETypes:
+    M256 mem_addr
+
+.. code-block:: C
+
+    __m256i _mm256_stream_load_si256(void const* mem_addr);
+
+.. admonition:: Intel Description
+
+    Load 256-bits of integer data from memory into "dst" using a non-temporal memory hint.
+    	"mem_addr" must be aligned on a 32-byte boundary or a general-protection exception may be generated.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[255:0] := MEM[mem_addr+255:mem_addr]
+        dst[MAX:256] := 0
+        	
+

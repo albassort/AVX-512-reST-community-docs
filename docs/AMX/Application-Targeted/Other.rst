@@ -1,0 +1,1141 @@
+AMX-Application-Targeted-Other
+==============================
+
+_tile_dpbf16ps
+--------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    constexpr int dst, 
+    constexpr int a, 
+    constexpr int b
+:Param ETypes:
+     dst, 
+     a, 
+     b
+
+.. code-block:: C
+
+    void _tile_dpbf16ps(constexpr int dst, constexpr int a,
+                        constexpr int b)
+
+.. admonition:: Intel Description
+
+    Compute dot-product of BF16 (16-bit) floating-point pairs in tiles "a" and "b", accumulating the intermediate single-precision (32-bit) floating-point elements with elements in "dst", and store the 32-bit result back to tile "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (a.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.fp32[n] += FP32(a.row[m].bf16[2*k+0]) * FP32(b.row[k].bf16[2*n+0])
+        			tmp.fp32[n] += FP32(a.row[m].bf16[2*k+1]) * FP32(b.row[k].bf16[2*n+1])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        	
+
+__tile_dpbf16ps
+---------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    __tile1024i* dst, 
+    __tile1024i src0, 
+    __tile1024i src1
+:Param ETypes:
+     dst, 
+     src0, 
+     src1
+
+.. code-block:: C
+
+    void __tile_dpbf16ps(__tile1024i* dst, __tile1024i src0,
+                         __tile1024i src1)
+
+.. admonition:: Intel Description
+
+    Compute dot-product of BF16 (16-bit) floating-point pairs in tiles "src0" and "src1", accumulating the intermediate single-precision (32-bit) floating-point elements with elements in "dst", and store the 32-bit result back to tile "dst". The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (src0.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.fp32[n] += FP32(src0.row[m].bf16[2*k+0]) * FP32(src1.row[k].bf16[2*n+0])
+        			tmp.fp32[n] += FP32(src0.row[m].bf16[2*k+1]) * FP32(src1.row[k].bf16[2*n+1])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        
+
+_tile_cmmimfp16ps
+-----------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    constexpr int dst, 
+    constexpr int a, 
+    constexpr int b
+:Param ETypes:
+    FP32 dst, 
+    FP16 a, 
+    FP16 b
+
+.. code-block:: C
+
+    void _tile_cmmimfp16ps(constexpr int dst, constexpr int a,
+                           constexpr int b)
+
+.. admonition:: Intel Description
+
+    Perform matrix multiplication of two tiles containing complex elements and accumulate the results into a packed single precision tile. Each dword element in input tiles "a" and "b" is interpreted as a complex number with FP16 real part and FP16 imaginary part. Calculates the imaginary part of the result. For each possible combination of (row of "a", column of "b"), it performs a set of multiplication and accumulations on all corresponding complex numbers (one from "a" and one from "b"). The imaginary part of the "a" element is multiplied with the real part of the corresponding "b" element, and the real part of the "a" element is multiplied with the imaginary part of the corresponding "b" elements. The two accumulated results are added, and then accumulated into the corresponding row and column of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (a.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.fp32[n] += FP32(a.row[m].fp16[2*k+0]) * FP32(b.row[k].fp16[2*n+1])
+        			tmp.fp32[n] += FP32(a.row[m].fp16[2*k+1]) * FP32(b.row[k].fp16[2*n+0])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        	
+
+_tile_cmmrlfp16ps
+-----------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    constexpr int dst, 
+    constexpr int a, 
+    constexpr int b
+:Param ETypes:
+    FP32 dst, 
+    FP16 a, 
+    FP16 b
+
+.. code-block:: C
+
+    void _tile_cmmrlfp16ps(constexpr int dst, constexpr int a,
+                           constexpr int b)
+
+.. admonition:: Intel Description
+
+    Perform matrix multiplication of two tiles containing complex elements and accumulate the results into a packed single precision tile. Each dword element in input tiles "a" and "b" is interpreted as a complex number with FP16 real part and FP16 imaginary part. Calculates the real part of the result. For each possible combination of (row of "a", column of "b"), it performs a set of multiplication and accumulations on all corresponding complex numbers (one from "a" and one from "b"). The real part of the "a" element is multiplied with the real part of the corresponding "b" element, and the negated imaginary part of the "a" element is multiplied with the imaginary part of the corresponding "b" elements. The two accumulated results are added, and then accumulated into the corresponding row and column of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (a.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.fp32[n] += FP32(a.row[m].fp16[2*k+0]) * FP32(b.row[k].fp16[2*n+0])
+        			tmp.fp32[n] += FP32(-a.row[m].fp16[2*k+1]) * FP32(b.row[k].fp16[2*n+1])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        
+
+__tile_cmmimfp16ps
+------------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    __tile1024i* dst, 
+    __tile1024i src0, 
+    __tile1024i src1
+:Param ETypes:
+     dst, 
+     src0, 
+     src1
+
+.. code-block:: C
+
+    void __tile_cmmimfp16ps(__tile1024i* dst, __tile1024i src0,
+                            __tile1024i src1)
+
+.. admonition:: Intel Description
+
+    Perform matrix multiplication of two tiles containing complex elements and accumulate the results into a packed single precision tile. Each dword element in input tiles "src0" and "src1" is interpreted as a complex number with FP16 real part and FP16 imaginary part. This function calculates the imaginary part of the result.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (src0.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.fp32[n] += FP32(src0.row[m].fp16[2*k+0]) * FP32(src1.row[k].fp16[2*n+1])
+        			tmp.fp32[n] += FP32(src0.row[m].fp16[2*k+1]) * FP32(src1.row[k].fp16[2*n+0])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        
+
+__tile_cmmrlfp16ps
+------------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    __tile1024i* dst, 
+    __tile1024i src0, 
+    __tile1024i src1
+:Param ETypes:
+     dst, 
+     src0, 
+     src1
+
+.. code-block:: C
+
+    void __tile_cmmrlfp16ps(__tile1024i* dst, __tile1024i src0,
+                            __tile1024i src1)
+
+.. admonition:: Intel Description
+
+    Perform matrix multiplication of two tiles containing complex elements and accumulate the results into a packed single precision tile. Each dword element in input tiles src0 and src1 is interpreted as a complex number with FP16 real part and FP16 imaginary part. This function calculates the real part of the result.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (src0.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.fp32[n] += FP32(src0.row[m].fp16[2*k+0]) * FP32(src1.row[k].fp16[2*n+0])
+        			tmp.fp32[n] += FP32(-src0.row[m].fp16[2*k+1]) * FP32(src1.row[k].fp16[2*n+1])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        
+
+_tile_dpfp16ps
+--------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    constexpr int dst, 
+    constexpr int a, 
+    constexpr int b
+:Param ETypes:
+    FP32 dst, 
+    FP16 a, 
+    FP16 b
+
+.. code-block:: C
+
+    void _tile_dpfp16ps(constexpr int dst, constexpr int a,
+                        constexpr int b)
+
+.. admonition:: Intel Description
+
+    Compute dot-product of FP16 (16-bit) floating-point pairs in tiles "a" and "b", accumulating the intermediate single-precision (32-bit) floating-point elements with elements in "dst", and store the 32-bit result back to tile "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (a.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.fp32[n] += FP32(a.row[m].fp16[2*k+0]) * FP32(b.row[k].fp16[2*n+0])
+        			tmp.fp32[n] += FP32(a.row[m].fp16[2*k+1]) * FP32(b.row[k].fp16[2*n+1])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        	
+
+__tile_dpfp16ps
+---------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    __tile1024i* dst, 
+    __tile1024i src0, 
+    __tile1024i src1
+:Param ETypes:
+     dst, 
+     src0, 
+     src1
+
+.. code-block:: C
+
+    void __tile_dpfp16ps(__tile1024i* dst, __tile1024i src0,
+                         __tile1024i src1)
+
+.. admonition:: Intel Description
+
+    Compute dot-product of FP16 (16-bit) floating-point pairs in tiles "src0" and "src1", accumulating the intermediate single-precision (32-bit) floating-point elements with elements in "dst", and store the 32-bit result back to tile "dst". The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (src0.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.fp32[n] += FP32(src0.row[m].fp16[2*k+0]) * FP32(src1.row[k].fp16[2*n+0])
+        			tmp.fp32[n] += FP32(src0.row[m].fp16[2*k+1]) * FP32(src1.row[k].fp16[2*n+1])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        
+
+_tile_dpbsud
+------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    constexpr int dst, 
+    constexpr int a, 
+    constexpr int b
+:Param ETypes:
+     dst, 
+     a, 
+     b
+
+.. code-block:: C
+
+    void _tile_dpbsud(constexpr int dst, constexpr int a,
+                      constexpr int b)
+
+.. admonition:: Intel Description
+
+    Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of signed 8-bit integers in "a" with corresponding unsigned 8-bit integers in "b", producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in "dst", and store the 32-bit result back to tile "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        DEFINE DPBD(c, x, y) {
+        	tmp1 := SignExtend32(x.byte[0]) * ZeroExtend32(y.byte[0])
+        	tmp2 := SignExtend32(x.byte[1]) * ZeroExtend32(y.byte[1])
+        	tmp3 := SignExtend32(x.byte[2]) * ZeroExtend32(y.byte[2])
+        	tmp4 := SignExtend32(x.byte[3]) * ZeroExtend32(y.byte[3])
+        	
+        	RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+        }
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (a.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.dword[n] := DPBD(tmp.dword[n], a.row[m].dword[k], b.row[k].dword[n])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        	
+
+_tile_dpbusd
+------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    constexpr int dst, 
+    constexpr int a, 
+    constexpr int b
+:Param ETypes:
+     dst, 
+     a, 
+     b
+
+.. code-block:: C
+
+    void _tile_dpbusd(constexpr int dst, constexpr int a,
+                      constexpr int b)
+
+.. admonition:: Intel Description
+
+    Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of unsigned 8-bit integers in "a" with corresponding signed 8-bit integers in "b", producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in "dst", and store the 32-bit result back to tile "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        DEFINE DPBD(c, x, y) {
+        	tmp1 := ZeroExtend32(x.byte[0]) * SignExtend32(y.byte[0])
+        	tmp2 := ZeroExtend32(x.byte[1]) * SignExtend32(y.byte[1])
+        	tmp3 := ZeroExtend32(x.byte[2]) * SignExtend32(y.byte[2])
+        	tmp4 := ZeroExtend32(x.byte[3]) * SignExtend32(y.byte[3])
+        	
+        	RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+        }
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (a.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.dword[n] := DPBD(tmp.dword[n], a.row[m].dword[k], b.row[k].dword[n])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        	
+
+_tile_dpbuud
+------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    constexpr int dst, 
+    constexpr int a, 
+    constexpr int b
+:Param ETypes:
+     dst, 
+     a, 
+     b
+
+.. code-block:: C
+
+    void _tile_dpbuud(constexpr int dst, constexpr int a,
+                      constexpr int b)
+
+.. admonition:: Intel Description
+
+    Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of unsigned 8-bit integers in "a" with corresponding unsigned 8-bit integers in "b", producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in "dst", and store the 32-bit result back to tile "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        DEFINE DPBD(c, x, y) {
+        	tmp1 := ZeroExtend32(x.byte[0]) * ZeroExtend32(y.byte[0])
+        	tmp2 := ZeroExtend32(x.byte[1]) * ZeroExtend32(y.byte[1])
+        	tmp3 := ZeroExtend32(x.byte[2]) * ZeroExtend32(y.byte[2])
+        	tmp4 := ZeroExtend32(x.byte[3]) * ZeroExtend32(y.byte[3])
+        	
+        	RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+        }
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (a.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.dword[n] := DPBD(tmp.dword[n], a.row[m].dword[k], b.row[k].dword[n])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        	
+
+_tile_dpbssd
+------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    constexpr int dst, 
+    constexpr int a, 
+    constexpr int b
+:Param ETypes:
+     dst, 
+     a, 
+     b
+
+.. code-block:: C
+
+    void _tile_dpbssd(constexpr int dst, constexpr int a,
+                      constexpr int b)
+
+.. admonition:: Intel Description
+
+    Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of signed 8-bit integers in "a" with corresponding signed 8-bit integers in "b", producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in "dst", and store the 32-bit result back to tile "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        DEFINE DPBD(c, x, y) {
+        	tmp1 := SignExtend32(x.byte[0]) * SignExtend32(y.byte[0])
+        	tmp2 := SignExtend32(x.byte[1]) * SignExtend32(y.byte[1])
+        	tmp3 := SignExtend32(x.byte[2]) * SignExtend32(y.byte[2])
+        	tmp4 := SignExtend32(x.byte[3]) * SignExtend32(y.byte[3])
+        	
+        	RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+        }
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (a.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.dword[n] := DPBD(tmp.dword[n], a.row[m].dword[k], b.row[k].dword[n])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        	
+
+__tile_dpbssd
+-------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    __tile1024i* dst, 
+    __tile1024i src0, 
+    __tile1024i src1
+:Param ETypes:
+     dst, 
+     src0, 
+     src1
+
+.. code-block:: C
+
+    void __tile_dpbssd(__tile1024i* dst, __tile1024i src0,
+                       __tile1024i src1)
+
+.. admonition:: Intel Description
+
+    Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of signed 8-bit integers in "src0" with corresponding signed 8-bit integers in "src1", producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in "dst", and store the 32-bit result back to tile "dst". The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        DEFINE DPBD(c, x, y) {
+        	tmp1 := SignExtend32(x.byte[0]) * SignExtend32(y.byte[0])
+        	tmp2 := SignExtend32(x.byte[1]) * SignExtend32(y.byte[1])
+        	tmp3 := SignExtend32(x.byte[2]) * SignExtend32(y.byte[2])
+        	tmp4 := SignExtend32(x.byte[3]) * SignExtend32(y.byte[3])
+        	RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+        }
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (src0.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.dword[n] := DPBD(tmp.dword[n], src0.row[m].dword[k], src1.row[k].dword[n])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        
+
+__tile_dpbsud
+-------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    __tile1024i* dst, 
+    __tile1024i src0, 
+    __tile1024i src1
+:Param ETypes:
+     dst, 
+     src0, 
+     src1
+
+.. code-block:: C
+
+    void __tile_dpbsud(__tile1024i* dst, __tile1024i src0,
+                       __tile1024i src1)
+
+.. admonition:: Intel Description
+
+    Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of signed 8-bit integers in "src0" with corresponding unsigned 8-bit integers in "src1", producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in "dst", and store the 32-bit result back to tile "dst". The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        DEFINE DPBD(c, x, y) {
+        	tmp1 := SignExtend32(x.byte[0]) * ZeroExtend32(y.byte[0])
+        	tmp2 := SignExtend32(x.byte[1]) * ZeroExtend32(y.byte[1])
+        	tmp3 := SignExtend32(x.byte[2]) * ZeroExtend32(y.byte[2])
+        	tmp4 := SignExtend32(x.byte[3]) * ZeroExtend32(y.byte[3])
+        	RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+        }
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (src0.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.dword[n] := DPBD(tmp.dword[n], src0.row[m].dword[k], src1.row[k].dword[n])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        
+
+__tile_dpbusd
+-------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    __tile1024i* dst, 
+    __tile1024i src0, 
+    __tile1024i src1
+:Param ETypes:
+     dst, 
+     src0, 
+     src1
+
+.. code-block:: C
+
+    void __tile_dpbusd(__tile1024i* dst, __tile1024i src0,
+                       __tile1024i src1)
+
+.. admonition:: Intel Description
+
+    Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of unsigned 8-bit integers in "src0" with corresponding signed 8-bit integers in "src1", producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in "dst", and store the 32-bit result back to tile "dst". The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        DEFINE DPBD(c, x, y) {
+        	tmp1 := ZeroExtend32(x.byte[0]) * SignExtend32(y.byte[0])
+        	tmp2 := ZeroExtend32(x.byte[1]) * SignExtend32(y.byte[1])
+        	tmp3 := ZeroExtend32(x.byte[2]) * SignExtend32(y.byte[2])
+        	tmp4 := ZeroExtend32(x.byte[3]) * SignExtend32(y.byte[3])
+        	RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+        }
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (src0.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.dword[n] := DPBD(tmp.dword[n], src0.row[m].dword[k], src1.row[k].dword[n])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        
+
+__tile_dpbuud
+-------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    __tile1024i* dst, 
+    __tile1024i src0, 
+    __tile1024i src1
+:Param ETypes:
+     dst, 
+     src0, 
+     src1
+
+.. code-block:: C
+
+    void __tile_dpbuud(__tile1024i* dst, __tile1024i src0,
+                       __tile1024i src1)
+
+.. admonition:: Intel Description
+
+    Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of unsigned 8-bit integers in "src0" with corresponding unsigned 8-bit integers in "src1", producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in "dst", and store the 32-bit result back to tile "dst". The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        DEFINE DPBD(c, x, y) {
+        	tmp1 := ZeroExtend32(x.byte[0]) * ZeroExtend32(y.byte[0])
+        	tmp2 := ZeroExtend32(x.byte[1]) * ZeroExtend32(y.byte[1])
+        	tmp3 := ZeroExtend32(x.byte[2]) * ZeroExtend32(y.byte[2])
+        	tmp4 := ZeroExtend32(x.byte[3]) * ZeroExtend32(y.byte[3])
+        	RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+        }
+        FOR m := 0 TO dst.rows - 1
+        	tmp := dst.row[m]
+        	FOR k := 0 TO (src0.colsb / 4) - 1
+        		FOR n := 0 TO (dst.colsb / 4) - 1
+        			tmp.dword[n] := DPBD(tmp.dword[n], src0.row[m].dword[k], src1.row[k].dword[n])
+        		ENDFOR
+        	ENDFOR
+        	write_row_and_zero(dst, m, tmp, dst.colsb)
+        ENDFOR
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        
+
+_tile_loadconfig
+----------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+
+.. code-block:: C
+
+    void _tile_loadconfig(const void * mem_addr);
+
+.. admonition:: Intel Description
+
+    Load tile configuration from a 64-byte memory location specified by "mem_addr". The tile configuration format is specified below, and includes the tile type pallette, the number of bytes per row, and the number of rows. If the specified pallette_id is zero, that signifies the init state for both the tile config and the tile data, and the tiles are zeroed. Any invalid configurations will result in #GP fault.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        //	format of memory payload. each field is a byte.
+        //		 0: palette
+        //		 1: start_row
+        //	 2-15: reserved, must be zero
+        //	16-17: tile0.colsb
+        //	18-19: tile1.colsb
+        //	20-21: tile2.colsb
+        //			...
+        //	30-31: tile7.colsb
+        //	32-47: reserved, must be zero
+        //		48: tile0.rows
+        //		49: tile1.rows
+        //		50: tile2.rows
+        //			 ...
+        //		55: tile7.rows
+        //	56-63: reserved, must be zero
+        	
+
+_tile_storeconfig
+-----------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+
+.. code-block:: C
+
+    void _tile_storeconfig(void * mem_addr);
+
+.. admonition:: Intel Description
+
+    Stores the current tile configuration to a 64-byte memory location specified by "mem_addr". The tile configuration format is specified below, and includes the tile type pallette, the number of bytes per row, and the number of rows. If tiles are not configured, all zeroes will be stored to memory.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        //	format of memory payload. each field is a byte.
+        //		 0: palette
+        //		 1: start_row
+        //	 2-15: reserved, must be zero
+        //	16-17: tile0.colsb
+        //	18-19: tile1.colsb
+        //	20-21: tile2.colsb
+        //			...
+        //	30-31: tile7.colsb
+        //	32-47: reserved, must be zero
+        //		48: tile0.rows
+        //		49: tile1.rows
+        //		50: tile2.rows
+        //			 ...
+        //		55: tile7.rows
+        //	56-63: reserved, must be zero
+        	
+
+_tile_loadd
+-----------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    constexpr int dst, 
+    const void * base, 
+    size_t stride
+:Param ETypes:
+     dst, 
+     base, 
+    UI32 stride
+
+.. code-block:: C
+
+    void _tile_loadd(constexpr int dst, const void* base,
+                     size_t stride)
+
+.. admonition:: Intel Description
+
+    Load tile rows from memory specifieid by "base" address and "stride" into destination tile "dst" using the tile configuration previously configured via "_tile_loadconfig".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        start := tileconfig.startRow
+        IF start == 0 // not restarting, zero incoming state
+        	tilezero(dst)
+        FI
+        nbytes := dst.colsb
+        DO WHILE start < dst.rows
+        	memptr := base + start * stride
+        	write_row_and_zero(dst, start, read_memory(memptr, nbytes), nbytes)
+        	start := start + 1
+        OD
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        	
+
+_tile_stream_loadd
+------------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    constexpr int dst, 
+    const void * base, 
+    size_t stride
+:Param ETypes:
+     dst, 
+     base, 
+    UI32 stride
+
+.. code-block:: C
+
+    void _tile_stream_loadd(constexpr int dst, const void* base,
+                            size_t stride)
+
+.. admonition:: Intel Description
+
+    Load tile rows from memory specifieid by "base" address and "stride" into destination tile "dst" using the tile configuration previously configured via "_tile_loadconfig". This intrinsic provides a hint to the implementation that the data will likely not be reused in the near future and the data caching can be optimized accordingly.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        start := tileconfig.startRow
+        IF start == 0 // not restarting, zero incoming state
+        	tilezero(dst)
+        FI
+        nbytes := dst.colsb
+        DO WHILE start < dst.rows
+        	memptr := base + start * stride
+        	write_row_and_zero(dst, start, read_memory(memptr, nbytes), nbytes)
+        	start := start + 1
+        OD
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        	
+
+_tile_release
+-------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+
+.. code-block:: C
+
+    
+
+.. admonition:: Intel Description
+
+    Release the tile configuration to return to the init state, which releases all storage it currently holds.
+
+_tile_stored
+------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    constexpr int src, 
+    void * base, 
+    size_t stride
+:Param ETypes:
+     src, 
+     base, 
+    UI32 stride
+
+.. code-block:: C
+
+    void _tile_stored(constexpr int src, void* base,
+                      size_t stride)
+
+.. admonition:: Intel Description
+
+    Store the tile specified by "src" to memory specifieid by "base" address and "stride" using the tile configuration previously configured via "_tile_loadconfig".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        start := tileconfig.startRow
+        DO WHILE start < src.rows
+        	memptr := base + start * stride
+        	write_memory(memptr, src.colsb, src.row[start])
+        	start := start + 1
+        OD
+        zero_tileconfig_start()
+        	
+
+_tile_zero
+----------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+
+.. code-block:: C
+
+    void _tile_zero(constexpr int tdest);
+
+.. admonition:: Intel Description
+
+    Zero the tile specified by "tdest".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        nbytes := palette_table[tileconfig.palette_id].bytes_per_row
+        FOR i := 0 TO palette_table[tileconfig.palette_id].max_rows-1
+        	FOR j := 0 TO nbytes-1
+        		tdest.row[i].byte[j] := 0
+        	ENDFOR
+        ENDFOR
+        	
+
+__tile_loadd
+------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    __tile1024i* dst, 
+    const void* base, 
+    size_t stride
+:Param ETypes:
+     dst, 
+     base, 
+     stride
+
+.. code-block:: C
+
+    void __tile_loadd(__tile1024i* dst, const void* base,
+                      size_t stride)
+
+.. admonition:: Intel Description
+
+    Load tile rows from memory specifieid by "base" address and "stride" into destination tile "dst". The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        start := tileconfig.startRow
+        IF start == 0 // not restarting, zero incoming state
+        	tilezero(dst)
+        FI
+        nbytes := dst.colsb
+        DO WHILE start < dst.rows
+        	memptr := base + start * stride
+        	write_row_and_zero(dst, start, read_memory(memptr, nbytes), nbytes)
+        	start := start + 1
+        OD
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        
+
+__tile_stored
+-------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    void* base, 
+    size_t stride, 
+    __tile1024i src
+:Param ETypes:
+     base, 
+     stride, 
+     src
+
+.. code-block:: C
+
+    void __tile_stored(void* base, size_t stride,
+                       __tile1024i src)
+
+.. admonition:: Intel Description
+
+    Store the tile specified by "src" to memory specifieid by "base" address and "stride". The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        start := tileconfig.startRow
+        DO WHILE start < src.rows
+        	memptr := base + start * stride
+        	write_memory(memptr, src.colsb, src.row[start])
+        	start := start + 1
+        OD
+        zero_tileconfig_start()
+        
+
+__tile_stream_loadd
+-------------------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+:Param Types:
+    __tile1024i* dst, 
+    const void* base, 
+    size_t stride
+:Param ETypes:
+     dst, 
+     base, 
+     stride
+
+.. code-block:: C
+
+    void __tile_stream_loadd(__tile1024i* dst, const void* base,
+                             size_t stride)
+
+.. admonition:: Intel Description
+
+    Load tile rows from memory specifieid by "base" address and "stride" into destination tile "dst". This intrinsic provides a hint to the implementation that the data will likely not be reused in the near future and the data caching can be optimized accordingly. The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        start := tileconfig.startRow
+        IF start == 0 // not restarting, zero incoming state
+        	tilezero(dst)
+        FI
+        nbytes := dst.colsb
+        DO WHILE start < dst.rows
+        	memptr := base + start * stride
+        	write_row_and_zero(dst, start, read_memory(memptr, nbytes), nbytes)
+        	start := start + 1
+        OD
+        zero_upper_rows(dst, dst.rows)
+        zero_tileconfig_start()
+        
+
+__tile_zero
+-----------
+:Tech: AMX
+:Category: Application-Targeted
+:Header: immintrin.h
+:Searchable: AMX-Application-Targeted-Other
+:Return Type: void
+
+.. code-block:: C
+
+    void __tile_zero(__tile1024i* dst);
+
+.. admonition:: Intel Description
+
+    Zero the tile specified by "dst". The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        nbytes := palette_table[tileconfig.palette_id].bytes_per_row
+        FOR i := 0 TO palette_table[tileconfig.palette_id].max_rows-1
+        	FOR j := 0 TO nbytes-1
+        		tdest.row[i].byte[j] := 0
+        	ENDFOR
+        ENDFOR
+        
+

@@ -1,0 +1,2106 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>AMX-Application-Targeted-Other &#8212; My Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/AMX/Application-Targeted/Other';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="AVX-512" href="../../AVX-512/index.html" />
+    <link rel="prev" title="AMX" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My Docs 1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../MMX/index.html">MMX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Shift/XMM.html">MMX-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Shift/MMX.html">MMX-Shift-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/General%20Support/XMM.html">MMX-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/General%20Support/MMX.html">MMX-General Support-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Logical/XMM.html">MMX-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Logical/MMX.html">MMX-Logical-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Swizzle/XMM.html">MMX-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Swizzle/MMX.html">MMX-Swizzle-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Arithmetic/XMM.html">MMX-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Arithmetic/MMX.html">MMX-Arithmetic-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Compare/XMM.html">MMX-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Compare/MMX.html">MMX-Compare-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Set/XMM.html">MMX-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Convert/XMM.html">MMX-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Convert/MMX.html">MMX-Convert-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Miscellaneous/XMM.html">MMX-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MMX/Miscellaneous/MMX.html">MMX-Miscellaneous-MMX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../SSE_ALL/index.html">SSE_ALL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Shift/XMM.html">SSE_ALL-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Cryptography/XMM.html">SSE_ALL-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Move/XMM.html">SSE_ALL-Move-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Cast/XMM.html">SSE_ALL-Cast-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/String%20Compare/XMM.html">SSE_ALL-String Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/General%20Support/XMM.html">SSE_ALL-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/General%20Support/Other.html">SSE_ALL-General Support-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Probability/Statistics/XMM.html">SSE_ALL-Probability/Statistics-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Probability/Statistics/MMX.html">SSE_ALL-Probability/Statistics-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Special%20Math%20Functions/XMM.html">SSE_ALL-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Special%20Math%20Functions/MMX.html">SSE_ALL-Special Math Functions-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Logical/XMM.html">SSE_ALL-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Swizzle/XMM.html">SSE_ALL-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Swizzle/Other.html">SSE_ALL-Swizzle-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Swizzle/MMX.html">SSE_ALL-Swizzle-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Store/XMM.html">SSE_ALL-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Store/MMX.html">SSE_ALL-Store-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Load/XMM.html">SSE_ALL-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Elementary%20Math%20Functions/XMM.html">SSE_ALL-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Arithmetic/XMM.html">SSE_ALL-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Arithmetic/MMX.html">SSE_ALL-Arithmetic-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Compare/XMM.html">SSE_ALL-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Set/XMM.html">SSE_ALL-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Convert/XMM.html">SSE_ALL-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Miscellaneous/XMM.html">SSE_ALL-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SSE_ALL/Miscellaneous/MMX.html">SSE_ALL-Miscellaneous-MMX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Other/index.html">Other</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cryptography/ZMM.html">Other-Cryptography-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cryptography/YMM.html">Other-Cryptography-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cryptography/XMM.html">Other-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Shift/Other.html">Other-Shift-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Bit%20Manipulation/XMM.html">Other-Bit Manipulation-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Bit%20Manipulation/Other.html">Other-Bit Manipulation-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Cast/Other.html">Other-Cast-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/General%20Support/XMM.html">Other-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/General%20Support/Other.html">Other-General Support-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/General%20Support/MMX.html">Other-General Support-MMX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Unknown/Other.html">Other-Unknown-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Random/Other.html">Other-Random-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Store/Other.html">Other-Store-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Load/Other.html">Other-Load-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/ZMM.html">Other-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/YMM.html">Other-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/XMM.html">Other-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Arithmetic/Other.html">Other-Arithmetic-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Convert/Other.html">Other-Convert-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/OS-Targeted/Other.html">Other-OS-Targeted-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Application-Targeted/ZMM.html">Other-Application-Targeted-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Application-Targeted/YMM.html">Other-Application-Targeted-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Application-Targeted/XMM.html">Other-Application-Targeted-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Miscellaneous/XMM.html">Other-Miscellaneous-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Other/Miscellaneous/Other.html">Other-Miscellaneous-Other</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../SVML/index.html">SVML</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/ZMM.html">SVML-Probability/Statistics-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/YMM.html">SVML-Probability/Statistics-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Probability/Statistics/XMM.html">SVML-Probability/Statistics-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/ZMM.html">SVML-Special Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/YMM.html">SVML-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Special%20Math%20Functions/XMM.html">SVML-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/ZMM.html">SVML-Trigonometry-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/YMM.html">SVML-Trigonometry-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Trigonometry/XMM.html">SVML-Trigonometry-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/ZMM.html">SVML-Elementary Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/YMM.html">SVML-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Elementary%20Math%20Functions/XMM.html">SVML-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/ZMM.html">SVML-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/YMM.html">SVML-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Arithmetic/XMM.html">SVML-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Miscellaneous/YMM.html">SVML-Miscellaneous-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../SVML/Miscellaneous/XMM.html">SVML-Miscellaneous-XMM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">AMX</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">AMX-Application-Targeted-Other</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../AVX-512/index.html">AVX-512</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Shift/ZMM.html">AVX-512-Shift-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Shift/YMM.html">AVX-512-Shift-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Shift/XMM.html">AVX-512-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Move/ZMM.html">AVX-512-Move-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Move/YMM.html">AVX-512-Move-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Move/XMM.html">AVX-512-Move-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Bit%20Manipulation/ZMM.html">AVX-512-Bit Manipulation-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Bit%20Manipulation/YMM.html">AVX-512-Bit Manipulation-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Bit%20Manipulation/XMM.html">AVX-512-Bit Manipulation-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Cast/ZMM.html">AVX-512-Cast-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Cast/YMM.html">AVX-512-Cast-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Cast/XMM.html">AVX-512-Cast-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/General%20Support/ZMM.html">AVX-512-General Support-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/General%20Support/YMM.html">AVX-512-General Support-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/General%20Support/XMM.html">AVX-512-General Support-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Special%20Math%20Functions/ZMM.html">AVX-512-Special Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Special%20Math%20Functions/YMM.html">AVX-512-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Special%20Math%20Functions/XMM.html">AVX-512-Special Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Logical/ZMM.html">AVX-512-Logical-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Logical/YMM.html">AVX-512-Logical-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Logical/XMM.html">AVX-512-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Swizzle/ZMM.html">AVX-512-Swizzle-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Swizzle/YMM.html">AVX-512-Swizzle-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Swizzle/XMM.html">AVX-512-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/ZMM.html">AVX-512-Store-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/YMM.html">AVX-512-Store-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/XMM.html">AVX-512-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Store/Other.html">AVX-512-Store-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/ZMM.html">AVX-512-Load-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/YMM.html">AVX-512-Load-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/XMM.html">AVX-512-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Load/Other.html">AVX-512-Load-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Elementary%20Math%20Functions/ZMM.html">AVX-512-Elementary Math Functions-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Elementary%20Math%20Functions/YMM.html">AVX-512-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Elementary%20Math%20Functions/XMM.html">AVX-512-Elementary Math Functions-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Arithmetic/ZMM.html">AVX-512-Arithmetic-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Arithmetic/YMM.html">AVX-512-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Arithmetic/XMM.html">AVX-512-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Compare/ZMM.html">AVX-512-Compare-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Compare/YMM.html">AVX-512-Compare-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Compare/XMM.html">AVX-512-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/ZMM.html">AVX-512-Mask-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/YMM.html">AVX-512-Mask-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/XMM.html">AVX-512-Mask-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Mask/Other.html">AVX-512-Mask-Other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Set/ZMM.html">AVX-512-Set-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Set/YMM.html">AVX-512-Set-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Set/XMM.html">AVX-512-Set-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Convert/ZMM.html">AVX-512-Convert-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Convert/YMM.html">AVX-512-Convert-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Convert/XMM.html">AVX-512-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Miscellaneous/ZMM.html">AVX-512-Miscellaneous-ZMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Miscellaneous/YMM.html">AVX-512-Miscellaneous-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX-512/Miscellaneous/XMM.html">AVX-512-Miscellaneous-XMM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../AVX_ALL/index.html">AVX_ALL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Shift/YMM.html">AVX_ALL-Shift-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Shift/XMM.html">AVX_ALL-Shift-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Cryptography/YMM.html">AVX_ALL-Cryptography-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Cryptography/XMM.html">AVX_ALL-Cryptography-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Move/YMM.html">AVX_ALL-Move-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Cast/YMM.html">AVX_ALL-Cast-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/General%20Support/YMM.html">AVX_ALL-General Support-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Probability/Statistics/YMM.html">AVX_ALL-Probability/Statistics-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Special%20Math%20Functions/YMM.html">AVX_ALL-Special Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Logical/YMM.html">AVX_ALL-Logical-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Logical/XMM.html">AVX_ALL-Logical-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Swizzle/YMM.html">AVX_ALL-Swizzle-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Swizzle/XMM.html">AVX_ALL-Swizzle-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Store/YMM.html">AVX_ALL-Store-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Store/XMM.html">AVX_ALL-Store-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Load/YMM.html">AVX_ALL-Load-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Load/XMM.html">AVX_ALL-Load-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Elementary%20Math%20Functions/YMM.html">AVX_ALL-Elementary Math Functions-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Arithmetic/YMM.html">AVX_ALL-Arithmetic-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Arithmetic/XMM.html">AVX_ALL-Arithmetic-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Compare/YMM.html">AVX_ALL-Compare-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Compare/XMM.html">AVX_ALL-Compare-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Set/YMM.html">AVX_ALL-Set-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Convert/YMM.html">AVX_ALL-Convert-YMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Convert/XMM.html">AVX_ALL-Convert-XMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../AVX_ALL/Miscellaneous/YMM.html">AVX_ALL-Miscellaneous-YMM</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/AMX/Application-Targeted/Other.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AMX-Application-Targeted-Other</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-dpbf16ps">_tile_dpbf16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">__tile_dpbf16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-cmmimfp16ps">_tile_cmmimfp16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-cmmrlfp16ps">_tile_cmmrlfp16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">__tile_cmmimfp16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">__tile_cmmrlfp16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-dpfp16ps">_tile_dpfp16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">__tile_dpfp16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-dpbsud">_tile_dpbsud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-dpbusd">_tile_dpbusd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-dpbuud">_tile_dpbuud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-dpbssd">_tile_dpbssd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">__tile_dpbssd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">__tile_dpbsud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">__tile_dpbusd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">__tile_dpbuud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-loadconfig">_tile_loadconfig</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-storeconfig">_tile_storeconfig</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-loadd">_tile_loadd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-stream-loadd">_tile_stream_loadd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-release">_tile_release</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-stored">_tile_stored</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-zero">_tile_zero</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">__tile_loadd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">__tile_stored</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">__tile_stream_loadd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">__tile_zero</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="amx-application-targeted-other">
+<h1>AMX-Application-Targeted-Other<a class="headerlink" href="#amx-application-targeted-other" title="Link to this heading">#</a></h1>
+<section id="tile-dpbf16ps">
+<h2>_tile_dpbf16ps<a class="headerlink" href="#tile-dpbf16ps" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>constexpr int dst,
+constexpr int a,
+constexpr int b</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+a,
+b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">_tile_dpbf16ps</span><span class="p">(</span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute dot-product of BF16 (16-bit) floating-point pairs in tiles “a” and “b”, accumulating the intermediate single-precision (32-bit) floating-point elements with elements in “dst”, and store the 32-bit result back to tile “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (a.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.fp32[n] += FP32(a.row[m].bf16[2*k+0]) * FP32(b.row[k].bf16[2*n+0])
+                        tmp.fp32[n] += FP32(a.row[m].bf16[2*k+1]) * FP32(b.row[k].bf16[2*n+1])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>__tile_dpbf16ps<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>__tile1024i* dst,
+__tile1024i src0,
+__tile1024i src1</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+src0,
+src1</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">__tile_dpbf16ps</span><span class="p">(</span><span class="n">__tile1024i</span><span class="o">*</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src0</span><span class="p">,</span>
+<span class="w">                     </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute dot-product of BF16 (16-bit) floating-point pairs in tiles “src0” and “src1”, accumulating the intermediate single-precision (32-bit) floating-point elements with elements in “dst”, and store the 32-bit result back to tile “dst”. The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (src0.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.fp32[n] += FP32(src0.row[m].bf16[2*k+0]) * FP32(src1.row[k].bf16[2*n+0])
+                        tmp.fp32[n] += FP32(src0.row[m].bf16[2*k+1]) * FP32(src1.row[k].bf16[2*n+1])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="tile-cmmimfp16ps">
+<h2>_tile_cmmimfp16ps<a class="headerlink" href="#tile-cmmimfp16ps" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>constexpr int dst,
+constexpr int a,
+constexpr int b</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>FP32 dst,
+FP16 a,
+FP16 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">_tile_cmmimfp16ps</span><span class="p">(</span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                       </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform matrix multiplication of two tiles containing complex elements and accumulate the results into a packed single precision tile. Each dword element in input tiles “a” and “b” is interpreted as a complex number with FP16 real part and FP16 imaginary part. Calculates the imaginary part of the result. For each possible combination of (row of “a”, column of “b”), it performs a set of multiplication and accumulations on all corresponding complex numbers (one from “a” and one from “b”). The imaginary part of the “a” element is multiplied with the real part of the corresponding “b” element, and the real part of the “a” element is multiplied with the imaginary part of the corresponding “b” elements. The two accumulated results are added, and then accumulated into the corresponding row and column of “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (a.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.fp32[n] += FP32(a.row[m].fp16[2*k+0]) * FP32(b.row[k].fp16[2*n+1])
+                        tmp.fp32[n] += FP32(a.row[m].fp16[2*k+1]) * FP32(b.row[k].fp16[2*n+0])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="tile-cmmrlfp16ps">
+<h2>_tile_cmmrlfp16ps<a class="headerlink" href="#tile-cmmrlfp16ps" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>constexpr int dst,
+constexpr int a,
+constexpr int b</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>FP32 dst,
+FP16 a,
+FP16 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">_tile_cmmrlfp16ps</span><span class="p">(</span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                       </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform matrix multiplication of two tiles containing complex elements and accumulate the results into a packed single precision tile. Each dword element in input tiles “a” and “b” is interpreted as a complex number with FP16 real part and FP16 imaginary part. Calculates the real part of the result. For each possible combination of (row of “a”, column of “b”), it performs a set of multiplication and accumulations on all corresponding complex numbers (one from “a” and one from “b”). The real part of the “a” element is multiplied with the real part of the corresponding “b” element, and the negated imaginary part of the “a” element is multiplied with the imaginary part of the corresponding “b” elements. The two accumulated results are added, and then accumulated into the corresponding row and column of “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (a.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.fp32[n] += FP32(a.row[m].fp16[2*k+0]) * FP32(b.row[k].fp16[2*n+0])
+                        tmp.fp32[n] += FP32(-a.row[m].fp16[2*k+1]) * FP32(b.row[k].fp16[2*n+1])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>__tile_cmmimfp16ps<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>__tile1024i* dst,
+__tile1024i src0,
+__tile1024i src1</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+src0,
+src1</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">__tile_cmmimfp16ps</span><span class="p">(</span><span class="n">__tile1024i</span><span class="o">*</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src0</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform matrix multiplication of two tiles containing complex elements and accumulate the results into a packed single precision tile. Each dword element in input tiles “src0” and “src1” is interpreted as a complex number with FP16 real part and FP16 imaginary part. This function calculates the imaginary part of the result.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (src0.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.fp32[n] += FP32(src0.row[m].fp16[2*k+0]) * FP32(src1.row[k].fp16[2*n+1])
+                        tmp.fp32[n] += FP32(src0.row[m].fp16[2*k+1]) * FP32(src1.row[k].fp16[2*n+0])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>__tile_cmmrlfp16ps<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>__tile1024i* dst,
+__tile1024i src0,
+__tile1024i src1</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+src0,
+src1</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">__tile_cmmrlfp16ps</span><span class="p">(</span><span class="n">__tile1024i</span><span class="o">*</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src0</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Perform matrix multiplication of two tiles containing complex elements and accumulate the results into a packed single precision tile. Each dword element in input tiles src0 and src1 is interpreted as a complex number with FP16 real part and FP16 imaginary part. This function calculates the real part of the result.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (src0.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.fp32[n] += FP32(src0.row[m].fp16[2*k+0]) * FP32(src1.row[k].fp16[2*n+0])
+                        tmp.fp32[n] += FP32(-src0.row[m].fp16[2*k+1]) * FP32(src1.row[k].fp16[2*n+1])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="tile-dpfp16ps">
+<h2>_tile_dpfp16ps<a class="headerlink" href="#tile-dpfp16ps" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>constexpr int dst,
+constexpr int a,
+constexpr int b</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>FP32 dst,
+FP16 a,
+FP16 b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">_tile_dpfp16ps</span><span class="p">(</span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute dot-product of FP16 (16-bit) floating-point pairs in tiles “a” and “b”, accumulating the intermediate single-precision (32-bit) floating-point elements with elements in “dst”, and store the 32-bit result back to tile “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (a.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.fp32[n] += FP32(a.row[m].fp16[2*k+0]) * FP32(b.row[k].fp16[2*n+0])
+                        tmp.fp32[n] += FP32(a.row[m].fp16[2*k+1]) * FP32(b.row[k].fp16[2*n+1])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>__tile_dpfp16ps<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>__tile1024i* dst,
+__tile1024i src0,
+__tile1024i src1</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+src0,
+src1</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">__tile_dpfp16ps</span><span class="p">(</span><span class="n">__tile1024i</span><span class="o">*</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src0</span><span class="p">,</span>
+<span class="w">                     </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute dot-product of FP16 (16-bit) floating-point pairs in tiles “src0” and “src1”, accumulating the intermediate single-precision (32-bit) floating-point elements with elements in “dst”, and store the 32-bit result back to tile “dst”. The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (src0.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.fp32[n] += FP32(src0.row[m].fp16[2*k+0]) * FP32(src1.row[k].fp16[2*n+0])
+                        tmp.fp32[n] += FP32(src0.row[m].fp16[2*k+1]) * FP32(src1.row[k].fp16[2*n+1])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="tile-dpbsud">
+<h2>_tile_dpbsud<a class="headerlink" href="#tile-dpbsud" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>constexpr int dst,
+constexpr int a,
+constexpr int b</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+a,
+b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">_tile_dpbsud</span><span class="p">(</span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of signed 8-bit integers in “a” with corresponding unsigned 8-bit integers in “b”, producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in “dst”, and store the 32-bit result back to tile “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>DEFINE DPBD(c, x, y) {
+        tmp1 := SignExtend32(x.byte[0]) * ZeroExtend32(y.byte[0])
+        tmp2 := SignExtend32(x.byte[1]) * ZeroExtend32(y.byte[1])
+        tmp3 := SignExtend32(x.byte[2]) * ZeroExtend32(y.byte[2])
+        tmp4 := SignExtend32(x.byte[3]) * ZeroExtend32(y.byte[3])
+
+        RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+}
+FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (a.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.dword[n] := DPBD(tmp.dword[n], a.row[m].dword[k], b.row[k].dword[n])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="tile-dpbusd">
+<h2>_tile_dpbusd<a class="headerlink" href="#tile-dpbusd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>constexpr int dst,
+constexpr int a,
+constexpr int b</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+a,
+b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">_tile_dpbusd</span><span class="p">(</span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of unsigned 8-bit integers in “a” with corresponding signed 8-bit integers in “b”, producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in “dst”, and store the 32-bit result back to tile “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>DEFINE DPBD(c, x, y) {
+        tmp1 := ZeroExtend32(x.byte[0]) * SignExtend32(y.byte[0])
+        tmp2 := ZeroExtend32(x.byte[1]) * SignExtend32(y.byte[1])
+        tmp3 := ZeroExtend32(x.byte[2]) * SignExtend32(y.byte[2])
+        tmp4 := ZeroExtend32(x.byte[3]) * SignExtend32(y.byte[3])
+
+        RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+}
+FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (a.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.dword[n] := DPBD(tmp.dword[n], a.row[m].dword[k], b.row[k].dword[n])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="tile-dpbuud">
+<h2>_tile_dpbuud<a class="headerlink" href="#tile-dpbuud" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>constexpr int dst,
+constexpr int a,
+constexpr int b</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+a,
+b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">_tile_dpbuud</span><span class="p">(</span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of unsigned 8-bit integers in “a” with corresponding unsigned 8-bit integers in “b”, producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in “dst”, and store the 32-bit result back to tile “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>DEFINE DPBD(c, x, y) {
+        tmp1 := ZeroExtend32(x.byte[0]) * ZeroExtend32(y.byte[0])
+        tmp2 := ZeroExtend32(x.byte[1]) * ZeroExtend32(y.byte[1])
+        tmp3 := ZeroExtend32(x.byte[2]) * ZeroExtend32(y.byte[2])
+        tmp4 := ZeroExtend32(x.byte[3]) * ZeroExtend32(y.byte[3])
+
+        RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+}
+FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (a.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.dword[n] := DPBD(tmp.dword[n], a.row[m].dword[k], b.row[k].dword[n])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="tile-dpbssd">
+<h2>_tile_dpbssd<a class="headerlink" href="#tile-dpbssd" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>constexpr int dst,
+constexpr int a,
+constexpr int b</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+a,
+b</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">_tile_dpbssd</span><span class="p">(</span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of signed 8-bit integers in “a” with corresponding signed 8-bit integers in “b”, producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in “dst”, and store the 32-bit result back to tile “dst”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>DEFINE DPBD(c, x, y) {
+        tmp1 := SignExtend32(x.byte[0]) * SignExtend32(y.byte[0])
+        tmp2 := SignExtend32(x.byte[1]) * SignExtend32(y.byte[1])
+        tmp3 := SignExtend32(x.byte[2]) * SignExtend32(y.byte[2])
+        tmp4 := SignExtend32(x.byte[3]) * SignExtend32(y.byte[3])
+
+        RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+}
+FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (a.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.dword[n] := DPBD(tmp.dword[n], a.row[m].dword[k], b.row[k].dword[n])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>__tile_dpbssd<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>__tile1024i* dst,
+__tile1024i src0,
+__tile1024i src1</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+src0,
+src1</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">__tile_dpbssd</span><span class="p">(</span><span class="n">__tile1024i</span><span class="o">*</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src0</span><span class="p">,</span>
+<span class="w">                   </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of signed 8-bit integers in “src0” with corresponding signed 8-bit integers in “src1”, producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in “dst”, and store the 32-bit result back to tile “dst”. The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>DEFINE DPBD(c, x, y) {
+        tmp1 := SignExtend32(x.byte[0]) * SignExtend32(y.byte[0])
+        tmp2 := SignExtend32(x.byte[1]) * SignExtend32(y.byte[1])
+        tmp3 := SignExtend32(x.byte[2]) * SignExtend32(y.byte[2])
+        tmp4 := SignExtend32(x.byte[3]) * SignExtend32(y.byte[3])
+        RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+}
+FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (src0.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.dword[n] := DPBD(tmp.dword[n], src0.row[m].dword[k], src1.row[k].dword[n])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h2>__tile_dpbsud<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>__tile1024i* dst,
+__tile1024i src0,
+__tile1024i src1</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+src0,
+src1</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">__tile_dpbsud</span><span class="p">(</span><span class="n">__tile1024i</span><span class="o">*</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src0</span><span class="p">,</span>
+<span class="w">                   </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of signed 8-bit integers in “src0” with corresponding unsigned 8-bit integers in “src1”, producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in “dst”, and store the 32-bit result back to tile “dst”. The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>DEFINE DPBD(c, x, y) {
+        tmp1 := SignExtend32(x.byte[0]) * ZeroExtend32(y.byte[0])
+        tmp2 := SignExtend32(x.byte[1]) * ZeroExtend32(y.byte[1])
+        tmp3 := SignExtend32(x.byte[2]) * ZeroExtend32(y.byte[2])
+        tmp4 := SignExtend32(x.byte[3]) * ZeroExtend32(y.byte[3])
+        RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+}
+FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (src0.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.dword[n] := DPBD(tmp.dword[n], src0.row[m].dword[k], src1.row[k].dword[n])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h2>__tile_dpbusd<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>__tile1024i* dst,
+__tile1024i src0,
+__tile1024i src1</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+src0,
+src1</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">__tile_dpbusd</span><span class="p">(</span><span class="n">__tile1024i</span><span class="o">*</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src0</span><span class="p">,</span>
+<span class="w">                   </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of unsigned 8-bit integers in “src0” with corresponding signed 8-bit integers in “src1”, producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in “dst”, and store the 32-bit result back to tile “dst”. The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>DEFINE DPBD(c, x, y) {
+        tmp1 := ZeroExtend32(x.byte[0]) * SignExtend32(y.byte[0])
+        tmp2 := ZeroExtend32(x.byte[1]) * SignExtend32(y.byte[1])
+        tmp3 := ZeroExtend32(x.byte[2]) * SignExtend32(y.byte[2])
+        tmp4 := ZeroExtend32(x.byte[3]) * SignExtend32(y.byte[3])
+        RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+}
+FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (src0.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.dword[n] := DPBD(tmp.dword[n], src0.row[m].dword[k], src1.row[k].dword[n])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id8">
+<h2>__tile_dpbuud<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>__tile1024i* dst,
+__tile1024i src0,
+__tile1024i src1</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+src0,
+src1</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">__tile_dpbuud</span><span class="p">(</span><span class="n">__tile1024i</span><span class="o">*</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src0</span><span class="p">,</span>
+<span class="w">                   </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute dot-product of bytes in tiles with a source/destination accumulator. Multiply groups of 4 adjacent pairs of unsigned 8-bit integers in “src0” with corresponding unsigned 8-bit integers in “src1”, producing 4 intermediate 32-bit results. Sum these 4 results with the corresponding 32-bit integer in “dst”, and store the 32-bit result back to tile “dst”. The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>DEFINE DPBD(c, x, y) {
+        tmp1 := ZeroExtend32(x.byte[0]) * ZeroExtend32(y.byte[0])
+        tmp2 := ZeroExtend32(x.byte[1]) * ZeroExtend32(y.byte[1])
+        tmp3 := ZeroExtend32(x.byte[2]) * ZeroExtend32(y.byte[2])
+        tmp4 := ZeroExtend32(x.byte[3]) * ZeroExtend32(y.byte[3])
+        RETURN c + tmp1 + tmp2 + tmp3 + tmp4
+}
+FOR m := 0 TO dst.rows - 1
+        tmp := dst.row[m]
+        FOR k := 0 TO (src0.colsb / 4) - 1
+                FOR n := 0 TO (dst.colsb / 4) - 1
+                        tmp.dword[n] := DPBD(tmp.dword[n], src0.row[m].dword[k], src1.row[k].dword[n])
+                ENDFOR
+        ENDFOR
+        write_row_and_zero(dst, m, tmp, dst.colsb)
+ENDFOR
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="tile-loadconfig">
+<h2>_tile_loadconfig<a class="headerlink" href="#tile-loadconfig" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_tile_loadconfig</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Load tile configuration from a 64-byte memory location specified by “mem_addr”. The tile configuration format is specified below, and includes the tile type pallette, the number of bytes per row, and the number of rows. If the specified pallette_id is zero, that signifies the init state for both the tile config and the tile data, and the tiles are zeroed. Any invalid configurations will result in #GP fault.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>//      format of memory payload. each field is a byte.
+//               0: palette
+//               1: start_row
+//       2-15: reserved, must be zero
+//      16-17: tile0.colsb
+//      18-19: tile1.colsb
+//      20-21: tile2.colsb
+//                      ...
+//      30-31: tile7.colsb
+//      32-47: reserved, must be zero
+//              48: tile0.rows
+//              49: tile1.rows
+//              50: tile2.rows
+//                       ...
+//              55: tile7.rows
+//      56-63: reserved, must be zero
+</pre></div>
+</div>
+</div>
+</section>
+<section id="tile-storeconfig">
+<h2>_tile_storeconfig<a class="headerlink" href="#tile-storeconfig" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_tile_storeconfig</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mem_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Stores the current tile configuration to a 64-byte memory location specified by “mem_addr”. The tile configuration format is specified below, and includes the tile type pallette, the number of bytes per row, and the number of rows. If tiles are not configured, all zeroes will be stored to memory.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>//      format of memory payload. each field is a byte.
+//               0: palette
+//               1: start_row
+//       2-15: reserved, must be zero
+//      16-17: tile0.colsb
+//      18-19: tile1.colsb
+//      20-21: tile2.colsb
+//                      ...
+//      30-31: tile7.colsb
+//      32-47: reserved, must be zero
+//              48: tile0.rows
+//              49: tile1.rows
+//              50: tile2.rows
+//                       ...
+//              55: tile7.rows
+//      56-63: reserved, must be zero
+</pre></div>
+</div>
+</div>
+</section>
+<section id="tile-loadd">
+<h2>_tile_loadd<a class="headerlink" href="#tile-loadd" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>constexpr int dst,
+const void * base,
+size_t stride</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>dst,
+base,</p>
+</div></blockquote>
+<p>UI32 stride</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">_tile_loadd</span><span class="p">(</span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">base</span><span class="p">,</span>
+<span class="w">                 </span><span class="kt">size_t</span><span class="w"> </span><span class="n">stride</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Load tile rows from memory specifieid by “base” address and “stride” into destination tile “dst” using the tile configuration previously configured via “_tile_loadconfig”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>start := tileconfig.startRow
+IF start == 0 // not restarting, zero incoming state
+        tilezero(dst)
+FI
+nbytes := dst.colsb
+DO WHILE start &lt; dst.rows
+        memptr := base + start * stride
+        write_row_and_zero(dst, start, read_memory(memptr, nbytes), nbytes)
+        start := start + 1
+OD
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="tile-stream-loadd">
+<h2>_tile_stream_loadd<a class="headerlink" href="#tile-stream-loadd" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>constexpr int dst,
+const void * base,
+size_t stride</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>dst,
+base,</p>
+</div></blockquote>
+<p>UI32 stride</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">_tile_stream_loadd</span><span class="p">(</span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">base</span><span class="p">,</span>
+<span class="w">                        </span><span class="kt">size_t</span><span class="w"> </span><span class="n">stride</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Load tile rows from memory specifieid by “base” address and “stride” into destination tile “dst” using the tile configuration previously configured via “_tile_loadconfig”. This intrinsic provides a hint to the implementation that the data will likely not be reused in the near future and the data caching can be optimized accordingly.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>start := tileconfig.startRow
+IF start == 0 // not restarting, zero incoming state
+        tilezero(dst)
+FI
+nbytes := dst.colsb
+DO WHILE start &lt; dst.rows
+        memptr := base + start * stride
+        write_row_and_zero(dst, start, read_memory(memptr, nbytes), nbytes)
+        start := start + 1
+OD
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="tile-release">
+<h2>_tile_release<a class="headerlink" href="#tile-release" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Release the tile configuration to return to the init state, which releases all storage it currently holds.</p>
+</div>
+</section>
+<section id="tile-stored">
+<h2>_tile_stored<a class="headerlink" href="#tile-stored" title="Link to this heading">#</a></h2>
+<dl class="field-list">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>constexpr int src,
+void * base,
+size_t stride</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><blockquote>
+<div><p>src,
+base,</p>
+</div></blockquote>
+<p>UI32 stride</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">_tile_stored</span><span class="p">(</span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">base</span><span class="p">,</span>
+<span class="w">                  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">stride</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Store the tile specified by “src” to memory specifieid by “base” address and “stride” using the tile configuration previously configured via “_tile_loadconfig”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>start := tileconfig.startRow
+DO WHILE start &lt; src.rows
+        memptr := base + start * stride
+        write_memory(memptr, src.colsb, src.row[start])
+        start := start + 1
+OD
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="tile-zero">
+<h2>_tile_zero<a class="headerlink" href="#tile-zero" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_tile_zero</span><span class="p">(</span><span class="n">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tdest</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Zero the tile specified by “tdest”.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>nbytes := palette_table[tileconfig.palette_id].bytes_per_row
+FOR i := 0 TO palette_table[tileconfig.palette_id].max_rows-1
+        FOR j := 0 TO nbytes-1
+                tdest.row[i].byte[j] := 0
+        ENDFOR
+ENDFOR
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id9">
+<h2>__tile_loadd<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>__tile1024i* dst,
+const void* base,
+size_t stride</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+base,
+stride</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">__tile_loadd</span><span class="p">(</span><span class="n">__tile1024i</span><span class="o">*</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">base</span><span class="p">,</span>
+<span class="w">                  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">stride</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Load tile rows from memory specifieid by “base” address and “stride” into destination tile “dst”. The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>start := tileconfig.startRow
+IF start == 0 // not restarting, zero incoming state
+        tilezero(dst)
+FI
+nbytes := dst.colsb
+DO WHILE start &lt; dst.rows
+        memptr := base + start * stride
+        write_row_and_zero(dst, start, read_memory(memptr, nbytes), nbytes)
+        start := start + 1
+OD
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id10">
+<h2>__tile_stored<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>void* base,
+size_t stride,
+__tile1024i src</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>base,
+stride,
+src</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">__tile_stored</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">base</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">stride</span><span class="p">,</span>
+<span class="w">                   </span><span class="n">__tile1024i</span><span class="w"> </span><span class="n">src</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Store the tile specified by “src” to memory specifieid by “base” address and “stride”. The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>start := tileconfig.startRow
+DO WHILE start &lt; src.rows
+        memptr := base + start * stride
+        write_memory(memptr, src.colsb, src.row[start])
+        start := start + 1
+OD
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id11">
+<h2>__tile_stream_loadd<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+<dt class="field-even">Param Types<span class="colon">:</span></dt>
+<dd class="field-even"><p>__tile1024i* dst,
+const void* base,
+size_t stride</p>
+</dd>
+<dt class="field-odd">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dst,
+base,
+stride</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">__tile_stream_loadd</span><span class="p">(</span><span class="n">__tile1024i</span><span class="o">*</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">base</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w"> </span><span class="n">stride</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Load tile rows from memory specifieid by “base” address and “stride” into destination tile “dst”. This intrinsic provides a hint to the implementation that the data will likely not be reused in the near future and the data caching can be optimized accordingly. The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>start := tileconfig.startRow
+IF start == 0 // not restarting, zero incoming state
+        tilezero(dst)
+FI
+nbytes := dst.colsb
+DO WHILE start &lt; dst.rows
+        memptr := base + start * stride
+        write_row_and_zero(dst, start, read_memory(memptr, nbytes), nbytes)
+        start := start + 1
+OD
+zero_upper_rows(dst, dst.rows)
+zero_tileconfig_start()
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id12">
+<h2>__tile_zero<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AMX</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Application-Targeted</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>AMX-Application-Targeted-Other</p>
+</dd>
+<dt class="field-odd">Return Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">__tile_zero</span><span class="p">(</span><span class="n">__tile1024i</span><span class="o">*</span><span class="w"> </span><span class="n">dst</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Zero the tile specified by “dst”. The shape of tile is specified in the struct of __tile1024i. The register of the tile is allocated by compiler.</p>
+</div>
+<div class="admonition-intel-implementation-psudeo-code admonition">
+<p class="admonition-title">Intel Implementation Psudeo-Code</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>nbytes := palette_table[tileconfig.palette_id].bytes_per_row
+FOR i := 0 TO palette_table[tileconfig.palette_id].max_rows-1
+        FOR j := 0 TO nbytes-1
+                tdest.row[i].byte[j] := 0
+        ENDFOR
+ENDFOR
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AMX</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../AVX-512/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AVX-512</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-dpbf16ps">_tile_dpbf16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">__tile_dpbf16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-cmmimfp16ps">_tile_cmmimfp16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-cmmrlfp16ps">_tile_cmmrlfp16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">__tile_cmmimfp16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">__tile_cmmrlfp16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-dpfp16ps">_tile_dpfp16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">__tile_dpfp16ps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-dpbsud">_tile_dpbsud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-dpbusd">_tile_dpbusd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-dpbuud">_tile_dpbuud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-dpbssd">_tile_dpbssd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">__tile_dpbssd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">__tile_dpbsud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">__tile_dpbusd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">__tile_dpbuud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-loadconfig">_tile_loadconfig</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-storeconfig">_tile_storeconfig</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-loadd">_tile_loadd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-stream-loadd">_tile_stream_loadd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-release">_tile_release</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-stored">_tile_stored</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tile-zero">_tile_zero</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">__tile_loadd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">__tile_stored</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">__tile_stream_loadd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">__tile_zero</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Your Name
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

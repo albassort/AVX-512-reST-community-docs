@@ -1,0 +1,791 @@
+SVML-Arithmetic-YMM
+===================
+
+_mm256_div_epi8
+---------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    SI8 a, 
+    SI8 b
+
+.. code-block:: C
+
+    __m256i _mm256_div_epi8(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed signed 8-bit integers in "a" by packed elements in "b", and store the truncated results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := 8*j
+        	IF b[i+7:i] == 0
+        		#DE
+        	FI
+        	dst[i+7:i] := Truncate8(a[i+7:i] / b[i+7:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_div_epi16
+----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    SI16 a, 
+    SI16 b
+
+.. code-block:: C
+
+    __m256i _mm256_div_epi16(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed signed 16-bit integers in "a" by packed elements in "b", and store the truncated results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := 16*j
+        	IF b[i+15:i] == 0
+        		#DE
+        	FI
+        	dst[i+15:i] := Truncate16(a[i+15:i] / b[i+15:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_div_epi32
+----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    SI32 a, 
+    SI32 b
+
+.. code-block:: C
+
+    __m256i _mm256_div_epi32(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed signed 32-bit integers in "a" by packed elements in "b", and store the truncated results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := 32*j
+        	IF b[i+31:i] == 0
+        		#DE
+        	FI
+        	dst[i+31:i] := Truncate32(a[i+31:i] / b[i+31:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_div_epi64
+----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    SI64 a, 
+    SI64 b
+
+.. code-block:: C
+
+    __m256i _mm256_div_epi64(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed signed 64-bit integers in "a" by packed elements in "b", and store the truncated results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := 64*j
+        	IF b[i+63:i] == 0
+        		#DE
+        	FI
+        	dst[i+63:i] := Truncate64(a[i+63:i] / b[i+63:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_div_epu8
+---------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI8 a, 
+    UI8 b
+
+.. code-block:: C
+
+    __m256i _mm256_div_epu8(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed unsigned 8-bit integers in "a" by packed elements in "b", and store the truncated results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 31
+        	i := 8*j
+        	IF b[i+7:i] == 0
+        		#DE
+        	FI
+        	dst[i+7:i] := Truncate8(a[i+7:i] / b[i+7:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_div_epu16
+----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI16 a, 
+    UI16 b
+
+.. code-block:: C
+
+    __m256i _mm256_div_epu16(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed unsigned 16-bit integers in "a" by packed elements in "b", and store the truncated results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := 16*j
+        	IF b[i+15:i] == 0
+        		#DE
+        	FI
+        	dst[i+15:i] := Truncate16(a[i+15:i] / b[i+15:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_div_epu32
+----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI32 a, 
+    UI32 b
+
+.. code-block:: C
+
+    __m256i _mm256_div_epu32(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed unsigned 32-bit integers in "a" by packed elements in "b", and store the truncated results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := 32*j
+        	IF b[i+31:i] == 0
+        		#DE
+        	FI
+        	dst[i+31:i] := Truncate32(a[i+31:i] / b[i+31:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_div_epu64
+----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI64 a, 
+    UI64 b
+
+.. code-block:: C
+
+    __m256i _mm256_div_epu64(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed unsigned 64-bit integers in "a" by packed elements in "b", and store the truncated results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := 64*j
+        	IF b[i+63:i] == 0
+        		#DE
+        	FI
+        	dst[i+63:i] := Truncate64(a[i+63:i] / b[i+63:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_idiv_epi32
+-----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI32 a, 
+    UI32 b
+
+.. code-block:: C
+
+    __m256i _mm256_idiv_epi32(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed 32-bit integers in "a" by packed elements in "b", and store the truncated results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := 32*j
+        	dst[i+31:i] := TRUNCATE(a[i+31:i] / b[i+31:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_idivrem_epi32
+--------------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i * mem_addr, 
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI32 mem_addr, 
+    UI32 a, 
+    UI32 b
+
+.. code-block:: C
+
+    __m256i _mm256_idivrem_epi32(__m256i* mem_addr, __m256i a,
+                                 __m256i b)
+
+.. admonition:: Intel Description
+
+    Divide packed 32-bit integers in "a" by packed elements in "b", store the truncated results in "dst", and store the remainders as packed 32-bit integers into memory at "mem_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := 32*j
+        	dst[i+31:i] := TRUNCATE(a[i+31:i] / b[i+31:i])
+        	MEM[mem_addr+i+31:mem_addr+i] := REMAINDER(a[i+31:i] / b[i+31:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_irem_epi32
+-----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI32 a, 
+    UI32 b
+
+.. code-block:: C
+
+    __m256i _mm256_irem_epi32(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed 32-bit integers in "a" by packed elements in "b", and store the remainders as packed 32-bit integers in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := 32*j
+        	dst[i+31:i] := REMAINDER(a[i+31:i] / b[i+31:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_rem_epi8
+---------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI8 a, 
+    UI8 b
+
+.. code-block:: C
+
+    __m256i _mm256_rem_epi8(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed 8-bit integers in "a" by packed elements in "b", and store the remainders as packed 32-bit integers in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 31
+        	i := 8*j
+        	dst[i+7:i] := REMAINDER(a[i+7:i] / b[i+7:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_rem_epi16
+----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI16 a, 
+    UI16 b
+
+.. code-block:: C
+
+    __m256i _mm256_rem_epi16(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed 16-bit integers in "a" by packed elements in "b", and store the remainders as packed 32-bit integers in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 15
+        	i := 16*j
+        	dst[i+15:i] := REMAINDER(a[i+15:i] / b[i+15:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_rem_epi32
+----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI32 a, 
+    UI32 b
+
+.. code-block:: C
+
+    __m256i _mm256_rem_epi32(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed 32-bit integers in "a" by packed elements in "b", and store the remainders as packed 32-bit integers in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := 32*j
+        	dst[i+31:i] := REMAINDER(a[i+31:i] / b[i+31:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_rem_epi64
+----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI64 a, 
+    UI64 b
+
+.. code-block:: C
+
+    __m256i _mm256_rem_epi64(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed 64-bit integers in "a" by packed elements in "b", and store the remainders as packed 32-bit integers in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 3
+        	i := 64*j
+        	dst[i+63:i] := REMAINDER(a[i+63:i] / b[i+63:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_rem_epu8
+---------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI8 a, 
+    UI8 b
+
+.. code-block:: C
+
+    __m256i _mm256_rem_epu8(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed unsigned 8-bit integers in "a" by packed elements in "b", and store the remainders as packed unsigned 32-bit integers in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 31
+        	i := 8*j
+        	dst[i+7:i] := REMAINDER(a[i+7:i] / b[i+7:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_rem_epu16
+----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI16 a, 
+    UI16 b
+
+.. code-block:: C
+
+    __m256i _mm256_rem_epu16(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed unsigned 16-bit integers in "a" by packed elements in "b", and store the remainders as packed unsigned 32-bit integers in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 15
+        	i := 16*j
+        	dst[i+15:i] := REMAINDER(a[i+15:i] / b[i+15:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_rem_epu32
+----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI32 a, 
+    UI32 b
+
+.. code-block:: C
+
+    __m256i _mm256_rem_epu32(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed unsigned 32-bit integers in "a" by packed elements in "b", and store the remainders as packed unsigned 32-bit integers in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := 32*j
+        	dst[i+31:i] := REMAINDER(a[i+31:i] / b[i+31:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_rem_epu64
+----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI64 a, 
+    UI64 b
+
+.. code-block:: C
+
+    __m256i _mm256_rem_epu64(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed unsigned 64-bit integers in "a" by packed elements in "b", and store the remainders as packed unsigned 32-bit integers in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 3
+        	i := 64*j
+        	dst[i+63:i] := REMAINDER(a[i+63:i] / b[i+63:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_udiv_epi32
+-----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI32 a, 
+    UI32 b
+
+.. code-block:: C
+
+    __m256i _mm256_udiv_epi32(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed unsigned 32-bit integers in "a" by packed elements in "b", and store the truncated results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := 32*j
+        	dst[i+31:i] := TRUNCATE(a[i+31:i] / b[i+31:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_udivrem_epi32
+--------------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i * mem_addr, 
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI32 mem_addr, 
+    UI32 a, 
+    UI32 b
+
+.. code-block:: C
+
+    __m256i _mm256_udivrem_epi32(__m256i* mem_addr, __m256i a,
+                                 __m256i b)
+
+.. admonition:: Intel Description
+
+    Divide packed unsigned 32-bit integers in "a" by packed elements in "b", store the truncated results in "dst", and store the remainders as packed unsigned 32-bit integers into memory at "mem_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := 32*j
+        	dst[i+31:i] := TRUNCATE(a[i+31:i] / b[i+31:i])
+        	MEM[mem_addr+i+31:mem_addr+i] := REMAINDER(a[i+31:i] / b[i+31:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+
+_mm256_urem_epi32
+-----------------
+:Tech: SVML
+:Category: Arithmetic
+:Header: immintrin.h
+:Searchable: SVML-Arithmetic-YMM
+:Register: YMM 256 bit
+:Return Type: __m256i
+:Param Types:
+    __m256i a, 
+    __m256i b
+:Param ETypes:
+    UI32 a, 
+    UI32 b
+
+.. code-block:: C
+
+    __m256i _mm256_urem_epi32(__m256i a, __m256i b);
+
+.. admonition:: Intel Description
+
+    Divide packed unsigned 32-bit integers in "a" by packed elements in "b", and store the remainders as packed unsigned 32-bit integers in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := 32*j
+        	dst[i+31:i] := REMAINDER(a[i+31:i] / b[i+31:i])
+        ENDFOR
+        dst[MAX:256] := 0
+        	
+

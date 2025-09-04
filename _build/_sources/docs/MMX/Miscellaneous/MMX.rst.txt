@@ -1,0 +1,107 @@
+_m_packsswb
+^^^^^^^^^^^
+:Tech: MMX
+:Category: Miscellaneous
+:Header: mmintrin.h
+:Register: MMX 64 bit
+:Return Type: __m64
+:Param Types:
+    __m64 a, 
+    __m64 b
+:Param ETypes:
+    SI16 a, 
+    SI16 b
+
+.. code-block:: C
+
+    __m64 _m_packsswb(__m64 a, __m64 b);
+
+.. admonition:: Intel Description
+
+    Convert packed signed 16-bit integers from "a" and "b" to packed 8-bit integers using signed saturation, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[7:0] := Saturate8(a[15:0])
+        dst[15:8] := Saturate8(a[31:16])
+        dst[23:16] := Saturate8(a[47:32])
+        dst[31:24] := Saturate8(a[63:48])
+        dst[39:32] := Saturate8(b[15:0])
+        dst[47:40] := Saturate8(b[31:16])
+        dst[55:48] := Saturate8(b[47:32])
+        dst[63:56] := Saturate8(b[63:48])
+        	
+
+_m_packssdw
+^^^^^^^^^^^
+:Tech: MMX
+:Category: Miscellaneous
+:Header: mmintrin.h
+:Register: MMX 64 bit
+:Return Type: __m64
+:Param Types:
+    __m64 a, 
+    __m64 b
+:Param ETypes:
+    SI32 a, 
+    SI32 b
+
+.. code-block:: C
+
+    __m64 _m_packssdw(__m64 a, __m64 b);
+
+.. admonition:: Intel Description
+
+    Convert packed signed 32-bit integers from "a" and "b" to packed 16-bit integers using signed saturation, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[15:0] := Saturate16(a[31:0])
+        dst[31:16] := Saturate16(a[63:32])
+        dst[47:32] := Saturate16(b[31:0])
+        dst[63:48] := Saturate16(b[63:32])
+        	
+
+_m_packuswb
+^^^^^^^^^^^
+:Tech: MMX
+:Category: Miscellaneous
+:Header: mmintrin.h
+:Register: MMX 64 bit
+:Return Type: __m64
+:Param Types:
+    __m64 a, 
+    __m64 b
+:Param ETypes:
+    SI16 a, 
+    SI16 b
+
+.. code-block:: C
+
+    __m64 _m_packuswb(__m64 a, __m64 b);
+
+.. admonition:: Intel Description
+
+    Convert packed signed 16-bit integers from "a" and "b" to packed 8-bit integers using unsigned saturation, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[7:0] := SaturateU8(a[15:0])
+        dst[15:8] := SaturateU8(a[31:16])
+        dst[23:16] := SaturateU8(a[47:32])
+        dst[31:24] := SaturateU8(a[63:48])
+        dst[39:32] := SaturateU8(b[15:0])
+        dst[47:40] := SaturateU8(b[31:16])
+        dst[55:48] := SaturateU8(b[47:32])
+        dst[63:56] := SaturateU8(b[63:48])
+        	
+

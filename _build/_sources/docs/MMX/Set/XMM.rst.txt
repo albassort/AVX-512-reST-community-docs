@@ -1,0 +1,353 @@
+_mm_setzero_si64
+^^^^^^^^^^^^^^^^
+:Tech: MMX
+:Category: Set
+:Header: mmintrin.h
+:Register: XMM 128 bit
+:Return Type: __m64
+
+.. code-block:: C
+
+    __m64 _mm_setzero_si64(void );
+
+.. admonition:: Intel Description
+
+    Return vector of type __m64 with all elements set to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[MAX:0] := 0
+        	
+
+_mm_set_pi32
+^^^^^^^^^^^^
+:Tech: MMX
+:Category: Set
+:Header: mmintrin.h
+:Register: XMM 128 bit
+:Return Type: __m64
+:Param Types:
+    int e1, 
+    int e0
+:Param ETypes:
+    UI32 e1, 
+    UI32 e0
+
+.. code-block:: C
+
+    __m64 _mm_set_pi32(int e1, int e0);
+
+.. admonition:: Intel Description
+
+    Set packed 32-bit integers in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := e0
+        dst[63:32] := e1
+        	
+
+_mm_set_pi16
+^^^^^^^^^^^^
+:Tech: MMX
+:Category: Set
+:Header: mmintrin.h
+:Register: XMM 128 bit
+:Return Type: __m64
+:Param Types:
+    short e3, 
+    short e2, 
+    short e1, 
+    short e0
+:Param ETypes:
+    UI16 e3, 
+    UI16 e2, 
+    UI16 e1, 
+    UI16 e0
+
+.. code-block:: C
+
+    __m64 _mm_set_pi16(short e3, short e2, short e1, short e0);
+
+.. admonition:: Intel Description
+
+    Set packed 16-bit integers in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[15:0] := e0
+        dst[31:16] := e1
+        dst[47:32] := e2
+        dst[63:48] := e3
+        	
+
+_mm_set_pi8
+^^^^^^^^^^^
+:Tech: MMX
+:Category: Set
+:Header: mmintrin.h
+:Register: XMM 128 bit
+:Return Type: __m64
+:Param Types:
+    char e7, 
+    char e6, 
+    char e5, 
+    char e4, 
+    char e3, 
+    char e2, 
+    char e1, 
+    char e0
+:Param ETypes:
+    UI8 e7, 
+    UI8 e6, 
+    UI8 e5, 
+    UI8 e4, 
+    UI8 e3, 
+    UI8 e2, 
+    UI8 e1, 
+    UI8 e0
+
+.. code-block:: C
+
+    __m64 _mm_set_pi8(char e7, char e6, char e5, char e4,
+                      char e3, char e2, char e1, char e0)
+
+.. admonition:: Intel Description
+
+    Set packed 8-bit integers in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[7:0] := e0
+        dst[15:8] := e1
+        dst[23:16] := e2
+        dst[31:24] := e3
+        dst[39:32] := e4
+        dst[47:40] := e5
+        dst[55:48] := e6
+        dst[63:56] := e7
+        	
+
+_mm_set1_pi32
+^^^^^^^^^^^^^
+:Tech: MMX
+:Category: Set
+:Header: mmintrin.h
+:Register: XMM 128 bit
+:Return Type: __m64
+:Param Types:
+    int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    __m64 _mm_set1_pi32(int a);
+
+.. admonition:: Intel Description
+
+    Broadcast 32-bit integer "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*32
+        	dst[i+31:i] := a[31:0]
+        ENDFOR
+        	
+
+_mm_set1_pi16
+^^^^^^^^^^^^^
+:Tech: MMX
+:Category: Set
+:Header: mmintrin.h
+:Register: XMM 128 bit
+:Return Type: __m64
+:Param Types:
+    short a
+:Param ETypes:
+    UI16 a
+
+.. code-block:: C
+
+    __m64 _mm_set1_pi16(short a);
+
+.. admonition:: Intel Description
+
+    Broadcast 16-bit integer "a" to all all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*16
+        	dst[i+15:i] := a[15:0]
+        ENDFOR
+        	
+
+_mm_set1_pi8
+^^^^^^^^^^^^
+:Tech: MMX
+:Category: Set
+:Header: mmintrin.h
+:Register: XMM 128 bit
+:Return Type: __m64
+:Param Types:
+    char a
+:Param ETypes:
+    UI8 a
+
+.. code-block:: C
+
+    __m64 _mm_set1_pi8(char a);
+
+.. admonition:: Intel Description
+
+    Broadcast 8-bit integer "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*8
+        	dst[i+7:i] := a[7:0]
+        ENDFOR
+        	
+
+_mm_setr_pi32
+^^^^^^^^^^^^^
+:Tech: MMX
+:Category: Set
+:Header: mmintrin.h
+:Register: XMM 128 bit
+:Return Type: __m64
+:Param Types:
+    int e1, 
+    int e0
+:Param ETypes:
+    UI32 e1, 
+    UI32 e0
+
+.. code-block:: C
+
+    __m64 _mm_setr_pi32(int e1, int e0);
+
+.. admonition:: Intel Description
+
+    Set packed 32-bit integers in "dst" with the supplied values in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := e1
+        dst[63:32] := e0
+        	
+
+_mm_setr_pi16
+^^^^^^^^^^^^^
+:Tech: MMX
+:Category: Set
+:Header: mmintrin.h
+:Register: XMM 128 bit
+:Return Type: __m64
+:Param Types:
+    short e3, 
+    short e2, 
+    short e1, 
+    short e0
+:Param ETypes:
+    UI16 e3, 
+    UI16 e2, 
+    UI16 e1, 
+    UI16 e0
+
+.. code-block:: C
+
+    __m64 _mm_setr_pi16(short e3, short e2, short e1, short e0);
+
+.. admonition:: Intel Description
+
+    Set packed 16-bit integers in "dst" with the supplied values in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[15:0] := e3
+        dst[31:16] := e2
+        dst[47:32] := e1
+        dst[63:48] := e0
+        	
+
+_mm_setr_pi8
+^^^^^^^^^^^^
+:Tech: MMX
+:Category: Set
+:Header: mmintrin.h
+:Register: XMM 128 bit
+:Return Type: __m64
+:Param Types:
+    char e7, 
+    char e6, 
+    char e5, 
+    char e4, 
+    char e3, 
+    char e2, 
+    char e1, 
+    char e0
+:Param ETypes:
+    UI8 e7, 
+    UI8 e6, 
+    UI8 e5, 
+    UI8 e4, 
+    UI8 e3, 
+    UI8 e2, 
+    UI8 e1, 
+    UI8 e0
+
+.. code-block:: C
+
+    __m64 _mm_setr_pi8(char e7, char e6, char e5, char e4,
+                       char e3, char e2, char e1, char e0)
+
+.. admonition:: Intel Description
+
+    Set packed 8-bit integers in "dst" with the supplied values in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[7:0] := e7
+        dst[15:8] := e6
+        dst[23:16] := e5
+        dst[31:24] := e4
+        dst[39:32] := e3
+        dst[47:40] := e2
+        dst[55:48] := e1
+        dst[63:56] := e0
+        	
+

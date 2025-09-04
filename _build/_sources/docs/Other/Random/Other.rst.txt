@@ -1,0 +1,192 @@
+_rdrand16_step
+^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Random
+:Header: immintrin.h
+:Return Type: int
+:Param Types:
+    unsigned short* val
+:Param ETypes:
+    UI16 val
+
+.. code-block:: C
+
+    int _rdrand16_step(unsigned short* val);
+
+.. admonition:: Intel Description
+
+    Read a hardware generated 16-bit random value and store the result in "val". Return 1 if a random value was generated, and 0 otherwise.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        IF HW_RND_GEN.ready == 1
+        	val[15:0] := HW_RND_GEN.data
+        	dst := 1
+        ELSE
+        	val[15:0] := 0
+        	dst := 0
+        FI
+        	
+
+_rdrand32_step
+^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Random
+:Header: immintrin.h
+:Return Type: int
+:Param Types:
+    unsigned int* val
+:Param ETypes:
+    UI32 val
+
+.. code-block:: C
+
+    int _rdrand32_step(unsigned int* val);
+
+.. admonition:: Intel Description
+
+    Read a hardware generated 32-bit random value and store the result in "val". Return 1 if a random value was generated, and 0 otherwise.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        IF HW_RND_GEN.ready == 1
+        	val[31:0] := HW_RND_GEN.data
+        	dst := 1
+        ELSE
+        	val[31:0] := 0
+        	dst := 0
+        FI
+        	
+
+_rdrand64_step
+^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Random
+:Header: immintrin.h
+:Return Type: int
+:Param Types:
+    unsigned __int64* val
+:Param ETypes:
+    UI64 val
+
+.. code-block:: C
+
+    int _rdrand64_step(unsigned __int64* val);
+
+.. admonition:: Intel Description
+
+    Read a hardware generated 64-bit random value and store the result in "val". Return 1 if a random value was generated, and 0 otherwise.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        IF HW_RND_GEN.ready == 1
+        	val[63:0] := HW_RND_GEN.data
+        	dst := 1
+        ELSE
+        	val[63:0] := 0
+        	dst := 0
+        FI
+        	
+
+_rdseed16_step
+^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Random
+:Header: immintrin.h
+:Return Type: int
+:Param Types:
+    unsigned short * val
+:Param ETypes:
+    UI16 val
+
+.. code-block:: C
+
+    int _rdseed16_step(unsigned short * val);
+
+.. admonition:: Intel Description
+
+    Read a 16-bit NIST SP800-90B and SP800-90C compliant random value and store in "val". Return 1 if a random value was generated, and 0 otherwise.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        IF HW_NRND_GEN.ready == 1
+        	val[15:0] := HW_NRND_GEN.data
+        	dst := 1
+        ELSE
+        	val[15:0] := 0
+        	dst := 0
+        FI
+        	
+
+_rdseed32_step
+^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Random
+:Header: immintrin.h
+:Return Type: int
+:Param Types:
+    unsigned int * val
+:Param ETypes:
+    UI32 val
+
+.. code-block:: C
+
+    int _rdseed32_step(unsigned int * val);
+
+.. admonition:: Intel Description
+
+    Read a 32-bit NIST SP800-90B and SP800-90C compliant random value and store in "val". Return 1 if a random value was generated, and 0 otherwise.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        IF HW_NRND_GEN.ready == 1
+        	val[31:0] := HW_NRND_GEN.data
+        	dst := 1
+        ELSE
+        	val[31:0] := 0
+        	dst := 0
+        FI
+        	
+
+_rdseed64_step
+^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Random
+:Header: immintrin.h
+:Return Type: int
+:Param Types:
+    unsigned __int64 * val
+:Param ETypes:
+    UI64 val
+
+.. code-block:: C
+
+    int _rdseed64_step(unsigned __int64 * val);
+
+.. admonition:: Intel Description
+
+    Read a 64-bit NIST SP800-90B and SP800-90C compliant random value and store in "val". Return 1 if a random value was generated, and 0 otherwise.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        IF HW_NRND_GEN.ready == 1
+        	val[63:0] := HW_NRND_GEN.data
+        	dst := 1
+        ELSE
+        	val[63:0] := 0
+        	dst := 0
+        FI
+        	
+

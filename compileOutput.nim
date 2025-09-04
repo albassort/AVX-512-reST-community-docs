@@ -206,19 +206,25 @@ for k,v  in signatures.pairs:
 
 var fileOutput = newStringStream()
 var indexOutput = newStringStream()
+
+let indexPrescript = readFile("./README.rst") 
+indexOutput.writeLine(indexPrescript)
+indexOutput.writeLine("")
+
 indexOutput.writeLine("Index\n=====\n")
 indexOutput.writeLine(".. toctree::")
-indexOutput.writeLine(getIndent(2) & ":maxdepth: 4" )
+indexOutput.writeLine(getIndent(2) & ":maxdepth: 1" )
 indexOutput.writeLine(getIndent(2) & ":caption: Contents" )
 indexOutput.writeLine("\n")
 
 proc addIntrinsic(intrinsic : Intrinsic, stream : var StringStream, border = '^') =
   stream.writeLine(intrinsic.function)
-  stream.writeLine('^'.repeat(intrinsic.function.len))
+  stream.writeLine(border.repeat(intrinsic.function.len))
 
   stream.writeLine(&":Tech: {intrinsic.tech.get()}")
   stream.writeLine(&":Category: {intrinsic.category}")
   stream.writeLine(&":Header: {intrinsic.header.get()}")
+  stream.writeLine(&":Searchable: {intrinsic.tech.get()}-{intrinsic.category}-{intrinsic.width}")
 
   var width : string
   if scanf(intrinsic.function, "_$*_", width):
@@ -300,6 +306,7 @@ var techs : seq[string]
 for tech, techFuncs in output.groupBy(x=> x.tech.get(), y=> y).pairs:
   fileOutput.writeLine(tech)
   fileOutput.writeLine('='.repeat(tech.len))
+  var subFiles : seq[string]
   for category, categoryFuncs in techFuncs.groupBy(x=> x.category, y=> y).pairs:
 
     fileOutput.writeLine(category)
@@ -310,10 +317,14 @@ for tech, techFuncs in output.groupBy(x=> x.tech.get(), y=> y).pairs:
       fileOutput.writeLine('~'.repeat(($width).len))
       
       var subFileOutput = newStringStream("")
+      let searcchable = &"{tech}-{category}-{width}"
+      subFileOutput.writeLine(searcchable)
+      subFileOutput.writeLine('='.repeat(searcchable.len))
+      subFileOutput.writeLine("")
 
       for intrinsic in widthFuncs:
         addIntrinsic(intrinsic, fileOutput)
-        addIntrinsic(intrinsic, subFileOutput)
+        addIntrinsic(intrinsic, subFileOutput, '-')
 
       subFileOutput.setPosition(0)
       let outputDir = splitOutputPath / Path(tech) / Path(category)
@@ -321,11 +332,29 @@ for tech, techFuncs in output.groupBy(x=> x.tech.get(), y=> y).pairs:
       let outputPath =  outputDir / Path &"{width}.rst"
       writeFile($outputPath, subFileOutput.readAll())
 
-      indexOutput.writeLine(getIndent(2) & $outputPath)
+      let relPath = Path(category) / Path &"{width}.rst"
 
-indexOutput.writeLine("")
-let indexPrescript = readFile("./README.rst") 
-indexOutput.writeLine(indexPrescript)
+      subfiles.add($relPath)
+
+  let index =  newStringStream()
+  index.writeLine(tech)
+  index.writeLine('='.repeat(tech.len))
+  index.writeLine("")
+
+  index.writeLine(".. toctree::")
+  index.writeLine(getIndent(2) & ":maxdepth: 4")
+  index.writeLine("")
+  for file in  subfiles:
+    index.writeLine(getIndent(2) & file)
+
+  index.setPosition(0)
+
+  let indexPath = &"docs/{tech}/index.rst"
+
+  writeFile(indexPath, index.readAll())
+  indexOutput.writeLine(getIndent(2) & indexPath)
+
+
 
 indexOutput.setPosition(0)
 fileOutput.setPosition(0)

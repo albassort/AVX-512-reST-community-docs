@@ -1,0 +1,834 @@
+_incsspd
+^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+:Param Types:
+    int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    void _incsspd(int a);
+
+.. admonition:: Intel Description
+
+    Increment the shadow stack pointer by 4 times the value specified in bits [7:0] of "a".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        SSP := SSP + a[7:0] * 4
+        	
+
+_incsspq
+^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+:Param Types:
+    int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    void _incsspq(int a);
+
+.. admonition:: Intel Description
+
+    Increment the shadow stack pointer by 8 times the value specified in bits [7:0] of "a".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        SSP := SSP + a[7:0] * 8
+        	
+
+_rdsspd_i32
+^^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: __int32
+
+.. code-block:: C
+
+    __int32 _rdsspd_i32(void );
+
+.. admonition:: Intel Description
+
+    Read the low 32-bits of the current shadow stack pointer, and store the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        dst := SSP[31:0]
+        	
+
+_rdsspq_i64
+^^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: __int64
+
+.. code-block:: C
+
+    __int64 _rdsspq_i64(void );
+
+.. admonition:: Intel Description
+
+    Read the current shadow stack pointer, and store the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        dst := SSP[63:0]
+        	
+
+_saveprevssp
+^^^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+
+.. code-block:: C
+
+    void _saveprevssp(void );
+
+.. admonition:: Intel Description
+
+    Save the previous shadow stack pointer context.
+
+_rstorssp
+^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+
+.. code-block:: C
+
+    void _rstorssp(void * p);
+
+.. admonition:: Intel Description
+
+    Restore the saved shadow stack pointer from the shadow stack restore token previously created on shadow stack by saveprevssp.
+
+_wrssd
+^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+:Param Types:
+    __int32 val, 
+    void * p
+:Param ETypes:
+    UI32 val, 
+     p
+
+.. code-block:: C
+
+    void _wrssd(__int32 val, void * p);
+
+.. admonition:: Intel Description
+
+    Write 32-bit value in "val" to a shadow stack page in memory specified by "p".
+
+_wrssq
+^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+:Param Types:
+    __int64 val, 
+    void * p
+:Param ETypes:
+    UI64 val, 
+     p
+
+.. code-block:: C
+
+    void _wrssq(__int64 val, void * p);
+
+.. admonition:: Intel Description
+
+    Write 64-bit value in "val" to a shadow stack page in memory specified by "p".
+
+_wrussd
+^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+:Param Types:
+    __int32 val, 
+    void * p
+:Param ETypes:
+    UI32 val, 
+     p
+
+.. code-block:: C
+
+    void _wrussd(__int32 val, void * p);
+
+.. admonition:: Intel Description
+
+    Write 32-bit value in "val" to a user shadow stack page in memory specified by "p".
+
+_wrussq
+^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+:Param Types:
+    __int64 val, 
+    void * p
+:Param ETypes:
+    UI64 val, 
+     p
+
+.. code-block:: C
+
+    void _wrussq(__int64 val, void * p);
+
+.. admonition:: Intel Description
+
+    Write 64-bit value in "val" to a user shadow stack page in memory specified by "p".
+
+_setssbsy
+^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+
+.. code-block:: C
+
+    void _setssbsy(void );
+
+.. admonition:: Intel Description
+
+    Mark shadow stack pointed to by IA32_PL0_SSP as busy.
+
+_clrssbsy
+^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+
+.. code-block:: C
+
+    void _clrssbsy(void * p);
+
+.. admonition:: Intel Description
+
+    Mark shadow stack pointed to by "p" as not busy.
+
+_get_ssp
+^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: __int32
+
+.. code-block:: C
+
+    __int64 _get_ssp(void );
+
+.. admonition:: Intel Description
+
+    If CET is enabled, read the low 32-bits of the current shadow stack pointer, and store the result in "dst". Otherwise return 0.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        dst := SSP[31:0]
+        	
+
+_get_ssp
+^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: __int64
+
+.. code-block:: C
+
+    __int64 _get_ssp(void );
+
+.. admonition:: Intel Description
+
+    If CET is enabled, read the current shadow stack pointer, and store the result in "dst". Otherwise return 0.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        dst := SSP[63:0]
+        	
+
+_inc_ssp
+^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+:Param Types:
+    unsigned int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    void _inc_ssp(unsigned int a);
+
+.. admonition:: Intel Description
+
+    Increment the shadow stack pointer by 4 times the value specified in bits [7:0] of "a".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        SSP := SSP + a[7:0] * 4
+        	
+
+_bnd_set_ptr_bounds
+^^^^^^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void *
+:Param Types:
+    const void * srcmem, 
+    size_t size
+:Param ETypes:
+     srcmem, 
+    UI64 size
+
+.. code-block:: C
+
+    void* _bnd_set_ptr_bounds(const void* srcmem, size_t size)
+
+.. admonition:: Intel Description
+
+    Make a pointer with the value of "srcmem" and bounds set to ["srcmem", "srcmem" + "size" - 1], and store the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        dst := srcmem
+        dst.LB := srcmem.LB
+        dst.UB := srcmem + size - 1
+        	
+
+_bnd_narrow_ptr_bounds
+^^^^^^^^^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void *
+:Param Types:
+    const void * q, 
+    const void * r, 
+    size_t size
+:Param ETypes:
+     q, 
+     r, 
+    UI64 size
+
+.. code-block:: C
+
+    void* _bnd_narrow_ptr_bounds(const void* q, const void* r,
+                                 size_t size)
+
+.. admonition:: Intel Description
+
+    Narrow the bounds for pointer "q" to the intersection of the bounds of "r" and the bounds ["q", "q" + "size" - 1], and store the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        dst := q
+        IF r.LB > (q + size - 1) OR r.UB < q
+        	dst.LB := 1
+        	dst.UB := 0
+        ELSE
+        	dst.LB := MAX(r.LB, q)
+        	dst.UB := MIN(r.UB, (q + size - 1))
+        FI
+        	
+
+_bnd_copy_ptr_bounds
+^^^^^^^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void *
+:Param Types:
+    const void * q, 
+    const void * r
+:Param ETypes:
+     q, 
+     r
+
+.. code-block:: C
+
+    void * _bnd_copy_ptr_bounds(const void * q, const void * r);
+
+.. admonition:: Intel Description
+
+    Make a pointer with the value of "q" and bounds set to the bounds of "r" (e.g. copy the bounds of "r" to pointer "q"), and store the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        dst := q
+        dst.LB := r.LB
+        dst.UB := r.UB
+        	
+
+_bnd_init_ptr_bounds
+^^^^^^^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void *
+
+.. code-block:: C
+
+    void * _bnd_init_ptr_bounds(const void * q);
+
+.. admonition:: Intel Description
+
+    Make a pointer with the value of "q" and open bounds, which allow the pointer to access the entire virtual address space, and store the result in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        dst := q
+        dst.LB := 0
+        dst.UB := 0
+        	
+
+_bnd_store_ptr_bounds
+^^^^^^^^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+:Param Types:
+    const void ** ptr_addr, 
+    const void * ptr_val
+:Param ETypes:
+     ptr_addr, 
+     ptr_val
+
+.. code-block:: C
+
+    void _bnd_store_ptr_bounds(const void** ptr_addr,
+                               const void* ptr_val)
+
+.. admonition:: Intel Description
+
+    Stores the bounds of "ptr_val" pointer in memory at address "ptr_addr".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        MEM[ptr_addr].LB := ptr_val.LB
+        MEM[ptr_addr].UB := ptr_val.UB
+        	
+
+_bnd_chk_ptr_lbounds
+^^^^^^^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+
+.. code-block:: C
+
+    void _bnd_chk_ptr_lbounds(const void * q);
+
+.. admonition:: Intel Description
+
+    Checks if "q" is within its lower bound, and throws a #BR if not.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        IF q < q.LB
+        	#BR
+        FI
+        	
+
+_bnd_chk_ptr_ubounds
+^^^^^^^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+
+.. code-block:: C
+
+    void _bnd_chk_ptr_ubounds(const void * q);
+
+.. admonition:: Intel Description
+
+    Checks if "q" is within its upper bound, and throws a #BR if not.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        IF q > q.UB
+        	#BR
+        FI
+        	
+
+_bnd_chk_ptr_bounds
+^^^^^^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+:Param Types:
+    const void * q, 
+    size_t size
+:Param ETypes:
+     q, 
+    UI64 size
+
+.. code-block:: C
+
+    void _bnd_chk_ptr_bounds(const void * q, size_t size);
+
+.. admonition:: Intel Description
+
+    Checks if ["q", "q" + "size" - 1] is within the lower and upper bounds of "q" and throws a #BR if not.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        IF (q + size - 1) < q.LB OR (q + size - 1) > q.UB
+        	#BR
+        FI
+        	
+
+_bnd_get_ptr_lbound
+^^^^^^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: const void *
+
+.. code-block:: C
+
+    const void * _bnd_get_ptr_lbound(const void * q);
+
+.. admonition:: Intel Description
+
+    Return the lower bound of "q".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        dst := q.LB
+        	
+
+_bnd_get_ptr_ubound
+^^^^^^^^^^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: const void *
+
+.. code-block:: C
+
+    const void * _bnd_get_ptr_ubound(const void * q);
+
+.. admonition:: Intel Description
+
+    Return the upper bound of "q".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        dst := q.UB
+        	
+
+_ptwrite32
+^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+:Param Types:
+    unsigned int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    void _ptwrite32(unsigned int a);
+
+.. admonition:: Intel Description
+
+    Insert the 32-bit data from "a" into a Processor Trace stream via a PTW packet. The PTW packet will be inserted if tracing is currently enabled and ptwrite is currently enabled. The current IP will also be inserted via a FUP packet if FUPonPTW is enabled.
+
+_ptwrite64
+^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+:Param Types:
+    unsigned __int64 a
+:Param ETypes:
+    UI64 a
+
+.. code-block:: C
+
+    void _ptwrite64(unsigned __int64 a);
+
+.. admonition:: Intel Description
+
+    Insert the 64-bit data from "a" into a Processor Trace stream via a PTW packet. The PTW packet will be inserted if tracing is currently enabled and ptwrite is currently enabled. The current IP will also be inserted via a FUP packet if FUPonPTW is enabled.
+
+_enclu_u32
+^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: unsigned int
+:Param Types:
+    const int a, 
+    size_t* __data
+:Param ETypes:
+    UI32 a, 
+    UI64 __data
+
+.. code-block:: C
+
+    unsigned int _enclu_u32(const int a, size_t* __data);
+
+.. admonition:: Intel Description
+
+    Invoke the Intel SGX enclave user (non-privilege) leaf function specified by "a", and return the error code. The "__data" array contains 3 32- or 64-bit elements that may act as input, output, or be unused, depending on the semantics of the specified leaf function; these correspond to ebx, ecx, and edx.
+
+_encls_u32
+^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: unsigned int
+:Param Types:
+    const int a, 
+    size_t* __data
+:Param ETypes:
+    UI32 a, 
+    UI64 __data
+
+.. code-block:: C
+
+    unsigned int _encls_u32(const int a, size_t* __data);
+
+.. admonition:: Intel Description
+
+    Invoke the Intel SGX enclave system (privileged) leaf function specified by "a", and return the error code. The "__data" array contains 3 32- or 64-bit elements that may act as input, output, or be unused, depending on the semantics of the specified leaf function; these correspond to ebx, ecx, and edx.
+
+_enclv_u32
+^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: unsigned int
+:Param Types:
+    const int a, 
+    size_t* __data
+:Param ETypes:
+    UI32 a, 
+    UI64 __data
+
+.. code-block:: C
+
+    unsigned int _enclv_u32(const int a, size_t* __data);
+
+.. admonition:: Intel Description
+
+    Invoke the Intel SGX enclave virtualized (VMM) leaf function specified by "a", and return the error code. The "__data" array contains 3 32- or 64-bit elements that may act as input, output, or be unused, depending on the semantics of the specified leaf function; these correspond to ebx, ecx, and edx.
+
+_wbinvd
+^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+
+.. code-block:: C
+
+    void _wbinvd(void );
+
+.. admonition:: Intel Description
+
+    Write back and flush internal caches.
+    		Initiate writing-back and flushing of external
+    		caches.
+
+_pconfig_u32
+^^^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: unsigned int
+:Param Types:
+    int a, 
+    size_t* __data
+:Param ETypes:
+    UI32 a, 
+    UI64 __data
+
+.. code-block:: C
+
+    unsigned int _pconfig_u32(int a, size_t* __data);
+
+.. admonition:: Intel Description
+
+    Invoke the PCONFIG leaf function specified by "a". The "__data" array contains 3 32- or 64-bit elements that may act as input, output, or be unused, depending on the semantics of the specified leaf function; these correspond to ebx, ecx, and edx. May return the value in eax, depending on the semantics of the specified leaf function.
+
+_xsusldtrk
+^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+
+.. code-block:: C
+
+    
+
+.. admonition:: Intel Description
+
+    Mark the start of a TSX (HLE/RTM) suspend load address tracking region. If this is used inside a transactional region, subsequent loads are not added to the read set of the transaction. If this is used inside a suspend load address tracking region it will cause transaction abort. If this is used outside of a transactional region it behaves like a NOP.
+
+_xresldtrk
+^^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+
+.. code-block:: C
+
+    
+
+.. admonition:: Intel Description
+
+    Mark the end of a TSX (HLE/RTM) suspend load address tracking region. If this is used inside a suspend load address tracking region it will end the suspend region and all following load addresses will be added to the transaction read set. If this is used inside an active transaction but not in a suspend region it will cause transaction abort. If this is used outside of a transactional region it behaves like a NOP.
+
+_tpause
+^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: unsigned char
+:Param Types:
+    unsigned int ctrl, 
+    unsigned __int64 counter
+:Param ETypes:
+    UI32 ctrl, 
+    UI64 counter
+
+.. code-block:: C
+
+    unsigned char _tpause(unsigned int ctrl, unsigned __int64 counter);
+
+.. admonition:: Intel Description
+
+    Directs the processor to enter an implementation-dependent optimized state until the TSC reaches or exceeds the value specified in "counter". Bit 0 of "ctrl" selects between a lower power (cleared) or faster wakeup (set) optimized state. Returns the carry flag (CF). If the processor that executed a UMWAIT instruction wakes due to the expiration of the operating system timelimit, the instructions sets RFLAGS.CF; otherwise, that flag is cleared.
+
+_umwait
+^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: unsigned char
+:Param Types:
+    unsigned int ctrl, 
+    unsigned __int64 counter
+:Param ETypes:
+    UI32 ctrl, 
+    UI64 counter
+
+.. code-block:: C
+
+    unsigned char _umwait(unsigned int ctrl, unsigned __int64 counter);
+
+.. admonition:: Intel Description
+
+    Directs the processor to enter an implementation-dependent optimized state while monitoring a range of addresses. The instruction wakes up when the TSC reaches or exceeds the value specified in "counter" (if the monitoring hardware did not trigger beforehand). Bit 0 of "ctrl" selects between a lower power (cleared) or faster wakeup (set) optimized state. Returns the carry flag (CF). If the processor that executed a UMWAIT instruction wakes due to the expiration of the operating system timelimit, the instructions sets RFLAGS.CF; otherwise, that flag is cleared.
+
+_umonitor
+^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+
+.. code-block:: C
+
+    void _umonitor(void* a);
+
+.. admonition:: Intel Description
+
+    Sets up a linear address range to be
+    		monitored by hardware and activates the
+    		monitor. The address range should be a writeback
+    		memory caching type. The address is
+    		contained in "a".
+
+_wbnoinvd
+^^^^^^^^^
+:Tech: Other
+:Category: Miscellaneous
+:Header: immintrin.h
+:Return Type: void
+
+.. code-block:: C
+
+    void _wbnoinvd(void );
+
+.. admonition:: Intel Description
+
+    Write back and do not flush internal caches.
+    		Initiate writing-back without flushing of external
+    		caches.
+

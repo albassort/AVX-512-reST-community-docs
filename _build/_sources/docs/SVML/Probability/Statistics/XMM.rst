@@ -1,0 +1,547 @@
+SVML-Probability/Statistics-XMM
+===============================
+
+_mm_cdfnorm_ph
+--------------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128h
+:Param Types:
+    __m128h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m128h _mm_cdfnorm_ph(__m128h a);
+
+.. admonition:: Intel Description
+
+    Compute the cumulative distribution function of packed half-precision (16-bit) floating-point elements in "a" using the normal distribution, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := j*16
+        	dst[i+15:i] := CDFNormal(a[i+15:i])
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_cdfnorminv_ph
+-----------------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128h
+:Param Types:
+    __m128h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m128h _mm_cdfnorminv_ph(__m128h a);
+
+.. admonition:: Intel Description
+
+    Compute the inverse cumulative distribution function of packed half-precision (16-bit) floating-point elements in "a" using the normal distribution, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := j*16
+        	dst[i+15:i] := InverseCDFNormal(a[i+15:i])
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_erf_ph
+----------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128h
+:Param Types:
+    __m128h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m128h _mm_erf_ph(__m128h a);
+
+.. admonition:: Intel Description
+
+    Compute the error function of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := j*16
+        	dst[i+15:i] := ERF(a[i+15:i])
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_erfc_ph
+-----------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128h
+:Param Types:
+    __m128h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m128h _mm_erfc_ph(__m128h a);
+
+.. admonition:: Intel Description
+
+    Compute the complementary error function of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := j*16
+        	dst[i+15:i] := 1.0 - ERF(a[i+15:i])
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_erfcinv_ph
+--------------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128h
+:Param Types:
+    __m128h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m128h _mm_erfcinv_ph(__m128h a);
+
+.. admonition:: Intel Description
+
+    Compute the inverse complementary error function of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := j*16
+        	dst[i+15:i] := 1.0 / (1.0 - ERF(a[i+15:i]))
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_erfinv_ph
+-------------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128h
+:Param Types:
+    __m128h a
+:Param ETypes:
+    FP16 a
+
+.. code-block:: C
+
+    __m128h _mm_erfinv_ph(__m128h a);
+
+.. admonition:: Intel Description
+
+    Compute the inverse error function of packed half-precision (16-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 7
+        	i := j*16
+        	dst[i+15:i] := 1.0 / ERF(a[i+15:i])
+        ENDFOR
+        dst[MAX:128] := 0
+        
+
+_mm_cdfnorm_pd
+--------------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m128d _mm_cdfnorm_pd(__m128d a);
+
+.. admonition:: Intel Description
+
+    Compute the cumulative distribution function of packed double-precision (64-bit) floating-point elements in "a" using the normal distribution, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 1
+        	i := j*64
+        	dst[i+63:i] := CDFNormal(a[i+63:i])
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_cdfnorm_ps
+--------------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m128 _mm_cdfnorm_ps(__m128 a);
+
+.. admonition:: Intel Description
+
+    Compute the cumulative distribution function of packed single-precision (32-bit) floating-point elements in "a" using the normal distribution, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 3
+        	i := j*32
+        	dst[i+31:i] := CDFNormal(a[i+31:i])
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_cdfnorminv_pd
+-----------------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m128d _mm_cdfnorminv_pd(__m128d a);
+
+.. admonition:: Intel Description
+
+    Compute the inverse cumulative distribution function of packed double-precision (64-bit) floating-point elements in "a" using the normal distribution, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 1
+        	i := j*64
+        	dst[i+63:i] := InverseCDFNormal(a[i+63:i])
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_cdfnorminv_ps
+-----------------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m128 _mm_cdfnorminv_ps(__m128 a);
+
+.. admonition:: Intel Description
+
+    Compute the inverse cumulative distribution function of packed single-precision (32-bit) floating-point elements in "a" using the normal distribution, and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 3
+        	i := j*32
+        	dst[i+31:i] := InverseCDFNormal(a[i+31:i])
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_erf_ps
+----------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m128 _mm_erf_ps(__m128 a);
+
+.. admonition:: Intel Description
+
+    Compute the error function of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 3
+        	i := j*32
+        	dst[i+31:i] := ERF(a[i+31:i])
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_erfc_pd
+-----------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m128d _mm_erfc_pd(__m128d a);
+
+.. admonition:: Intel Description
+
+    Compute the complementary error function of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 1
+        	i := j*64
+        	dst[i+63:i] := 1.0 - ERF(a[i+63:i])
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_erfc_ps
+-----------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m128 _mm_erfc_ps(__m128 a);
+
+.. admonition:: Intel Description
+
+    Compute the complementary error function of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 3
+        	i := j*32
+        	dst[i+63:i] := 1.0 - ERF(a[i+31:i])
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_erfcinv_pd
+--------------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m128d _mm_erfcinv_pd(__m128d a);
+
+.. admonition:: Intel Description
+
+    Compute the inverse complementary error function of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 1
+        	i := j*64
+        	dst[i+63:i] := 1.0 / (1.0 - ERF(a[i+63:i]))
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_erfcinv_ps
+--------------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m128 _mm_erfcinv_ps(__m128 a);
+
+.. admonition:: Intel Description
+
+    Compute the inverse complementary error function of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 3
+        	i := j*32
+        	dst[i+63:i] := 1.0 / (1.0 - ERF(a[i+31:i]))
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_erfinv_pd
+-------------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    __m128d a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m128d _mm_erfinv_pd(__m128d a);
+
+.. admonition:: Intel Description
+
+    Compute the inverse error function of packed double-precision (64-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 1
+        	i := j*64
+        	dst[i+63:i] := 1.0 / ERF(a[i+63:i])
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+
+_mm_erfinv_ps
+-------------
+:Tech: SVML
+:Category: Probability/Statistics
+:Header: immintrin.h
+:Searchable: SVML-Probability/Statistics-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    __m128 a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m128 _mm_erfinv_ps(__m128 a);
+
+.. admonition:: Intel Description
+
+    Compute the inverse error function of packed single-precision (32-bit) floating-point elements in "a", and store the results in "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        FOR j := 0 to 3
+        	i := j*32
+        	dst[i+63:i] := 1.0 / ERF(a[i+31:i])
+        ENDFOR
+        dst[MAX:128] := 0
+        	
+

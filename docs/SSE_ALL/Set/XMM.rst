@@ -1,0 +1,997 @@
+SSE_ALL-Set-XMM
+===============
+
+_mm_set_ss
+----------
+:Tech: SSE_ALL
+:Category: Set
+:Header: xmmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    float a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m128 _mm_set_ss(float a);
+
+.. admonition:: Intel Description
+
+    Copy single-precision (32-bit) floating-point element "a" to the lower element of "dst", and zero the upper 3 elements.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := a[31:0]
+        dst[127:32] := 0
+        	
+
+_mm_set1_ps
+-----------
+:Tech: SSE_ALL
+:Category: Set
+:Header: xmmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    float a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m128 _mm_set1_ps(float a);
+
+.. admonition:: Intel Description
+
+    Broadcast single-precision (32-bit) floating-point value "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*32
+        	dst[i+31:i] := a[31:0]
+        ENDFOR
+        	
+
+_mm_set_ps1
+-----------
+:Tech: SSE_ALL
+:Category: Set
+:Header: xmmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    float a
+:Param ETypes:
+    FP32 a
+
+.. code-block:: C
+
+    __m128 _mm_set_ps1(float a);
+
+.. admonition:: Intel Description
+
+    Broadcast single-precision (32-bit) floating-point value "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*32
+        	dst[i+31:i] := a[31:0]
+        ENDFOR
+        	
+
+_mm_set_ps
+----------
+:Tech: SSE_ALL
+:Category: Set
+:Header: xmmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    float e3, 
+    float e2, 
+    float e1, 
+    float e0
+:Param ETypes:
+    FP32 e3, 
+    FP32 e2, 
+    FP32 e1, 
+    FP32 e0
+
+.. code-block:: C
+
+    __m128 _mm_set_ps(float e3, float e2, float e1, float e0);
+
+.. admonition:: Intel Description
+
+    Set packed single-precision (32-bit) floating-point elements in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := e0
+        dst[63:32] := e1
+        dst[95:64] := e2
+        dst[127:96] := e3
+        	
+
+_mm_setr_ps
+-----------
+:Tech: SSE_ALL
+:Category: Set
+:Header: xmmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+:Param Types:
+    float e3, 
+    float e2, 
+    float e1, 
+    float e0
+:Param ETypes:
+    FP32 e3, 
+    FP32 e2, 
+    FP32 e1, 
+    FP32 e0
+
+.. code-block:: C
+
+    __m128 _mm_setr_ps(float e3, float e2, float e1, float e0);
+
+.. admonition:: Intel Description
+
+    Set packed single-precision (32-bit) floating-point elements in "dst" with the supplied values in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := e3
+        dst[63:32] := e2
+        dst[95:64] := e1
+        dst[127:96] := e0
+        	
+
+_mm_setzero_ps
+--------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: xmmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128
+
+.. code-block:: C
+
+    __m128 _mm_setzero_ps(void );
+
+.. admonition:: Intel Description
+
+    Return vector of type __m128 with all elements set to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[MAX:0] := 0
+        	
+
+_mm_set_epi64
+-------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m64 e1, 
+    __m64 e0
+:Param ETypes:
+    UI64 e1, 
+    UI64 e0
+
+.. code-block:: C
+
+    __m128i _mm_set_epi64(__m64 e1, __m64 e0);
+
+.. admonition:: Intel Description
+
+    Set packed 64-bit integers in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := e0
+        dst[127:64] := e1
+        	
+
+_mm_set_epi64x
+--------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __int64 e1, 
+    __int64 e0
+:Param ETypes:
+    UI64 e1, 
+    UI64 e0
+
+.. code-block:: C
+
+    __m128i _mm_set_epi64x(__int64 e1, __int64 e0);
+
+.. admonition:: Intel Description
+
+    Set packed 64-bit integers in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := e0
+        dst[127:64] := e1
+        	
+
+_mm_set_epi32
+-------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    int e3, 
+    int e2, 
+    int e1, 
+    int e0
+:Param ETypes:
+    UI32 e3, 
+    UI32 e2, 
+    UI32 e1, 
+    UI32 e0
+
+.. code-block:: C
+
+    __m128i _mm_set_epi32(int e3, int e2, int e1, int e0);
+
+.. admonition:: Intel Description
+
+    Set packed 32-bit integers in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := e0
+        dst[63:32] := e1
+        dst[95:64] := e2
+        dst[127:96] := e3
+        	
+
+_mm_set_epi16
+-------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    short e7, 
+    short e6, 
+    short e5, 
+    short e4, 
+    short e3, 
+    short e2, 
+    short e1, 
+    short e0
+:Param ETypes:
+    UI16 e7, 
+    UI16 e6, 
+    UI16 e5, 
+    UI16 e4, 
+    UI16 e3, 
+    UI16 e2, 
+    UI16 e1, 
+    UI16 e0
+
+.. code-block:: C
+
+    __m128i _mm_set_epi16(short e7, short e6, short e5,
+                          short e4, short e3, short e2,
+                          short e1, short e0)
+
+.. admonition:: Intel Description
+
+    Set packed 16-bit integers in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[15:0] := e0
+        dst[31:16] := e1
+        dst[47:32] := e2
+        dst[63:48] := e3
+        dst[79:64] := e4
+        dst[95:80] := e5
+        dst[111:96] := e6
+        dst[127:112] := e7
+        	
+
+_mm_set_epi8
+------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    char e15, 
+    char e14, 
+    char e13, 
+    char e12, 
+    char e11, 
+    char e10, 
+    char e9, 
+    char e8, 
+    char e7, 
+    char e6, 
+    char e5, 
+    char e4, 
+    char e3, 
+    char e2, 
+    char e1, 
+    char e0
+:Param ETypes:
+    UI8 e15, 
+    UI8 e14, 
+    UI8 e13, 
+    UI8 e12, 
+    UI8 e11, 
+    UI8 e10, 
+    UI8 e9, 
+    UI8 e8, 
+    UI8 e7, 
+    UI8 e6, 
+    UI8 e5, 
+    UI8 e4, 
+    UI8 e3, 
+    UI8 e2, 
+    UI8 e1, 
+    UI8 e0
+
+.. code-block:: C
+
+    __m128i _mm_set_epi8(char e15, char e14, char e13, char e12,
+                         char e11, char e10, char e9, char e8,
+                         char e7, char e6, char e5, char e4,
+                         char e3, char e2, char e1, char e0)
+
+.. admonition:: Intel Description
+
+    Set packed 8-bit integers in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[7:0] := e0
+        dst[15:8] := e1
+        dst[23:16] := e2
+        dst[31:24] := e3
+        dst[39:32] := e4
+        dst[47:40] := e5
+        dst[55:48] := e6
+        dst[63:56] := e7
+        dst[71:64] := e8
+        dst[79:72] := e9
+        dst[87:80] := e10
+        dst[95:88] := e11
+        dst[103:96] := e12
+        dst[111:104] := e13
+        dst[119:112] := e14
+        dst[127:120] := e15
+        	
+
+_mm_set1_epi64
+--------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m64 a
+:Param ETypes:
+    UI64 a
+
+.. code-block:: C
+
+    __m128i _mm_set1_epi64(__m64 a);
+
+.. admonition:: Intel Description
+
+    Broadcast 64-bit integer "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*64
+        	dst[i+63:i] := a[63:0]
+        ENDFOR
+        	
+
+_mm_set1_epi64x
+---------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __int64 a
+:Param ETypes:
+    UI64 a
+
+.. code-block:: C
+
+    __m128i _mm_set1_epi64x(__int64 a);
+
+.. admonition:: Intel Description
+
+    Broadcast 64-bit integer "a" to all elements of "dst". This intrinsic may generate the "vpbroadcastq".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*64
+        	dst[i+63:i] := a[63:0]
+        ENDFOR
+        	
+
+_mm_set1_epi32
+--------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    int a
+:Param ETypes:
+    UI32 a
+
+.. code-block:: C
+
+    __m128i _mm_set1_epi32(int a);
+
+.. admonition:: Intel Description
+
+    Broadcast 32-bit integer "a" to all elements of "dst". This intrinsic may generate "vpbroadcastd".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 3
+        	i := j*32
+        	dst[i+31:i] := a[31:0]
+        ENDFOR
+        	
+
+_mm_set1_epi16
+--------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    short a
+:Param ETypes:
+    UI16 a
+
+.. code-block:: C
+
+    __m128i _mm_set1_epi16(short a);
+
+.. admonition:: Intel Description
+
+    Broadcast 16-bit integer "a" to all all elements of "dst". This intrinsic may generate "vpbroadcastw".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 7
+        	i := j*16
+        	dst[i+15:i] := a[15:0]
+        ENDFOR
+        	
+
+_mm_set1_epi8
+-------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    char a
+:Param ETypes:
+    UI8 a
+
+.. code-block:: C
+
+    __m128i _mm_set1_epi8(char a);
+
+.. admonition:: Intel Description
+
+    Broadcast 8-bit integer "a" to all elements of "dst". This intrinsic may generate "vpbroadcastb".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 15
+        	i := j*8
+        	dst[i+7:i] := a[7:0]
+        ENDFOR
+        	
+
+_mm_setr_epi64
+--------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    __m64 e1, 
+    __m64 e0
+:Param ETypes:
+    UI64 e1, 
+    UI64 e0
+
+.. code-block:: C
+
+    __m128i _mm_setr_epi64(__m64 e1, __m64 e0);
+
+.. admonition:: Intel Description
+
+    Set packed 64-bit integers in "dst" with the supplied values in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := e1
+        dst[127:64] := e0
+        	
+
+_mm_setr_epi32
+--------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    int e3, 
+    int e2, 
+    int e1, 
+    int e0
+:Param ETypes:
+    UI32 e3, 
+    UI32 e2, 
+    UI32 e1, 
+    UI32 e0
+
+.. code-block:: C
+
+    __m128i _mm_setr_epi32(int e3, int e2, int e1, int e0);
+
+.. admonition:: Intel Description
+
+    Set packed 32-bit integers in "dst" with the supplied values in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[31:0] := e3
+        dst[63:32] := e2
+        dst[95:64] := e1
+        dst[127:96] := e0
+        	
+
+_mm_setr_epi16
+--------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    short e7, 
+    short e6, 
+    short e5, 
+    short e4, 
+    short e3, 
+    short e2, 
+    short e1, 
+    short e0
+:Param ETypes:
+    UI16 e7, 
+    UI16 e6, 
+    UI16 e5, 
+    UI16 e4, 
+    UI16 e3, 
+    UI16 e2, 
+    UI16 e1, 
+    UI16 e0
+
+.. code-block:: C
+
+    __m128i _mm_setr_epi16(short e7, short e6, short e5,
+                           short e4, short e3, short e2,
+                           short e1, short e0)
+
+.. admonition:: Intel Description
+
+    Set packed 16-bit integers in "dst" with the supplied values in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[15:0] := e7
+        dst[31:16] := e6
+        dst[47:32] := e5
+        dst[63:48] := e4
+        dst[79:64] := e3
+        dst[95:80] := e2
+        dst[111:96] := e1
+        dst[127:112] := e0
+        	
+
+_mm_setr_epi8
+-------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+:Param Types:
+    char e15, 
+    char e14, 
+    char e13, 
+    char e12, 
+    char e11, 
+    char e10, 
+    char e9, 
+    char e8, 
+    char e7, 
+    char e6, 
+    char e5, 
+    char e4, 
+    char e3, 
+    char e2, 
+    char e1, 
+    char e0
+:Param ETypes:
+    UI8 e15, 
+    UI8 e14, 
+    UI8 e13, 
+    UI8 e12, 
+    UI8 e11, 
+    UI8 e10, 
+    UI8 e9, 
+    UI8 e8, 
+    UI8 e7, 
+    UI8 e6, 
+    UI8 e5, 
+    UI8 e4, 
+    UI8 e3, 
+    UI8 e2, 
+    UI8 e1, 
+    UI8 e0
+
+.. code-block:: C
+
+    __m128i _mm_setr_epi8(char e15, char e14, char e13,
+                          char e12, char e11, char e10, char e9,
+                          char e8, char e7, char e6, char e5,
+                          char e4, char e3, char e2, char e1,
+                          char e0)
+
+.. admonition:: Intel Description
+
+    Set packed 8-bit integers in "dst" with the supplied values in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[7:0] := e15
+        dst[15:8] := e14
+        dst[23:16] := e13
+        dst[31:24] := e12
+        dst[39:32] := e11
+        dst[47:40] := e10
+        dst[55:48] := e9
+        dst[63:56] := e8
+        dst[71:64] := e7
+        dst[79:72] := e6
+        dst[87:80] := e5
+        dst[95:88] := e4
+        dst[103:96] := e3
+        dst[111:104] := e2
+        dst[119:112] := e1
+        dst[127:120] := e0
+        	
+
+_mm_setzero_si128
+-----------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128i
+
+.. code-block:: C
+
+    
+
+.. admonition:: Intel Description
+
+    Return vector of type __m128i with all elements set to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[MAX:0] := 0
+        	
+
+_mm_set_sd
+----------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    double a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m128d _mm_set_sd(double a);
+
+.. admonition:: Intel Description
+
+    Copy double-precision (64-bit) floating-point element "a" to the lower element of "dst", and zero the upper element.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := a[63:0]
+        dst[127:64] := 0
+        	
+
+_mm_set1_pd
+-----------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    double a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m128d _mm_set1_pd(double a);
+
+.. admonition:: Intel Description
+
+    Broadcast double-precision (64-bit) floating-point value "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*64
+        	dst[i+63:i] := a[63:0]
+        ENDFOR
+        	
+
+_mm_set_pd1
+-----------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    double a
+:Param ETypes:
+    FP64 a
+
+.. code-block:: C
+
+    __m128d _mm_set_pd1(double a);
+
+.. admonition:: Intel Description
+
+    Broadcast double-precision (64-bit) floating-point value "a" to all elements of "dst".
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        FOR j := 0 to 1
+        	i := j*64
+        	dst[i+63:i] := a[63:0]
+        ENDFOR
+        	
+
+_mm_set_pd
+----------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    double e1, 
+    double e0
+:Param ETypes:
+    FP64 e1, 
+    FP64 e0
+
+.. code-block:: C
+
+    __m128d _mm_set_pd(double e1, double e0);
+
+.. admonition:: Intel Description
+
+    Set packed double-precision (64-bit) floating-point elements in "dst" with the supplied values.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := e0
+        dst[127:64] := e1
+        	
+
+_mm_setr_pd
+-----------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+:Param Types:
+    double e1, 
+    double e0
+:Param ETypes:
+    FP64 e1, 
+    FP64 e0
+
+.. code-block:: C
+
+    __m128d _mm_setr_pd(double e1, double e0);
+
+.. admonition:: Intel Description
+
+    Set packed double-precision (64-bit) floating-point elements in "dst" with the supplied values in reverse order.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[63:0] := e1
+        dst[127:64] := e0
+        	
+
+_mm_setzero_pd
+--------------
+:Tech: SSE_ALL
+:Category: Set
+:Header: emmintrin.h
+:Searchable: SSE_ALL-Set-XMM
+:Register: XMM 128 bit
+:Return Type: __m128d
+
+.. code-block:: C
+
+    __m128d _mm_setzero_pd(void );
+
+.. admonition:: Intel Description
+
+    Return vector of type __m128d with all elements set to zero.
+
+.. admonition:: Intel Implementation Psudeo-Code
+
+    .. code-block:: text
+
+        
+        dst[MAX:0] := 0
+        	
+
