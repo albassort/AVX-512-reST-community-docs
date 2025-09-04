@@ -228,3 +228,176 @@ Index
     docs/AMX/index.rst
     docs/AVX-512/index.rst
     docs/AVX_ALL/index.rst
+
+All Instructions
+================
+
+.. toctree::
+    :maxdepth: 4
+
+    docs/MMX/Shift/XMM.rst
+    docs/MMX/Shift/MMX.rst
+    docs/MMX/General Support/XMM.rst
+    docs/MMX/General Support/MMX.rst
+    docs/MMX/Logical/XMM.rst
+    docs/MMX/Logical/MMX.rst
+    docs/MMX/Swizzle/XMM.rst
+    docs/MMX/Swizzle/MMX.rst
+    docs/MMX/Arithmetic/XMM.rst
+    docs/MMX/Arithmetic/MMX.rst
+    docs/MMX/Compare/XMM.rst
+    docs/MMX/Compare/MMX.rst
+    docs/MMX/Set/XMM.rst
+    docs/MMX/Convert/XMM.rst
+    docs/MMX/Convert/MMX.rst
+    docs/MMX/Miscellaneous/XMM.rst
+    docs/MMX/Miscellaneous/MMX.rst
+    docs/SSE_ALL/Shift/XMM.rst
+    docs/SSE_ALL/Cryptography/XMM.rst
+    docs/SSE_ALL/Move/XMM.rst
+    docs/SSE_ALL/Cast/XMM.rst
+    docs/SSE_ALL/String Compare/XMM.rst
+    docs/SSE_ALL/General Support/XMM.rst
+    docs/SSE_ALL/General Support/Other.rst
+    docs/SSE_ALL/Probability/Statistics/XMM.rst
+    docs/SSE_ALL/Probability/Statistics/MMX.rst
+    docs/SSE_ALL/Special Math Functions/XMM.rst
+    docs/SSE_ALL/Special Math Functions/MMX.rst
+    docs/SSE_ALL/Logical/XMM.rst
+    docs/SSE_ALL/Swizzle/XMM.rst
+    docs/SSE_ALL/Swizzle/Other.rst
+    docs/SSE_ALL/Swizzle/MMX.rst
+    docs/SSE_ALL/Store/XMM.rst
+    docs/SSE_ALL/Store/MMX.rst
+    docs/SSE_ALL/Load/XMM.rst
+    docs/SSE_ALL/Elementary Math Functions/XMM.rst
+    docs/SSE_ALL/Arithmetic/XMM.rst
+    docs/SSE_ALL/Arithmetic/MMX.rst
+    docs/SSE_ALL/Compare/XMM.rst
+    docs/SSE_ALL/Set/XMM.rst
+    docs/SSE_ALL/Convert/XMM.rst
+    docs/SSE_ALL/Miscellaneous/XMM.rst
+    docs/SSE_ALL/Miscellaneous/MMX.rst
+    docs/Other/Cryptography/ZMM.rst
+    docs/Other/Cryptography/YMM.rst
+    docs/Other/Cryptography/XMM.rst
+    docs/Other/Shift/Other.rst
+    docs/Other/Bit Manipulation/XMM.rst
+    docs/Other/Bit Manipulation/Other.rst
+    docs/Other/Cast/Other.rst
+    docs/Other/General Support/XMM.rst
+    docs/Other/General Support/Other.rst
+    docs/Other/General Support/MMX.rst
+    docs/Other/Unknown/Other.rst
+    docs/Other/Random/Other.rst
+    docs/Other/Store/Other.rst
+    docs/Other/Load/Other.rst
+    docs/Other/Arithmetic/ZMM.rst
+    docs/Other/Arithmetic/YMM.rst
+    docs/Other/Arithmetic/XMM.rst
+    docs/Other/Arithmetic/Other.rst
+    docs/Other/Convert/Other.rst
+    docs/Other/OS-Targeted/Other.rst
+    docs/Other/Application-Targeted/ZMM.rst
+    docs/Other/Application-Targeted/YMM.rst
+    docs/Other/Application-Targeted/XMM.rst
+    docs/Other/Miscellaneous/XMM.rst
+    docs/Other/Miscellaneous/Other.rst
+    docs/SVML/Probability/Statistics/ZMM.rst
+    docs/SVML/Probability/Statistics/YMM.rst
+    docs/SVML/Probability/Statistics/XMM.rst
+    docs/SVML/Special Math Functions/ZMM.rst
+    docs/SVML/Special Math Functions/YMM.rst
+    docs/SVML/Special Math Functions/XMM.rst
+    docs/SVML/Trigonometry/ZMM.rst
+    docs/SVML/Trigonometry/YMM.rst
+    docs/SVML/Trigonometry/XMM.rst
+    docs/SVML/Elementary Math Functions/ZMM.rst
+    docs/SVML/Elementary Math Functions/YMM.rst
+    docs/SVML/Elementary Math Functions/XMM.rst
+    docs/SVML/Arithmetic/ZMM.rst
+    docs/SVML/Arithmetic/YMM.rst
+    docs/SVML/Arithmetic/XMM.rst
+    docs/SVML/Miscellaneous/YMM.rst
+    docs/SVML/Miscellaneous/XMM.rst
+    docs/AMX/Application-Targeted/Other.rst
+    docs/AVX-512/Shift/ZMM.rst
+    docs/AVX-512/Shift/YMM.rst
+    docs/AVX-512/Shift/XMM.rst
+    docs/AVX-512/Move/ZMM.rst
+    docs/AVX-512/Move/YMM.rst
+    docs/AVX-512/Move/XMM.rst
+    docs/AVX-512/Bit Manipulation/ZMM.rst
+    docs/AVX-512/Bit Manipulation/YMM.rst
+    docs/AVX-512/Bit Manipulation/XMM.rst
+    docs/AVX-512/Cast/ZMM.rst
+    docs/AVX-512/Cast/YMM.rst
+    docs/AVX-512/Cast/XMM.rst
+    docs/AVX-512/General Support/ZMM.rst
+    docs/AVX-512/General Support/YMM.rst
+    docs/AVX-512/General Support/XMM.rst
+    docs/AVX-512/Special Math Functions/ZMM.rst
+    docs/AVX-512/Special Math Functions/YMM.rst
+    docs/AVX-512/Special Math Functions/XMM.rst
+    docs/AVX-512/Logical/ZMM.rst
+    docs/AVX-512/Logical/YMM.rst
+    docs/AVX-512/Logical/XMM.rst
+    docs/AVX-512/Swizzle/ZMM.rst
+    docs/AVX-512/Swizzle/YMM.rst
+    docs/AVX-512/Swizzle/XMM.rst
+    docs/AVX-512/Store/ZMM.rst
+    docs/AVX-512/Store/YMM.rst
+    docs/AVX-512/Store/XMM.rst
+    docs/AVX-512/Store/Other.rst
+    docs/AVX-512/Load/ZMM.rst
+    docs/AVX-512/Load/YMM.rst
+    docs/AVX-512/Load/XMM.rst
+    docs/AVX-512/Load/Other.rst
+    docs/AVX-512/Elementary Math Functions/ZMM.rst
+    docs/AVX-512/Elementary Math Functions/YMM.rst
+    docs/AVX-512/Elementary Math Functions/XMM.rst
+    docs/AVX-512/Arithmetic/ZMM.rst
+    docs/AVX-512/Arithmetic/YMM.rst
+    docs/AVX-512/Arithmetic/XMM.rst
+    docs/AVX-512/Compare/ZMM.rst
+    docs/AVX-512/Compare/YMM.rst
+    docs/AVX-512/Compare/XMM.rst
+    docs/AVX-512/Mask/ZMM.rst
+    docs/AVX-512/Mask/YMM.rst
+    docs/AVX-512/Mask/XMM.rst
+    docs/AVX-512/Mask/Other.rst
+    docs/AVX-512/Set/ZMM.rst
+    docs/AVX-512/Set/YMM.rst
+    docs/AVX-512/Set/XMM.rst
+    docs/AVX-512/Convert/ZMM.rst
+    docs/AVX-512/Convert/YMM.rst
+    docs/AVX-512/Convert/XMM.rst
+    docs/AVX-512/Miscellaneous/ZMM.rst
+    docs/AVX-512/Miscellaneous/YMM.rst
+    docs/AVX-512/Miscellaneous/XMM.rst
+    docs/AVX_ALL/Shift/YMM.rst
+    docs/AVX_ALL/Shift/XMM.rst
+    docs/AVX_ALL/Cryptography/YMM.rst
+    docs/AVX_ALL/Cryptography/XMM.rst
+    docs/AVX_ALL/Move/YMM.rst
+    docs/AVX_ALL/Cast/YMM.rst
+    docs/AVX_ALL/General Support/YMM.rst
+    docs/AVX_ALL/Probability/Statistics/YMM.rst
+    docs/AVX_ALL/Special Math Functions/YMM.rst
+    docs/AVX_ALL/Logical/YMM.rst
+    docs/AVX_ALL/Logical/XMM.rst
+    docs/AVX_ALL/Swizzle/YMM.rst
+    docs/AVX_ALL/Swizzle/XMM.rst
+    docs/AVX_ALL/Store/YMM.rst
+    docs/AVX_ALL/Store/XMM.rst
+    docs/AVX_ALL/Load/YMM.rst
+    docs/AVX_ALL/Load/XMM.rst
+    docs/AVX_ALL/Elementary Math Functions/YMM.rst
+    docs/AVX_ALL/Arithmetic/YMM.rst
+    docs/AVX_ALL/Arithmetic/XMM.rst
+    docs/AVX_ALL/Compare/YMM.rst
+    docs/AVX_ALL/Compare/XMM.rst
+    docs/AVX_ALL/Set/YMM.rst
+    docs/AVX_ALL/Convert/YMM.rst
+    docs/AVX_ALL/Convert/XMM.rst
+    docs/AVX_ALL/Miscellaneous/YMM.rst

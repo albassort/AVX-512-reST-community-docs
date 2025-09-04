@@ -303,6 +303,7 @@ proc addIntrinsic(intrinsic : Intrinsic, stream : var StringStream, border = '^'
 
 const splitOutputPath =  Path "./docs/"
 var techs : seq[string]
+var allOutputs : seq[string]
 for tech, techFuncs in output.groupBy(x=> x.tech.get(), y=> y).pairs:
   fileOutput.writeLine(tech)
   fileOutput.writeLine('='.repeat(tech.len))
@@ -330,6 +331,7 @@ for tech, techFuncs in output.groupBy(x=> x.tech.get(), y=> y).pairs:
       let outputDir = splitOutputPath / Path(tech) / Path(category)
       createDir(outputDir)
       let outputPath =  outputDir / Path &"{width}.rst"
+      allOutputs.add($outputPath)
       writeFile($outputPath, subFileOutput.readAll())
 
       let relPath = Path(category) / Path &"{width}.rst"
@@ -355,6 +357,17 @@ for tech, techFuncs in output.groupBy(x=> x.tech.get(), y=> y).pairs:
   indexOutput.writeLine(getIndent(2) & indexPath)
 
 
+indexOutput.writeLine("")
+let marker = "All Instructions"
+indexOutput.writeLine(marker)
+indexOutput.writeLine('='.repeat(marker.len))
+indexOutput.writeLine("")
+
+indexOutput.writeLine(".. toctree::")
+indexOutput.writeLine(getIndent(2) & ":maxdepth: 4")
+indexOutput.writeLine("")
+for paths in allOutputs:
+  indexOutput.writeLine(getIndent(2) & paths)
 
 indexOutput.setPosition(0)
 fileOutput.setPosition(0)
