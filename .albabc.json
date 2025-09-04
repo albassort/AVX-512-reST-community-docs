@@ -16,7 +16,8 @@
       "name": "Sphinx-build",
       "shell_cmd": "sphinx-build -b html -j auto . _build",
       "cwd": ".",
-      "autoopen": true
+      "autoopen": true,
+      "autoopen_ongoing": true
     }
   }
 }

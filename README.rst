@@ -77,7 +77,7 @@ Instructions use about 830 separate mnemonics, and not call can be covered. Stat
 Knowing this can make reading and parsing AVX-512 code easier.
 
 Prefixes
-~~~~~~~
+~~~~~~~~
 
 _m_
 ^^^
@@ -140,7 +140,7 @@ Extract
 Removes an integer into the given instruction, writing the given value at the given position to a given address.
 
 Suffixes
-~~~~~~~
+~~~~~~~~
 
 epi
 ^^^
@@ -199,7 +199,7 @@ Modules
 Below contains all AVX-512 documentation available from Intel. 
 
 Naming Scheme
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 TECH - CATEGORY - WIDTH
 
