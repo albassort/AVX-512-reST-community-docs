@@ -19,7 +19,30 @@ So I decided to copy the benefits of both, and make this. As, I prefer text base
 
 Data
 ----
-The data primarily comes from Intel's docs.
+The primary data, outside of Community Note sections, come from Intel.
+
+Patching
+~~~~~~~~
+There is a patching system. Here is the json format 
+
+.. code-block:: json
+
+    ".*fixup.*": {
+      "matchName": "Fix up Notes",
+      "note": "The phrase 'Fix Up' in this context means to apply your desire method of error detection and correction or flagging. For example, make a number NAN if it fulfils a certain criteria",
+      "references": [
+        {
+          "text": "A stackoverflow explanation of Fix Up",
+          "url": "https://stackoverflow.com/questions/30213615/what-is-meant-by-fixing-up-floats"
+        }
+      ]
+    }
+
+1. The key is regex, and it matches the function name
+2. matchName is the name of the match, it is mandatory, it appears in brackets so you know which patch is applying the given note
+3. Note is not mandatory, it appears as a community note
+4. See also is intended for extra doccumentation. Specific implementations, etc. These are links
+
 
 Distribution
 ------------

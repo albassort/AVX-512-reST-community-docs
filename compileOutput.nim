@@ -18,6 +18,8 @@ import strscans
 import shell
 import std/paths
 import std/dirs
+import re
+
 let intelData = readFile("./data-3-6-9.xml")
 let xml = q(intelData)
 var hasOp = 0
@@ -38,7 +40,24 @@ type
     operation : Option[string]
     width : Width
     returnType : string
+  Patch = object 
+    matchName : string
+    note : Option[string]
+    references : Option[seq[Reference]]
+  Reference = object
+    text : string
+    url : string
 
+const communityPatchesRaw = parseJson(staticRead("communitypatches.json")).to(Table[string, Patch])
+
+var communityPatches = initTable[ptr Regex, Patch]()
+var regexMatching : seq[Regex]
+
+for match, patch in communityPatchesRaw.pairs:
+  regexMatching.add(re(match))
+  communityPatches[addr regexMatching[regexMatching.high]] = patch
+  
+   
 
 proc tryAttr(a : XmlNode, b : string) : Option[string] = 
   try: some a.attr(b)
@@ -187,11 +206,11 @@ for k,v  in signatures.pairs:
 
 var fileOutput = newStringStream()
 var indexOutput = newStringStream()
-indexOutput.writeLine("Welcome\n=======\n")
+indexOutput.writeLine("Index\n=====\n")
 indexOutput.writeLine(".. toctree::")
 indexOutput.writeLine(getIndent(2) & ":maxdepth: 4" )
 indexOutput.writeLine(getIndent(2) & ":caption: Contents" )
-indexOutput.writeLine("\navx-512")
+indexOutput.writeLine("\n")
 
 proc addIntrinsic(intrinsic : Intrinsic, stream : var StringStream, border = '^') =
   stream.writeLine(intrinsic.function)
@@ -242,16 +261,38 @@ proc addIntrinsic(intrinsic : Intrinsic, stream : var StringStream, border = '^'
   
   let sig = signatures[intrinsic.function]
 
-  stream.writeLine(getIndent(2) & sig)
+  stream.writeLine(sig)
 
-  stream.writeLine("\n.. admonition:: intel Description\n")
+  stream.writeLine("\n.. admonition:: Intel Description\n")
+
   for line in splitLines(intrinsic.description.get()):
     stream.writeLine(getIndent(2) & line)
-  
   stream.writeLine("")
+
+  for regex, apply in communityPatches.pairs:
+    if intrinsic.function.match(regex[]):
+      echo "match"
+
+      if apply.note.isSome():
+        stream.writeLine(&".. admonition:: Community Note [{apply.matchName}]\n")
+        stream.writeLine(getIndent(2) & apply.note.get())
+
+      stream.writeLine("")
+
+      if apply.references.isSome():
+
+        stream.writeLine(&".. admonition:: See Also [{apply.matchName}]\n")
+
+        for reference in apply.references.get():
+          stream.writeline(getIndent(2) & &"`{reference.text}<{reference.url}>`")
+        stream.writeLine("")
+          
+
+
   if intrinsic.operation.isSome():
     stream.writeLine(".. admonition:: Intel Implementation Psudeo-Code\n")
     stream.writeLine(intrinsic.operation.get())
+
 
 
 const splitOutputPath =  Path "./docs/"
@@ -281,6 +322,10 @@ for tech, techFuncs in output.groupBy(x=> x.tech.get(), y=> y).pairs:
       writeFile($outputPath, subFileOutput.readAll())
 
       indexOutput.writeLine(getIndent(2) & $outputPath)
+
+indexOutput.writeLine("")
+let indexPrescript = readFile("./README.rst") 
+indexOutput.writeLine(indexPrescript)
 
 indexOutput.setPosition(0)
 fileOutput.setPosition(0)

@@ -1,0 +1,12 @@
+{
+  ".*fixup.*": {
+    "matchName": "Fix up Notes",
+    "note": "The phrase 'Fix Up' in this context means to apply your desire method of error detection and correction or flagging. For example, make a number NAN if it fulfils a certain criteria",
+    "references": [
+      {
+        "text": "A stackoverflow explanation of Fix Up",
+        "url": "https://stackoverflow.com/questions/30213615/what-is-meant-by-fixing-up-floats"
+      }
+    ]
+  }
+}
