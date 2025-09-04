@@ -672,7 +672,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#midfixes">Midfixes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#masks">Masks</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#masks">Masks</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#mm512-mask-sin-pd">_mm512_mask_sin_pd</a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#maskz">Maskz</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#storeu">StoreU</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter">Scatter</a></li>
@@ -718,32 +721,38 @@ document.write(`
 <h1>AVX 512 Community Docs<a class="headerlink" href="#avx-512-community-docs" title="Link to this heading">#</a></h1>
 <section id="what-is-this">
 <h2>What is this<a class="headerlink" href="#what-is-this" title="Link to this heading">#</a></h2>
-<p>In my efforts to study AVX-512 I found quite the issue. The only readily available documentation is that provided by Intel, as well as, the headers provided by your favorite compiler. However, they have two mutually exclusive benefits</p>
+<p>AVX-512 Documentation is scattered and, prior to now, not in a Text-focused, easily searchable way. This repository is aimed at filling this space, by giving an efficient, easily usable, documentation source. The primarily dilemma is as follows:</p>
 <ul class="simple">
-<li><p>Headers</p>
+<li><p>Headers:</p>
 <ul>
-<li><p>Not all in one place, the instructions are fractured across many files.</p></li>
-<li><p>No comments, at least not in any compiler I checked. Not in GCC or Clang. Thus its hard to know what it is unless you are well versed in AVX-512 naming schemes and have a strong understanding of each instructions use case.</p></li>
+<li><p>Not all in one place, the Intrinsics definitions are fractured across many files.</p></li>
+<li><p>Unlike source code headers, their purpose is not to provide documentation, thus no documentation or comments are usually contained within. They presume you have a separate documentation source.</p></li>
 </ul>
 </li>
-<li><p>Intel’s site</p>
+<li><p>Intel’s site:</p>
 <ul>
 <li><p>Non-accessible. Its an HTML only site.</p></li>
 <li><p>Not easily searchable.</p></li>
 </ul>
 </li>
+<li><p>This site:</p>
+<ul>
+<li><p>Documentation is centralized, and searchable in a single file or with a central index. A mnemonics <cite>searchable</cite> format is even provided, to replace Intel’s filters. <cite>Tech</cite>-<cite>Category</cite>-<cite>Width</cite></p></li>
+<li><p>Documentation is provided by Intel, and patched by community notes. In the future, perhaps we could combine Intel and AMD’s docs.</p></li>
+<li><p>Easier reading, much more straightforward, on both the HTML site and in the single rst file.</p></li>
 </ul>
-<p>So I decided to copy the benefits of both, and make this. As, I prefer text based documentation.</p>
+</li>
+</ul>
 </section>
 <section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
-<p>The primary data, outside of Community Note sections, come from Intel.</p>
+<p>The primary data, outside of Community Note sections, come from Intel. However, documents here have the capacity to patch and add <cite>Community Notes</cite> should this be needed.</p>
 <section id="patching">
 <h3>Patching<a class="headerlink" href="#patching" title="Link to this heading">#</a></h3>
-<p>There is a patching system. Here is the json format</p>
+<p>There is a patching system. Here is the JSON format</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;.*fixup.*&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;matchName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fix up Notes&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The phrase &#39;Fix Up&#39; in this context means to apply your desire method of error detection and correction or flagging. For example, make a number NAN if it fulfils a certain criteria&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The phrase &#39;Fix Up&#39; in this context means to apply your desired method of error detection, correction, and, flagging. For example, make a number NAN if it fulfils a certain criteria&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;references&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A stackoverflow explanation of Fix Up&quot;</span><span class="p">,</span>
@@ -765,7 +774,7 @@ document.write(`
 <h2>Distribution<a class="headerlink" href="#distribution" title="Link to this heading">#</a></h2>
 <p>The Data here comes in two flavors.</p>
 <ol class="arabic simple">
-<li><p>The avx-512.rst file, which is a giant, 8mb file, meant primarily for distribution by copying it directly, and reading it as you program. This is my personal preferred method. This can be found <a class="reference external" href="https://raw.githubusercontent.com/albassort/AVX-512-reST-community-docs/refs/heads/main/avx-512.rst">here</a>.</p></li>
+<li><p>The “avx-512.rst” file, which is a giant, 8 MB file, meant primarily for distribution by copying it directly, and reading it as you program. This is my personal preferred method. This can be found <a class="reference external" href="https://raw.githubusercontent.com/albassort/AVX-512-reST-community-docs/refs/heads/main/avx-512.rst">here</a>.</p></li>
 <li><p>Sphinx rendered .rst files, hosted in this git. <a class="reference external" href="https://albassort.github.io/AVX-512-reST-community-docs/">You can access it here</a>. This file is appended the index.rst.</p></li>
 </ol>
 </section>
@@ -782,11 +791,11 @@ document.write(`
 <p class="admonition-title">Intel Description</p>
 <p>This Intrinsic performs four rounds of SM4 encryption. The Intrinsic operates on independent 128-bit lanes. The calculated results are stored in dst</p>
 </div>
-<p>We can assume the “dst’ in the above description is actually the “__m128i” that it returns.</p>
+<p>We can assume the ‘dst’ in the above description is actually the “__m128i” that it returns.</p>
 </section>
 <section id="fix-preface">
 <h3>-Fix- preface<a class="headerlink" href="#fix-preface" title="Link to this heading">#</a></h3>
-<p>Instructions use about 830 separate mnemonics, and not call can be covered. Statistically, these are the most common, as well as, the least straightforward.</p>
+<p>Instructions use about 830 separate mnemonics, and not all can be covered. Statistically, these are the most common, as well as, the least straightforward.</p>
 <p>Knowing this can make reading and parsing AVX-512 code easier.</p>
 </section>
 <section id="prefixes">
@@ -812,7 +821,50 @@ document.write(`
 <h3>Midfixes<a class="headerlink" href="#midfixes" title="Link to this heading">#</a></h3>
 <section id="masks">
 <h4>Masks<a class="headerlink" href="#masks" title="Link to this heading">#</a></h4>
-<p>Masks is, as the name implies a mask. Where the given mask is on, the respective channel positions are not operated upon. For example, not not adding two integers.</p>
+<p>Masks, as the name implies, is a mask which alters the outcome of a given Intrinsic operation. Generally, masks will enable the ignoring of the lane at the position in which it is true. This usually causes the data on the respective lane to be copied directly into the output, and not operated upon.</p>
+<p>Consider the following example:</p>
+<section id="mm512-mask-sin-pd">
+<h5>_mm512_mask_sin_pd<a class="headerlink" href="#mm512-mask-sin-pd" title="Link to this heading">#</a></h5>
+<dl class="field-list simple">
+<dt class="field-odd">Tech<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SVML</p>
+</dd>
+<dt class="field-even">Category<span class="colon">:</span></dt>
+<dd class="field-even"><p>Trigonometry</p>
+</dd>
+<dt class="field-odd">Header<span class="colon">:</span></dt>
+<dd class="field-odd"><p>immintrin.h</p>
+</dd>
+<dt class="field-even">Searchable<span class="colon">:</span></dt>
+<dd class="field-even"><p>SVML-Trigonometry-ZMM</p>
+</dd>
+<dt class="field-odd">Register<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ZMM 512 bit</p>
+</dd>
+<dt class="field-even">Return Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>__m512d</p>
+</dd>
+<dt class="field-odd">Param Types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>__m512d src,
+__mmask8 k,
+__m512d a</p>
+</dd>
+<dt class="field-even">Param ETypes<span class="colon">:</span></dt>
+<dd class="field-even"><p>FP64 src,
+MASK k,
+FP64 a</p>
+</dd>
+</dl>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">__m512d</span><span class="w"> </span><span class="n">_mm512_mask_sin_pd</span><span class="p">(</span><span class="n">__m512d</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">__mmask8</span><span class="w"> </span><span class="n">k</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">__m512d</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-intel-description admonition">
+<p class="admonition-title">Intel Description</p>
+<p>Compute the sine of packed double-precision (64-bit) floating-point elements in “a” expressed in radians, and store the results in “dst” using writemask “k” (elements are copied from “src” when the corresponding mask bit is not set).</p>
+</div>
+<p>Where the mask is a whitelist, where it is off <cite>a</cite> is copied to the output, and the sin is not calculated. Where it is on, the sin is calculated and a is ignored.</p>
+</section>
 </section>
 <section id="maskz">
 <h4>Maskz<a class="headerlink" href="#maskz" title="Link to this heading">#</a></h4>
@@ -820,7 +872,7 @@ document.write(`
 </section>
 <section id="storeu">
 <h4>StoreU<a class="headerlink" href="#storeu" title="Link to this heading">#</a></h4>
-<p>The writing counterpart to <cite>Loadu</cite>. Retrieves the results an instruction, and writes into continuous address space. E.g, write the result to a pre-allocated buffer or array. Generally faster than scatter.</p>
+<p>The writing counterpart to <cite>Loadu</cite>. Retrieves the results from an Intrinsic, and writes into continuous address space. E.g, write the result to a pre-allocated buffer or array. Generally faster than scatter.</p>
 </section>
 <section id="scatter">
 <h4>Scatter<a class="headerlink" href="#scatter" title="Link to this heading">#</a></h4>
@@ -832,30 +884,30 @@ document.write(`
 </section>
 <section id="gather">
 <h4>Gather<a class="headerlink" href="#gather" title="Link to this heading">#</a></h4>
-<p>The reading counterpart to <cite>Scatter</cite>. These instructions take in values from many pointers. Generally slower than loadu</p>
+<p>The reading counterpart to <cite>Scatter</cite>. These Intrinsic take in values from many pointers. Generally slower than loadu</p>
 </section>
 <section id="loadu">
 <h4>Loadu<a class="headerlink" href="#loadu" title="Link to this heading">#</a></h4>
-<p>The reading counterpart to <cite>Loadu</cite>. These instructions take in values from continuous address space, like arrays. Generally faster than Gather</p>
+<p>The reading counterpart to <cite>Loadu</cite>. These Intrinsic take in values from continuous address space, like arrays. Generally faster than Gather</p>
 </section>
 <section id="insert">
 <h4>Insert<a class="headerlink" href="#insert" title="Link to this heading">#</a></h4>
-<p>Inserts a given value into the given instruction, replacing the value at the given position</p>
+<p>Inserts a given value into the given Intrinsic, replacing the value at the given position</p>
 </section>
 <section id="extract">
 <h4>Extract<a class="headerlink" href="#extract" title="Link to this heading">#</a></h4>
-<p>Removes an integer into the given instruction, writing the given value at the given position to a given address.</p>
+<p>Removes an integer into the given Intrinsic, writing the given value at the given position to a given address.</p>
 </section>
 </section>
 <section id="suffixes">
 <h3>Suffixes<a class="headerlink" href="#suffixes" title="Link to this heading">#</a></h3>
 <section id="epi">
 <h4>epi<a class="headerlink" href="#epi" title="Link to this heading">#</a></h4>
-<p>“Extened Packed Integer”. Integer operations.</p>
+<p>“Extended Packed Integer”. Integer operations.</p>
 </section>
 <section id="epixxx">
 <h4>epixxx<a class="headerlink" href="#epixxx" title="Link to this heading">#</a></h4>
-<p>xxx indicates the size of the “EType”, the Input type. <cite>epi32</cite> would indicate that the instruction operates upon 32 bit integers, in whatever lane size it uses.</p>
+<p>xxx indicates the size of the “EType” (the input type). <cite>epi32</cite> would indicate that the Intrinsic operates upon 32 bit integers, in whatever lane size it uses.</p>
 </section>
 <section id="ps-ph-pd">
 <h4>ps, ph, pd<a class="headerlink" href="#ps-ph-pd" title="Link to this heading">#</a></h4>
@@ -873,7 +925,7 @@ PD = Precision Double (64 bit)</p>
 </section>
 <section id="ss-sh-sd">
 <h4>ss, sh, sd<a class="headerlink" href="#ss-sh-sd" title="Link to this heading">#</a></h4>
-<p>These are float types used in scalar instructions</p>
+<p>These are float types used in scalar Intrinsic</p>
 <p>SS = Precision Single (32 bit)
 SH = Precision Half (16 bit)
 SD = Precision Double (64 bit)</p>
@@ -890,7 +942,7 @@ SD = Precision Double (64 bit)</p>
 </section>
 <section id="scalars">
 <h2>Scalars<a class="headerlink" href="#scalars" title="Link to this heading">#</a></h2>
-<p>Scalars are functions which operate on only operate on one side of the lane. For example, the above function <cite>_mm_roundscale_sh</cite>, only operates on <cite>b</cite>, conversely, <cite>a</cite> is simply read into the <cite>dst</cite>. That is to say, this is a <cite>storeu</cite> And <cite>_mm_roundscale_ph</cite> in one.</p>
+<p>Scalars are Intrinsic which operate on only operate on one side of the lane. For example, the above Intrinsic <cite>_mm_roundscale_sh</cite>, only operates on <cite>b</cite>, conversely, <cite>a</cite> is simply read into the <cite>dst</cite>. That is to say, this is a <cite>storeu</cite> and <cite>_mm_roundscale_ph</cite> in one.</p>
 </section>
 <section id="modules">
 <h2>Modules<a class="headerlink" href="#modules" title="Link to this heading">#</a></h2>
@@ -900,11 +952,11 @@ SD = Precision Double (64 bit)</p>
 <p>TECH - CATEGORY - WIDTH</p>
 <p>As an example:
 AVX-512-Store-XMM</p>
-<p>So, of the AVX-512 extension, in the store category, YMM wide instructions.</p>
+<p>So, of the AVX-512 extension, in the store category, YMM wide Intrinsic.</p>
 </section>
 <section id="instructions">
 <h3>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h3>
-<p>This section is cut off as the README, but is filled in on the stie!</p>
+<p>If you’re reading this in the README, the documentation cuts off. However, on the GITHUB page, there are two following sections with searchable categories.</p>
 </section>
 </section>
 </section>
@@ -8629,7 +8681,10 @@ AVX-512-Store-XMM</p>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#midfixes">Midfixes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#masks">Masks</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#masks">Masks</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#mm512-mask-sin-pd">_mm512_mask_sin_pd</a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#maskz">Maskz</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#storeu">StoreU</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter">Scatter</a></li>
