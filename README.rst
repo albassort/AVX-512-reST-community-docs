@@ -5,7 +5,7 @@ What is this
 ------------
 In my efforts to study AVX-512 I found quite the issue. The only readily available documentation is that provided by Intel, as well as, the headers provided by your favorite compiler. However, they have two mutually exclusive benefits
 
--  Headers
+- Headers
 
   - Not all in one place, the instructions are fractured across many files.
   - No comments, at least not in any compiler I checked. Not in GCC or Clang. Thus its hard to know what it is unless you are well versed in AVX-512 naming schemes and have a strong understanding of each instructions use case.
