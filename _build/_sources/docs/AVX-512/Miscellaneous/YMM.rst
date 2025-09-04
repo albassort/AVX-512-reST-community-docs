@@ -5647,7 +5647,7 @@ _mm256_fixupimm_pd
 
 .. admonition:: See Also [Fix up Notes]
 
-    `A stackoverflow explanation of Fix Up<https://stackoverflow.com/questions/30213615/what-is-meant-by-fixing-up-floats>`
+    `A stackoverflow explanation of Fix Up <https://stackoverflow.com/questions/30213615/what-is-meant-by-fixing-up-floats>`_
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -5761,7 +5761,7 @@ _mm256_mask_fixupimm_pd
 
 .. admonition:: See Also [Fix up Notes]
 
-    `A stackoverflow explanation of Fix Up<https://stackoverflow.com/questions/30213615/what-is-meant-by-fixing-up-floats>`
+    `A stackoverflow explanation of Fix Up <https://stackoverflow.com/questions/30213615/what-is-meant-by-fixing-up-floats>`_
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -5879,7 +5879,7 @@ _mm256_maskz_fixupimm_pd
 
 .. admonition:: See Also [Fix up Notes]
 
-    `A stackoverflow explanation of Fix Up<https://stackoverflow.com/questions/30213615/what-is-meant-by-fixing-up-floats>`
+    `A stackoverflow explanation of Fix Up <https://stackoverflow.com/questions/30213615/what-is-meant-by-fixing-up-floats>`_
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -5994,7 +5994,7 @@ _mm256_fixupimm_ps
 
 .. admonition:: See Also [Fix up Notes]
 
-    `A stackoverflow explanation of Fix Up<https://stackoverflow.com/questions/30213615/what-is-meant-by-fixing-up-floats>`
+    `A stackoverflow explanation of Fix Up <https://stackoverflow.com/questions/30213615/what-is-meant-by-fixing-up-floats>`_
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -6108,7 +6108,7 @@ _mm256_mask_fixupimm_ps
 
 .. admonition:: See Also [Fix up Notes]
 
-    `A stackoverflow explanation of Fix Up<https://stackoverflow.com/questions/30213615/what-is-meant-by-fixing-up-floats>`
+    `A stackoverflow explanation of Fix Up <https://stackoverflow.com/questions/30213615/what-is-meant-by-fixing-up-floats>`_
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -6226,7 +6226,7 @@ _mm256_maskz_fixupimm_ps
 
 .. admonition:: See Also [Fix up Notes]
 
-    `A stackoverflow explanation of Fix Up<https://stackoverflow.com/questions/30213615/what-is-meant-by-fixing-up-floats>`
+    `A stackoverflow explanation of Fix Up <https://stackoverflow.com/questions/30213615/what-is-meant-by-fixing-up-floats>`_
 
 .. admonition:: Intel Implementation Psudeo-Code
 

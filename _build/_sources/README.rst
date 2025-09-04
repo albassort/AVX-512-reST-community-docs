@@ -48,8 +48,8 @@ Distribution
 ------------
 The Data here comes in two flavors. 
 
-1. The avx-512.rst file, which is a giant, 8mb file, meant primarily for distribution by copying it directly, and reading it as you program. This is my personal preferred method
-2. Sphinx rendered .rst files, hosted in this git. `You can access it here <TOOD: PUT LINK HERE>`. This file is appended the index.rst.
+1. The avx-512.rst file, which is a giant, 8mb file, meant primarily for distribution by copying it directly, and reading it as you program. This is my personal preferred method. This can be found `here <https://raw.githubusercontent.com/albassort/AVX-512-reST-community-docs/refs/heads/main/avx-512.rst>`_.
+2. Sphinx rendered .rst files, hosted in this git. `You can access it here <https://albassort.github.io/AVX-512-reST-community-docs/>`_. This file is appended the index.rst.
 
 Community Additions 
 -------------------
@@ -77,7 +77,7 @@ Instructions use about 830 separate mnemonics, and not call can be covered. Stat
 Knowing this can make reading and parsing AVX-512 code easier.
 
 Prefixes
-~~~~~~~
+~~~~~~~~
 
 _m_
 ^^^
@@ -140,7 +140,7 @@ Extract
 Removes an integer into the given instruction, writing the given value at the given position to a given address.
 
 Suffixes
-~~~~~~~
+~~~~~~~~
 
 epi
 ^^^
@@ -194,4 +194,20 @@ Scalars
 
 Scalars are functions which operate on only operate on one side of the lane. For example, the above function `_mm_roundscale_sh`, only operates on `b`, conversely, `a` is simply read into the `dst`. That is to say, this is a `storeu` And `_mm_roundscale_ph` in one. 
 
+Modules 
+-------
+Below contains all AVX-512 documentation available from Intel. 
 
+Naming Scheme
+~~~~~~~~~~~~~
+
+TECH - CATEGORY - WIDTH
+
+As an example:
+AVX-512-Store-XMM
+
+So, of the AVX-512 extension, in the store category, YMM wide instructions.
+
+Instructions 
+~~~~~~~~~~~~
+This section is cut off as the README, but is filled in on the stie!
