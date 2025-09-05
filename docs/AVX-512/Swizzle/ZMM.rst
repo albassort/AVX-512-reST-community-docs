@@ -7517,8 +7517,7 @@ _mm512_mask_unpackhi_ps
 
 .. code-block:: C
 
-    __m512 _mm512_mask_unpackhi_ps(__m512 src, __mmask16 k,
-                                   __m512 a, __m512 b)
+    __m512 _mm512_mask_unpackhi_ps(__m512 src, __mmask16 k,                               __m512 a, __m512 b)
 
 .. admonition:: Intel Description
 
@@ -9028,8 +9027,7 @@ _mm512_mask_compress_epi16
 
 .. code-block:: C
 
-    __m512i _mm512_mask_compress_epi16(__m512i src, __mmask32 k,
-                                       __m512i a)
+    __m512i _mm512_mask_compress_epi16(__m512i src, __mmask32 k,                                   __m512i a)
 
 .. admonition:: Intel Description
 

@@ -1,7 +1,7 @@
 AVX 512 Community Docs
 ======================
 
-- ⭐ `See the repository here<https://github.com/albassort/AVX-512-reST-community-docs>`_
+- ⭐ `See the repository here <https://github.com/albassort/AVX-512-reST-community-docs>`_
 
 What is this
 ------------

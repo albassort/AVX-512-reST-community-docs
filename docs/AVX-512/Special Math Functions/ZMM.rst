@@ -3622,8 +3622,7 @@ _mm512_maskz_min_ph
 
 .. code-block:: C
 
-    __m512h _mm512_maskz_min_ph(__mmask32 k, __m512h a,
-                                __m512h b)
+    __m512h _mm512_maskz_min_ph(__mmask32 k, __m512h a,                            __m512h b)
 
 .. admonition:: Intel Description
 

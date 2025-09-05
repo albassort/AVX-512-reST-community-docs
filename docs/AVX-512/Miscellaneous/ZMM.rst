@@ -9841,8 +9841,7 @@ _mm512_mask_scalef_round_ps
 
 .. code-block:: C
 
-    __m512 _mm512_mask_scalef_round_ps(__m512 src, __mmask16 k,
-                                       __m512 a, __m512 b,
+    __m512 _mm512_mask_scalef_round_ps(__m512 src, __mmask16 k,                                   __m512 a, __m512 b,
                                        int rounding)
 
 .. admonition:: Intel Description

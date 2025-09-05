@@ -2625,8 +2625,7 @@ _mm256_maskz_cvt_roundps_ph
 
 .. code-block:: C
 
-    __m128i _mm256_maskz_cvt_roundps_ph(__mmask8 k, __m256 a,
-                                        int imm8)
+    __m128i _mm256_maskz_cvt_roundps_ph(__mmask8 k, __m256 a,                                    int imm8)
 
 .. admonition:: Intel Description
 

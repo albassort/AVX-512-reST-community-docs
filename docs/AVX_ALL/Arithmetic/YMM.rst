@@ -2681,8 +2681,7 @@ _mm256_dpbsud_epi32
 
 .. code-block:: C
 
-    __m256i _mm256_dpbsud_epi32(__m256i __W, __m256i __A,
-                                __m256i __B)
+    __m256i _mm256_dpbsud_epi32(__m256i __W, __m256i __A,                            __m256i __B)
 
 .. admonition:: Intel Description
 

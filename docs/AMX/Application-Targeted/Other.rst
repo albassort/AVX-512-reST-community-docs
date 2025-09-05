@@ -710,8 +710,7 @@ __tile_dpbuud
 
 .. code-block:: C
 
-    void __tile_dpbuud(__tile1024i* dst, __tile1024i src0,
-                       __tile1024i src1)
+    void __tile_dpbuud(__tile1024i* dst, __tile1024i src0,                   __tile1024i src1)
 
 .. admonition:: Intel Description
 

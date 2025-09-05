@@ -8037,8 +8037,7 @@ _mm256_mask_permutex2var_ps
 
 .. code-block:: C
 
-    __m256 _mm256_mask_permutex2var_ps(__m256 a, __mmask8 k,
-                                       __m256i idx, __m256 b)
+    __m256 _mm256_mask_permutex2var_ps(__m256 a, __mmask8 k,                                   __m256i idx, __m256 b)
 
 .. admonition:: Intel Description
 
