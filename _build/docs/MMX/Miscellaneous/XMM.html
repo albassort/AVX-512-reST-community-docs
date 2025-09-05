@@ -706,6 +706,9 @@ SI16 b</p>
 <p class="admonition-title">Intel Description</p>
 <p>Convert packed signed 16-bit integers from “a” and “b” to packed 8-bit integers using signed saturation, and store the results in “dst”.</p>
 </div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
+</div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[7:0] := Saturate8(a[15:0])
@@ -757,6 +760,9 @@ SI32 b</p>
 <p class="admonition-title">Intel Description</p>
 <p>Convert packed signed 32-bit integers from “a” and “b” to packed 16-bit integers using signed saturation, and store the results in “dst”.</p>
 </div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
+</div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dst[15:0] := Saturate16(a[31:0])
@@ -803,6 +809,9 @@ SI16 b</p>
 <div class="admonition-intel-description admonition">
 <p class="admonition-title">Intel Description</p>
 <p>Convert packed signed 16-bit integers from “a” and “b” to packed 8-bit integers using unsigned saturation, and store the results in “dst”.</p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
 </div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>

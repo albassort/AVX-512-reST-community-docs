@@ -24,6 +24,10 @@ _m_pand
 
     Compute the bitwise AND of 64 bits (representing integer data) in "a" and "b", and store the result in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -54,6 +58,10 @@ _m_pandn
 .. admonition:: Intel Description
 
     Compute the bitwise NOT of 64 bits (representing integer data) in "a" and then AND with "b", and store the result in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -86,6 +94,10 @@ _m_por
 
     Compute the bitwise OR of 64 bits (representing integer data) in "a" and "b", and store the result in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -116,6 +128,10 @@ _m_pxor
 .. admonition:: Intel Description
 
     Compute the bitwise XOR of 64 bits (representing integer data) in "a" and "b", and store the result in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 

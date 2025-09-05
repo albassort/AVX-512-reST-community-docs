@@ -24,6 +24,10 @@ _mm_packs_pi16
 
     Convert packed signed 16-bit integers from "a" and "b" to packed 8-bit integers using signed saturation, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -62,6 +66,10 @@ _mm_packs_pi32
 
     Convert packed signed 32-bit integers from "a" and "b" to packed 16-bit integers using signed saturation, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -95,6 +103,10 @@ _mm_packs_pu16
 .. admonition:: Intel Description
 
     Convert packed signed 16-bit integers from "a" and "b" to packed 8-bit integers using unsigned saturation, and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 

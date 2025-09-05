@@ -24,6 +24,10 @@ _m_punpckhbw
 
     Unpack and interleave 8-bit integers from the high half of "a" and "b", and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -66,6 +70,10 @@ _m_punpckhwd
 
     Unpack and interleave 16-bit integers from the high half of "a" and "b", and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -104,6 +112,10 @@ _m_punpckhdq
 
     Unpack and interleave 32-bit integers from the high half of "a" and "b", and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -135,6 +147,10 @@ _m_punpcklbw
 .. admonition:: Intel Description
 
     Unpack and interleave 8-bit integers from the low half of "a" and "b", and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -178,6 +194,10 @@ _m_punpcklwd
 
     Unpack and interleave 16-bit integers from the low half of "a" and "b", and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -215,6 +235,10 @@ _m_punpckldq
 .. admonition:: Intel Description
 
     Unpack and interleave 32-bit integers from the low half of "a" and "b", and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 

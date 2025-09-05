@@ -1,6 +1,8 @@
 AVX 512 Community Docs
 ======================
 
+- ⭐ `See the repository here<https://github.com/albassort/AVX-512-reST-community-docs>`_
+
 What is this
 ------------
 AVX-512 Documentation is scattered and, prior to now, not in a Text-focused, easily searchable way. This repository is aimed at filling this space, by giving an efficient, easily usable, documentation source. The primarily dilemma is as follows:

@@ -18,6 +18,10 @@ _mm_setzero_si64
 
     Return vector of type __m64 with all elements set to zero.
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -48,6 +52,10 @@ _mm_set_pi32
 .. admonition:: Intel Description
 
     Set packed 32-bit integers in "dst" with the supplied values.
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -84,6 +92,10 @@ _mm_set_pi16
 .. admonition:: Intel Description
 
     Set packed 16-bit integers in "dst" with the supplied values.
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -132,6 +144,10 @@ _mm_set_pi8
 
     Set packed 8-bit integers in "dst" with the supplied values.
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -168,6 +184,10 @@ _mm_set1_pi32
 
     Broadcast 32-bit integer "a" to all elements of "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -200,6 +220,10 @@ _mm_set1_pi16
 
     Broadcast 16-bit integer "a" to all all elements of "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -231,6 +255,10 @@ _mm_set1_pi8
 .. admonition:: Intel Description
 
     Broadcast 8-bit integer "a" to all elements of "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -265,6 +293,10 @@ _mm_setr_pi32
 .. admonition:: Intel Description
 
     Set packed 32-bit integers in "dst" with the supplied values in reverse order.
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -301,6 +333,10 @@ _mm_setr_pi16
 .. admonition:: Intel Description
 
     Set packed 16-bit integers in "dst" with the supplied values in reverse order.
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -348,6 +384,10 @@ _mm_setr_pi8
 .. admonition:: Intel Description
 
     Set packed 8-bit integers in "dst" with the supplied values in reverse order.
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 

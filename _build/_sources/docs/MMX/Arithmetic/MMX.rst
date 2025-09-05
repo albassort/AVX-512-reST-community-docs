@@ -24,6 +24,10 @@ _m_paddb
 
     Add packed 8-bit integers in "a" and "b", and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -57,6 +61,10 @@ _m_paddw
 .. admonition:: Intel Description
 
     Add packed 16-bit integers in "a" and "b", and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -92,6 +100,10 @@ _m_paddd
 
     Add packed 32-bit integers in "a" and "b", and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -125,6 +137,10 @@ _m_paddsb
 .. admonition:: Intel Description
 
     Add packed signed 8-bit integers in "a" and "b" using saturation, and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -160,6 +176,10 @@ _m_paddsw
 
     Add packed signed 16-bit integers in "a" and "b" using saturation, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -193,6 +213,10 @@ _m_paddusb
 .. admonition:: Intel Description
 
     Add packed unsigned 8-bit integers in "a" and "b" using saturation, and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -228,6 +252,10 @@ _m_paddusw
 
     Add packed unsigned 16-bit integers in "a" and "b" using saturation, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -261,6 +289,10 @@ _m_psubb
 .. admonition:: Intel Description
 
     Subtract packed 8-bit integers in "b" from packed 8-bit integers in "a", and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -296,6 +328,10 @@ _m_psubw
 
     Subtract packed 16-bit integers in "b" from packed 16-bit integers in "a", and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -329,6 +365,10 @@ _m_psubd
 .. admonition:: Intel Description
 
     Subtract packed 32-bit integers in "b" from packed 32-bit integers in "a", and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -364,6 +404,10 @@ _m_psubsb
 
     Subtract packed signed 8-bit integers in "b" from packed 8-bit integers in "a" using saturation, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -397,6 +441,10 @@ _m_psubsw
 .. admonition:: Intel Description
 
     Subtract packed signed 16-bit integers in "b" from packed 16-bit integers in "a" using saturation, and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -432,6 +480,10 @@ _m_psubusb
 
     Subtract packed unsigned 8-bit integers in "b" from packed unsigned 8-bit integers in "a" using saturation, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -465,6 +517,10 @@ _m_psubusw
 .. admonition:: Intel Description
 
     Subtract packed unsigned 16-bit integers in "b" from packed unsigned 16-bit integers in "a" using saturation, and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -500,6 +556,10 @@ _m_pmaddwd
 
     Multiply packed signed 16-bit integers in "a" and "b", producing intermediate signed 32-bit integers. Horizontally add adjacent pairs of intermediate 32-bit integers, and pack the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -533,6 +593,10 @@ _m_pmulhw
 .. admonition:: Intel Description
 
     Multiply the packed signed 16-bit integers in "a" and "b", producing intermediate 32-bit integers, and store the high 16 bits of the intermediate integers in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -568,6 +632,10 @@ _m_pmullw
 .. admonition:: Intel Description
 
     Multiply the packed 16-bit integers in "a" and "b", producing intermediate 32-bit integers, and store the low 16 bits of the intermediate integers in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 

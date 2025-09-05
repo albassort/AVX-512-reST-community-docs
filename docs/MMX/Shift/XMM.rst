@@ -24,6 +24,10 @@ _mm_sll_pi16
 
     Shift packed 16-bit integers in "a" left by "count" while shifting in zeros, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -61,6 +65,10 @@ _mm_slli_pi16
 .. admonition:: Intel Description
 
     Shift packed 16-bit integers in "a" left by "imm8" while shifting in zeros, and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -100,6 +108,10 @@ _mm_sll_pi32
 
     Shift packed 32-bit integers in "a" left by "count" while shifting in zeros, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -137,6 +149,10 @@ _mm_slli_pi32
 .. admonition:: Intel Description
 
     Shift packed 32-bit integers in "a" left by "imm8" while shifting in zeros, and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -176,6 +192,10 @@ _mm_sll_si64
 
     Shift 64-bit integer "a" left by "count" while shifting in zeros, and store the result in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -211,6 +231,10 @@ _mm_slli_si64
 
     Shift 64-bit integer "a" left by "imm8" while shifting in zeros, and store the result in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -245,6 +269,10 @@ _mm_sra_pi16
 .. admonition:: Intel Description
 
     Shift packed 16-bit integers in "a" right by "count" while shifting in sign bits, and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -284,6 +312,10 @@ _mm_srai_pi16
 
     Shift packed 16-bit integers in "a" right by "imm8" while shifting in sign bits, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -321,6 +353,10 @@ _mm_sra_pi32
 .. admonition:: Intel Description
 
     Shift packed 32-bit integers in "a" right by "count" while shifting in sign bits, and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -360,6 +396,10 @@ _mm_srai_pi32
 
     Shift packed 32-bit integers in "a" right by "imm8" while shifting in sign bits, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -397,6 +437,10 @@ _mm_srl_pi16
 .. admonition:: Intel Description
 
     Shift packed 16-bit integers in "a" right by "count" while shifting in zeros, and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -436,6 +480,10 @@ _mm_srli_pi16
 
     Shift packed 16-bit integers in "a" right by "imm8" while shifting in zeros, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -473,6 +521,10 @@ _mm_srl_pi32
 .. admonition:: Intel Description
 
     Shift packed 32-bit integers in "a" right by "count" while shifting in zeros, and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -512,6 +564,10 @@ _mm_srli_pi32
 
     Shift packed 32-bit integers in "a" right by "imm8" while shifting in zeros, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -550,6 +606,10 @@ _mm_srl_si64
 
     Shift 64-bit integer "a" right by "count" while shifting in zeros, and store the result in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -584,6 +644,10 @@ _mm_srli_si64
 .. admonition:: Intel Description
 
     Shift 64-bit integer "a" right by "imm8" while shifting in zeros, and store the result in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 

@@ -18,6 +18,13 @@
       "cwd": ".",
       "autoopen": true,
       "autoopen_ongoing": true
+    },
+    "4": {
+      "name": "Build and sphinx-build",
+      "shell_cmd": "nim c -d:release -r ./compileOutput.nim; sphinx-build -b html -j auto . _build",
+      "cwd": ".",
+      "autoopen": true,
+      "autoopen_ongoing": true
     }
   }
 }

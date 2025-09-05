@@ -275,6 +275,11 @@ proc addIntrinsic(intrinsic : Intrinsic, stream : var StringStream, border = '^'
     stream.writeLine(getIndent(2) & line)
   stream.writeLine("")
 
+  if intrinsic.tech.get() == "MMX":
+    stream.writeLine(".. deprecated:: X87\n")
+    stream.writeLine(getIndent(2) & "MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.")
+    stream.writeLine("")
+
   for regex, apply in communityPatches.pairs:
     if intrinsic.function.match(regex[]):
       echo "match"

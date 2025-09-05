@@ -719,6 +719,9 @@ UI16 count</p>
 <p class="admonition-title">Intel Description</p>
 <p>Shift packed 16-bit integers in “a” left by “count” while shifting in zeros, and store the results in “dst”.</p>
 </div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
+</div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
@@ -769,6 +772,9 @@ IMM imm8</p>
 <div class="admonition-intel-description admonition">
 <p class="admonition-title">Intel Description</p>
 <p>Shift packed 16-bit integers in “a” left by “imm8” while shifting in zeros, and store the results in “dst”.</p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
 </div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
@@ -821,6 +827,9 @@ UI32 count</p>
 <p class="admonition-title">Intel Description</p>
 <p>Shift packed 32-bit integers in “a” left by “count” while shifting in zeros, and store the results in “dst”.</p>
 </div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
+</div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 1
@@ -871,6 +880,9 @@ IMM imm8</p>
 <div class="admonition-intel-description admonition">
 <p class="admonition-title">Intel Description</p>
 <p>Shift packed 32-bit integers in “a” left by “imm8” while shifting in zeros, and store the results in “dst”.</p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
 </div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
@@ -923,6 +935,9 @@ UI64 count</p>
 <p class="admonition-title">Intel Description</p>
 <p>Shift 64-bit integer “a” left by “count” while shifting in zeros, and store the result in “dst”.</p>
 </div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
+</div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF count[63:0] &gt; 63
@@ -971,6 +986,9 @@ IMM imm8</p>
 <p class="admonition-title">Intel Description</p>
 <p>Shift 64-bit integer “a” left by “imm8” while shifting in zeros, and store the result in “dst”.</p>
 </div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
+</div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF imm8[7:0] &gt; 63
@@ -1018,6 +1036,9 @@ UI16 count</p>
 <div class="admonition-intel-description admonition">
 <p class="admonition-title">Intel Description</p>
 <p>Shift packed 16-bit integers in “a” right by “count” while shifting in sign bits, and store the results in “dst”.</p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
 </div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
@@ -1070,6 +1091,9 @@ IMM imm8</p>
 <p class="admonition-title">Intel Description</p>
 <p>Shift packed 16-bit integers in “a” right by “imm8” while shifting in sign bits, and store the results in “dst”.</p>
 </div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
+</div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
@@ -1120,6 +1144,9 @@ UI32 count</p>
 <div class="admonition-intel-description admonition">
 <p class="admonition-title">Intel Description</p>
 <p>Shift packed 32-bit integers in “a” right by “count” while shifting in sign bits, and store the results in “dst”.</p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
 </div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
@@ -1172,6 +1199,9 @@ IMM imm8</p>
 <p class="admonition-title">Intel Description</p>
 <p>Shift packed 32-bit integers in “a” right by “imm8” while shifting in sign bits, and store the results in “dst”.</p>
 </div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
+</div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 1
@@ -1222,6 +1252,9 @@ UI16 count</p>
 <div class="admonition-intel-description admonition">
 <p class="admonition-title">Intel Description</p>
 <p>Shift packed 16-bit integers in “a” right by “count” while shifting in zeros, and store the results in “dst”.</p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
 </div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
@@ -1274,6 +1307,9 @@ IMM imm8</p>
 <p class="admonition-title">Intel Description</p>
 <p>Shift packed 16-bit integers in “a” right by “imm8” while shifting in zeros, and store the results in “dst”.</p>
 </div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
+</div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 3
@@ -1324,6 +1360,9 @@ UI32 count</p>
 <div class="admonition-intel-description admonition">
 <p class="admonition-title">Intel Description</p>
 <p>Shift packed 32-bit integers in “a” right by “count” while shifting in zeros, and store the results in “dst”.</p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
 </div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
@@ -1376,6 +1415,9 @@ IMM imm8</p>
 <p class="admonition-title">Intel Description</p>
 <p>Shift packed 32-bit integers in “a” right by “imm8” while shifting in zeros, and store the results in “dst”.</p>
 </div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
+</div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FOR j := 0 to 1
@@ -1427,6 +1469,9 @@ UI64 count</p>
 <p class="admonition-title">Intel Description</p>
 <p>Shift 64-bit integer “a” right by “count” while shifting in zeros, and store the result in “dst”.</p>
 </div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
+</div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IF count[63:0] &gt; 63
@@ -1474,6 +1519,9 @@ IMM imm8</p>
 <div class="admonition-intel-description admonition">
 <p class="admonition-title">Intel Description</p>
 <p>Shift 64-bit integer “a” right by “imm8” while shifting in zeros, and store the result in “dst”.</p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version X87: </span>MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.</p>
 </div>
 <div class="admonition-intel-implementation-psudeo-code admonition">
 <p class="admonition-title">Intel Implementation Psudeo-Code</p>

@@ -24,6 +24,10 @@ _m_pcmpeqb
 
     Compare packed 8-bit integers in "a" and "b" for equality, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -57,6 +61,10 @@ _m_pcmpeqw
 .. admonition:: Intel Description
 
     Compare packed 16-bit integers in "a" and "b" for equality, and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -92,6 +100,10 @@ _m_pcmpeqd
 
     Compare packed 32-bit integers in "a" and "b" for equality, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -125,6 +137,10 @@ _m_pcmpgtb
 .. admonition:: Intel Description
 
     Compare packed 8-bit integers in "a" and "b" for greater-than, and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
@@ -160,6 +176,10 @@ _m_pcmpgtw
 
     Compare packed 16-bit integers in "a" and "b" for greater-than, and store the results in "dst".
 
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
+
 .. admonition:: Intel Implementation Psudeo-Code
 
     .. code-block:: text
@@ -193,6 +213,10 @@ _m_pcmpgtd
 .. admonition:: Intel Description
 
     Compare packed 32-bit integers in "a" and "b" for greater-than, and store the results in "dst".
+
+.. deprecated:: X87
+
+    MMX technology intrinsics can cause issues on modern processors and should generally be avoided. Use SSE2, AVX, or later instruction sets instead, especially when targeting modern processors.
 
 .. admonition:: Intel Implementation Psudeo-Code
 
